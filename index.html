@@ -602,7 +602,7 @@ html,body{overflow-x:clip}
 .stage.in .stage-num{animation:popIn .6s cubic-bezier(.2,.8,.2,1) .15s both}
 
 /* Aparición al hacer scroll */
-.motion .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+.motion .rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
 .motion .rv.in{opacity:1;transform:none}
 .motion .cover.rv.in:hover,.motion .gx-card.rv.in:hover{transform:translateY(-4px)}
 .motion .cover.rv{transition-property:opacity,transform,box-shadow}
@@ -809,6 +809,14 @@ a.chip.site small{font-weight:400;color:var(--ink-muted);font-size:12px}
 .case-hero .txt .ai svg{color:var(--brand-berry)}
 .case-hero .txt .when{order:21}
 
+/* Detalles del navegador con la paleta de la marca */
+::selection{background:#8E2C67;color:#fff}
+html{scrollbar-color:#B890C2 transparent;accent-color:#8E2C67}
+p,li{text-wrap:pretty}
+/* Movimiento ligado al scroll (GSAP ScrollTrigger escribe estas variables) */
+.motion .fx{translate:calc(var(--mx,0) * 1px) calc((var(--my,0) + var(--sy,0)) * 1px);rotate:calc(var(--sr,0) * 1deg);transition:translate .8s cubic-bezier(.2,.8,.2,1),rotate .8s cubic-bezier(.2,.8,.2,1)}
+.motion .cover-img img,.motion .case-hero .img img{translate:0 calc(var(--py,0) * 1px)}
+.motion .dz{translate:0 calc(var(--sy,0) * 1px);rotate:calc(var(--sr,0) * 1deg)}
 /* Áreas táctiles cómodas en pantallas táctiles */
 @media (pointer:coarse){.mp-dots{gap:0}.mp-dot{width:44px;height:44px}.reco-toggle{padding-block:12px;margin-block:-12px}}
 /* Navegación final del caso · barra flotante que aparece al llegar al final */
@@ -913,7 +921,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 <span class="ai"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l1.9 6.1L20 10l-6.1 1.9L12 18l-1.9-6.1L4 10l6.1-1.9z"></path></svg>Prototipo de Figma a Claude</span>
 <h3>ilhabella</h3>
 <p class="kicker">Caso de estudio: marca y e-commerce desde la base</p>
-<p class="desc"><b class="ch">Desafío:</b> Sin sitio de venta directa, manual de marca ni categorías de productos, y con un logo amarillo con letras blancas.</p>
+<p class="desc"><b class="ch">Desafío:</b> La marca no tenía sitio de venta directa, manual de marca ni categorías de productos, y su logo tenía poco contraste.</p>
 <div class="tools"><span class="tool">Figma</span><span class="tool">Claude</span><span class="tool">Illustrator</span></div>
 <p class="when">Grupo Safe Care · 2026</p>
 </div>
@@ -1243,7 +1251,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 <div><dt>Medición</dt><dd>3 periodos de 28 días · Analytics y Clarity</dd></div>
 <div><dt>Marcas</dt><dd>Prototipo: Suzuki · Implementación: Subaru Colombia</dd></div>
 </dl>
-<div class="wrap narrow tldr-wrap"><div aria-label="Resumen del caso" class="tldr"><div><h4>El desafío</h4><p>Que cotizar un vehículo fuera rápido, sin pasos ni datos que el cliente no necesitaba entregar.</p></div><div><h4>Mi aporte</h4><p>Un cotizador en un solo paso, prototipado en Figma y testeado con usuarios en Maze antes de desarrollo.</p></div><div class="res"><h4>El resultado</h4><p><b>+40%</b> conversión dentro del cotizador y <b>+14%</b> leads SQF frente al periodo 1 (4 pasos), en una comparación de tres periodos de 28 días.</p></div></div></div><div class="wrap narrow case-body">
+<div class="wrap narrow tldr-wrap"><div aria-label="Resumen del caso" class="tldr"><div><h4>El desafío</h4><p>Que cotizar un vehículo fuera rápido, sin pasos ni datos que el cliente no necesitaba entregar.</p></div><div><h4>Mi aporte</h4><p>Un cotizador en un solo paso, prototipado en Figma y testeado con usuarios en Maze antes de desarrollo.</p></div><div class="res"><h4>El resultado</h4><p><b>+40 %</b> conversión dentro del cotizador y <b>+14 %</b> leads SQF frente al periodo 1 (4 pasos), en una comparación de tres periodos de 28 días.</p></div></div></div><div class="wrap narrow case-body">
 <div class="dt">
 <p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-spark"></use></svg>Proceso · Design Thinking</p>
 <ol class="dt-map"><li><button class="s1" data-goto="caso-cotizador-1" type="button"><span class="n"><svg aria-hidden="true" class="ic"><use href="#i-users"></use></svg>01</span><b>Empatizar</b><span class="q">Un formulario de cuatro pasos</span></button></li><li><button class="s2" data-goto="caso-cotizador-2" type="button"><span class="n"><svg aria-hidden="true" class="ic"><use href="#i-target"></use></svg>02</span><b>Definir</b><span class="q">Menos pasos, más conversión</span></button></li><li><button class="s3" data-goto="caso-cotizador-3" type="button"><span class="n"><svg aria-hidden="true" class="ic"><use href="#i-bulb"></use></svg>03</span><b>Idear</b><span class="q">Ocho cambios al formulario</span></button></li><li><button class="s4" data-goto="caso-cotizador-4" type="button"><span class="n"><svg aria-hidden="true" class="ic"><use href="#i-layout"></use></svg>04</span><b>Prototipar</b><span class="q">Prototipo interactivo</span></button></li><li><button class="s5" data-goto="caso-cotizador-5" type="button"><span class="n"><svg aria-hidden="true" class="ic"><use href="#i-check-circle"></use></svg>05</span><b>Testear</b><span class="q">Maze y producción</span></button></li></ol>
@@ -1290,8 +1298,8 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 <div><b>1 min</b><span>tiempo promedio</span></div>
 <div><b>6,5/7</b><span>CES (esfuerzo)</span></div>
 </div></div><div class="test-group ab"><p class="tg-lbl">Medición en producción · Subaru Colombia <span>Tres periodos de 28 días en 2025, uno por versión del formulario · Google Analytics y Clarity</span></p><div class="metrics">
-<div class="metric"><b>+40%</b><span>conversión dentro del cotizador · vs. periodo 1</span></div>
-<div class="metric"><b>+14%</b><span>leads SQF · vs. periodo 1</span></div>
+<div class="metric"><b>+40 %</b><span>conversión dentro del cotizador · vs. periodo 1</span></div>
+<div class="metric"><b>+14 %</b><span>leads SQF · vs. periodo 1</span></div>
 </div>
 <div class="per-wrap"><table class="per">
 <thead><tr><th>Periodo</th><th>Versión</th><th>Sesiones al cotizador</th><th>Leads SQF</th><th>Conversión</th></tr></thead>
@@ -1308,7 +1316,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 </dl>
 <p class="per-note"><b>Contexto:</b> en el periodo 3 el tráfico total del sitio subió un 30 % frente al periodo 1, con más inversión en medios y el lanzamiento del New Forester. Por eso estos resultados se leen como una comparación entre periodos, no como un efecto atribuible solo al rediseño.</p>
 </div><details class="more"><summary>Ver resultados del test y aprendizajes</summary><div class="more-body"><div class="g2">
-<figure><img alt="Desglose del test en Maze" data-cap="Desglose del test en Maze" loading="lazy" src="img/q-test.webp"/><figcaption>Desglose del test · CSAT 97%</figcaption></figure>
+<figure><img alt="Desglose del test en Maze" data-cap="Desglose del test en Maze" loading="lazy" src="img/q-test.webp"/><figcaption>Desglose del test · CSAT 97 %</figcaption></figure>
 <figure><img alt="Gráficos de feedback del flujo de cotización" data-cap="Feedback del flujo de cotización" loading="lazy" src="img/q-feedback.webp"/><figcaption>Feedback del flujo de cotización</figcaption></figure>
 </div><div class="block sub-block">
 <h4 class="sub">Lo que aprendimos</h4>
@@ -1685,15 +1693,15 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 <div class="intro">
 <p class="sec-ic"><svg aria-hidden="true" class="ic"><use href="#i-user"></use></svg></p><h1>Sobre mí</h1>
 <p>Soy diseñadora UX/UI. Diseño plataformas web responsivas y mobile first: defino flujos de navegación, wireframes y prototipos de alta fidelidad en Figma, y construyo Design Systems que el equipo de desarrollo puede usar sin fricción.</p>
-<p class="muted">Trabajo con datos: Google Analytics, Hotjar, Clarity y Maze para detectar fricciones y validar hipótesis, y hago QA de lo implementado. Me muevo bien en equipos ágiles con Producto, Desarrollo y Marketing de varios países.</p>
+<p class="muted">Trabajo con datos: uso Google Analytics, Hotjar, Clarity y Maze para detectar fricciones y validar hipótesis, y hago QA de lo implementado. Me muevo bien en equipos ágiles con Producto, Desarrollo y Marketing de varios países.</p>
 <div class="skills">
-<div><h4><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Diseño UX/UI</h4><div class="chips"><span class="chip">Design Systems</span><span class="chip">Atomic Design</span><span class="chip">Design Thinking</span><span class="chip">Arquitectura de información</span><span class="chip">Prototipos alta fidelidad</span><span class="chip">Design tokens</span></div></div>
+<div><h4><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Diseño UX/UI</h4><div class="chips"><span class="chip">Design Systems</span><span class="chip">Atomic Design</span><span class="chip">Design Thinking</span><span class="chip">Arquitectura de información</span><span class="chip">Prototipos de alta fidelidad</span><span class="chip">Design tokens</span></div></div>
 <div><h4><svg aria-hidden="true" class="ic"><use href="#i-chart"></use></svg>Research</h4><div class="chips"><span class="chip">Usability testing</span><span class="chip">A/B testing</span><span class="chip">Customer Journey</span><span class="chip">Analytics</span><span class="chip">WCAG</span></div></div>
 <div><h4><svg aria-hidden="true" class="ic"><use href="#i-wrench"></use></svg>Herramientas</h4><div class="chips"><span class="chip">Figma</span><span class="chip">Maze</span><span class="chip">Hotjar</span><span class="chip">Jira</span><span class="chip">Azure DevOps</span><span class="chip">Salesforce MC</span><span class="chip">Umbraco</span><span class="chip">Suite Adobe</span><span class="chip">HTML/CSS</span><span class="chip">IA generativa</span></div></div>
 </div>
 </div>
 <ol class="timeline">
-<li><span class="when"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg>2023 – 2026</span><div><b>Interface Development Specialist Americas</b><em>Inchcape Américas</em><p>Design System para 10 marcas, flujos de eCommerce, cotizador en un paso, análisis UX y QA.</p></div></li>
+<li><span class="when"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg>2023 – 2026</span><div><b>Interface Development Specialist Americas</b><em>Inchcape Américas</em><p>Design System para 10 marcas, flujos de e-commerce, cotizador en un paso, análisis UX y QA.</p></div></li>
 <li><span class="when"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg>2021 – 2023</span><div><b>Diseñadora UX/UI</b><em>Autoplanet</em><p>Design System desde cero, rediseño del home y menú, filtros de PLP, login, selector de tienda con geolocalización y seguimiento de pedidos.</p></div></li>
 <li><span class="when"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg>2019 – 2021</span><div><b>Diseñadora Gráfica · UX/UI</b><em>CampusChile</em><p>Cursos e-learning SCORM, contenidos LMS y flujos en Figma para Campus HR.</p></div></li>
 <li><span class="when"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg>2017 – 2018</span><div><b>Diseñadora Gráfica y Web</b><em>Agencia Destacados</em><p>Sitios web y piezas gráficas para automotoras de seminuevos.</p></div></li>
@@ -1707,7 +1715,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 <div class="wrap contact">
 <p class="sec-ic"><svg aria-hidden="true" class="ic"><use href="#i-message"></use></svg></p>
 <p class="contact-meta"><span><svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Chile</span></p>
-<p class="eyebrow" style="text-transform:none;letter-spacing:.02em;font-size:15px;line-height:24px"><span style="text-transform:uppercase">Disponibilidad inmediata</span><br>Teletrabajo, Híbrido o Presencial</p>
+<p class="eyebrow" style="text-transform:none;letter-spacing:.02em;font-size:15px;line-height:24px"><span style="text-transform:uppercase">Disponibilidad inmediata</span><br>Teletrabajo, híbrido o presencial</p>
 <h1>Conversemos</h1>
 <p>Busco un equipo de producto donde diseñar experiencias claras y medibles. Escríbeme y te respondo pronto.</p>
 <div class="contact-row">
@@ -1867,14 +1875,14 @@ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.c
   var fx=[].slice.call(document.querySelectorAll('.hero-fx [data-depth]'));
   if(matchMedia('(pointer:fine)').matches){
     var raf=0,px=0,py=0;
-    addEventListener('pointermove',function(e){px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5;if(!raf)raf=requestAnimationFrame(function(){raf=0;fx.forEach(function(el){var d=+el.dataset.depth;el.style.translate=(px*d)+'px '+(py*d)+'px'})})},{passive:true});
+    addEventListener('pointermove',function(e){px=e.clientX/innerWidth-.5;py=e.clientY/innerHeight-.5;if(!raf)raf=requestAnimationFrame(function(){raf=0;fx.forEach(function(el){var d=+el.dataset.depth;el.style.setProperty('--mx',(px*d).toFixed(2));el.style.setProperty('--my',(py*d).toFixed(2))})})},{passive:true});
   }
   // aparición al hacer scroll
   var sel='.proj-head,.covers > .cover,.gx-grid > .gx-card,.brands > h2,.brands > p,.brands-card,.tldr > div,.stage,.metric,.timeline li,.about .intro > *,.skills > *,.cv-card,.contact > *,.gx-gallery > figure,.gal,.specs > div,.insights li,.pnav,.gx-pager';
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll(sel).forEach(function(el){
     var sib=[].slice.call(el.parentElement.children).filter(function(x){return x.matches(sel)});
-    el.style.setProperty('--d',(Math.max(0,sib.indexOf(el))%6)*90+'ms');
+    el.style.setProperty('--d',(Math.max(0,sib.indexOf(el))%6)*60+'ms');
     el.classList.add('rv');io.observe(el);
   });
   // contadores en métricas
@@ -1986,5 +1994,30 @@ var r;t.addEventListener('scroll',function(){cancelAnimationFrame(r);r=requestAn
   addEventListener('scroll',q,{passive:true}); addEventListener('resize',q);
   addEventListener('hashchange',function(){ document.body.classList.remove('pnav-on'); setTimeout(upd,80); });
   setTimeout(upd,120);
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  if(!window.gsap||!window.ScrollTrigger||!document.documentElement.classList.contains('motion'))return;
+  gsap.registerPlugin(ScrollTrigger);
+  var arr=gsap.utils.toArray;
+  // 1. Hero: las piezas del logo se separan a distinta velocidad al bajar
+  var hero=document.querySelector('.hello');
+  if(hero)arr('.hero-fx [data-depth]').forEach(function(el){var d=+el.dataset.depth;
+    gsap.fromTo(el,{'--sy':0,'--sr':0},{'--sy':-d*5,'--sr':d*.5,ease:'none',scrollTrigger:{trigger:hero,start:'top 80px',end:'bottom top',scrub:true}});});
+  // 2. Portadas: la imagen se desplaza dentro de su marco mientras cruza la pantalla
+  arr('.covers .cover-img img').forEach(function(img){
+    gsap.fromTo(img,{'--py':14},{'--py':-14,ease:'none',scrollTrigger:{trigger:img.closest('.cover-img'),start:'top bottom',end:'bottom top',scrub:true}});});
+  // 3. Portada de cada caso: la imagen baja más lento que la página
+  arr('.case-hero .img img').forEach(function(img){
+    gsap.fromTo(img,{'--py':0},{'--py':28,ease:'none',scrollTrigger:{trigger:img.closest('.case-hero'),start:'top 120px',end:'bottom top',scrub:true}});});
+  // 4. Sobre mí y Contacto: las formas de fondo giran y se cruzan al pasar
+  arr('.deco').forEach(function(deco){arr('.dz',deco).forEach(function(el,i){var k=(i%2?-1:1)*(i+1);
+    gsap.fromTo(el,{'--sy':36*k,'--sr':-5*k},{'--sy':-36*k,'--sr':5*k,ease:'none',scrollTrigger:{trigger:deco.parentElement,start:'top bottom',end:'bottom top',scrub:true}});});});
+  function rf(){ScrollTrigger.refresh()}
+  addEventListener('hashchange',function(){setTimeout(rf,150)});
+  addEventListener('load',rf);
 })();
 </script>
