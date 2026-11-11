@@ -828,7 +828,7 @@ a.pn-next:hover .pn-ar{transform:translateX(4px)}
 .pn-home{display:flex;align-items:center;justify-content:center;gap:7px;margin:8px auto 0;width:max-content;padding:4px 10px;font-size:13px;font-weight:700;color:var(--action-accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;border-radius:8px}
 .pn-home svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
 .pn-home:hover{text-decoration-thickness:2px}
-.view.has-pnav{padding-bottom:calc(var(--space-16) + 150px)}
+.view.has-pnav{padding-bottom:calc(var(--space-16) + 170px)}
 body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset-bottom,0px))}
 @media (max-width:640px){
 .pn-card{padding:10px 10px 8px;border-radius:18px}
@@ -1970,7 +1970,10 @@ var r;t.addEventListener('scroll',function(){cancelAnimationFrame(r);r=requestAn
     var show=false;
     if(cur){ var r=cur.v.getBoundingClientRect(), h=innerHeight; show = r.top<-h*.5 && r.bottom < h*1.6; }
     document.body.classList.toggle('pnav-on',show);
-    if(cur && show){ var c=cur.n.querySelector('.pn-card'); document.documentElement.style.setProperty('--pnav-h',(c.offsetHeight+16)+'px'); }
+    navs.forEach(function(o){ if(o!==cur||!show) o.n.style.transform=''; });
+    if(cur && show){ var f=document.querySelector('.foot'), lift=f?Math.max(0,innerHeight-f.getBoundingClientRect().top):0;
+      cur.n.style.transform=lift?'translateY(-'+lift+'px)':'';
+      var c=cur.n.querySelector('.pn-card'); document.documentElement.style.setProperty('--pnav-h',(c.offsetHeight+16+lift)+'px'); }
   }
   function q(){ if(!tick){ tick=true; requestAnimationFrame(upd); } }
   addEventListener('scroll',q,{passive:true}); addEventListener('resize',q);
