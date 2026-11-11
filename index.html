@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alejandra Gallardo · Portafolio</title>
-<meta name="description" content="Portafolio de Alejandra Gallardo, Diseñadora UX/UI."/>
+<title>Alejandra Gallardo · Portafolio UX/UI</title>
+<meta name="description" content="Alejandra Gallardo, Diseñadora UX/UI en Chile con 8 años de experiencia: e-commerce, Design Systems multimarca y sitios de marca. Casos de estudio y contacto."/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Alejandra Gallardo · Portafolio"/>
 <meta property="og:description" content="Diseñadora UX/UI: eCommerce, sitios de marca, Design Systems y e-learning."/>
@@ -13,6 +13,11 @@
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="1200"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Alejandra Gallardo · Portafolio UX/UI"/>
+<meta name="twitter:description" content="Diseñadora UX/UI: e-commerce, sitios de marca, Design Systems y e-learning."/>
+<meta name="twitter:image" content="https://alejandragallardoibaceta-lang.github.io/og-square.png"/>
+<link rel="canonical" href="https://alejandragallardoibaceta-lang.github.io/"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alejandra Gallardo","jobTitle":"Diseñadora UX/UI","url":"https://alejandragallardoibaceta-lang.github.io/","address":{"@type":"PostalAddress","addressCountry":"CL"},"knowsAbout":["UX Design","UI Design","Design Systems","E-commerce","Figma"]}</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/><link rel="icon" type="image/png" sizes="64x64" href="favicon.png"/><link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <meta content="cover" name="claude:viewport-fit-sides"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -64,7 +69,7 @@
 *{box-sizing:border-box}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 html{scroll-behavior:smooth}
-body{background:var(--surface-page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface-card)}
 a{color:var(--link)}
 :focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;border-radius:4px}
@@ -804,6 +809,8 @@ a.chip.site small{font-weight:400;color:var(--ink-muted);font-size:12px}
 .case-hero .txt .ai svg{color:var(--brand-berry)}
 .case-hero .txt .when{order:21}
 
+/* Áreas táctiles cómodas en pantallas táctiles */
+@media (pointer:coarse){.mp-dots{gap:0}.mp-dot{width:44px;height:44px}.reco-toggle{padding-block:12px;margin-block:-12px}}
 /* Navegación final del caso · barra flotante que aparece al llegar al final */
 .pnav{position:fixed;left:0;right:0;bottom:0;z-index:24;display:flex;justify-content:center;padding:0 12px calc(16px + env(safe-area-inset-bottom,0px));pointer-events:none;visibility:hidden;opacity:0;transform:translateY(24px);transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s linear .45s}
 body.pnav-on .pnav.is-cur{visibility:visible;opacity:1;transform:none;transition:opacity .3s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s}
@@ -1716,7 +1723,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 </main>
 <footer class="foot">
 <svg aria-hidden="true" class="logo" viewbox="39.0 61.0 400.0 258.0"><path d="M400.1 126.5 A109.0 109.0 0 1 0 439.0 210 L405.0 210 A75.0 75.0 0 1 1 378.2 152.5 Z" fill="currentColor"></path><path d="M364.6 176 H417.0 A22 22 0 0 1 439.0 198 V211.5 H335.0 Z" fill="currentColor"></path><path d="M221.0 140 H245.0 V210 H221.0 Z" fill="currentColor"></path><path d="M131.6 212 L204.0 212 L175.6 246 L103.2 246 Z" fill="currentColor"></path><path d="M59.0 299.0 L241.0 81 L241.0 170" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"></path></svg>
-<p>Todo el contenido de este sitio es creación de Alejandra Gallardo Ibaceta · Santiago, Chile</p>
+<p>Todo el contenido de este sitio es creación de Alejandra Gallardo Ibaceta · Chile</p>
 </footer>
 <button aria-label="Volver arriba" class="totop is-hidden" id="totop" type="button">
 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
