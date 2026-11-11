@@ -816,12 +816,12 @@ body.pnav-on .pnav.is-cur{visibility:visible;opacity:1;transform:none;transition
 .pn-short{display:none}
 .pn-ar{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
 .pn-prev{border:1.5px solid color-mix(in srgb,var(--ink) 16%,transparent);color:var(--ink)}
-.pn-prev:hover{border-color:var(--action-primary);background:color-mix(in srgb,var(--action-primary) 5%,transparent)}
-.pn-prev:hover .pn-ar{transform:translateX(-4px)}
+a.pn-prev:hover{border-color:var(--action-primary);background:color-mix(in srgb,var(--action-primary) 5%,transparent)}
+a.pn-prev:hover .pn-ar{transform:translateX(-4px)}
 .pn-next{background:var(--action-primary);color:var(--ink-inverse);text-align:right;border:1.5px solid var(--action-primary)}
-.pn-next:hover{transform:translateY(-1px);box-shadow:0 10px 22px -12px var(--action-primary)}
-.pn-next:hover .pn-ar{transform:translateX(4px)}
-.pn-btn.is-off{color:color-mix(in srgb,var(--ink) 38%,transparent);border-style:dashed;cursor:default;background:transparent}
+a.pn-next:hover{transform:translateY(-1px);box-shadow:0 10px 22px -12px var(--action-primary)}
+a.pn-next:hover .pn-ar{transform:translateX(4px)}
+.pn-btn.is-off{color:color-mix(in srgb,var(--ink) 38%,transparent);border-style:dashed;cursor:not-allowed;background:transparent;user-select:none}
 .pn-next.is-off{border-color:color-mix(in srgb,var(--ink) 16%,transparent);text-align:right}
 .pn-btn.is-off small{font-size:15px;font-weight:600;opacity:1;letter-spacing:0}
 .pn-btn:focus-visible,.pn-home:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
