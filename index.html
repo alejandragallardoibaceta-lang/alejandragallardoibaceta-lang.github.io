@@ -818,7 +818,8 @@ p,li{text-wrap:pretty}
 .motion .cover-img img,.motion .case-hero .img img{translate:0 calc(var(--py,0) * 1px)}
 .motion .dz{translate:0 calc(var(--sy,0) * 1px);rotate:calc(var(--sr,0) * 1deg)}
 /* Servicios */
-#servicios{padding-block:clamp(56px,8vw,104px)}
+#servicios{padding-block:0 clamp(56px,8vw,104px)}
+#servicios .sv-head{padding-top:clamp(32px,5vw,56px)}
 .sv-head{max-width:640px;margin-bottom:clamp(28px,4vw,44px)}
 .sv-head h1{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;color:var(--action-accent);letter-spacing:-.02em}
 .sv-head>p:last-child{margin-top:14px;font-size:18px;line-height:1.6;color:var(--ink-muted)}
@@ -1744,7 +1745,7 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 </div>
 </section>
 <!-- ============ SERVICIOS ============ -->
-<section class="view" data-view="servicios" id="servicios">
+<section class="view page" data-view="servicios" data-page hidden id="servicios"><nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li aria-current="page">Servicios</li></ol></nav>
 <div class="wrap sv">
 <div class="sv-head">
 <p class="sec-ic"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg></p>
@@ -1794,21 +1795,26 @@ body.pnav-on .totop{bottom:calc(var(--pnav-h,150px) + 12px + env(safe-area-inset
 (function(){
   // Inicio = una sola página (Portafolio, Sobre mí, Contacto). Cada proyecto se abre aparte.
   var navs=[].slice.call(document.querySelectorAll('[data-nav]'));
-  var home=[].slice.call(document.querySelectorAll('[data-view]:not(.project)'));
+  var servicios=document.getElementById('servicios');
+  var home=[].slice.call(document.querySelectorAll('[data-view]:not(.project):not([data-page])'));
   var projects=[].slice.call(document.querySelectorAll('.project'));
   var projectIds=projects.map(function(p){return p.id});
   var inProject=false;
   function route(){
     var h=(location.hash||'').slice(1);
     inProject=projectIds.indexOf(h)>=0;
+    var onServ=h==='servicios';
     projects.forEach(function(p){p.hidden=p.id!==h});
-    home.forEach(function(s){s.hidden=inProject});
-    if(inProject){window.scrollTo(0,0)}
+    servicios.hidden=!onServ;
+    home.forEach(function(s){s.hidden=inProject||onServ});
+    if(inProject||onServ){window.scrollTo(0,0)}
     else{var t=h&&document.getElementById(h);if(t&&h!=='portafolio'){t.scrollIntoView()}else{window.scrollTo(0,0)}}
+    if(onServ){window.dispatchEvent(new Event('resize'))}
     spy();
   }
-  var groups=[['portafolio',document.getElementById('portafolio')],['sobre-mi',document.getElementById('sobre-mi')],['servicios',document.getElementById('servicios')],['contacto',document.getElementById('contacto')]];
+  var groups=[['portafolio',document.getElementById('portafolio')],['sobre-mi',document.getElementById('sobre-mi')],['contacto',document.getElementById('contacto')]];
   function spy(){
+    if(!servicios.hidden){navs.forEach(function(a){if(a.dataset.nav==='servicios')a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});return}
     if(inProject){navs.forEach(function(a){if(a.dataset.nav==='portafolio')a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});return}
     var y=window.scrollY+window.innerHeight*0.35, current='portafolio';
     groups.forEach(function(g){if(g[1].getBoundingClientRect().top+window.scrollY<=y)current=g[0]});
