@@ -1669,25 +1669,27 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <!-- Manual de marca Ithilien -->
 <div class="ith-manual" aria-label="Manual de marca Ithilien Boutique">
 
-  <header class="im-cover">
-    <img src="img/ithilien/logo-vertical-negativo.svg" alt="Logotipo Ithilien Boutique" width="316" height="340">
-    <div class="im-kicker">Manual de marca</div>
-    <p>Bisutería en alambrismo con inspiración medieval, hecha a mano para las ferias temáticas de Chile.</p>
-  </header>
-
   <nav class="im-tabs" aria-label="Secciones del manual" data-ith-nav>
-    <a class="im-tab" href="#ith-esencia" data-ith-scroll="ith-esencia" aria-current="true">Esencia</a>
-    <a class="im-tab" href="#ith-identidad" data-ith-scroll="ith-identidad">Identidad</a>
-    <a class="im-tab" href="#ith-reglas" data-ith-scroll="ith-reglas">Reglas de uso</a>
-    <a class="im-tab" href="#ith-voz" data-ith-scroll="ith-voz">Voz</a>
-    <a class="im-tab" href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones">Aplicaciones</a>
+    <span class="im-tabs-title">Ithilien Boutique</span>
+    <a class="im-tab" href="#ith-esencia" data-ith-scroll="ith-esencia" aria-current="true"><span class="n">01</span>Esencia</a>
+    <a class="im-tab" href="#ith-identidad" data-ith-scroll="ith-identidad"><span class="n">02</span>Identidad</a>
+    <a class="im-tab" href="#ith-reglas" data-ith-scroll="ith-reglas"><span class="n">03</span>Reglas de uso</a>
+    <a class="im-tab" href="#ith-voz" data-ith-scroll="ith-voz"><span class="n">04</span>Voz</a>
+    <a class="im-tab" href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones"><span class="n">05</span>Aplicaciones</a>
   </nav>
 
-  <!-- ESENCIA -->
-  <section class="im-panel" id="ith-esencia">
+  <!-- PORTADA + ESENCIA -->
+  <section class="im-panel im-hero" id="ith-esencia">
     <div class="im-wrap">
-      <h2>Esencia de marca</h2>
-      <p class="im-statement">Hacer que cada persona lleve una pieza de otro tiempo, tejida a mano y hecha para ella.</p>
+      <div class="im-hero-top">
+        <img src="img/ithilien/logo-vertical-negativo.svg" alt="Logotipo Ithilien Boutique" width="316" height="340">
+        <div>
+          <div class="im-kicker">Manual de marca</div>
+          <p class="im-hero-lead">Bisutería en alambrismo con inspiración medieval, hecha a mano para las ferias temáticas de Chile.</p>
+          <h2>Esencia de marca</h2>
+          <p class="im-statement">Hacer que cada persona lleve una pieza de otro tiempo, tejida a mano y hecha para ella.</p>
+        </div>
+      </div>
       <div class="im-grid im-g3">
         <div class="im-card"><b>Misión</b><p>Crear accesorios en alambrismo con alma medieval y acercarlos a la comunidad de ferias temáticas.</p></div>
         <div class="im-card"><b>Visión</b><p>Ser la boutique artesanal que la comunidad medieval de Chile reconoce a primera vista.</p></div>
@@ -1711,7 +1713,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
             <li><b>Quien busca un regalo único</b>, hecho a mano y con historia.</li>
           </ul>
         </div>
-      </div>
+      
     </div>
   </section>
 
@@ -2529,4 +2531,32 @@ g.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(cur+1)}if(e
 #grafico-ithilien .ith-manual .im-pattern-demo.im-compact .im-tile{height:110px}
 @media (max-width:900px){#grafico-ithilien .ith-manual .im-stages.im-compact{grid-template-columns:repeat(3,1fr)}#grafico-ithilien .ith-manual .im-swatches.im-compact{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:560px){#grafico-ithilien .ith-manual .im-stages.im-compact,#grafico-ithilien .ith-manual .im-pattern-demo.im-compact{grid-template-columns:repeat(2,1fr)!important}}
+</style><style>
+/* Portada + Esencia en verde Ithilien; submenú con la línea gráfica AG */
+#grafico-ithilien .ith-manual nav.im-tabs{background:#fff!important;border-bottom:1px solid #E3D6E5!important;box-shadow:0 6px 16px -14px rgba(26,11,22,.35);justify-content:center;align-items:center;gap:4px;padding:8px 16px;min-height:52px}
+#grafico-ithilien .ith-manual nav.im-tabs .im-tabs-title{flex:none;font-family:"Open Sans",Arial,sans-serif;font-weight:800;font-size:15px;color:#2A0A22;white-space:nowrap;padding-right:20px;margin-right:12px;border-right:1px solid #E3D6E5}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:"Open Sans",Arial,sans-serif!important;font-size:14px;font-weight:600;letter-spacing:0!important;text-transform:none!important;color:#6B4F65!important;padding:8px 12px;border-radius:999px;border:0!important;background:transparent;transition:background .2s,color .2s}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab .n{font-size:12px;font-weight:800;opacity:.7}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab:hover{background:#F7F2F7;color:#2A0A22!important}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab[aria-current="true"]{background:#421035;color:#fff!important}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab[aria-current="true"] .n{opacity:1}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab::after,#grafico-ithilien .ith-manual nav.im-tabs a.im-tab::before{display:none!important}
+#grafico-ithilien .ith-manual nav.im-tabs a.im-tab:focus-visible{outline:2px solid #7587D9;outline-offset:2px}
+@media (max-width:720px){#grafico-ithilien .ith-manual nav.im-tabs{justify-content:flex-start}#grafico-ithilien .ith-manual nav.im-tabs .im-tabs-title{display:none}#grafico-ithilien .ith-manual nav.im-tabs a.im-tab{font-size:13px;padding:7px 11px}}
+#grafico-ithilien .ith-manual .im-sec.im-hero,#grafico-ithilien .ith-manual .im-panel.im-hero{background:linear-gradient(rgba(31,59,38,.9),rgba(31,59,38,.9)),#1F3B26 url("img/ithilien/patron-bosque.svg") center/150px repeat!important;color:#F2E8D2!important;padding:4.5rem 0!important}
+#grafico-ithilien .ith-manual .im-hero-top{display:grid;grid-template-columns:minmax(180px,280px) 1fr;gap:3rem;align-items:center}
+#grafico-ithilien .ith-manual .im-hero-top img{width:100%;max-width:280px;margin:0 auto}
+#grafico-ithilien .ith-manual .im-hero .im-kicker{font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:.85rem;letter-spacing:.4em;text-transform:uppercase;color:#C49A45}
+#grafico-ithilien .ith-manual .im-hero .im-hero-lead{font-size:1.15rem;color:#F2E8D2;margin:.6rem 0 1.6rem}
+#grafico-ithilien .ith-manual .im-hero h2{color:#F2E8D2!important;font-family:"Cinzel",Georgia,serif!important;font-weight:600!important;letter-spacing:.05em!important}
+#grafico-ithilien .ith-manual .im-hero .im-statement{color:#F2E8D2!important;border-left-color:#C49A45!important;margin:1rem 0 0}
+#grafico-ithilien .ith-manual .im-hero .im-grid{margin-top:2.5rem}
+#grafico-ithilien .ith-manual .im-hero .im-card{background:rgba(242,232,210,.07)!important;border:1px solid rgba(196,154,69,.55)!important;box-shadow:none!important;border-radius:0!important}
+#grafico-ithilien .ith-manual .im-hero .im-card b{color:#C49A45!important}
+#grafico-ithilien .ith-manual .im-hero .im-card p,#grafico-ithilien .ith-manual .im-hero .im-list li{color:#F2E8D2!important}
+#grafico-ithilien .ith-manual .im-hero .im-list b{color:#fff!important}
+#grafico-ithilien .ith-manual .im-hero h3{color:#C49A45!important;font-family:"Cinzel",Georgia,serif!important}
+#grafico-ithilien .ith-manual .im-hero h3::before,#grafico-ithilien .ith-manual .im-hero .im-list li::before{background:#C49A45!important}
+#grafico-ithilien .ith-manual .im-hero .im-split{margin-top:2.5rem}
+@media (max-width:720px){#grafico-ithilien .ith-manual .im-hero-top{grid-template-columns:1fr;gap:1.5rem;text-align:center}#grafico-ithilien .ith-manual .im-hero-top img{max-width:200px}#grafico-ithilien .ith-manual .im-hero .im-statement{text-align:left}}
 </style>
