@@ -41,7 +41,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;family=Jost:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;family=Jost:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=Josefin+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
 .top{transition:transform .3s cubic-bezier(.2,.8,.2,1)}body.nav-up .top{transform:translateY(-110%)}.case-nav{position:sticky;top:68px;z-index:19;background:var(--surface-card);border-bottom:1px solid var(--border);box-shadow:0 6px 16px -14px rgba(26,11,22,.35);transition:top .3s cubic-bezier(.2,.8,.2,1);margin:0 calc(50% - 50vw);padding:0 max(16px,calc(50vw - 620px))}body.nav-up .case-nav{top:0}.case-nav-in{display:flex;align-items:center;gap:20px;min-height:52px}.case-nav-title{flex:none;font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis}.case-nav ol{display:flex;gap:4px;margin:0 auto 0 0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;flex:0 1 auto;min-width:0;scroll-behavior:smooth}.case-nav-in>:first-child{margin-left:auto}.case-nav-title{padding-right:20px;border-right:1px solid var(--border)}.case-nav ol::-webkit-scrollbar{display:none}.case-nav a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink-muted);padding:8px 12px;border-radius:999px;transition:background .2s,color .2s}.case-nav a .n{font-size:12px;font-weight:800;opacity:.7}.case-nav a:hover{background:var(--surface-subtle);color:var(--ink)}.case-nav a[aria-current="true"]{background:var(--action-primary);color:var(--ink-inverse)}.case-nav a[aria-current="true"] .n{opacity:1}.case-nav a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}@media (max-width:760px){.case-nav-title{display:none}.case-nav-in{min-height:48px}.case-nav a{font-size:13px;padding:7px 11px}}@media (prefers-reduced-motion:reduce){.top,.case-nav{transition:none}.case-nav ol{scroll-behavior:auto}}
 
@@ -1604,7 +1604,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-shapes"></use></svg>Branding</span><b>Across the Universe</b></span>
 </a>
 <a class="gx-card" href="#grafico-asocam">
-<span class="gx-thumb"><img alt="" loading="lazy" src="img/gr-asocam-1.webp"/></span>
+<span class="gx-thumb"><img alt="" loading="lazy" src="img/asocam/portada.webp"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</span><b>ASOCAM Chile</b></span>
 </a>
 <a class="gx-card" href="#grafico-afs">
@@ -1638,19 +1638,302 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <!-- ============ GRÁFICO: ASOCAM CHILE ============ -->
 <section class="view project gx-page" data-view="grafico-asocam" hidden="" id="grafico-asocam">
 <nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">ASOCAM Chile</li></ol></nav>
-<div class="wrap narrow gx-head">
-<p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</p>
-<h1>ASOCAM Chile</h1>
-<p class="sub">Identidad para la Asociación Cultural de Artesanos de Maipú, “Hacedores de cultura”: un patrón geométrico y una ilustración de marca aplicados a papelería, roller, stand para ferias y tríptico.</p>
-<div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span></div>
+<style>
+#grafico-asocam .as{--r:#742113;--t:#853E26;--c:#E5C4BF;--k:#2B1712;--g:#6E5A54;--l:#EADBD6;--soft:#FBF4F1;
+  --ith-header:68px;font-family:"Open Sans",Arial,sans-serif;color:var(--k);font-size:1.08rem;line-height:1.65;background:#fff}
+#grafico-asocam .as *{box-sizing:border-box}
+#grafico-asocam .as p{margin:0 0 1rem;max-width:62ch}
+#grafico-asocam .as img{display:block;max-width:100%;height:auto}
+#grafico-asocam .as .case-nav{line-height:1.4}
+#grafico-asocam .as .case-nav ol{margin:0 auto 0 0}
+#grafico-asocam .as-w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+#grafico-asocam .as-red{position:relative;background:var(--r) url("img/asocam/patron.svg") center/200px repeat;color:#fff}
+#grafico-asocam .as-red.framed::after{content:"";position:absolute;inset:14px;border:1px solid rgba(229,196,191,.5);pointer-events:none}
+#grafico-asocam .as-red>*{position:relative;z-index:1}
+/* etiquetas y titulares */
+#grafico-asocam .as-lab{display:flex;align-items:center;gap:.8rem;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:var(--r);margin:0 0 1.1rem;max-width:none}
+#grafico-asocam .as-lab::before{content:"";width:9px;height:9px;border:2px solid currentColor;transform:rotate(45deg);flex:none}
+#grafico-asocam .as-red .as-lab{color:var(--c)}
+#grafico-asocam .as h2{font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:clamp(1.9rem,4vw,3.1rem);line-height:1.12;letter-spacing:.12em;text-transform:uppercase;color:var(--r);margin:0 0 1.4rem;max-width:22ch}
+#grafico-asocam .as h2 em,#grafico-asocam .as blockquote em{font-weight:300;font-style:normal;letter-spacing:.05em;text-transform:none;color:var(--t)}
+#grafico-asocam .as-red h2{color:#fff}#grafico-asocam .as-red h2 em{color:var(--c)}
+#grafico-asocam .as h3{font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--r);margin:0 0 .5rem}
+#grafico-asocam .as-cap{color:var(--g);font-size:1rem;line-height:1.5;margin-top:.8rem}
+#grafico-asocam .as-cap b{font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--r);display:block;margin-bottom:.1rem}
+#grafico-asocam .as-red .as-cap{color:#F6E7E3}#grafico-asocam .as-red .as-cap b{color:var(--c)}
+/* botones */
+#grafico-asocam .as-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.75rem 1.5rem;border-radius:999px;font-family:"Open Sans",Arial,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .16s ease-out,background-color .2s ease}
+#grafico-asocam .as-btn:active{transform:scale(.97)}
+#grafico-asocam .as-btn svg{width:18px;height:18px;flex:none}
+#grafico-asocam .as-btn.light{background:#fff;color:var(--r)}
+#grafico-asocam .as-btn.light:hover{background:#F6E7E3}
+#grafico-asocam .as-btn.line{border-color:rgba(255,255,255,.7);color:#fff}
+#grafico-asocam .as-btn.line:hover{background:rgba(255,255,255,.1)}
+#grafico-asocam .as-btn:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+/* PORTADA */
+#grafico-asocam .as-hero{padding:clamp(56px,8vw,104px) 0 clamp(64px,8vw,108px)}
+#grafico-asocam .as-hero .as-w{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,64px);align-items:center}
+#grafico-asocam .as-tags{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0 0 1.8rem;padding:0;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--c)}
+#grafico-asocam .as-tags li{display:flex;align-items:center;gap:.55rem}
+#grafico-asocam .as-tags li::before{content:"";width:6px;height:6px;border:1.5px solid currentColor;transform:rotate(45deg)}
+#grafico-asocam .as h1{margin:0}
+#grafico-asocam .as h1 img{width:min(420px,100%)}
+#grafico-asocam .as-motto{font-family:"Josefin Sans",sans-serif;font-weight:400;font-size:clamp(.95rem,1.6vw,1.15rem);letter-spacing:.42em;text-transform:uppercase;color:var(--c);margin:1.2rem 0 1.6rem}
+#grafico-asocam .as-lead{font-size:clamp(1.15rem,1.8vw,1.35rem);line-height:1.5;color:#FBEDE9;max-width:32ch;margin-bottom:2rem}
+#grafico-asocam .as-acts{display:flex;flex-wrap:wrap;gap:.8rem}
+#grafico-asocam .as-pic{margin:0;padding:14px;border:1px solid rgba(229,196,191,.7);background:rgba(0,0,0,.12)}
+#grafico-asocam .as .as-pic img{width:100%;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);border-radius:0}
+/* SECCIONES */
+#grafico-asocam .as-sec{padding:clamp(64px,9vw,120px) 0;position:relative;scroll-margin-top:120px}
+#grafico-asocam .as-sec.soft{background:var(--soft)}
+/* Resumen */
+#grafico-asocam .as-ctx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:start}
+#grafico-asocam .as-intro{font-family:"Josefin Sans",sans-serif;font-weight:300;font-size:clamp(1.4rem,2.3vw,1.85rem);line-height:1.4;max-width:30ch}
+#grafico-asocam .as-intro b{font-weight:600;color:var(--r)}
+#grafico-asocam .as-ctx aside{border-left:1px solid var(--l);padding-left:clamp(20px,3vw,40px)}
+#grafico-asocam .as-ctx aside>div+div{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--l)}
+#grafico-asocam .as-ctx aside p{margin:0}
+#grafico-asocam .as-quote{margin:clamp(56px,8vw,96px) auto 0;max-width:760px;text-align:center;border:1px solid var(--r);outline:1px solid var(--r);outline-offset:6px;padding:clamp(28px,4vw,44px) 24px}
+#grafico-asocam .as-quote blockquote{margin:0;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:clamp(1.5rem,3.4vw,2.5rem);letter-spacing:.26em;text-transform:uppercase;color:var(--r);line-height:1.25}
+#grafico-asocam .as-quote cite{display:block;margin-top:.9rem;font-style:normal;font-family:"Josefin Sans",sans-serif;font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--g)}
+/* 01 Identidad */
+#grafico-asocam .as-id{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,80px);align-items:center}
+#grafico-asocam .as-id .ill{max-width:440px;width:100%;justify-self:center}
+#grafico-asocam .as-keys{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:0}
+#grafico-asocam .as-keys li{display:grid;grid-template-columns:44px 1fr;gap:1rem;padding:1rem 0;border-top:1px solid rgba(229,196,191,.35);color:#F6E7E3}
+#grafico-asocam .as-keys li span{font-family:"Josefin Sans",sans-serif;font-weight:700;color:var(--c);letter-spacing:.1em}
+#grafico-asocam .as-keys b{font-family:"Josefin Sans",sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.82rem;color:#fff;margin-right:.4rem}
+#grafico-asocam .as-logo-big{margin-bottom:1.6rem}
+#grafico-asocam .as-logo-big img{width:min(460px,100%)}
+/* 02 Sistema */
+#grafico-asocam .as-sys-h{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:2.4rem}
+#grafico-asocam .as-sys-h p{margin:0;color:var(--g)}
+#grafico-asocam .as-pal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.4fr);gap:12px}
+#grafico-asocam .as-pal>div{border:1px solid var(--l);background:#fff}
+#grafico-asocam .as-pal .c{height:170px}
+#grafico-asocam .as-pal .i{padding:.9rem 1rem 1rem;font-size:.92rem;line-height:1.35;color:var(--g)}
+#grafico-asocam .as-pal b{display:block;font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--k)}
+#grafico-asocam .as-pal code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;display:block;margin:.15rem 0 .35rem}
+#grafico-asocam .as-lv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(40px,6vw,64px)}
+#grafico-asocam .as-lv>div{aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:1px solid var(--l)}
+#grafico-asocam .as-lv img{width:60%}
+#grafico-asocam .as-lv span{font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase}
+#grafico-asocam .as-lv .w{background:#fff;color:var(--r)}
+#grafico-asocam .as-lv .rr{color:var(--c)}
+/* 03 Aplicaciones */
+#grafico-asocam .as-apps{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);margin-top:2.4rem}
+#grafico-asocam .as-apps figure{margin:0;min-width:0;align-self:start}
+#grafico-asocam .as .as-apps figure img{width:100%;border-radius:0;box-shadow:0 18px 40px -26px rgba(43,23,18,.55);background:#fff;transition:transform .4s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover){#grafico-asocam .as .as-apps figure img:hover{transform:translateY(-4px)}}
+#grafico-asocam .as-apps .n{font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.2em;color:var(--t);margin-right:.5rem}
+#grafico-asocam .a-pap{grid-column:1/9}
+#grafico-asocam .a-pside{grid-column:9/13;align-self:end!important}
+#grafico-asocam .a-rol{grid-column:9/13}
+#grafico-asocam .a-std{grid-column:5/13;align-self:end!important}
+#grafico-asocam .a-tri1{grid-column:1/7}
+#grafico-asocam .a-tri2{grid-column:7/13}
+/* 04 Guía */
+#grafico-asocam .as-man{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:center}
+#grafico-asocam .as-pages{position:relative;aspect-ratio:1.25;max-width:560px;width:100%}
+#grafico-asocam .as-pages img{position:absolute;width:72%;box-shadow:0 24px 50px -24px rgba(0,0,0,.7);border:1px solid rgba(229,196,191,.6);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#grafico-asocam .as-pages img:nth-child(1){left:0;top:0;transform:rotate(-5deg)}
+#grafico-asocam .as-pages img:nth-child(2){left:14%;top:14%;transform:rotate(1deg)}
+#grafico-asocam .as-pages img:nth-child(3){left:28%;top:30%;transform:rotate(5deg)}
+@media (hover:hover){#grafico-asocam .as-pages:hover img:nth-child(1){transform:rotate(-8deg) translate(-12px,-6px)}#grafico-asocam .as-pages:hover img:nth-child(3){transform:rotate(8deg) translate(12px,6px)}}
+#grafico-asocam .as-man p{color:#FBEDE9}
+#grafico-asocam .as-man ul{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+#grafico-asocam .as-man li{border:1px solid rgba(229,196,191,.7);color:#fff;padding:.3rem .85rem;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
+#grafico-asocam .as-man small{display:block;margin-top:.9rem;color:rgba(251,237,233,.8);font-size:.95rem}
+#grafico-asocam .as-man [role=status]{min-height:1.4em;margin:.6rem 0 0;color:var(--c);font-size:1rem}
+/* Ficha */
+#grafico-asocam .as-ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border-top:1px solid var(--l);border-bottom:1px solid var(--l)}
+#grafico-asocam .as-ficha>div{padding:1.6rem clamp(14px,2vw,26px)}
+#grafico-asocam .as-ficha>div+div{border-left:1px solid var(--l)}
+#grafico-asocam .as-ficha dt{font-family:"Josefin Sans",sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--r);margin-bottom:.5rem}
+#grafico-asocam .as-ficha dd{margin:0;font-size:1.02rem;line-height:1.45}
+#grafico-asocam .as-agwrap .sv-cta{margin-top:clamp(40px,6vw,72px)}
+/* aparición */
+#grafico-asocam .as.rv-on .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+#grafico-asocam .as.rv-on .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){#grafico-asocam .as.rv-on .rv{opacity:1;transform:none;transition:none}#grafico-asocam .as *{transition:none!important}}
+@media (max-width:900px){
+#grafico-asocam .as-hero .as-w,#grafico-asocam .as-ctx,#grafico-asocam .as-id,#grafico-asocam .as-sys-h,#grafico-asocam .as-man{grid-template-columns:minmax(0,1fr)}
+#grafico-asocam .as-ctx aside{border-left:0;padding-left:0;border-top:1px solid var(--l);padding-top:1.5rem}
+#grafico-asocam .as-pal{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-asocam .as-pal>div:last-child{grid-column:1/-1}
+#grafico-asocam .as-apps>*{grid-column:1/-1!important}
+#grafico-asocam .as-ficha{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-asocam .as-ficha>div:nth-child(3){border-left:0}
+#grafico-asocam .as-ficha>div:nth-child(n+3){border-top:1px solid var(--l)}
+#grafico-asocam .as-pages{max-width:420px;margin:0 auto}
+#grafico-asocam .as-id .ill{max-width:300px}
+}
+@media (max-width:640px){
+#grafico-asocam .as-pal .c{height:100px}
+#grafico-asocam .as-lv{grid-template-columns:minmax(0,1fr)}
+#grafico-asocam .as-ficha{grid-template-columns:minmax(0,1fr)}
+#grafico-asocam .as-ficha>div{border-left:0!important}
+#grafico-asocam .as-ficha>div+div{border-top:1px solid var(--l)}
+#grafico-asocam .as-motto{letter-spacing:.3em}
+}
+</style>
+
+<div class="as" aria-label="Caso de estudio ASOCAM Chile">
+
+  <header class="as-hero as-red framed">
+    <div class="as-w">
+      <div>
+        <ul class="as-tags" aria-label="Disciplinas"><li>Branding</li><li>Papelería</li><li>Ferias</li></ul>
+        <h1><img src="img/asocam/logo-blanco.webp" alt="ASOCAM Chile" width="648" height="236"></h1>
+        <p class="as-motto">Hacedores de cultura</p>
+        <p class="as-lead">Identidad para la Asociación Cultural de Artesanos de Maipú.</p>
+        <div class="as-acts">
+          <a class="as-btn light" href="files/Guia_de_marca_ASOCAM_Chile.pdf" download data-as-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar guía (PDF)</a>
+          <a class="as-btn line" href="#as-aplicaciones" data-as-scroll="as-aplicaciones">Ver aplicaciones</a>
+        </div>
+      </div>
+      <figure class="as-pic"><img src="img/gx-asocam-03.webp" alt="Stand de feria de ASOCAM con toldo, mesa y paneles con el logo y la ilustración" data-cap="ASOCAM Chile · Stand para ferias" width="1400" height="722"><figcaption class="as-cap" style="margin-top:.7rem"><b>Stand para ferias</b>Toldo, mesa y paneles con la identidad.</figcaption></figure>
+    </div>
+  </header>
+
+  <nav class="case-nav" aria-label="Secciones del proyecto" data-as-nav><div class="case-nav-in"><span class="case-nav-title">ASOCAM Chile</span><ol>
+    <li><a href="#as-resumen" data-as-scroll="as-resumen" aria-current="true">Resumen</a></li>
+    <li><a href="#as-identidad" data-as-scroll="as-identidad"><span class="n">01</span>Identidad</a></li>
+    <li><a href="#as-sistema" data-as-scroll="as-sistema"><span class="n">02</span>Sistema</a></li>
+    <li><a href="#as-aplicaciones" data-as-scroll="as-aplicaciones"><span class="n">03</span>Aplicaciones</a></li>
+    <li><a href="#as-guia" data-as-scroll="as-guia"><span class="n">04</span>Guía</a></li>
+  </ol></div></nav>
+
+  <section class="as-sec" id="as-resumen">
+    <div class="as-w">
+      <p class="as-lab rv">Resumen · El encargo</p>
+      <div class="as-ctx">
+        <p class="as-intro rv"><b>ASOCAM</b> reúne a artesanas y artesanos de Maipú. Diseñé su identidad y la llevé a las piezas con que se presentan: papelería, roller, stand para ferias y tríptico.</p>
+        <aside class="rv">
+          <div><h3>La identidad</h3><p>Un patrón geométrico de rombos y una ilustración de marca con piezas de artesanía, que acompañan al logo en todas las piezas.</p></div>
+          <div><h3>El lema</h3><p>«Hacedores de cultura» va junto al logo, en mayúsculas y con letras espaciadas.</p></div>
+        </aside>
+      </div>
+      <div class="as-quote rv"><blockquote>Hacedores de cultura</blockquote><cite>Lema de ASOCAM</cite></div>
+    </div>
+  </section>
+
+  <section class="as-sec as-red" id="as-identidad">
+    <div class="as-w as-id">
+      <div class="rv">
+        <p class="as-lab">01 · Identidad</p>
+        <h2>Geometría <em>y oficio</em></h2>
+        <div class="as-logo-big"><img src="img/asocam/logo-blanco.webp" alt="Logo de ASOCAM: rombo abierto con un punto al centro junto al nombre en mayúsculas espaciadas" width="648" height="236"></div>
+        <ol class="as-keys">
+          <li><span>I</span><p style="margin:0"><b>Logo.</b>Un rombo abierto con un punto al centro, junto al nombre en mayúsculas espaciadas.</p></li>
+          <li><span>II</span><p style="margin:0"><b>Ilustración.</b>Dibujo de línea con piezas de artesanía: vasijas y máscaras.</p></li>
+          <li><span>III</span><p style="margin:0"><b>Patrón.</b>Rombos geométricos tono sobre tono para los fondos.</p></li>
+        </ol>
+      </div>
+      <img class="ill rv" src="img/asocam/ilustracion-blanca.webp" alt="Ilustración de marca de ASOCAM: dibujo de línea clara con vasijas de cerámica y máscaras" width="602" height="768">
+    </div>
+  </section>
+
+  <section class="as-sec" id="as-sistema">
+    <div class="as-w">
+      <p class="as-lab rv">02 · Sistema</p>
+      <div class="as-sys-h">
+        <h2 class="rv">Rojo arcilla <em>y línea clara</em></h2>
+        <p class="rv">El rojo arcilla cubre los fondos con el patrón tono sobre tono; el logo y la ilustración van en línea clara, y el blanco queda para las bandas con datos de contacto.</p>
+      </div>
+      <div class="as-pal rv" role="list" aria-label="Paleta de colores">
+        <div role="listitem"><div class="c" style="background:#742113"></div><div class="i"><b>Rojo arcilla</b><code>#742113</code>Color principal.</div></div>
+        <div role="listitem"><div class="c" style="background:#853E26"></div><div class="i"><b>Terracota</b><code>#853E26</code>Patrón tono sobre tono.</div></div>
+        <div role="listitem"><div class="c" style="background:#E5C4BF"></div><div class="i"><b>Rosa arcilla</b><code>#E5C4BF</code>Logo e ilustración.</div></div>
+        <div role="listitem"><div class="c" style="background:#fff;border-bottom:1px solid #EADBD6"></div><div class="i"><b>Blanco</b><code>#FFFFFF</code>Bandas de datos.</div></div>
+        <div role="listitem"><div class="c as-red"></div><div class="i"><b>Patrón</b><code>Rombos</code>Fondos de piezas en rojo.</div></div>
+      </div>
+      <div class="as-lv rv" aria-label="Versiones del logo">
+        <div class="as-red rr"><img src="img/asocam/logo-blanco.webp" alt="Logo en negativo sobre rojo arcilla" width="648" height="236"><span>Negativo</span></div>
+        <div class="w"><img src="img/asocam/logo-rojo.webp" alt="Logo en positivo, rojo arcilla sobre blanco" width="648" height="236"><span>Positivo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="as-sec soft" id="as-aplicaciones">
+    <div class="as-w">
+      <p class="as-lab rv">03 · Aplicaciones</p>
+      <div class="as-sys-h" style="margin-bottom:0">
+        <h2 class="rv">De la oficina <em>a la feria</em></h2>
+        <p class="rv">Papelería institucional, roller y tríptico con la misma identidad que el stand de feria.</p>
+      </div>
+      <div class="as-apps">
+        <figure class="a-pap rv"><img src="img/gr-asocam-set.webp" alt="Set de papelería de ASOCAM: carpeta, hoja carta, sobres, lápices, clips y tarjetas con el patrón y la ilustración de la marca" data-cap="ASOCAM Chile · Papelería institucional" width="1000" height="750" loading="lazy"><figcaption class="as-cap"><b><span class="n">01</span>Papelería institucional</b>Carpeta, hoja carta, sobres, lápices, clips y tarjetas con el patrón y la ilustración.</figcaption></figure>
+        <figure class="a-rol rv"><img src="img/gx-asocam-02.webp" alt="Roller institucional de ASOCAM con la ilustración de artesanía" data-cap="ASOCAM Chile · Roller institucional" width="1200" height="1200" loading="lazy"><figcaption class="as-cap"><b><span class="n">02</span>Roller</b>Logo, lema, ilustración y datos de contacto.</figcaption></figure>
+        <figure class="a-tri1 rv"><img src="img/gx-asocam-04.webp" alt="Exterior del tríptico de ASOCAM con misión, visión y logo" data-cap="ASOCAM Chile · Tríptico · exterior" width="878" height="613" loading="lazy"><figcaption class="as-cap"><b><span class="n">03</span>Tríptico · exterior</b>Misión, visión y logo.</figcaption></figure>
+        <figure class="a-tri2 rv"><img src="img/gx-asocam-05.webp" alt="Interior del tríptico de ASOCAM con fotografías de los artesanos" data-cap="ASOCAM Chile · Tríptico · interior" width="873" height="615" loading="lazy"><figcaption class="as-cap"><b><span class="n">04</span>Tríptico · interior</b>Fotografías de los artesanos.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="as-sec as-red framed" id="as-guia">
+    <div class="as-w as-man">
+      <div class="as-pages rv" aria-hidden="true">
+        <img src="img/asocam/guia-pag-3.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/asocam/guia-pag-5.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/asocam/guia-pag-6.webp" alt="" width="900" height="637" loading="lazy">
+      </div>
+      <div class="rv">
+        <p class="as-lab">04 · Guía de marca</p>
+        <h2>La guía <em>completa</em></h2>
+        <p>9 páginas en formato horizontal con la identidad, el sistema y las aplicaciones.</p>
+        <ul aria-label="Contenido de la guía"><li>Identidad y lema</li><li>Logo</li><li>Ilustración</li><li>Color y patrón</li><li>Papelería</li><li>Ferias</li><li>Tríptico</li></ul>
+        <a class="as-btn light" href="files/Guia_de_marca_ASOCAM_Chile.pdf" download data-as-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar guía (PDF)</a>
+        <small>PDF horizontal · 2,8 MB</small>
+        <p role="status" data-as-msg></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="as-sec" aria-labelledby="as-ficha-h">
+    <div class="as-w">
+      <p class="as-lab" id="as-ficha-h">Ficha del proyecto</p>
+      <dl class="as-ficha">
+        <div><dt>Proyecto</dt><dd>Identidad visual y piezas institucionales</dd></div>
+        <div><dt>Mi rol</dt><dd>Diseño de la identidad, el patrón, la ilustración y las aplicaciones</dd></div>
+        <div><dt>Entregables</dt><dd>Papelería, roller, stand para ferias y tríptico</dd></div>
+        <div><dt>Herramientas</dt><dd>Illustrator y Photoshop</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    var root=document.currentScript.parentNode;
+    var nav=root.querySelector('[data-as-nav]');
+    var links=[].slice.call(nav.querySelectorAll('[data-as-scroll]'));
+    var secs=links.map(function(l){return document.getElementById(l.getAttribute('data-as-scroll'))});
+    function header(){return parseFloat(getComputedStyle(root).getPropertyValue('--ith-header'))||0}
+    function jump(id){var el=document.getElementById(id);if(!el)return;var top=el.getBoundingClientRect().top+window.pageYOffset;var down=top>window.pageYOffset+nav.offsetHeight;window.scrollTo({top:top-nav.offsetHeight-(down?0:header())+1,behavior:'smooth'})}
+    root.querySelectorAll('[data-as-scroll]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();jump(l.getAttribute('data-as-scroll'))})});
+    var cur=-1;
+    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i],ol=nav.querySelector('ol');if(ol&&ol.scrollWidth>ol.clientWidth){ol.scrollLeft=Math.max(0,l.offsetLeft-(ol.clientWidth-l.offsetWidth)/2)}}
+    function spy(){if(!root.offsetParent)return;var line=nav.getBoundingClientRect().bottom+60,idx=0;secs.forEach(function(sc,i){if(sc.getBoundingClientRect().top<=line)idx=i});setCurrent(idx)}
+    var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){spy();tk=false})}},{passive:true});window.addEventListener('resize',spy);spy();
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if('IntersectionObserver' in window&&!rm){root.classList.add('rv-on');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});root.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}
+    var dl=null,msg=root.querySelector('[data-as-msg]');
+    try{if(window.claude&&typeof claude.use==='function'){claude.use('downloads').then(function(d){dl=d},function(){})}}catch(_){}
+    root.querySelectorAll('[data-as-dl]').forEach(function(a){a.addEventListener('click',function(e){
+      if(!dl)return;e.preventDefault();var url=a.getAttribute('href');if(msg)msg.textContent='';
+      fetch(url).then(function(r){if(!r.ok)throw new Error('fetch');return r.blob()})
+        .then(function(b){return dl.save({filename:'Guia_de_marca_ASOCAM_Chile.pdf',data:b})})
+        .then(function(){if(msg)msg.textContent='Listo, tu descarga comenzó.'},function(err){var c=err&&err.code;if(c==='declined'){}else if(c==='rate_limited'){if(msg)msg.textContent='Espera un momento e inténtalo de nuevo.'}else{window.open(url,'_blank','noopener')}});
+    })});
+  })();
+  </script>
 </div>
+<div class="wrap narrow as-agwrap">
+<div class="sv-cta"><p><b>¿Tienes una marca que necesita una identidad propia?</b> Cuéntame de tu proyecto y te ayudo a crear una identidad con personalidad, lista para aplicar.</p>
+        <a class="btn sv-btn" href="#contacto">Conversemos sobre tu proyecto</a></div>
+</div>
+
 <div class="wrap narrow">
-<div class="shots-across"><figure><img alt="Set de papelería de ASOCAM: carpeta, hoja carta, sobres, lápices, clips y tarjetas con el patrón y la ilustración de la marca" data-cap="ASOCAM Chile · Papelería institucional" loading="lazy" src="img/gr-asocam-set.webp"/><figcaption>Papelería institucional</figcaption></figure>
-<figure><img alt="Roller institucional de ASOCAM con la ilustración de artesanía" data-cap="ASOCAM Chile · Roller institucional" loading="lazy" src="img/gx-asocam-02.webp"/><figcaption>Roller institucional</figcaption></figure>
-<figure><img alt="Stand de feria con toldo, mesa y paneles de ASOCAM" data-cap="ASOCAM Chile · Stand para ferias" loading="lazy" src="img/gx-asocam-03.webp"/><figcaption>Stand para ferias</figcaption></figure>
-<figure><img alt="Exterior del tríptico de ASOCAM con misión, visión y logo" data-cap="ASOCAM Chile · Tríptico · exterior" loading="lazy" src="img/gx-asocam-04.webp"/><figcaption>Tríptico · exterior</figcaption></figure>
-<figure><img alt="Interior del tríptico de ASOCAM con fotografías de los artesanos" data-cap="ASOCAM Chile · Tríptico · interior" loading="lazy" src="img/gx-asocam-05.webp"/><figcaption>Tríptico · interior</figcaption></figure>
-</div>
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-across"><span>← Anterior</span><b>Across the Universe</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
