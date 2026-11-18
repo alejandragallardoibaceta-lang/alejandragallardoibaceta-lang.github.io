@@ -1660,282 +1660,457 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <!-- ============ GRÁFICO: ITHILIEN BOUTIQUE ============ -->
 <section class="view project gx-page" data-view="grafico-ithilien" hidden="" id="grafico-ithilien">
 <nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">Ithilien Boutique</li></ol></nav>
-<div class="wrap narrow gx-head">
-<p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</p>
-<h1>Ithilien Boutique</h1>
-<p class="sub">Manual de marca para una tienda de bisutería en alambrismo de inspiración medieval. Partí del isotipo original y lo llevé a un sistema más medieval y de fantasía.</p>
-<div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span><span class="tool">Claude</span></div>
-</div>
-<!-- Manual de marca Ithilien -->
-<div class="ith-manual" aria-label="Manual de marca Ithilien Boutique">
+<style>
+#grafico-ithilien .i2{--b:#1F3B26;--b2:#17301F;--o:#C49A45;--oo:#7D5820;--p:#F2E8D2;--p2:#EADCBD;--pp:#FBF6EA;--v:#6E1F2A;--t:#2A2420;--s:#5E544A;--l:#D9C9A6;--plum:#421035;--pink:#E89BC6;
+  --ith-sticky-top:68px;--ith-header:68px;font-family:"EB Garamond",Georgia,serif;color:var(--t);font-size:1.2rem;line-height:1.55;background:var(--p)}
+body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
+#grafico-ithilien .i2 *{box-sizing:border-box}
+#grafico-ithilien .i2 p{margin:0 0 1rem;max-width:62ch}
+#grafico-ithilien .i2 img{display:block;max-width:100%;height:auto}
+#grafico-ithilien .i2-w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+/* etiquetas y titulares */
+#grafico-ithilien .i2-lab{display:flex;align-items:center;gap:.7rem;font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oo);margin:0 0 1.1rem}
+#grafico-ithilien .i2-lab::before{content:"";width:8px;height:8px;background:var(--o);transform:rotate(45deg);flex:none}
+#grafico-ithilien .i2-lab b{font-weight:700;color:inherit}
+#grafico-ithilien .i2 h2{font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.08;letter-spacing:.02em;color:var(--b);margin:0 0 1.4rem;max-width:18ch}
+#grafico-ithilien .i2 h2 em,#grafico-ithilien .i2 h1 em,#grafico-ithilien .i2 blockquote em{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:0;color:var(--oo)}
+#grafico-ithilien .i2 h3{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--b);margin:0 0 .6rem}
+#grafico-ithilien .i2-cap{font-style:italic;color:var(--s);font-size:1.05rem;line-height:1.45;margin-top:.8rem}
+#grafico-ithilien .i2-cap b{font-family:"Cinzel",Georgia,serif;font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--b);display:block;margin-bottom:.15rem}
+/* ornamento: filete con rombo */
+#grafico-ithilien .i2-orn{display:flex;align-items:center;gap:.8rem;max-width:360px;margin:0 auto;color:var(--o)}
+#grafico-ithilien .i2-orn::before,#grafico-ithilien .i2-orn::after{content:"";flex:1;height:1px;background:currentColor}
+#grafico-ithilien .i2-orn i{width:9px;height:9px;background:currentColor;transform:rotate(45deg)}
+/* botones */
+#grafico-ithilien .i2-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.75rem 1.5rem;border-radius:999px;font-family:"Open Sans",Arial,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .16s ease-out,background-color .2s ease}
+#grafico-ithilien .i2-btn:active{transform:scale(.97)}
+#grafico-ithilien .i2-btn svg{width:18px;height:18px;flex:none}
+#grafico-ithilien .i2-btn.gold{background:var(--o);color:var(--b2)}
+#grafico-ithilien .i2-btn.gold:hover{background:#D3AC5C}
+#grafico-ithilien .i2-btn.line{border-color:rgba(242,232,210,.7);color:var(--p);background:transparent}
+#grafico-ithilien .i2-btn.line:hover{background:rgba(242,232,210,.1)}
+#grafico-ithilien .i2-btn:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
 
-  <nav class="im-tabs" aria-label="Secciones del manual" data-ith-nav>
-    <span class="im-tabs-title">Ithilien Boutique</span>
-    <a class="im-tab" href="#ith-esencia" data-ith-scroll="ith-esencia" aria-current="true"><span class="n">01</span>Esencia</a>
-    <a class="im-tab" href="#ith-identidad" data-ith-scroll="ith-identidad"><span class="n">02</span>Identidad</a>
-    <a class="im-tab" href="#ith-reglas" data-ith-scroll="ith-reglas"><span class="n">03</span>Reglas de uso</a>
-    <a class="im-tab" href="#ith-voz" data-ith-scroll="ith-voz"><span class="n">04</span>Voz</a>
-    <a class="im-tab" href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones"><span class="n">05</span>Aplicaciones</a>
+/* ===== PORTADA ===== */
+#grafico-ithilien .i2-hero{position:relative;background:var(--b);color:var(--p);padding:clamp(48px,7vw,96px) 0 clamp(56px,7vw,100px);overflow:hidden}
+#grafico-ithilien .i2-hero::before{content:"";position:absolute;inset:0;background:url("img/ithilien/patron-bosque.svg") center/150px repeat;opacity:.1}
+#grafico-ithilien .i2-hero::after{content:"";position:absolute;inset:14px;border:1px solid rgba(196,154,69,.55);pointer-events:none}
+#grafico-ithilien .i2-hero .i2-w{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:center}
+#grafico-ithilien .i2-tags{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;list-style:none;margin:0 0 1.6rem;padding:0;font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--o)}
+#grafico-ithilien .i2-tags li{display:flex;align-items:center;gap:.55rem}
+#grafico-ithilien .i2-tags li::before{content:"";width:6px;height:6px;background:currentColor;transform:rotate(45deg)}
+#grafico-ithilien .i2 h1{font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:clamp(2.6rem,6.2vw,5rem);line-height:1;letter-spacing:.02em;color:var(--p);margin:0 0 1.2rem}
+#grafico-ithilien .i2 h1 small{display:block;font-size:.32em;font-weight:700;letter-spacing:.5em;color:var(--o);margin-top:.9rem}
+#grafico-ithilien .i2-hero .i2-lead{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.4;color:var(--p);max-width:30ch;margin-bottom:2rem}
+#grafico-ithilien .i2-hero .i2-lead em{color:var(--o)}
+#grafico-ithilien .i2-acts{display:flex;flex-wrap:wrap;gap:.8rem}
+#grafico-ithilien .i2-frame{position:relative;margin:0;padding:12px;border:1px solid var(--o)}
+#grafico-ithilien .i2-frame::before{content:"";position:absolute;inset:4px;border:1px solid rgba(196,154,69,.45);pointer-events:none}
+#grafico-ithilien .i2-frame .k{position:absolute;width:10px;height:10px;background:var(--o);transform:rotate(45deg)}
+#grafico-ithilien .i2-frame .k1{top:-5px;left:-5px}#grafico-ithilien .i2-frame .k2{top:-5px;right:-5px}#grafico-ithilien .i2-frame .k3{bottom:-5px;left:-5px}#grafico-ithilien .i2-frame .k4{bottom:-5px;right:-5px}
+#grafico-ithilien .i2 .i2-frame img{width:100%;border-radius:0;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);background:none}
+
+/* ===== NAV DE CAPÍTULOS (línea AG) ===== */
+#grafico-ithilien .i2-nav{position:sticky;top:var(--ith-sticky-top,0px);z-index:19;background:var(--plum);border-bottom:1px solid #8E2C67;display:flex;justify-content:center;overflow-x:auto;scrollbar-width:none;transition:top .3s cubic-bezier(.2,.8,.2,1);box-shadow:0 6px 16px -14px rgba(0,0,0,.5)}
+#grafico-ithilien .i2-nav::-webkit-scrollbar{display:none}
+#grafico-ithilien .i2-nav a{display:inline-flex;align-items:center;gap:.5rem;min-height:52px;padding:0 1.15rem;font-family:"Open Sans",Arial,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;opacity:.85}
+#grafico-ithilien .i2-nav a span{font-family:"Cinzel",Georgia,serif;color:var(--pink);font-size:.85rem}
+#grafico-ithilien .i2-nav a:hover{opacity:1}
+#grafico-ithilien .i2-nav a[aria-current="true"]{color:var(--pink);border-bottom-color:var(--pink);opacity:1}
+#grafico-ithilien .i2-nav a:focus-visible{outline:2px solid var(--pink);outline-offset:-4px}
+
+/* ===== SECCIONES ===== */
+#grafico-ithilien .i2-sec{padding:clamp(64px,9vw,120px) 0;position:relative;scroll-margin-top:120px}
+#grafico-ithilien .i2-sec.alt{background:var(--pp)}
+#grafico-ithilien .i2-sec.dark{background:var(--b);color:var(--p)}
+#grafico-ithilien .i2-sec.dark h2{color:var(--p)}
+#grafico-ithilien .i2-sec.dark h2 em{color:var(--o)}
+#grafico-ithilien .i2-sec.dark .i2-lab{color:var(--o)}
+
+/* I · Contexto */
+#grafico-ithilien .i2-ctx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:start}
+#grafico-ithilien .i2-intro{font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.45;max-width:34ch}
+#grafico-ithilien .i2-intro::first-letter{float:left;font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:4.4em;line-height:.8;margin:.08em .12em 0 0;color:var(--b);padding:.04em .1em 0;border:1px solid var(--o);outline:1px solid var(--o);outline-offset:3px;background:var(--pp)}
+#grafico-ithilien .i2-ctx aside{border-left:1px solid var(--l);padding-left:clamp(20px,3vw,40px)}
+#grafico-ithilien .i2-ctx aside>div+div{margin-top:1.6rem;padding-top:1.6rem;border-top:1px solid var(--l)}
+#grafico-ithilien .i2-ctx aside p{font-size:1.15rem;margin:0}
+#grafico-ithilien .i2-quote{margin:clamp(56px,8vw,96px) auto 0;text-align:center;max-width:820px}
+#grafico-ithilien .i2-quote blockquote{margin:1.6rem 0 1rem;font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.25;color:var(--b)}
+#grafico-ithilien .i2-quote cite{font-style:normal;font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--oo)}
+#grafico-ithilien .i2-quote .i2-orn+blockquote{margin-top:1.6rem}
+
+/* II · Logo */
+#grafico-ithilien .i2-evo{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:center;margin-top:2.4rem}
+#grafico-ithilien .i2-evo>div{position:relative;background:#fff;border:1px solid var(--l);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;padding:12%}
+#grafico-ithilien .i2-evo>div img{max-height:120px;width:auto}
+#grafico-ithilien .i2-evo .tag{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);background:var(--b);color:var(--p);font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;padding:.45rem 1rem}
+#grafico-ithilien .i2-evo .tag.old{background:var(--pp);color:var(--s);border:1px solid var(--l)}
+#grafico-ithilien .i2-evo .arw{width:48px;height:48px;border:1px solid var(--o);transform:rotate(45deg);display:flex;align-items:center;justify-content:center}
+#grafico-ithilien .i2-evo .arw svg{transform:rotate(-45deg);width:22px;height:22px;stroke:var(--oo)}
+#grafico-ithilien .i2-evo-txt{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:clamp(16px,3vw,36px);margin-top:1.4rem}
+#grafico-ithilien .i2-evo-txt p+p{grid-column:3}
+#grafico-ithilien .i2-evo-txt p{margin:0;font-size:1.1rem;color:var(--s)}
+#grafico-ithilien .i2-evo-txt b{font-family:"Cinzel",Georgia,serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--b);display:block;margin-bottom:.2rem}
+#grafico-ithilien .i2-vers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:3rem}
+#grafico-ithilien .i2-vers>div{aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;border:1px solid var(--l);padding:1.2rem}
+#grafico-ithilien .i2-vers img{max-height:64%;width:auto;max-width:80%}
+#grafico-ithilien .i2-vers span{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase}
+#grafico-ithilien .i2-vers .on-p{background:var(--p);color:var(--oo)}
+#grafico-ithilien .i2-vers .on-b{background:var(--b);color:var(--o)}
+#grafico-ithilien .i2-vers .on-v{background:var(--v);color:var(--o)}
+#grafico-ithilien .i2-vers .on-k{background:#C8A47A;color:var(--t)}
+
+/* La idea (banda oscura) */
+#grafico-ithilien .i2-idea{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:center}
+#grafico-ithilien .i2-seal{position:relative;aspect-ratio:1;max-width:440px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:center}
+#grafico-ithilien .i2-seal::before,#grafico-ithilien .i2-seal::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(196,154,69,.5)}
+#grafico-ithilien .i2-seal::before{inset:0}
+#grafico-ithilien .i2-seal::after{inset:7%;border-style:dashed;border-color:rgba(196,154,69,.35)}
+#grafico-ithilien .i2-seal img{width:62%;position:relative}
+#grafico-ithilien .i2-idea p{color:var(--p);font-size:1.25rem}
+#grafico-ithilien .i2-idea ol{list-style:none;margin:2rem 0 0;padding:0;display:grid;gap:1rem;counter-reset:k}
+#grafico-ithilien .i2-idea li{display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:baseline;border-top:1px solid rgba(196,154,69,.35);padding-top:1rem;font-size:1.12rem;color:var(--p)}
+#grafico-ithilien .i2-idea li::before{counter-increment:k;content:counter(k,upper-roman);font-family:"Cinzel",Georgia,serif;font-weight:700;color:var(--o);font-size:.95rem;letter-spacing:.1em}
+#grafico-ithilien .i2-idea li b{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--o);margin-right:.4rem}
+
+/* III · Sistema */
+#grafico-ithilien .i2-sys-h{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:2.6rem}
+#grafico-ithilien .i2-sys-h p{margin:0;color:var(--s)}
+#grafico-ithilien .i2-pal{display:flex;min-height:250px;border:1px solid var(--l)}
+#grafico-ithilien .i2-pal>div{display:flex;flex-direction:column;justify-content:flex-end;padding:1rem 1.1rem;font-size:.98rem;line-height:1.3;min-width:0;transition:flex-grow .35s cubic-bezier(.23,1,.32,1)}
+#grafico-ithilien .i2-pal b{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;display:block}
+#grafico-ithilien .i2-pal code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;opacity:.85}
+#grafico-ithilien .i2-pal .pc{font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:2rem;line-height:1;margin-bottom:auto}
+#grafico-ithilien .i2-pal-l{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem 1rem;margin-top:.7rem;font-style:italic;color:var(--s);font-size:1rem}
+#grafico-ithilien .i2-type{display:grid;grid-template-columns:1.1fr 1fr 1fr;margin-top:clamp(48px,7vw,80px);border-top:1px solid var(--l);border-bottom:1px solid var(--l)}
+#grafico-ithilien .i2-type>div{padding:2rem clamp(16px,2.5vw,32px);display:flex;flex-direction:column;gap:.8rem;min-width:0}
+#grafico-ithilien .i2-type>div+div{border-left:1px solid var(--l)}
+#grafico-ithilien .i2-type .spec{min-height:130px;display:flex;align-items:center;color:var(--b)}
+#grafico-ithilien .i2-type .f1{font-family:"UnifrakturMaguntia",serif;font-size:clamp(3.2rem,6vw,4.6rem);line-height:1}
+#grafico-ithilien .i2-type .f2{font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:clamp(1.4rem,2.4vw,1.9rem);letter-spacing:.08em;line-height:1.2}
+#grafico-ithilien .i2-type .f3{font-family:"EB Garamond",Georgia,serif;font-size:clamp(1.3rem,2vw,1.55rem);line-height:1.35;color:var(--t)}
+#grafico-ithilien .i2-type p{margin:0;font-size:1.05rem;color:var(--s)}
+#grafico-ithilien .i2-tapiz{margin-top:clamp(48px,7vw,80px);position:relative;min-height:320px;background:var(--b) url("img/ithilien/patron-bosque.svg") center/150px repeat;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+#grafico-ithilien .i2-tapiz .card{background:var(--p);max-width:440px;text-align:center;padding:2rem 2.2rem;border:1px solid var(--o);outline:1px solid var(--p);outline-offset:5px}
+#grafico-ithilien .i2-tapiz .card p{margin:0 auto;font-size:1.15rem}
+#grafico-ithilien .i2-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+#grafico-ithilien .i2-tiles div{height:120px;display:flex;align-items:flex-end;padding:.7rem .9rem;font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase}
+#grafico-ithilien .i2-tiles .tp{background:var(--p) url("img/ithilien/patron-perg.svg") center/120px repeat;color:var(--oo);border:1px solid var(--l)}
+#grafico-ithilien .i2-tiles .tv{background:var(--v) url("img/ithilien/patron-vino.svg") center/120px repeat;color:var(--p)}
+#grafico-ithilien .i2-tiles .tk{background:#C8A47A url("img/ithilien/patron-kraft.svg") center/120px repeat;color:var(--t)}
+
+/* IV · Aplicaciones */
+#grafico-ithilien .i2-apps{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.4vw,28px);margin-top:2.4rem}
+#grafico-ithilien .i2-apps figure{margin:0;min-width:0;display:block;align-self:start}
+#grafico-ithilien .i2 p.i2-lab{font-size:.78rem;max-width:none}
+#grafico-ithilien .i2 .i2-apps figure img{width:100%;border-radius:0;box-shadow:0 18px 40px -26px rgba(42,36,32,.55);background:var(--p2);transition:transform .4s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover){#grafico-ithilien .i2 .i2-apps figure img:hover{transform:translateY(-4px)}}
+#grafico-ithilien .i2-apps .n{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;color:var(--oo);margin-right:.5rem}
+#grafico-ithilien .a-tarj{grid-column:1/9}
+#grafico-ithilien .a-side{grid-column:9/13;align-self:end;padding-bottom:.4rem}
+#grafico-ithilien .a-side p{font-size:1.15rem;color:var(--s)}
+#grafico-ithilien .a-bolsa{grid-column:1/6;margin-top:clamp(0px,4vw,56px)!important}
+#grafico-ithilien .a-etiq{grid-column:6/13}
+#grafico-ithilien .a-sel1{grid-column:1/7}
+#grafico-ithilien .a-sel2{grid-column:7/13}
+#grafico-ithilien .a-pend{grid-column:1/8}
+#grafico-ithilien .a-redes{grid-column:8/13;align-self:center}
+#grafico-ithilien .i2 .a-redes img{aspect-ratio:1;object-fit:cover}
+#grafico-ithilien .i2-mock{font-style:italic;color:var(--s);font-size:1rem;margin:0}
+#grafico-ithilien .i2-voz{grid-column:1/-1;background:var(--b);color:var(--p);margin:clamp(24px,4vw,48px) 0;padding:clamp(40px,6vw,72px) clamp(24px,5vw,72px);position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,64px);align-items:center}
+#grafico-ithilien .i2-voz::after{content:"";position:absolute;inset:10px;border:1px solid rgba(196,154,69,.55);pointer-events:none}
+#grafico-ithilien .i2-voz blockquote{margin:0;font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.2;color:var(--p)}
+#grafico-ithilien .i2-voz blockquote em{color:var(--o)}
+#grafico-ithilien .i2-voz .i2-lab{color:var(--o)}
+#grafico-ithilien .i2-voz ul{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+#grafico-ithilien .i2-voz li{display:grid;grid-template-columns:1fr auto 1fr;gap:.8rem;align-items:center;padding:.75rem 0;border-bottom:1px solid rgba(196,154,69,.3);font-size:1.12rem}
+#grafico-ithilien .i2-voz li:last-child{border-bottom:0}
+#grafico-ithilien .i2-voz li i{width:7px;height:7px;background:var(--o);transform:rotate(45deg)}
+#grafico-ithilien .i2-voz li s{text-decoration:none;opacity:.7;font-style:italic;text-align:right}
+
+/* V · Manual */
+#grafico-ithilien .i2-man{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:center}
+#grafico-ithilien .i2-pages{position:relative;aspect-ratio:1.25;max-width:560px;width:100%}
+#grafico-ithilien .i2-pages img{position:absolute;width:72%;box-shadow:0 24px 50px -24px rgba(0,0,0,.7);border:1px solid rgba(196,154,69,.5);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#grafico-ithilien .i2-pages img:nth-child(1){left:0;top:0;transform:rotate(-5deg)}
+#grafico-ithilien .i2-pages img:nth-child(2){left:14%;top:14%;transform:rotate(1deg)}
+#grafico-ithilien .i2-pages img:nth-child(3){left:28%;top:30%;transform:rotate(5deg)}
+@media (hover:hover){#grafico-ithilien .i2-pages:hover img:nth-child(1){transform:rotate(-8deg) translate(-12px,-6px)}#grafico-ithilien .i2-pages:hover img:nth-child(3){transform:rotate(8deg) translate(12px,6px)}}
+#grafico-ithilien .i2-man p{color:var(--p);font-size:1.2rem}
+#grafico-ithilien .i2-man ul{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+#grafico-ithilien .i2-man li{border:1px solid rgba(196,154,69,.6);color:var(--p);padding:.3rem .85rem;font-family:"Cinzel",Georgia,serif;font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+#grafico-ithilien .i2-man small{display:block;margin-top:.9rem;font-style:italic;color:rgba(242,232,210,.8);font-size:1rem}
+#grafico-ithilien .i2-man [role=status]{min-height:1.4em;margin:.6rem 0 0;color:var(--o);font-size:1rem}
+
+/* Ficha y contacto */
+#grafico-ithilien .i2-ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0;border-top:1px solid var(--l);border-bottom:1px solid var(--l)}
+#grafico-ithilien .i2-ficha>div{padding:1.6rem clamp(14px,2vw,26px)}
+#grafico-ithilien .i2-ficha>div+div{border-left:1px solid var(--l)}
+#grafico-ithilien .i2-ficha dt{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oo);margin-bottom:.5rem}
+#grafico-ithilien .i2-ficha dd{margin:0;font-size:1.1rem;line-height:1.45}
+#grafico-ithilien .i2-cta{margin-top:clamp(56px,8vw,96px);text-align:center}
+#grafico-ithilien .i2-cta h2{margin:1.6rem auto 1.6rem;max-width:22ch;font-size:clamp(1.7rem,3.4vw,2.6rem)}
+#grafico-ithilien .i2-cta .btn{border-radius:999px}
+
+/* aparición al desplazarse */
+#grafico-ithilien .i2.rv-on .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+#grafico-ithilien .i2.rv-on .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){#grafico-ithilien .i2.rv-on .rv{opacity:1;transform:none;transition:none}#grafico-ithilien .i2 *{transition:none!important}}
+
+/* responsive */
+@media (max-width:900px){
+#grafico-ithilien .i2-hero .i2-w,#grafico-ithilien .i2-ctx,#grafico-ithilien .i2-idea,#grafico-ithilien .i2-sys-h,#grafico-ithilien .i2-man,#grafico-ithilien .i2-voz{grid-template-columns:minmax(0,1fr)}
+#grafico-ithilien .i2-ctx aside{border-left:0;padding-left:0;border-top:1px solid var(--l);padding-top:1.6rem}
+#grafico-ithilien .i2-type{grid-template-columns:minmax(0,1fr)}
+#grafico-ithilien .i2-type>div+div{border-left:0;border-top:1px solid var(--l)}
+#grafico-ithilien .i2-ficha{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ithilien .i2-ficha>div:nth-child(3){border-left:0}
+#grafico-ithilien .i2-ficha>div:nth-child(n+3){border-top:1px solid var(--l)}
+#grafico-ithilien .i2-apps>*{grid-column:1/-1!important;margin-top:0!important}
+#grafico-ithilien .i2-seal{max-width:300px}
+#grafico-ithilien .i2-pages{max-width:420px;margin:0 auto}
+}
+@media (max-width:640px){
+#grafico-ithilien .i2{font-size:1.12rem}
+#grafico-ithilien .i2-evo{grid-template-columns:minmax(0,1fr)}
+#grafico-ithilien .i2-evo .arw{justify-self:center;transform:rotate(135deg)}
+#grafico-ithilien .i2-evo-txt{grid-template-columns:minmax(0,1fr)}#grafico-ithilien .i2-evo-txt p+p{grid-column:auto}
+#grafico-ithilien .i2-vers{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ithilien .i2-pal{flex-direction:column;min-height:0}
+#grafico-ithilien .i2-pal>div{flex:none!important;min-height:76px;flex-direction:row;align-items:center;justify-content:space-between;gap:1rem}
+#grafico-ithilien .i2-pal .pc{margin:0;order:2;font-size:1.5rem}
+#grafico-ithilien .i2-tiles{grid-template-columns:minmax(0,1fr)}
+#grafico-ithilien .i2-tiles div{height:80px}
+#grafico-ithilien .i2-ficha{grid-template-columns:minmax(0,1fr)}
+#grafico-ithilien .i2-ficha>div{border-left:0!important}
+#grafico-ithilien .i2-ficha>div+div{border-top:1px solid var(--l)}
+#grafico-ithilien .i2-nav{justify-content:flex-start}
+#grafico-ithilien .i2-nav a{padding:0 .9rem}
+#grafico-ithilien .i2-voz li{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);font-size:1.02rem}
+}
+</style>
+
+<div class="i2" aria-label="Caso de estudio Ithilien Boutique">
+
+  <!-- PORTADA -->
+  <header class="i2-hero">
+    <div class="i2-w">
+      <div>
+        <ul class="i2-tags" aria-label="Disciplinas"><li>Branding</li><li>Manual de marca</li><li>Packaging</li></ul>
+        <h1>Ithilien <small>Boutique</small></h1>
+        <p class="i2-lead">Una identidad <em>de otro tiempo</em> para bisutería en alambrismo hecha a mano.</p>
+        <div class="i2-acts">
+          <a class="i2-btn gold" href="files/Manual_de_marca_Ithilien_Boutique.pdf" download data-ith-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar manual (PDF)</a>
+          <a class="i2-btn line" href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones">Ver aplicaciones</a>
+        </div>
+      </div>
+      <div class="i2-frame"><span class="k k1"></span><span class="k k2"></span><span class="k k3"></span><span class="k k4"></span>
+        <img src="img/ithilien/mockups/collage.webp" alt="Set de marca Ithilien Boutique: bolsa kraft, sello sobre papel, etiqueta de precio y tarjetas de presentación en verde bosque y crema" width="1800" height="1350">
+      </div>
+    </div>
+  </header>
+
+  <nav class="i2-nav" aria-label="Capítulos del caso" data-ith-nav>
+    <a href="#ith-contexto" data-ith-scroll="ith-contexto" aria-current="true"><span>I</span>Contexto</a>
+    <a href="#ith-logo" data-ith-scroll="ith-logo"><span>II</span>Logo</a>
+    <a href="#ith-sistema" data-ith-scroll="ith-sistema"><span>III</span>Sistema</a>
+    <a href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones"><span>IV</span>Aplicaciones</a>
+    <a href="#ith-manual" data-ith-scroll="ith-manual"><span>V</span>Manual</a>
   </nav>
 
-  <!-- PORTADA + ESENCIA -->
-  <section class="im-panel im-hero" id="ith-esencia">
-    <div class="im-wrap">
-      <div class="im-hero-top">
-        <img src="img/ithilien/logo-vertical-negativo.svg" alt="Logotipo Ithilien Boutique" width="316" height="340">
-        <div>
-          <div class="im-kicker">Manual de marca</div>
-          <p class="im-hero-lead">Bisutería en alambrismo hecha a mano para las ferias medievales de Chile.</p>
-          <h2>Esencia de marca</h2>
-          <p class="im-statement">Que cada persona lleve una pieza de otro tiempo, hecha para ella.</p>
-        </div>
+  <!-- I · CONTEXTO -->
+  <section class="i2-sec" id="ith-contexto">
+    <div class="i2-w">
+      <p class="i2-lab rv">I · El encargo</p>
+      <div class="i2-ctx">
+        <p class="i2-intro rv">Ithilien Boutique hace bisutería en alambrismo, pieza por pieza, para quienes recorren las ferias medievales de Chile y viven la fantasía en su día a día.</p>
+        <aside class="rv">
+          <div><h3>El desafío</h3><p>El logo original ya tenía un símbolo propio, el árbol de espirales, pero su verde vivo y su tipografía sans no hablaban del mundo medieval de su público.</p></div>
+          <div><h3>La propuesta</h3><p>Conservar el árbol y construir alrededor un sistema de otro tiempo: medallón, gótica, Cinzel y Garamond, una paleta de bosque, latón y pergamino, y un manual para aplicarlo.</p></div>
+        </aside>
       </div>
-      <div class="im-grid im-g3">
-        <div class="im-card"><b>Misión</b><p>Acercar piezas con alma medieval a quienes viven la fantasía.</p></div>
-        <div class="im-card"><b>Visión</b><p>Ser la boutique que la comunidad reconoce a primera vista.</p></div>
-        <div class="im-card"><b>Personalidad</b><p>Una orfebre del bosque: serena, cercana y con historias.</p></div>
+      <div class="i2-quote rv">
+        <span class="i2-orn" aria-hidden="true"><i></i></span>
+        <blockquote>Que cada persona lleve una pieza <em>de otro tiempo</em>, hecha para ella.</blockquote>
+        <cite>Esencia de marca</cite>
       </div>
-      <div class="im-split">
-        <div>
-          <h3>Valores</h3>
-          <ul class="im-list">
-            <li><b>Hecho a mano.</b> Ninguna pieza se repite.</li>
-            <li><b>Naturaleza.</b> Ramas y espirales guían el diseño.</li>
-            <li><b>Oficio.</b> Cada terminación importa.</li>
-            <li><b>Comunidad.</b> Nace y crece en las ferias.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Público</h3>
-          <ul class="im-list">
-            <li><b>Asistentes a ferias</b> que completan su vestuario de época.</li>
-            <li><b>Amantes de la fantasía</b> en su día a día.</li>
-            <li><b>Quien busca un regalo</b> con historia.</li>
-          </ul>
-        </div>
-      
     </div>
   </section>
 
-  <!-- IDENTIDAD -->
-  <section class="im-panel im-alt" id="ith-identidad">
-    <div class="im-wrap">
-      <h2>Identidad visual</h2>
-      <p class="im-lead">El árbol de espirales sigue al centro; el sistema suma gótica, oro latón, verde bosque y pergamino.</p>
-
-      <div class="im-subpanel" id="ith-p-logo" style="margin-top:2rem">
-        <h3>Logo</h3>
-        <div class="im-evo">
-          <figure><div class="im-box im-white"><img src="img/ithilien/logo-original.jpg" alt="Logotipo original de Ithilien Boutique, en verde y gris" width="999" height="319"></div><figcaption><b>Original</b>Verde vivo y descriptor sans.</figcaption></figure>
-          <span class="im-arrow" aria-hidden="true">→</span>
-          <figure><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="Logotipo rediseñado de Ithilien Boutique" width="494" height="154"></div><figcaption><b>Evolución</b>Mismo isotipo, vectorial, con gótica y Cinzel.</figcaption></figure>
-        </div>
-        <p class="im-note" style="margin-top:1.4rem">Un árbol de espirales, el gesto del alambrismo, en un medallón como sello antiguo.</p>
-        <div class="im-stages im-compact">
-          <figure class="im-stage"><div class="im-box im-h im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="Logotipo horizontal a color" width="494" height="154"></div><figcaption><b>Horizontal</b>Versión principal.</figcaption></figure>
-          <figure class="im-stage"><div class="im-box im-h im-bg-bosque"><img src="img/ithilien/logo-horizontal-negativo.svg" alt="Logotipo horizontal en negativo" width="494" height="154"></div><figcaption><b>Negativo</b>Sobre bosque, vino o tinta.</figcaption></figure>
-          <figure class="im-stage"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-vertical-color.svg" alt="Logotipo vertical a color" width="316" height="340"></div><figcaption><b>Vertical</b>Etiquetas, bolsas y perfiles.</figcaption></figure>
-          <figure class="im-stage"><div class="im-box im-bg-blanco"><img src="img/ithilien/logo-vertical-tinta.svg" alt="Logotipo monocromo en tinta" width="316" height="340"></div><figcaption><b>Monocromo</b>Timbres y una sola tinta.</figcaption></figure>
-          <figure class="im-stage"><div class="im-box im-i im-bg-perg"><img src="img/ithilien/isotipo-bosque.svg" alt="Isotipo" width="232" height="232"></div><figcaption><b>Isotipo</b>Avatares, lacres y adhesivos.</figcaption></figure>
-          <figure class="im-stage"><div class="im-box im-bg-bosque"><img src="img/ithilien/logo-vertical-negativo.svg" alt="Logotipo vertical en negativo" width="316" height="340"></div><figcaption><b>Vertical negativo</b>Portadas y estandartes.</figcaption></figure>
-        </div>
+  <!-- II · LOGO -->
+  <section class="i2-sec alt" id="ith-logo">
+    <div class="i2-w">
+      <p class="i2-lab rv">II · Evolución del logo</p>
+      <h2 class="rv">Mismo árbol, <em>otra época</em></h2>
+      <div class="i2-evo rv">
+        <div><span class="tag old">Antes</span><img src="img/ithilien/logo-original.jpg" alt="Logotipo original de Ithilien Boutique, con el árbol en verde vivo y el nombre en gris" width="999" height="319"></div>
+        <span class="arw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+        <div><span class="tag">Después</span><img src="img/ithilien/logo-horizontal-color.svg" alt="Logotipo rediseñado de Ithilien Boutique: medallón con el árbol de espirales, nombre en gótica y descriptor Boutique en Cinzel" width="494" height="154"></div>
       </div>
-
-      <div class="im-subpanel" id="ith-p-color">
-        <h3>Color</h3>
-        <div class="im-swatches im-compact">
-          <div class="im-sw"><div class="im-chip" style="background:#1F3B26"></div><div class="im-info"><b>Verde bosque</b><code>#1F3B26</code>Principal.</div></div>
-          <div class="im-sw"><div class="im-chip" style="background:#C49A45"></div><div class="im-info"><b>Oro latón</b><code>#C49A45</code>El alambre.</div></div>
-          <div class="im-sw"><div class="im-chip" style="background:#F2E8D2"></div><div class="im-info"><b>Pergamino</b><code>#F2E8D2</code>Fondo base.</div></div>
-          <div class="im-sw"><div class="im-chip" style="background:#6E1F2A"></div><div class="im-info"><b>Vino</b><code>#6E1F2A</code>Acento.</div></div>
-          <div class="im-sw"><div class="im-chip" style="background:#2A2420"></div><div class="im-info"><b>Tinta</b><code>#2A2420</code>Texto.</div></div>
-          <div class="im-sw"><div class="im-chip" style="background:#7D5820"></div><div class="im-info"><b>Oro oscuro</b><code>#7D5820</code>Dorado sobre claro.</div></div>
-        </div>
-        <div class="im-bar" aria-hidden="true"><span style="flex:35;background:#1F3B26"></span><span style="flex:30;background:#F2E8D2"></span><span style="flex:15;background:#C49A45"></span><span style="flex:10;background:#6E1F2A"></span><span style="flex:10;background:#2A2420"></span></div>
-        <div class="im-bar-legend"><span>Proporción de uso</span><span>Bosque 35 · Pergamino 30 · Oro 15 · Vino 10 · Tinta 10</span></div>
-        <table>
-          <thead><tr><th>Contraste (WCAG 2.2)</th><th>Ratio</th><th>Uso</th></tr></thead>
-          <tbody>
-            <tr><td><span class="im-pair" style="background:#1F3B26;color:#F2E8D2">Aa</span>Pergamino sobre bosque</td><td>10.1:1</td><td><span class="im-st im-st-ok">Apto</span>Todo texto</td></tr>
-                                    <tr><td><span class="im-pair" style="background:#6E1F2A;color:#C49A45">Aa</span>Oro sobre vino</td><td>4.3:1</td><td><span class="im-st im-st-mid">Sólo grande</span>Titulares de 24 px o más</td></tr>
-            <tr><td><span class="im-pair" style="background:#F2E8D2;color:#C49A45">Aa</span>Oro sobre pergamino</td><td>2.1:1</td><td><span class="im-st im-st-no">No apto</span>Sólo ornamentos</td></tr>
-          </tbody>
-        </table>
+      <div class="i2-evo-txt rv">
+        <p><b>Original</b>Verde vivo y descriptor sans.</p>
+        <p><b>Evolución</b>Conservé el árbol de espirales y lo redibujé en vectores dentro de un medallón, como un sello antiguo. El nombre pasa a una gótica y «Boutique», a Cinzel.</p>
       </div>
-
-      <div class="im-subpanel" id="ith-p-tipo">
-        <h3>Tipografía</h3>
-        <div class="im-type">
-          <div class="im-card"><div class="im-sample"><span class="im-f-unif">Ithilien</span></div><b>UnifrakturMaguntia</b><p>Solo logotipo.</p></div>
-          <div class="im-card"><div class="im-sample"><span class="im-f-cinzel">JOYAS DE ALAMBRE</span></div><b>Cinzel</b><p>Titulares y etiquetas.</p></div>
-          <div class="im-card"><div class="im-sample"><span class="im-f-gara">Cada pieza se enrosca a mano, <em>una espiral a la vez</em>.</span></div><b>EB Garamond</b><p>Texto de lectura.</p></div>
-        </div>
+      <div class="i2-vers rv" aria-label="Versiones del logo">
+        <div class="on-p"><img src="img/ithilien/logo-horizontal-color.svg" alt="Versión horizontal a color" width="494" height="154"><span>Horizontal</span></div>
+        <div class="on-b"><img src="img/ithilien/logo-horizontal-negativo.svg" alt="Versión horizontal en negativo sobre verde bosque" width="494" height="154"><span>Negativo</span></div>
+        <div class="on-p"><img src="img/ithilien/logo-vertical-color.svg" alt="Versión vertical a color" width="316" height="340"><span>Vertical</span></div>
+        <div class="on-k"><img src="img/ithilien/isotipo-tinta.svg" alt="Isotipo en tinta sobre kraft" width="232" height="232"><span>Isotipo</span></div>
       </div>
-
-      <div class="im-subpanel" id="ith-p-patron">
-        <h3>Patrón y ornamentos</h3>
-        <p class="im-note">«Ithi» y «lien» tono sobre tono, como un tapiz. Ornamentos: filete con rombo, doble filete y rombo.</p>
-        <div class="im-pattern-demo im-compact">
-          <figure><div class="im-tile im-p-bosque" role="img" aria-label="Patrón sobre verde bosque"></div><figcaption class="im-note">Bosque</figcaption></figure>
-          <figure><div class="im-tile im-p-perg" role="img" aria-label="Patrón sobre pergamino"></div><figcaption class="im-note">Pergamino</figcaption></figure>
-          <figure><div class="im-tile im-p-vino" role="img" aria-label="Patrón sobre vino"></div><figcaption class="im-note">Vino</figcaption></figure>
-          <figure><div class="im-tile im-p-kraft" role="img" aria-label="Patrón sobre kraft"></div><figcaption class="im-note">Kraft</figcaption></figure>
-        </div>
-              </div>
     </div>
   </section>
 
-  <!-- REGLAS -->
-  <section class="im-panel" id="ith-reglas">
-    <div class="im-wrap">
-      <h2>Reglas de uso</h2>
-      <div class="im-split">
-        <div>
-          <h3>Tamaños mínimos</h3>
-          <table>
-            <thead><tr><th>Versión</th><th>Digital</th><th>Impreso</th></tr></thead>
-            <tbody>
-              <tr><td>Horizontal</td><td>180 px</td><td>40 mm</td></tr>
-              <tr><td>Vertical</td><td>110 px</td><td>25 mm</td></tr>
-              <tr><td>Isotipo</td><td>32 px</td><td>10 mm</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h3>Área de protección</h3>
-          <div class="im-protect">
-            <span class="im-x im-t">x</span><span class="im-x im-b">x</span><span class="im-x im-l">x</span><span class="im-x im-r">x</span>
-            <div class="im-core"><img src="img/ithilien/logo-horizontal-color.svg" alt="Logotipo con área de protección" width="494" height="154"></div>
+  <!-- LA IDEA -->
+  <section class="i2-sec dark" aria-labelledby="ith-idea-h">
+    <div class="i2-w i2-idea">
+      <div class="i2-seal rv"><img src="img/ithilien/isotipo-oro.svg" alt="Isotipo de Ithilien: árbol de espirales en oro dentro de un medallón" width="232" height="232"></div>
+      <div class="rv">
+        <p class="i2-lab">La idea</p>
+        <h2 id="ith-idea-h">Una espiral <em>a la vez</em></h2>
+        <p>Las espirales del árbol repiten el gesto del alambrismo: un alambre que se enrosca a mano. El medallón lo cierra como un sello y lo vuelve fácil de reconocer en piezas pequeñas.</p>
+        <ol>
+          <li><span><b>Hecho a mano.</b>Ninguna pieza se repite.</span></li>
+          <li><span><b>Naturaleza.</b>Ramas y espirales guían el diseño.</span></li>
+          <li><span><b>Oficio.</b>Cada terminación importa.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- III · SISTEMA -->
+  <section class="i2-sec" id="ith-sistema">
+    <div class="i2-w">
+      <p class="i2-lab rv">III · Sistema visual</p>
+      <div class="i2-sys-h">
+        <h2 class="rv">Bosque, latón <em>y pergamino</em></h2>
+        <p class="rv">El verde bosque domina, el pergamino da el fondo y el oro latón aparece como el alambre: en detalles. Cada bloque muestra cuánto se usa cada color.</p>
+      </div>
+      <div class="i2-pal rv" role="list" aria-label="Paleta y proporción de uso">
+        <div role="listitem" style="flex:35;background:#1F3B26;color:#F2E8D2"><span class="pc">35</span><b>Verde bosque</b><code>#1F3B26</code></div>
+        <div role="listitem" style="flex:30;background:#F2E8D2;color:#2A2420"><span class="pc">30</span><b>Pergamino</b><code>#F2E8D2</code></div>
+        <div role="listitem" style="flex:15;background:#C49A45;color:#17301F"><span class="pc">15</span><b>Oro latón</b><code>#C49A45</code></div>
+        <div role="listitem" style="flex:10;background:#6E1F2A;color:#F2E8D2"><span class="pc">10</span><b>Vino</b><code>#6E1F2A</code></div>
+        <div role="listitem" style="flex:10;background:#2A2420;color:#F2E8D2"><span class="pc">10</span><b>Tinta</b><code>#2A2420</code></div>
+      </div>
+      <div class="i2-pal-l rv"><span>Proporción de uso, en porcentaje.</span><span>Oro oscuro #7D5820 para dorado sobre fondos claros.</span></div>
+
+      <div class="i2-type rv" aria-label="Tipografías">
+        <div><div class="spec"><span class="f1" aria-hidden="true">Ithilien</span></div><h3>UnifrakturMaguntia</h3><p>Solo en el logotipo.</p></div>
+        <div><div class="spec"><span class="f2" aria-hidden="true">JOYAS DE ALAMBRE</span></div><h3>Cinzel</h3><p>Titulares y etiquetas.</p></div>
+        <div><div class="spec"><span class="f3" aria-hidden="true">Cada pieza se enrosca a mano, <em>una espiral a la vez</em>.</span></div><h3>EB Garamond</h3><p>Texto de lectura.</p></div>
+      </div>
+
+      <div class="i2-tapiz rv" role="img" aria-label="Patrón de la marca sobre verde bosque">
+        <div class="card"><p class="i2-lab" style="justify-content:center">Patrón y ornamentos</p><p>«Ithi» y «lien» tono sobre tono, como un tapiz. Los ornamentos de esta página, el filete con rombo y el doble filete, vienen del manual.</p></div>
+      </div>
+      <div class="i2-tiles rv" aria-hidden="true"><div class="tp">Pergamino</div><div class="tv">Vino</div><div class="tk">Kraft</div></div>
+    </div>
+  </section>
+
+  <!-- IV · APLICACIONES -->
+  <section class="i2-sec alt" id="ith-aplicaciones">
+    <div class="i2-w">
+      <p class="i2-lab rv">IV · Aplicaciones</p>
+      <div class="i2-sys-h" style="margin-bottom:0">
+        <h2 class="rv">La marca <em>en la feria</em></h2>
+        <p class="i2-mock rv">Papelería, empaque, punto de venta y redes. Imágenes de presentación (mockups).</p>
+      </div>
+      <div class="i2-apps">
+        <figure class="a-tarj rv"><img src="img/ithilien/mockups/tarjetas.webp" alt="Tarjetas de presentación sobre una mesa de madera: anverso verde bosque con el logo en negativo y reverso pergamino con nombre y contactos" data-cap="Ithilien Boutique · Tarjetas" width="1800" height="1238" loading="lazy"></figure>
+        <div class="a-side rv"><p class="i2-cap"><b><span class="n">01</span>Tarjetas</b>Anverso en bosque con patrón; reverso con nombre y contactos con íconos.</p></div>
+
+        <figure class="a-bolsa rv"><img src="img/ithilien/mockups/bolsa.webp" alt="Bolsa de papel kraft con el logo vertical de Ithilien Boutique en tinta y el patrón tono sobre tono" data-cap="Ithilien Boutique · Bolsa kraft" width="1800" height="1200" loading="lazy"><figcaption class="i2-cap"><b><span class="n">02</span>Bolsa kraft</b>Logo monocromo y patrón tono sobre tono.</figcaption></figure>
+        <figure class="a-etiq rv"><img src="img/ithilien/mockups/etiqueta.webp" alt="Etiqueta de precio colgante verde bosque con cordón dorado, logo en negativo y talón pergamino con el precio" data-cap="Ithilien Boutique · Etiqueta de precio" width="1800" height="1238" loading="lazy"><figcaption class="i2-cap"><b><span class="n">03</span>Etiqueta de precio</b>Logo en negativo y talón para el precio.</figcaption></figure>
+
+        <div class="i2-voz rv">
+          <div>
+            <p class="i2-lab">Voz de marca</p>
+            <blockquote>Joyas tejidas a mano, <em>una espiral a la vez</em>.</blockquote>
           </div>
-          <p class="im-note" style="margin-top:.9rem"><strong>x</strong> = altura de la «I» de Ithilien. Nada entra en ese margen.</p>
-        </div>
-      </div>
-
-      <h3 class="im-mt">Fondos permitidos</h3>
-      <div class="im-bgs">
-        <div class="im-bgc im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154"><span>Pergamino</span></div>
-        <div class="im-bgc im-bg-bosque"><img src="img/ithilien/logo-horizontal-negativo.svg" alt="" width="494" height="154"><span>Bosque</span></div>
-        <div class="im-bgc im-bg-vino"><img src="img/ithilien/logo-horizontal-negativo.svg" alt="" width="494" height="154"><span>Vino</span></div>
-        <div class="im-bgc im-bg-kraft"><img src="img/ithilien/logo-horizontal-tinta.svg" alt="" width="494" height="154"><span>Kraft</span></div>
-      </div>
-
-      <h3 class="im-mt im-do-h">Usos correctos</h3>
-      <div class="im-dos">
-        <div class="im-ex im-si"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154"></div><div class="im-cap">Logo a color sobre pergamino.</div></div>
-        <div class="im-ex im-si"><div class="im-box im-bg-bosque"><img src="img/ithilien/logo-horizontal-negativo.svg" alt="" width="494" height="154"></div><div class="im-cap">Negativo sobre verde bosque.</div></div>
-        <div class="im-ex im-si"><div class="im-box im-bg-vino im-txt"><p style="color:#F2E8D2">Joyas de alambre hechas a mano</p></div><div class="im-cap">Texto en pergamino sobre vino.</div></div>
-        <div class="im-ex im-si"><div class="im-box im-bg-bosque im-txt"><p style="color:#F2E8D2;font-size:.95rem">Coronas tejidas a mano</p></div><div class="im-cap">Mensajes en Cinzel, no en gótica.</div></div>
-      </div>
-
-      <h3 class="im-mt im-dont-h">Usos incorrectos</h3>
-      <div class="im-dos">
-        <div class="im-ex im-no"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154" style="transform:scaleX(1.4) scaleY(.8)"></div><div class="im-cap">Estirar o deformar.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154" style="transform:rotate(-12deg)"></div><div class="im-cap">Rotar o inclinar.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154" style="filter:hue-rotate(200deg) saturate(2)"></div><div class="im-cap">Colores fuera de la paleta.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-bosque"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154"></div><div class="im-cap">Versión a color sobre fondo oscuro.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-perg"><div class="im-fakeword"><img src="img/ithilien/isotipo-bosque.svg" alt="" width="232" height="232"><span>Ithilien</span></div></div><div class="im-cap">Cambiar la tipografía.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-perg"><img src="img/ithilien/logo-horizontal-color.svg" alt="" width="494" height="154" style="filter:drop-shadow(4px 5px 3px rgba(0,0,0,.5))"></div><div class="im-cap">Sombras, biseles o brillos.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-vino im-txt"><p style="color:#C49A45">Joyas de alambre hechas a mano</p></div><div class="im-cap">Texto pequeño en oro sobre vino.</div></div>
-        <div class="im-ex im-no"><div class="im-box im-bg-bosque im-txt"><p style="font-family:'UnifrakturMaguntia',serif;font-size:1.4rem;letter-spacing:0;color:#F2E8D2">Coronas tejidas a mano</p></div><div class="im-cap">Gótica fuera del logo.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VOZ -->
-  <section class="im-panel im-alt" id="ith-voz">
-    <div class="im-wrap">
-      <h2>Voz y mensajes</h2>
-      <p class="im-lead">Como una artesana en su puesto de feria: cálida, cuidadosa con las palabras y con un poco de fantasía.</p>
-      <div class="im-split">
-        <div>
-          <h3>Tono</h3>
-          <table>
-            <thead><tr><th>Somos</th><th>No somos</th></tr></thead>
-            <tbody>
-              <tr><td>Cercanos y cálidos</td><td>Acartonados</td></tr>
-              <tr><td>Evocadores</td><td>Recargados</td></tr>
-              <tr><td>Artesanales</td><td>De catálogo masivo</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h3>Vocabulario</h3>
-          <ul class="im-list">
-            <li><b>Usamos:</b> hecho a mano, alambre, espiral, pieza única, corona, feria, bosque, taller.</li>
-            <li><b>Evitamos:</b> barato, liquidación, producción en serie y anglicismos innecesarios.</li>
-            <li><b>Estilo:</b> frases breves, trato de tú y el oficio como relato.</li>
+          <ul aria-label="Somos y no somos">
+            <li><span>Cercanos y cálidos</span><i aria-hidden="true"></i><s>no acartonados</s></li>
+            <li><span>Evocadores</span><i aria-hidden="true"></i><s>no recargados</s></li>
+            <li><span>Artesanales</span><i aria-hidden="true"></i><s>no de catálogo masivo</s></li>
           </ul>
         </div>
-      </div>
-      <h3 class="im-mt">Mensajes clave</h3>
-      <div class="im-msgs">
-        <div class="im-msg">Joyas tejidas a mano, una espiral a la vez.</div>
-        <div class="im-msg">Cada pieza crece como una rama: única.</div>
-        <div class="im-msg">Encuéntranos en tu próxima feria medieval.</div>
+
+        <figure class="a-sel1 rv"><img src="img/ithilien/mockups/sello-papel.webp" alt="Sello circular Hecho a mano · Ithilien Boutique estampado en verde sobre papel artesanal" data-cap="Ithilien Boutique · Sello" width="1536" height="1536" loading="lazy"><figcaption class="i2-cap"><b><span class="n">04</span>Sello</b>Timbre para papeles y empaques.</figcaption></figure>
+        <figure class="a-sel2 rv"><img src="img/ithilien/mockups/sello-bolsa.webp" alt="Adhesivo circular verde y oro cerrando una bolsa de papel kraft" data-cap="Ithilien Boutique · Adhesivo" width="1536" height="1536" loading="lazy"><figcaption class="i2-cap"><b><span class="n">05</span>Adhesivo</b>Para cerrar bolsas y regalos.</figcaption></figure>
+
+        <figure class="a-pend rv"><img src="img/ithilien/mockups/pendon.webp" alt="Pendón verde bosque con cola de golondrina colgado de una vara, con el logo y el texto Joyas de alambre hechas a mano" data-cap="Ithilien Boutique · Pendón de stand" width="1416" height="1200" loading="lazy"><figcaption class="i2-cap"><b><span class="n">06</span>Pendón de stand</b>Se reconoce de lejos en la feria.</figcaption></figure>
+        <figure class="a-redes rv"><img src="img/ithilien/post-redes.svg" alt="Publicación cuadrada para redes en verde bosque con el logo Ithilien Boutique y el texto Coronas tejidas a mano" data-cap="Ithilien Boutique · Publicación para redes" width="300" height="300" loading="lazy"><figcaption class="i2-cap"><b><span class="n">07</span>Redes sociales</b>Logo completo y mensaje en Cinzel.</figcaption></figure>
       </div>
     </div>
   </section>
 
-  <!-- APLICACIONES -->
-  <section class="im-panel" id="ith-aplicaciones">
-    <div class="im-wrap">
-      <h2>Aplicaciones</h2>
-      <div class="g1" data-g1 role="region" aria-roledescription="galería" aria-label="Aplicaciones de marca"><div class="g1-stage"><figure class="g1-slide is-photo" data-i="0"><div class="im-table"><img src="img/ithilien/mockups/collage.webp" alt="Set de marca Ithilien Boutique: bolsa kraft, sello sobre papel, etiqueta de precio y tarjetas de presentación en verde bosque y crema" data-cap="Ithilien Boutique · Set de marca" width="1800" height="1350"></div><figcaption><b>Set de marca</b>Bolsa, sello, etiqueta y tarjetas en una misma familia visual.</figcaption></figure><figure class="g1-slide is-photo" data-i="1" hidden><div class="im-table"><img src="img/ithilien/mockups/tarjetas.webp" alt="Tarjetas de presentación sobre una mesa de madera: anverso verde bosque con el logo en negativo y reverso pergamino con nombre y contactos" data-cap="Ithilien Boutique · Tarjetas" width="1800" height="1238"></div><figcaption><b>Tarjetas</b>Anverso en bosque con patrón; reverso con nombre y contactos con íconos.</figcaption></figure><figure class="g1-slide is-photo" data-i="2" hidden><div class="im-table"><img src="img/ithilien/mockups/bolsa.webp" alt="Bolsa de papel kraft con el logo vertical de Ithilien Boutique en tinta y el patrón tono sobre tono" data-cap="Ithilien Boutique · Bolsa kraft" width="1800" height="1238"></div><figcaption><b>Bolsa kraft</b>Logo monocromo y patrón tono sobre tono.</figcaption></figure><figure class="g1-slide is-photo" data-i="3" hidden><div class="im-table"><img src="img/ithilien/mockups/etiqueta.webp" alt="Etiqueta de precio colgante verde bosque con cordón dorado, logo en negativo y talón pergamino con el precio" data-cap="Ithilien Boutique · Etiqueta de precio" width="1800" height="1238"></div><figcaption><b>Etiqueta de precio</b>Logo en negativo y talón para el precio.</figcaption></figure><figure class="g1-slide is-photo" data-i="4" hidden><div class="im-table"><img src="img/ithilien/mockups/pendon.webp" alt="Pendón verde bosque con cola de golondrina colgado de una vara, con el logo y el texto Joyas de alambre hechas a mano" data-cap="Ithilien Boutique · Pendón de stand" width="1800" height="1238"></div><figcaption><b>Pendón de stand</b>Se reconoce de lejos en la feria.</figcaption></figure><figure class="g1-slide is-photo" data-i="5" hidden><div class="im-table"><img src="img/ithilien/mockups/sello-papel.webp" alt="Sello circular Hecho a mano · Ithilien Boutique estampado en verde sobre papel artesanal" data-cap="Ithilien Boutique · Sello" width="1800" height="1238"></div><figcaption><b>Sello</b>Timbre para papeles y empaques.</figcaption></figure><figure class="g1-slide is-photo" data-i="6" hidden><div class="im-table"><img src="img/ithilien/mockups/sello-bolsa.webp" alt="Adhesivo circular verde y oro cerrando una bolsa de papel kraft" data-cap="Ithilien Boutique · Adhesivo" width="1800" height="1238"></div><figcaption><b>Adhesivo</b>Para cerrar bolsas y regalos.</figcaption></figure><figure class="g1-slide" data-i="7" hidden>
-          <div class="im-table"><img src="img/ithilien/post-redes.svg" alt="Publicación cuadrada para redes en verde bosque con el logo Ithilien Boutique y el texto Coronas tejidas a mano" data-cap="Ithilien Boutique · Publicación cuadrada para redes en verde bosque con el logo Ithilien Boutique y el texto Coronas tejidas a mano" width="300" height="300" style="width:240px"></div>
-          <figcaption><b>Redes sociales</b>Logo completo y mensaje en Cinzel.</figcaption>
-        </figure><button type="button" class="g1-nav g1-prev" aria-label="Imagen anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="g1-nav g1-next" aria-label="Imagen siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><span class="g1-count" aria-live="polite">1/8</span></div><div class="g1-strip"><button type="button" class="g1-snav g1-sprev" aria-label="Miniaturas anteriores"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="g1-thumbs"><button type="button" class="g1-thumb is-photo" data-i="0" aria-label="Ver Set de marca" aria-current="true"><img src="img/ithilien/mockups/collage.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="1" aria-label="Ver Tarjetas"><img src="img/ithilien/mockups/tarjetas.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="2" aria-label="Ver Bolsa kraft"><img src="img/ithilien/mockups/bolsa.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="3" aria-label="Ver Etiqueta de precio"><img src="img/ithilien/mockups/etiqueta.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="4" aria-label="Ver Pendón de stand"><img src="img/ithilien/mockups/pendon.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="5" aria-label="Ver Sello"><img src="img/ithilien/mockups/sello-papel.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb is-photo" data-i="6" aria-label="Ver Adhesivo"><img src="img/ithilien/mockups/sello-bolsa.webp" alt="" loading="lazy"></button><button type="button" class="g1-thumb" data-i="7" aria-label="Ver Redes sociales"><img src="img/ithilien/post-redes.svg" alt="" loading="lazy"></button></div><button type="button" class="g1-snav g1-snext" aria-label="Miniaturas siguientes"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div></div>
+  <!-- V · MANUAL -->
+  <section class="i2-sec dark" id="ith-manual">
+    <div class="i2-w i2-man">
+      <div class="i2-pages rv" aria-hidden="true">
+        <img src="img/ithilien/manual/pag-05.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/ithilien/manual/pag-07.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/ithilien/manual/pag-18.webp" alt="" width="900" height="637" loading="lazy">
+      </div>
+      <div class="rv">
+        <p class="i2-lab">V · Manual de marca</p>
+        <h2>El manual <em>completo</em></h2>
+        <p>22 páginas en formato horizontal con todo el detalle del sistema.</p>
+        <ul aria-label="Contenido del manual"><li>Esencia y público</li><li>Versiones del logo</li><li>Contraste WCAG</li><li>Tamaños mínimos</li><li>Área de protección</li><li>Fondos permitidos</li><li>Usos correctos e incorrectos</li><li>Voz y vocabulario</li><li>Aplicaciones</li></ul>
+        <a class="i2-btn gold" href="files/Manual_de_marca_Ithilien_Boutique.pdf" download data-ith-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar manual (PDF)</a>
+        <small>PDF horizontal · 4,6 MB</small>
+        <p role="status" data-ith-msg></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHA Y CONTACTO -->
+  <section class="i2-sec" aria-labelledby="ith-ficha-h">
+    <div class="i2-w">
+      <p class="i2-lab" id="ith-ficha-h">Ficha del proyecto</p>
+      <dl class="i2-ficha">
+        <div><dt>Proyecto</dt><dd>Identidad visual y manual de marca</dd></div>
+        <div><dt>Mi rol</dt><dd>Rediseño del logo, sistema visual, voz y aplicaciones</dd></div>
+        <div><dt>Entregables</dt><dd>Logo y versiones, paleta, tipografía, patrón, manual y mockups</dd></div>
+        <div><dt>Herramientas</dt><dd>Illustrator, Photoshop y Claude</dd></div>
+      </dl>
+      <div class="i2-cta">
+        <span class="i2-orn" aria-hidden="true"><i></i></span>
+        <h2>¿Tienes una marca que necesita <em>una identidad propia</em>?</h2>
+        <a class="btn primary" href="#contacto">Conversemos sobre tu proyecto</a>
+      </div>
     </div>
   </section>
 
   <script>
   (function(){
     var root=document.currentScript.parentNode;
-    var nav=root.querySelector('[data-ith-nav]'); if(!nav) return;
+    /* navegación de capítulos */
+    var nav=root.querySelector('[data-ith-nav]');
     var links=[].slice.call(nav.querySelectorAll('[data-ith-scroll]'));
     var secs=links.map(function(l){return document.getElementById(l.getAttribute('data-ith-scroll'))});
     function header(){return parseFloat(getComputedStyle(root).getPropertyValue('--ith-header'))||0}
-    links.forEach(function(l,i){
-      l.addEventListener('click',function(e){
-        e.preventDefault();
-        var top=secs[i].getBoundingClientRect().top+window.pageYOffset;
-        var down=top>window.pageYOffset+nav.offsetHeight;
-        var y=top-nav.offsetHeight-(down?0:header())+1;
-        window.scrollTo({top:y,behavior:'smooth'});
-        setCurrent(i);
-      });
-    });
+    function jump(id){var el=document.getElementById(id);if(!el)return;var top=el.getBoundingClientRect().top+window.pageYOffset;var down=top>window.pageYOffset+nav.offsetHeight;window.scrollTo({top:top-nav.offsetHeight-(down?0:header())+1,behavior:'smooth'})}
+    root.querySelectorAll('[data-ith-scroll]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();jump(l.getAttribute('data-ith-scroll'))})});
     var cur=-1;
-    function setCurrent(i){
-      if(i===cur) return; cur=i;
-      links.forEach(function(l,j){ if(j===i) l.setAttribute('aria-current','true'); else l.removeAttribute('aria-current'); });
-      var l=links[i]; if(nav.scrollWidth>nav.clientWidth){ nav.scrollLeft=Math.max(0,l.offsetLeft-(nav.clientWidth-l.offsetWidth)/2); }
-    }
-    function spy(){
-      var line=nav.getBoundingClientRect().bottom+40, idx=0;
-      secs.forEach(function(sc,i){ if(sc.getBoundingClientRect().top<=line) idx=i; });
-      if(window.innerHeight+window.pageYOffset>=document.documentElement.scrollHeight-4){
-        var last=secs[secs.length-1].getBoundingClientRect(); if(last.top<window.innerHeight) idx=secs.length-1;
-      }
-      setCurrent(idx);
-    }
-    var tk=false;
-    window.addEventListener('scroll',function(){ if(!tk){ tk=true; requestAnimationFrame(function(){ spy(); tk=false; }); } },{passive:true});
-    window.addEventListener('resize',spy); spy();
+    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i];if(nav.scrollWidth>nav.clientWidth){nav.scrollLeft=Math.max(0,l.offsetLeft-(nav.clientWidth-l.offsetWidth)/2)}}
+    function spy(){if(!root.offsetParent)return;var line=nav.getBoundingClientRect().bottom+60,idx=0;secs.forEach(function(sc,i){if(sc.getBoundingClientRect().top<=line)idx=i});setCurrent(idx)}
+    var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){spy();tk=false})}},{passive:true});window.addEventListener('resize',spy);spy();
+    /* aparición */
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if('IntersectionObserver' in window&&!rm){root.classList.add('rv-on');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});root.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}
+    /* descarga del manual */
+    var dl=null,msg=root.querySelector('[data-ith-msg]');
+    try{if(window.claude&&typeof claude.use==='function'){claude.use('downloads').then(function(d){dl=d},function(){})}}catch(_){}
+    root.querySelectorAll('[data-ith-dl]').forEach(function(a){a.addEventListener('click',function(e){
+      if(!dl)return; e.preventDefault(); var url=a.getAttribute('href'); if(msg)msg.textContent='';
+      fetch(url).then(function(r){if(!r.ok)throw new Error('fetch');return r.blob()})
+        .then(function(b){return dl.save({filename:'Manual_de_marca_Ithilien_Boutique.pdf',data:b})})
+        .then(function(){if(msg)msg.textContent='Listo, tu descarga comenzó.'},function(err){var c=err&&err.code;if(c==='declined'){}else if(c==='rate_limited'){if(msg)msg.textContent='Espera un momento e inténtalo de nuevo.'}else{window.open(url,'_blank','noopener')}});
+    })});
   })();
   </script>
-
-  <footer class="im-mfoot">
-    <img src="img/ithilien/isotipo-oro.svg" alt="" width="232" height="232">
-    Ithilien Boutique · Manual de marca · Diseño: Alejandra Gallardo
-  </footer>
-
 </div>
-<script>
-(function(){var m=document.querySelector('#grafico-ithilien .ith-manual');if(!m)return;
-m.addEventListener('click',function(e){var i=e.target.closest('img');if(i&&!i.closest('.im-app'))e.stopPropagation()},true);
-m.addEventListener('keydown',function(e){var i=e.target.closest&&e.target.closest('img');if(i&&!i.closest('.im-app'))e.stopPropagation()},true);
-window.addEventListener('load',function(){m.querySelectorAll('img').forEach(function(i){if(!i.closest('.im-app'))i.removeAttribute('tabindex')})});})();
-</script>
+
 <div class="wrap narrow">
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a>
