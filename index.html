@@ -1665,6 +1665,8 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
   --ith-sticky-top:68px;--ith-header:68px;font-family:"EB Garamond",Georgia,serif;color:var(--t);font-size:1.2rem;line-height:1.55;background:var(--p)}
 body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 #grafico-ithilien .i2 *{box-sizing:border-box}
+#grafico-ithilien .i2 .case-nav{font-family:"Open Sans",Arial,sans-serif;line-height:1.4}
+#grafico-ithilien .i2 .case-nav ol{margin:0 auto 0 0}
 #grafico-ithilien .i2 p{margin:0 0 1rem;max-width:62ch}
 #grafico-ithilien .i2 img{display:block;max-width:100%;height:auto}
 #grafico-ithilien .i2-w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
@@ -1710,14 +1712,6 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 #grafico-ithilien .i2-frame .k1{top:-5px;left:-5px}#grafico-ithilien .i2-frame .k2{top:-5px;right:-5px}#grafico-ithilien .i2-frame .k3{bottom:-5px;left:-5px}#grafico-ithilien .i2-frame .k4{bottom:-5px;right:-5px}
 #grafico-ithilien .i2 .i2-frame img{width:100%;border-radius:0;box-shadow:0 30px 60px -30px rgba(0,0,0,.6);background:none}
 
-/* ===== NAV DE CAPÍTULOS (línea AG) ===== */
-#grafico-ithilien .i2-nav{position:sticky;top:var(--ith-sticky-top,0px);z-index:19;background:var(--plum);border-bottom:1px solid #8E2C67;display:flex;justify-content:center;overflow-x:auto;scrollbar-width:none;transition:top .3s cubic-bezier(.2,.8,.2,1);box-shadow:0 6px 16px -14px rgba(0,0,0,.5)}
-#grafico-ithilien .i2-nav::-webkit-scrollbar{display:none}
-#grafico-ithilien .i2-nav a{display:inline-flex;align-items:center;gap:.5rem;min-height:52px;padding:0 1.15rem;font-family:"Open Sans",Arial,sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;opacity:.85}
-#grafico-ithilien .i2-nav a span{font-family:"Cinzel",Georgia,serif;color:var(--pink);font-size:.85rem}
-#grafico-ithilien .i2-nav a:hover{opacity:1}
-#grafico-ithilien .i2-nav a[aria-current="true"]{color:var(--pink);border-bottom-color:var(--pink);opacity:1}
-#grafico-ithilien .i2-nav a:focus-visible{outline:2px solid var(--pink);outline-offset:-4px}
 
 /* ===== SECCIONES ===== */
 #grafico-ithilien .i2-sec{padding:clamp(64px,9vw,120px) 0;position:relative;scroll-margin-top:120px}
@@ -1848,6 +1842,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 #grafico-ithilien .i2-ficha>div+div{border-left:1px solid var(--l)}
 #grafico-ithilien .i2-ficha dt{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oo);margin-bottom:.5rem}
 #grafico-ithilien .i2-ficha dd{margin:0;font-size:1.1rem;line-height:1.45}
+#grafico-ithilien .i2-agwrap .sv-cta{margin-top:clamp(40px,6vw,72px)}
 #grafico-ithilien .i2-cta{margin-top:clamp(56px,8vw,96px);text-align:center}
 #grafico-ithilien .i2-cta h2{margin:1.6rem auto 1.6rem;max-width:22ch;font-size:clamp(1.7rem,3.4vw,2.6rem)}
 #grafico-ithilien .i2-cta .btn{border-radius:999px}
@@ -1884,8 +1879,6 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 #grafico-ithilien .i2-ficha{grid-template-columns:minmax(0,1fr)}
 #grafico-ithilien .i2-ficha>div{border-left:0!important}
 #grafico-ithilien .i2-ficha>div+div{border-top:1px solid var(--l)}
-#grafico-ithilien .i2-nav{justify-content:flex-start}
-#grafico-ithilien .i2-nav a{padding:0 .9rem}
 #grafico-ithilien .i2-voz li{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);font-size:1.02rem}
 }
 </style>
@@ -1910,18 +1903,18 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
     </div>
   </header>
 
-  <nav class="i2-nav" aria-label="Capítulos del caso" data-ith-nav>
-    <a href="#ith-contexto" data-ith-scroll="ith-contexto" aria-current="true"><span>I</span>Contexto</a>
-    <a href="#ith-logo" data-ith-scroll="ith-logo"><span>II</span>Logo</a>
-    <a href="#ith-sistema" data-ith-scroll="ith-sistema"><span>III</span>Sistema</a>
-    <a href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones"><span>IV</span>Aplicaciones</a>
-    <a href="#ith-manual" data-ith-scroll="ith-manual"><span>V</span>Manual</a>
-  </nav>
+  <nav class="case-nav" aria-label="Secciones del proyecto" data-ith-nav><div class="case-nav-in"><span class="case-nav-title">Ithilien Boutique</span><ol>
+    <li><a href="#ith-contexto" data-ith-scroll="ith-contexto" aria-current="true">Resumen</a></li>
+    <li><a href="#ith-logo" data-ith-scroll="ith-logo"><span class="n">01</span>Logo</a></li>
+    <li><a href="#ith-sistema" data-ith-scroll="ith-sistema"><span class="n">02</span>Sistema</a></li>
+    <li><a href="#ith-aplicaciones" data-ith-scroll="ith-aplicaciones"><span class="n">03</span>Aplicaciones</a></li>
+    <li><a href="#ith-manual" data-ith-scroll="ith-manual"><span class="n">04</span>Manual</a></li>
+  </ol></div></nav>
 
   <!-- I · CONTEXTO -->
   <section class="i2-sec" id="ith-contexto">
     <div class="i2-w">
-      <p class="i2-lab rv">I · El encargo</p>
+      <p class="i2-lab rv">Resumen · El encargo</p>
       <div class="i2-ctx">
         <p class="i2-intro rv">Ithilien Boutique hace bisutería en alambrismo, pieza por pieza, para quienes recorren las ferias medievales de Chile y viven la fantasía en su día a día.</p>
         <aside class="rv">
@@ -1940,7 +1933,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
   <!-- II · LOGO -->
   <section class="i2-sec alt" id="ith-logo">
     <div class="i2-w">
-      <p class="i2-lab rv">II · Evolución del logo</p>
+      <p class="i2-lab rv">01 · Evolución del logo</p>
       <h2 class="rv">Mismo árbol, <em>otra época</em></h2>
       <div class="i2-evo rv">
         <div><span class="tag old">Antes</span><img src="img/ithilien/logo-original.jpg" alt="Logotipo original de Ithilien Boutique, con el árbol en verde vivo y el nombre en gris" width="999" height="319"></div>
@@ -1980,7 +1973,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
   <!-- III · SISTEMA -->
   <section class="i2-sec" id="ith-sistema">
     <div class="i2-w">
-      <p class="i2-lab rv">III · Sistema visual</p>
+      <p class="i2-lab rv">02 · Sistema visual</p>
       <div class="i2-sys-h">
         <h2 class="rv">Bosque, latón <em>y pergamino</em></h2>
         <p class="rv">El verde bosque domina, el pergamino da el fondo y el oro latón aparece como el alambre: en detalles. Cada bloque muestra cuánto se usa cada color.</p>
@@ -2010,7 +2003,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
   <!-- IV · APLICACIONES -->
   <section class="i2-sec alt" id="ith-aplicaciones">
     <div class="i2-w">
-      <p class="i2-lab rv">IV · Aplicaciones</p>
+      <p class="i2-lab rv">03 · Aplicaciones</p>
       <div class="i2-sys-h" style="margin-bottom:0">
         <h2 class="rv">La marca <em>en la feria</em></h2>
         <p class="i2-mock rv">Papelería, empaque, punto de venta y redes. Imágenes de presentación (mockups).</p>
@@ -2052,7 +2045,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
         <img src="img/ithilien/manual/pag-18.webp" alt="" width="900" height="637" loading="lazy">
       </div>
       <div class="rv">
-        <p class="i2-lab">V · Manual de marca</p>
+        <p class="i2-lab">04 · Manual de marca</p>
         <h2>El manual <em>completo</em></h2>
         <p>22 páginas en formato horizontal con todo el detalle del sistema.</p>
         <ul aria-label="Contenido del manual"><li>Esencia y público</li><li>Versiones del logo</li><li>Contraste WCAG</li><li>Tamaños mínimos</li><li>Área de protección</li><li>Fondos permitidos</li><li>Usos correctos e incorrectos</li><li>Voz y vocabulario</li><li>Aplicaciones</li></ul>
@@ -2073,11 +2066,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
         <div><dt>Entregables</dt><dd>Logo y versiones, paleta, tipografía, patrón, manual y mockups</dd></div>
         <div><dt>Herramientas</dt><dd>Illustrator, Photoshop y Claude</dd></div>
       </dl>
-      <div class="i2-cta">
-        <span class="i2-orn" aria-hidden="true"><i></i></span>
-        <h2>¿Tienes una marca que necesita <em>una identidad propia</em>?</h2>
-        <a class="btn primary" href="#contacto">Conversemos sobre tu proyecto</a>
-      </div>
+      
     </div>
   </section>
 
@@ -2092,7 +2081,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
     function jump(id){var el=document.getElementById(id);if(!el)return;var top=el.getBoundingClientRect().top+window.pageYOffset;var down=top>window.pageYOffset+nav.offsetHeight;window.scrollTo({top:top-nav.offsetHeight-(down?0:header())+1,behavior:'smooth'})}
     root.querySelectorAll('[data-ith-scroll]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();jump(l.getAttribute('data-ith-scroll'))})});
     var cur=-1;
-    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i];if(nav.scrollWidth>nav.clientWidth){nav.scrollLeft=Math.max(0,l.offsetLeft-(nav.clientWidth-l.offsetWidth)/2)}}
+    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i],ol=nav.querySelector('ol');if(ol&&ol.scrollWidth>ol.clientWidth){ol.scrollLeft=Math.max(0,l.offsetLeft-(ol.clientWidth-l.offsetWidth)/2)}}
     function spy(){if(!root.offsetParent)return;var line=nav.getBoundingClientRect().bottom+60,idx=0;secs.forEach(function(sc,i){if(sc.getBoundingClientRect().top<=line)idx=i});setCurrent(idx)}
     var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){spy();tk=false})}},{passive:true});window.addEventListener('resize',spy);spy();
     /* aparición */
@@ -2111,6 +2100,10 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
   </script>
 </div>
 
+<div class="wrap narrow i2-agwrap">
+<div class="sv-cta i2-agcta"><p><b>¿Tienes una marca que necesita una identidad propia?</b> Cuéntame de tu proyecto y te ayudo a crear una identidad con personalidad, lista para aplicar.</p>
+        <a class="btn sv-btn" href="#contacto">Conversemos sobre tu proyecto</a></div>
+</div>
 <div class="wrap narrow">
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a>
