@@ -41,7 +41,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;family=Jost:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;display=swap" rel="stylesheet"/>
 <style>
 .top{transition:transform .3s cubic-bezier(.2,.8,.2,1)}body.nav-up .top{transform:translateY(-110%)}.case-nav{position:sticky;top:68px;z-index:19;background:var(--surface-card);border-bottom:1px solid var(--border);box-shadow:0 6px 16px -14px rgba(26,11,22,.35);transition:top .3s cubic-bezier(.2,.8,.2,1);margin:0 calc(50% - 50vw);padding:0 max(16px,calc(50vw - 620px))}body.nav-up .case-nav{top:0}.case-nav-in{display:flex;align-items:center;gap:20px;min-height:52px}.case-nav-title{flex:none;font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis}.case-nav ol{display:flex;gap:4px;margin:0 auto 0 0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;flex:0 1 auto;min-width:0;scroll-behavior:smooth}.case-nav-in>:first-child{margin-left:auto}.case-nav-title{padding-right:20px;border-right:1px solid var(--border)}.case-nav ol::-webkit-scrollbar{display:none}.case-nav a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink-muted);padding:8px 12px;border-radius:999px;transition:background .2s,color .2s}.case-nav a .n{font-size:12px;font-weight:800;opacity:.7}.case-nav a:hover{background:var(--surface-subtle);color:var(--ink)}.case-nav a[aria-current="true"]{background:var(--action-primary);color:var(--ink-inverse)}.case-nav a[aria-current="true"] .n{opacity:1}.case-nav a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}@media (max-width:760px){.case-nav-title{display:none}.case-nav-in{min-height:48px}.case-nav a{font-size:13px;padding:7px 11px}}@media (prefers-reduced-motion:reduce){.top,.case-nav{transition:none}.case-nav ol{scroll-behavior:auto}}
 
@@ -2123,18 +2123,336 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 <!-- ============ GRÁFICO: ACROSS THE UNIVERSE ============ -->
 <section class="view project gx-page" data-view="grafico-across" hidden="" id="grafico-across">
 <nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">Across the Universe</li></ol></nav>
-<div class="wrap narrow gx-head">
-<p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-shapes"></use></svg>Branding</p>
-<h1>Across the Universe</h1>
-<p class="sub">Logo para una tienda de pins: letras que forman un planeta con su anillo. Incluye tipografías, paleta de colores, versiones del logo sobre distintos fondos y su aplicación en fotografía de producto.</p>
-<div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span></div>
+<style>
+#grafico-across .au{--k:#1E1F1C;--m:#961D83;--mo:#682685;--f:#E6007D;--fl:#F7A6D3;--sp:#0E0818;--sp2:#160C24;--g:#6B6470;--line:#E8E0EC;
+  --ith-header:68px;font-family:"Jost","Open Sans",Arial,sans-serif;color:var(--k);font-size:1.12rem;line-height:1.6;background:#fff}
+#grafico-across .au *{box-sizing:border-box}
+#grafico-across .au p{margin:0 0 1rem;max-width:62ch}
+#grafico-across .au img{display:block;max-width:100%;height:auto}
+#grafico-across .au .case-nav{font-family:"Open Sans",Arial,sans-serif;line-height:1.4}
+#grafico-across .au .case-nav ol{margin:0 auto 0 0}
+#grafico-across .au-w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+/* espacio */
+#grafico-across .au-space{position:relative;color:#fff;background:radial-gradient(ellipse 55% 60% at 80% 30%,rgba(150,29,131,.55),transparent 70%),radial-gradient(ellipse 45% 55% at 10% 90%,rgba(104,38,133,.6),transparent 70%),radial-gradient(ellipse 35% 35% at 50% 55%,rgba(230,0,125,.16),transparent 70%),var(--sp);overflow:hidden}
+#grafico-across .au-space::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1.2px 1.2px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 120px,rgba(255,255,255,.8),transparent),radial-gradient(1.6px 1.6px at 160px 60px,#fff,transparent),radial-gradient(1px 1px at 230px 170px,rgba(255,255,255,.7),transparent),radial-gradient(1.3px 1.3px at 300px 90px,#fff,transparent),radial-gradient(1px 1px at 60px 200px,rgba(255,255,255,.6),transparent);background-size:340px 230px;opacity:.7}
+#grafico-across .au-space::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1.8px 1.8px at 120px 40px,#fff,transparent),radial-gradient(1.4px 1.4px at 270px 150px,#FFD6EE,transparent);background-size:410px 260px;animation:au-tw 5s ease-in-out infinite alternate}
+@keyframes au-tw{from{opacity:.25}to{opacity:.95}}
+#grafico-across .au-space>*{position:relative;z-index:1}
+/* etiquetas y titulares */
+#grafico-across .au-lab{display:flex;align-items:center;gap:.75rem;font-weight:600;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--m);margin:0 0 1.1rem;max-width:none}
+#grafico-across .au-lab::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--f);box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--f);flex:none}
+#grafico-across .au-space .au-lab{color:var(--fl)}
+#grafico-across .au-space .au-lab::before{box-shadow:0 0 0 3px var(--sp),0 0 0 4.5px var(--f)}
+#grafico-across .au h2{font-family:"Jost",sans-serif;font-weight:700;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.05;letter-spacing:.03em;text-transform:uppercase;color:var(--mo);margin:0 0 1.4rem;max-width:20ch}
+#grafico-across .au h2 em,#grafico-across .au h1 em,#grafico-across .au blockquote em{font-weight:300;font-style:italic;text-transform:none;letter-spacing:0;color:var(--f)}
+#grafico-across .au-space h2{color:#fff}
+#grafico-across .au h3{font-weight:700;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mo);margin:0 0 .5rem}
+#grafico-across .au-cap{font-style:italic;font-weight:300;color:var(--g);font-size:1.05rem;line-height:1.45;margin-top:.8rem}
+#grafico-across .au-cap b{font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mo);display:block;margin-bottom:.15rem}
+#grafico-across .au-space .au-cap{color:#E9DDF0}#grafico-across .au-space .au-cap b{color:var(--fl)}
+/* botones */
+#grafico-across .au-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.75rem 1.5rem;border-radius:999px;font-family:"Open Sans",Arial,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .16s ease-out,background-color .2s ease}
+#grafico-across .au-btn:active{transform:scale(.97)}
+#grafico-across .au-btn svg{width:18px;height:18px;flex:none}
+#grafico-across .au-btn.pink{background:var(--f);color:#fff}
+#grafico-across .au-btn.pink:hover{background:#C9006D}
+#grafico-across .au-btn.line{border-color:rgba(255,255,255,.65);color:#fff}
+#grafico-across .au-btn.line:hover{background:rgba(255,255,255,.1)}
+#grafico-across .au-btn:focus-visible{outline:3px solid var(--fl);outline-offset:3px}
+/* órbitas */
+#grafico-across .au-orb{position:absolute;border-radius:50%;border:1.5px solid rgba(247,166,211,.32);transform:rotate(-14deg);pointer-events:none}
+#grafico-across .au-orb i{position:absolute;top:50%;left:-6px;width:12px;height:12px;border-radius:50%;background:var(--f);box-shadow:0 0 14px 3px rgba(230,0,125,.7);transform:translateY(-50%)}
+
+/* PORTADA */
+#grafico-across .au-hero{padding:clamp(56px,8vw,110px) 0 clamp(64px,8vw,110px)}
+#grafico-across .au-hero .au-w{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,64px);align-items:center}
+#grafico-across .au-tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0 0 1.6rem;padding:0}
+#grafico-across .au-tags li{border:1px solid rgba(247,166,211,.6);border-radius:999px;padding:.3rem .85rem;font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fl)}
+#grafico-across .au h1{font-family:"Jost",sans-serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.8rem);line-height:.98;letter-spacing:.02em;text-transform:uppercase;color:#fff;margin:0 0 1.3rem}
+#grafico-across .au-lead{font-weight:300;font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.4;color:#F1E8F6;max-width:28ch;margin-bottom:2rem}
+#grafico-across .au-lead em{color:var(--fl)}
+#grafico-across .au-acts{display:flex;flex-wrap:wrap;gap:.8rem}
+#grafico-across .au-planet{position:relative;aspect-ratio:1.25;display:flex;align-items:center;justify-content:center}
+#grafico-across .au-planet img{width:92%;position:relative;z-index:2;filter:drop-shadow(0 20px 40px rgba(0,0,0,.45))}
+#grafico-across .au-planet .au-orb.o1{width:118%;height:56%;left:-9%;top:22%}
+#grafico-across .au-planet .au-orb.o2{width:136%;height:76%;left:-18%;top:12%;border-color:rgba(247,166,211,.16)}
+@supports (offset-path:ellipse(50% 50% at 50% 50%)){#grafico-across .au-planet .au-orb.o1 i{left:0;top:0;transform:none;offset-path:ellipse(50% 50% at 50% 50%);offset-rotate:0deg;animation:au-orbit 16s linear infinite}}
+@keyframes au-orbit{from{offset-distance:0%}to{offset-distance:100%}}
+
+/* SECCIONES */
+#grafico-across .au-sec{padding:clamp(64px,9vw,120px) 0;position:relative;scroll-margin-top:120px}
+#grafico-across .au-sec.soft{background:#F8F3FA}
+
+/* Resumen */
+#grafico-across .au-ctx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:start}
+#grafico-across .au-intro{font-weight:300;font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.42;max-width:32ch}
+#grafico-across .au-intro b{font-weight:600;color:var(--mo)}
+#grafico-across .au-ctx aside{border-left:2px solid var(--line);padding-left:clamp(20px,3vw,40px)}
+#grafico-across .au-ctx aside>div+div{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+#grafico-across .au-ctx aside p{margin:0;font-size:1.08rem}
+#grafico-across .au-quote{margin:clamp(56px,8vw,96px) auto 0;text-align:center;max-width:860px;position:relative;padding:clamp(28px,4vw,48px) 0}
+#grafico-across .au-quote .au-orb{width:100%;height:100%;left:0;top:0;border-color:rgba(150,29,131,.25)}
+#grafico-across .au-quote blockquote{margin:0;font-weight:700;font-size:clamp(1.6rem,3.6vw,2.7rem);line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:var(--mo)}
+
+/* 01 Logo */
+#grafico-across .au-anat{position:relative;background:#fff;border-radius:28px;padding:clamp(28px,5vw,64px) clamp(20px,8vw,120px);margin-top:2.4rem;box-shadow:0 30px 60px -36px rgba(14,8,24,.9)}
+#grafico-across .au-anat img{width:100%;max-width:640px;margin:0 auto}
+#grafico-across .au-pin{position:absolute;display:flex;align-items:center;gap:.5rem;font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mo);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.3rem .8rem .3rem .4rem;white-space:nowrap}
+#grafico-across .au-pin span{width:22px;height:22px;border-radius:50%;background:var(--f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;letter-spacing:0}
+#grafico-across .au-pin.p1{left:6%;top:14%}#grafico-across .au-pin.p2{right:5%;top:22%}#grafico-across .au-pin.p3{left:5%;bottom:30%}#grafico-across .au-pin.p4{right:9%;bottom:12%}
+#grafico-across .au-keys{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+#grafico-across .au-keys li{border-top:1px solid rgba(247,166,211,.35);padding-top:1rem;font-weight:300;color:#E9DDF0;font-size:1.02rem}
+#grafico-across .au-keys b{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:.3rem}
+#grafico-across .au-keys b span{width:22px;height:22px;border-radius:50%;background:var(--f);display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;letter-spacing:0}
+#grafico-across .au-vers{margin:clamp(48px,7vw,80px) 0 0}
+#grafico-across .au .au-vers img{width:100%;border-radius:20px;box-shadow:0 24px 50px -30px rgba(0,0,0,.8)}
+
+/* 02 Sistema */
+#grafico-across .au-sys-h{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:2.4rem}
+#grafico-across .au-sys-h p{margin:0;color:var(--g)}
+#grafico-across .au-pal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+#grafico-across .au-pal>div{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .3s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover){#grafico-across .au-pal>div:hover{transform:translateY(-4px)}}
+#grafico-across .au-pal .c{height:170px}
+#grafico-across .au-pal .i{padding:.9rem 1rem 1rem;font-size:.95rem;line-height:1.35;color:var(--g)}
+#grafico-across .au-pal b{display:block;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--k)}
+#grafico-across .au-pal code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;display:block;margin:.15rem 0 .35rem}
+#grafico-across .au-type{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,64px);align-items:center;margin-top:clamp(48px,7vw,80px)}
+#grafico-across .au-type figure{margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#fff;padding:clamp(16px,3vw,32px)}
+#grafico-across .au-type ul{list-style:none;margin:0;padding:0;display:grid;gap:1.2rem}
+#grafico-across .au-type li{padding-left:1.4rem;position:relative}
+#grafico-across .au-type li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:9px;border-radius:50%;background:var(--f)}
+#grafico-across .au-type li b{color:var(--mo)}
+#grafico-across .au-type .note{font-size:.95rem;color:var(--g);font-style:italic;font-weight:300}
+
+/* 03 Aplicación */
+#grafico-across .au-app{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:end;margin-top:2.4rem}
+#grafico-across .au-app figure{margin:0}
+#grafico-across .au .au-app img{width:100%;border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.85);background:none}
+
+/* 04 Guía */
+#grafico-across .au-man{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:center}
+#grafico-across .au-pages{position:relative;aspect-ratio:1.25;max-width:560px;width:100%}
+#grafico-across .au-pages img{position:absolute;width:72%;border-radius:10px;box-shadow:0 24px 50px -24px rgba(0,0,0,.8);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#grafico-across .au-pages img:nth-child(1){left:0;top:0;transform:rotate(-5deg)}
+#grafico-across .au-pages img:nth-child(2){left:14%;top:14%;transform:rotate(1deg)}
+#grafico-across .au-pages img:nth-child(3){left:28%;top:30%;transform:rotate(5deg)}
+@media (hover:hover){#grafico-across .au-pages:hover img:nth-child(1){transform:rotate(-8deg) translate(-12px,-6px)}#grafico-across .au-pages:hover img:nth-child(3){transform:rotate(8deg) translate(12px,6px)}}
+#grafico-across .au-man p{color:#F1E8F6}
+#grafico-across .au-man ul{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+#grafico-across .au-man li{border:1px solid rgba(247,166,211,.55);border-radius:999px;color:#fff;padding:.3rem .85rem;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+#grafico-across .au-man small{display:block;margin-top:.9rem;font-style:italic;font-weight:300;color:rgba(241,232,246,.8);font-size:1rem}
+#grafico-across .au-man [role=status]{min-height:1.4em;margin:.6rem 0 0;color:var(--fl);font-size:1rem}
+
+/* Ficha */
+#grafico-across .au-ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#grafico-across .au-ficha>div{padding:1.6rem clamp(14px,2vw,26px)}
+#grafico-across .au-ficha>div+div{border-left:1px solid var(--line)}
+#grafico-across .au-ficha dt{font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--m);margin-bottom:.5rem}
+#grafico-across .au-ficha dd{margin:0;font-size:1.05rem;line-height:1.45}
+#grafico-across .au-agwrap .sv-cta{margin-top:clamp(40px,6vw,72px)}
+
+/* aparición */
+#grafico-across .au.rv-on .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+#grafico-across .au.rv-on .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){#grafico-across .au.rv-on .rv{opacity:1;transform:none;transition:none}#grafico-across .au *,#grafico-across .au *::after{animation:none!important;transition:none!important}}
+
+@media (max-width:900px){
+#grafico-across .au-hero .au-w,#grafico-across .au-ctx,#grafico-across .au-sys-h,#grafico-across .au-type,#grafico-across .au-app,#grafico-across .au-man{grid-template-columns:minmax(0,1fr)}
+#grafico-across .au-ctx aside{border-left:0;padding-left:0;border-top:2px solid var(--line);padding-top:1.5rem}
+#grafico-across .au-pal{grid-template-columns:repeat(3,minmax(0,1fr))}
+#grafico-across .au-keys{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-across .au-ficha{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-across .au-ficha>div:nth-child(3){border-left:0}
+#grafico-across .au-ficha>div:nth-child(n+3){border-top:1px solid var(--line)}
+#grafico-across .au-pages{max-width:420px;margin:0 auto}
+}
+@media (max-width:640px){
+#grafico-across .au{font-size:1.06rem}
+#grafico-across .au-pal{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-across .au-pal .c{height:110px}
+#grafico-across .au-pin{display:none}
+#grafico-across .au-keys{grid-template-columns:minmax(0,1fr)}
+#grafico-across .au-ficha{grid-template-columns:minmax(0,1fr)}
+#grafico-across .au-ficha>div{border-left:0!important}
+#grafico-across .au-ficha>div+div{border-top:1px solid var(--line)}
+}
+</style>
+
+<div class="au" aria-label="Caso de estudio Across the Universe">
+
+  <header class="au-hero au-space">
+    <div class="au-w">
+      <div>
+        <ul class="au-tags" aria-label="Disciplinas"><li>Branding</li><li>Logo</li><li>Fotografía de producto</li></ul>
+        <h1>Across the Universe</h1>
+        <p class="au-lead">Un logo que es <em>un planeta</em>, para una tienda de pins.</p>
+        <div class="au-acts">
+          <a class="au-btn pink" href="files/Guia_de_marca_Across_the_Universe.pdf" download data-au-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar guía (PDF)</a>
+          <a class="au-btn line" href="#au-logo" data-au-scroll="au-logo">Ver el logo</a>
+        </div>
+      </div>
+      <div class="au-planet" aria-hidden="true">
+        <span class="au-orb o2"></span><span class="au-orb o1"><i></i></span>
+        <img src="img/across/logo-blanco.webp" alt="" width="1215" height="884">
+      </div>
+    </div>
+  </header>
+
+  <nav class="case-nav" aria-label="Secciones del proyecto" data-au-nav><div class="case-nav-in"><span class="case-nav-title">Across the Universe</span><ol>
+    <li><a href="#au-resumen" data-au-scroll="au-resumen" aria-current="true">Resumen</a></li>
+    <li><a href="#au-logo" data-au-scroll="au-logo"><span class="n">01</span>Logo</a></li>
+    <li><a href="#au-sistema" data-au-scroll="au-sistema"><span class="n">02</span>Sistema</a></li>
+    <li><a href="#au-aplicacion" data-au-scroll="au-aplicacion"><span class="n">03</span>Aplicación</a></li>
+    <li><a href="#au-guia" data-au-scroll="au-guia"><span class="n">04</span>Guía</a></li>
+  </ol></div></nav>
+
+  <!-- Resumen -->
+  <section class="au-sec" id="au-resumen">
+    <div class="au-w">
+      <p class="au-lab rv">Resumen · El encargo</p>
+      <div class="au-ctx">
+        <p class="au-intro rv"><b>Across the Universe</b> es una tienda de pins. Diseñé su logo y una identidad básica para aplicarlo: versiones, tipografías, paleta y fotografía de producto.</p>
+        <aside class="rv">
+          <div><h3>La idea</h3><p>Que las letras formen un planeta con su anillo, para que el nombre se lea como un viaje espacial.</p></div>
+          <div><h3>El detalle</h3><p>Un relleno con textura de galaxia le da carácter propio, y «Tienda de pins» aclara el rubro sin competir con el nombre.</p></div>
+        </aside>
+      </div>
+      <div class="au-quote rv">
+        <span class="au-orb" aria-hidden="true"></span>
+        <blockquote>El nombre se lee <em>como un viaje espacial</em>.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Logo -->
+  <section class="au-sec au-space" id="au-logo">
+    <div class="au-w">
+      <p class="au-lab rv">01 · Logo</p>
+      <h2 class="rv">Un nombre <em>que es un planeta</em></h2>
+      <div class="au-anat rv">
+        <img src="img/across/logo-color.webp" alt="Logo Across the Universe: las palabras se curvan para formar un planeta con textura de galaxia, cruzado por un anillo, con el descriptor Tienda de pins debajo" width="1215" height="884">
+        <span class="au-pin p1" aria-hidden="true"><span>1</span>Esfera</span>
+        <span class="au-pin p2" aria-hidden="true"><span>2</span>Anillo</span>
+        <span class="au-pin p3" aria-hidden="true"><span>3</span>Galaxia</span>
+        <span class="au-pin p4" aria-hidden="true"><span>4</span>Descriptor</span>
+      </div>
+      <ol class="au-keys rv">
+        <li><b><span>1</span>Esfera</b>«Across the Universe» se curva para formar el planeta.</li>
+        <li><b><span>2</span>Anillo</b>Una órbita que cruza el nombre y le da movimiento.</li>
+        <li><b><span>3</span>Galaxia</b>El relleno con textura de galaxia le da carácter propio.</li>
+        <li><b><span>4</span>Descriptor</b>«Tienda de pins» aclara el rubro sin competir con el nombre.</li>
+      </ol>
+      <figure class="au-vers rv"><img src="img/gr-across-2.webp" alt="Seis versiones del logo en negro, magenta, morado, blanco y fondo galaxia" data-cap="Across the Universe · Versiones del logo" width="1400" height="735" loading="lazy"><figcaption class="au-cap"><b>Versiones</b>El logo sobre blanco, negro, morado y galaxia, a color y en una tinta.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 02 Sistema -->
+  <section class="au-sec" id="au-sistema">
+    <div class="au-w">
+      <p class="au-lab rv">02 · Sistema</p>
+      <div class="au-sys-h">
+        <h2 class="rv">Magenta, morado <em>y galaxia</em></h2>
+        <p class="rv">Negro y blanco como base de lectura; magenta y morado como colores de marca; fucsia como acento; y una textura galaxia para fondos y piezas especiales.</p>
+      </div>
+      <div class="au-pal rv" role="list" aria-label="Paleta de colores">
+        <div role="listitem"><div class="c" style="background:#1E1F1C"></div><div class="i"><b>Negro</b><code>#1E1F1C</code>Base de lectura.</div></div>
+        <div role="listitem"><div class="c" style="background:#fff;border-bottom:1px solid #E8E0EC"></div><div class="i"><b>Blanco</b><code>#FFFFFF</code>Base de lectura.</div></div>
+        <div role="listitem"><div class="c" style="background:#961D83"></div><div class="i"><b>Magenta</b><code>#961D83</code>Color de marca.</div></div>
+        <div role="listitem"><div class="c" style="background:#682685"></div><div class="i"><b>Morado</b><code>#682685</code>Color de marca.</div></div>
+        <div role="listitem"><div class="c" style="background:#E6007D"></div><div class="i"><b>Fucsia</b><code>#E6007D</code>Acento.</div></div>
+        <div role="listitem"><div class="c" style="background:url('img/across/galaxia-swatch.webp') center/cover"></div><div class="i"><b>Galaxia</b><code>Textura</code>Fondos y piezas especiales.</div></div>
+      </div>
+      <div class="au-type">
+        <figure class="rv"><img src="img/gr-across-fonts.webp" alt="Tipografías Fgames Regular y Tw Cen MT de la marca Across the Universe" data-cap="Across the Universe · Tipografías" width="978" height="429" loading="lazy"></figure>
+        <div class="rv">
+          <h3>Tipografías</h3>
+          <ul>
+            <li><b>Principal: Fgames Regular.</b> Display de formas ondulantes, para el logo y los titulares.</li>
+            <li><b>Secundaria: Tw Cen MT.</b> En Regular, Italic, Bold y Bold Italic, para textos y elementos de lectura.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Aplicación -->
+  <section class="au-sec soft" id="au-aplicacion">
+    <div class="au-w">
+      <p class="au-lab rv">03 · Aplicación</p>
+      <h2 class="rv">Fotografía <em>de producto</em></h2>
+      <div class="au-app">
+        <figure class="rv"><img src="img/gr-across-3.webp" alt="Fotografía de una mano con pins de la tienda y el logo como marca de agua" data-cap="Across the Universe · Aplicación en fotografía de producto" width="1400" height="777" loading="lazy"></figure>
+        <p class="au-cap rv"><b>Marca de agua</b>El logo sobre las fotos de los pins, para que cada imagen se reconozca como de la tienda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Guía -->
+  <section class="au-sec au-space" id="au-guia" style="background-color:#120A1F">
+    <div class="au-w au-man">
+      <div class="au-pages rv" aria-hidden="true">
+        <img src="img/across/guia-pag-2.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/across/guia-pag-3.webp" alt="" width="900" height="637" loading="lazy">
+        <img src="img/across/guia-pag-5.webp" alt="" width="900" height="637" loading="lazy">
+      </div>
+      <div class="rv">
+        <p class="au-lab">04 · Guía de marca</p>
+        <h2>La guía <em>completa</em></h2>
+        <p>7 páginas en formato horizontal con el logo, sus versiones, tipografías, paleta y aplicación.</p>
+        <ul aria-label="Contenido de la guía"><li>Concepto del logo</li><li>Versiones</li><li>Tipografías</li><li>Paleta</li><li>Fotografía de producto</li></ul>
+        <a class="au-btn pink" href="files/Guia_de_marca_Across_the_Universe.pdf" download data-au-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar guía (PDF)</a>
+        <small>PDF horizontal · 3,9 MB</small>
+        <p role="status" data-au-msg></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha -->
+  <section class="au-sec" aria-labelledby="au-ficha-h">
+    <div class="au-w">
+      <p class="au-lab" id="au-ficha-h">Ficha del proyecto</p>
+      <dl class="au-ficha">
+        <div><dt>Proyecto</dt><dd>Logo e identidad básica</dd></div>
+        <div><dt>Mi rol</dt><dd>Diseño del logo, versiones, tipografías y paleta</dd></div>
+        <div><dt>Entregables</dt><dd>Logo y versiones, paleta, tipografías y aplicación en fotografía</dd></div>
+        <div><dt>Herramientas</dt><dd>Illustrator y Photoshop</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    var root=document.currentScript.parentNode;
+    var nav=root.querySelector('[data-au-nav]');
+    var links=[].slice.call(nav.querySelectorAll('[data-au-scroll]'));
+    var secs=links.map(function(l){return document.getElementById(l.getAttribute('data-au-scroll'))});
+    function header(){return parseFloat(getComputedStyle(root).getPropertyValue('--ith-header'))||0}
+    function jump(id){var el=document.getElementById(id);if(!el)return;var top=el.getBoundingClientRect().top+window.pageYOffset;var down=top>window.pageYOffset+nav.offsetHeight;window.scrollTo({top:top-nav.offsetHeight-(down?0:header())+1,behavior:'smooth'})}
+    root.querySelectorAll('[data-au-scroll]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();jump(l.getAttribute('data-au-scroll'))})});
+    var cur=-1;
+    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i],ol=nav.querySelector('ol');if(ol&&ol.scrollWidth>ol.clientWidth){ol.scrollLeft=Math.max(0,l.offsetLeft-(ol.clientWidth-l.offsetWidth)/2)}}
+    function spy(){if(!root.offsetParent)return;var line=nav.getBoundingClientRect().bottom+60,idx=0;secs.forEach(function(sc,i){if(sc.getBoundingClientRect().top<=line)idx=i});setCurrent(idx)}
+    var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){spy();tk=false})}},{passive:true});window.addEventListener('resize',spy);spy();
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if('IntersectionObserver' in window&&!rm){root.classList.add('rv-on');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});root.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}
+    var dl=null,msg=root.querySelector('[data-au-msg]');
+    try{if(window.claude&&typeof claude.use==='function'){claude.use('downloads').then(function(d){dl=d},function(){})}}catch(_){}
+    root.querySelectorAll('[data-au-dl]').forEach(function(a){a.addEventListener('click',function(e){
+      if(!dl)return;e.preventDefault();var url=a.getAttribute('href');if(msg)msg.textContent='';
+      fetch(url).then(function(r){if(!r.ok)throw new Error('fetch');return r.blob()})
+        .then(function(b){return dl.save({filename:'Guia_de_marca_Across_the_Universe.pdf',data:b})})
+        .then(function(){if(msg)msg.textContent='Listo, tu descarga comenzó.'},function(err){var c=err&&err.code;if(c==='declined'){}else if(c==='rate_limited'){if(msg)msg.textContent='Espera un momento e inténtalo de nuevo.'}else{window.open(url,'_blank','noopener')}});
+    })});
+  })();
+  </script>
 </div>
+<div class="wrap narrow au-agwrap">
+<div class="sv-cta"><p><b>¿Tienes una marca que necesita una identidad propia?</b> Cuéntame de tu proyecto y te ayudo a crear una identidad con personalidad, lista para aplicar.</p>
+        <a class="btn sv-btn" href="#contacto">Conversemos sobre tu proyecto</a></div>
+</div>
+
 <div class="wrap narrow">
-<div class="shots-across"><figure><img alt="Logo Across the Universe, tienda de pins: letras que forman un planeta con su anillo" data-cap="Across the Universe · Logo" loading="lazy" src="img/gr-across-logo-only.webp"/><figcaption>Logo</figcaption></figure><p>Las letras forman un planeta con su anillo, así el nombre se lee como un viaje espacial. El relleno con textura de galaxia le da carácter propio, y "Tienda de pins" va debajo como descriptor, en tipografía secundaria, para aclarar el rubro sin competir con el nombre.</p><figure><img alt="Tipografías Fgames Regular y Tw Cen MT de la marca Across the Universe" data-cap="Across the Universe · Tipografías" loading="lazy" src="img/gr-across-fonts.webp"/><figcaption>Tipografías</figcaption></figure><p><b>Tipografía principal:</b> Fgames Regular, una display con formas ondulantes que se usa en el logo y en titulares. <b>Secundaria:</b> Tw Cen MT en Regular, Italic, Bold y Bold Italic, para textos y elementos de lectura.</p><figure><img alt="Paleta de colores de la marca Across the Universe: negro, blanco, magenta, morado, fucsia y textura galaxia" data-cap="Across the Universe · Paleta" loading="lazy" src="img/gr-across-palette.webp"/><figcaption>Paleta de colores</figcaption></figure><p><b>Paleta:</b> negro y blanco como base de lectura; magenta y morado como colores de marca; fucsia como acento; y una textura galaxia para fondos y piezas especiales.</p></div></div>
-<div class="gx-gallery stack">
-<figure><img alt="Seis versiones del logo en negro, magenta, morado, blanco y fondo galaxia" data-cap="Across the Universe · Versiones del logo" loading="lazy" src="img/gr-across-2.webp"/><figcaption>Versiones del logo</figcaption></figure>
-<figure><img alt="Fotografía de una mano con pins de la tienda y el logo como marca de agua" data-cap="Across the Universe · Aplicación en fotografía de producto" loading="lazy" src="img/gr-across-3.webp"/><figcaption>Aplicación en fotografía de producto</figcaption></figure>
-</div>
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-ithilien"><span>← Anterior</span><b>Ithilien Boutique</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
