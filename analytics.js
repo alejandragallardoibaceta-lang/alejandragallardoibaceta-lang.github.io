@@ -4,7 +4,7 @@
   const panel = document.createElement('section');
   panel.className = 'analytics-choice';
   panel.setAttribute('aria-label', 'Preferencias de analítica');
-  panel.innerHTML = '<strong>Analítica del portafolio</strong><p>Con tu permiso, uso Hotjar para ver mapas de calor y grabaciones de navegación y mejorar el sitio.</p><div><button type="button" data-choice="yes">Aceptar</button><button type="button" data-choice="no">Rechazar</button></div>';
+  panel.innerHTML = '<strong>Respetamos tu privacidad</strong><p>Con tu permiso, usamos cookies de analítica de Hotjar para entender cómo navegas por el portafolio y mejorar tu experiencia.</p><div><button type="button" data-choice="yes">Aceptar</button><button type="button" data-choice="no">Rechazar</button></div>';
   document.body.append(panel);
   let choice;
   try { choice = localStorage.getItem(key); } catch {}
