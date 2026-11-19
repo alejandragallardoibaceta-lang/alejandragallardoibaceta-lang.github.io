@@ -1694,6 +1694,16 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 #grafico-asocam .as-ctx aside{border-left:1px solid var(--l);padding-left:clamp(20px,3vw,40px)}
 #grafico-asocam .as-ctx aside>div+div{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--l)}
 #grafico-asocam .as-ctx aside p{margin:0}
+#grafico-asocam .as-about{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+#grafico-asocam .as-about .lead{font-family:"Josefin Sans",sans-serif;font-weight:300;font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.45;margin:0}
+#grafico-asocam .as-mv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#grafico-asocam .as-mv>div{border:1px solid var(--l);border-top:3px solid var(--r);padding:1.4rem 1.4rem 1.2rem;background:#fff}
+#grafico-asocam .as-mv p{margin:0;font-size:1rem}
+#grafico-asocam .as-oficios{grid-column:1/-1}
+#grafico-asocam .as-oficios ul{list-style:none;margin:.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+#grafico-asocam .as-oficios li{border:1px solid var(--r);color:var(--r);padding:.35rem .9rem;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:900px){#grafico-asocam .as-about{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){#grafico-asocam .as-mv{grid-template-columns:minmax(0,1fr)}}
 #grafico-asocam .as-quote{margin:clamp(56px,8vw,96px) auto 0;max-width:760px;text-align:center;border:1px solid var(--r);outline:1px solid var(--r);outline-offset:6px;padding:clamp(28px,4vw,44px) 24px}
 #grafico-asocam .as-quote blockquote{margin:0;font-family:"Josefin Sans",sans-serif;font-weight:600;font-size:clamp(1.5rem,3.4vw,2.5rem);letter-spacing:.26em;text-transform:uppercase;color:var(--r);line-height:1.25}
 #grafico-asocam .as-quote cite{display:block;margin-top:.9rem;font-style:normal;font-family:"Josefin Sans",sans-serif;font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--g)}
@@ -1809,11 +1819,16 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
     <div class="as-w">
       <p class="as-lab rv">Resumen · El encargo</p>
       <div class="as-ctx">
-        <p class="as-intro rv"><b>ASOCAM</b> reúne a artesanas y artesanos de Maipú. Diseñé su identidad y la llevé a las piezas con que se presentan: papelería, roller, stand para ferias y tríptico.</p>
+        <p class="as-intro rv"><b>ASOCAM</b> reúne a artesanos de Maipú. Su identidad anterior era genérica y casi igual a la de otras organizaciones; la nueva nace de su oficio y se lleva a papelería, roller, stand para ferias y tríptico.</p>
         <aside class="rv">
-          <div><h3>La identidad</h3><p>Un patrón con el símbolo del logo y una ilustración de marca con piezas de artesanía, que acompañan al logo en todas las piezas.</p></div>
-          <div><h3>El lema</h3><p>«Hacedores de cultura» va junto al logo, en mayúsculas y con letras espaciadas.</p></div>
+          <div><h3>El símbolo</h3><p>El isotipo representa a un artesano trabajando visto desde arriba: de ahí nace el lema «Hacedores de cultura». Repetido, forma el patrón de los fondos.</p></div>
+          <div><h3>Sin protagonistas</h3><p>Se usan patrón e ilustración en vez de fotos, para no dar prioridad a ningún artesano, técnica ni material.</p></div>
         </aside>
+      </div>
+      <div class="as-about">
+        <div class="rv"><h3>Sobre ASOCAM</h3><p class="lead">Somos una asociación cultural, creada el 8 de julio de 2014 como un proyecto de un grupo de artesanos con un ideal común: rescatar la cultura por medio de la artesanía.</p></div>
+        <div class="as-mv rv"><div><h3>Visión</h3><p>Crear, estudiar, estimular, promover, coordinar y difundir iniciativas al fomento de las artes y la cultura en diversas áreas con identidad y patrimonio histórico-religioso de nuestra comuna.</p></div><div><h3>Misión</h3><p>Desarrollar trabajos de artesanía y difundir los mismos a nivel comunal a través de diferentes expresiones artísticas, rescatando a su vez las tradiciones de la comuna de Maipú.</p></div></div>
+        <div class="as-oficios rv"><h3>Tipos de artesanía</h3><ul><li>Juguetes de madera</li><li>Metal</li><li>Telar</li><li>Textilería</li><li>Orfebrería</li><li>Licores artesanales</li><li>Chocolatería</li><li>Vitrofusión</li><li>Muñecos artesanales</li><li>Cuero</li><li>Juguetes didácticos</li></ul></div>
       </div>
       <div class="as-quote rv"><blockquote>Hacedores de cultura</blockquote><cite>Lema de ASOCAM</cite></div>
     </div>
@@ -1826,8 +1841,8 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
         <h2>Geometría <em>y oficio</em></h2>
         <div class="as-logo-big"><img src="img/asocam/logo-blanco.svg" alt="Logo de ASOCAM: rombo abierto con un punto al centro junto al nombre en mayúsculas espaciadas" width="648" height="236"></div>
         <ol class="as-keys">
-          <li><span>I</span><p style="margin:0"><b>Logo.</b>Un rombo abierto con un punto al centro, junto al nombre en Trend Sans One con letras espaciadas.</p></li>
-          <li><span>II</span><p style="margin:0"><b>Ilustración.</b>Dibujo de línea con piezas de artesanía: vasijas y máscaras.</p></li>
+          <li><span>I</span><p style="margin:0"><b>Logo.</b>Un artesano trabajando visto desde arriba, junto al nombre en mayúsculas espaciadas.</p></li>
+          <li><span>II</span><p style="margin:0"><b>Ilustración.</b>Piezas de artesanía de pueblos originarios, agrupadas sin priorizar ninguna técnica.</p></li>
           <li><span>III</span><p style="margin:0"><b>Patrón.</b>El símbolo del logo repetido tono sobre tono para los fondos.</p></li>
         </ol>
       </div>
@@ -1851,7 +1866,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
       </div>
       <div class="as-lv rv" aria-label="Versiones del logo">
         <div class="as-red rr"><img src="img/asocam/logo-blanco.svg" alt="Logo en negativo sobre rojo arcilla" width="648" height="236"><span>Negativo</span></div>
-        <div class="w"><img src="img/asocam/logo-rojo.svg" alt="Logo en positivo, rojo arcilla sobre blanco" width="648" height="236"><span>Positivo</span></div>
+        <div class="w"><img src="img/asocam/logo-color.svg" alt="Logo en positivo: isotipo rojo y nombre en gris sobre blanco" width="648" height="236"><span>Positivo</span></div>
       </div>
     </div>
   </section>
@@ -1882,7 +1897,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
       <div class="rv">
         <p class="as-lab">04 · Guía de marca</p>
         <h2>La guía <em>completa</em></h2>
-        <p>9 páginas en formato horizontal con la identidad, el sistema y las aplicaciones.</p>
+        <p>10 páginas en formato horizontal con la identidad, el sistema y las aplicaciones.</p>
         <ul aria-label="Contenido de la guía"><li>Identidad y lema</li><li>Logo</li><li>Ilustración</li><li>Color y patrón</li><li>Papelería</li><li>Ferias</li><li>Tríptico</li></ul>
         <a class="as-btn light" href="files/Guia_de_marca_ASOCAM_Chile.pdf" download data-as-dl><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Descargar guía (PDF)</a>
         <small>PDF horizontal · 3 MB</small>
@@ -1896,7 +1911,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
       <p class="as-lab" id="as-ficha-h">Ficha del proyecto</p>
       <dl class="as-ficha">
         <div><dt>Proyecto</dt><dd>Identidad visual y piezas institucionales</dd></div>
-        <div><dt>Mi rol</dt><dd>Diseño de la identidad, el patrón, la ilustración y las aplicaciones</dd></div>
+        <div><dt>Alcance</dt><dd>Logo, patrón, ilustración, normas de uso y aplicaciones</dd></div>
         <div><dt>Entregables</dt><dd>Papelería, roller, stand para ferias y tríptico</dd></div>
         <div><dt>Herramientas</dt><dd>Illustrator y Photoshop</dd></div>
       </dl>
