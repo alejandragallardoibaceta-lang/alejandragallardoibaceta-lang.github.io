@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-<head><style>
+<head><script>window.addEventListener('message',e=>{const f=document.getElementById('journeyFrame');if(f&&e.source===f.contentWindow&&Number.isFinite(e.data?.journeyHeight)&&e.data.journeyHeight>100)f.style.height=e.data.journeyHeight+'px'})</script><style>
 #grafico-ithilien .ith-manual{--ag-plum:#421035!important;font-family:"Open Sans",Arial,sans-serif!important;color:#2A0A22!important}
 #grafico-ithilien .ith-manual h2{font-family:"Open Sans",Arial,sans-serif!important;color:#421035!important;font-weight:800!important;letter-spacing:-.01em!important}
 #grafico-ithilien .ith-manual h3{font-family:"Open Sans",Arial,sans-serif!important;color:#8E2C67!important;letter-spacing:.14em!important}
@@ -696,7 +696,7 @@ dialog.lb button{position:absolute;top:8px;right:8px;background:#FFFFFF;color:#2
 .copy-ic:hover .copy-tip,.copy-ic:focus-visible .copy-tip,.copy-ic.done .copy-tip{opacity:1}
 @media (max-width:480px){#contacto .email-box .email{font-size:15px;word-break:normal;padding-left:14px}.copy-ic{width:40px;height:40px}}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:var(--space-8)}
-.hero-btns .scroll-cue{margin-top:0}
+.hero-btns .scroll-cue{margin-top:0;box-sizing:border-box;inline-size:10rem;min-height:44px;justify-content:center}
 .scroll-cue.cue-dark{background:var(--action-primary);color:#FFFFFF}
 .hero-arrow{display:grid;place-items:center;width:44px;height:44px;margin:var(--space-6) auto 0;color:var(--action-accent);text-decoration:none;animation:fadeUp .4s ease .45s both}
 .hero-arrow .ic{width:26px;height:26px;animation:bob 1.6s ease-in-out 3s infinite}
@@ -1099,12 +1099,12 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <div class="cover-text">
 <p class="disc"><span><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Diseño gráfico</span></p>
 <h3>Diseño gráfico</h3>
-<p class="kicker">Branding, editorial y redes sociales</p>
+<p class="kicker">Branding, mailings journey, editorial y redes sociales</p>
 <p class="desc">La base visual detrás de mis interfaces: identidades, brochures y campañas.</p>
 <div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span><span class="tool">InDesign</span></div>
 <p class="when">2017 – 2021</p>
 </div>
-<div class="cover-img bg-berry dg-fill"><p class="proof badge"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>9 proyectos</p><img alt="" loading="lazy" src="img/diseno-grafico-portada.webp" decoding="async"/></div>
+<div class="cover-img bg-berry dg-fill"><p class="proof badge"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>10 proyectos</p><img alt="" loading="lazy" src="img/diseno-grafico-portada.webp" decoding="async"/></div>
 </a><a class="cover" href="#elearning" data-disc="el mg feat"><div class="cover-text">
 <p class="disc"><span><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning</span><span><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics</span></p><h3>E-learning y Motion graphics</h3><p class="kicker">Cursos interactivos y animación</p><p class="desc">Cursos e-learning con contenido interactivo y piezas animadas para empresas, como el curso de Prevención de IAAS para Clínica Las Condes.</p><div class="tools"><span class="tool">Claude</span><span class="tool">Genially</span><span class="tool">After Effects</span></div><p class="when">Carpeta de proyectos</p></div><div class="cover-img bg-lavender"><p class="proof badge"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>4 cursos</p><img alt="" loading="lazy" src="img/elearn-iaas-inicio.webp" decoding="async"/></div></a><a class="cover" href="#caso-retail" data-disc="ux">
 <div class="cover-text">
@@ -1654,7 +1654,7 @@ bs.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribut
 <div class="case-hero">
 <div class="txt">
 <h1>Diseño gráfico</h1>
-<p class="kicker">Branding, editorial y redes sociales</p>
+<p class="kicker">Branding, mailings journey, editorial y redes sociales</p>
 <p class="sub">Antes de especializarme en UX/UI trabajé en identidades, brochures y campañas.</p>
 <div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span><span class="tool">InDesign</span></div>
 <p class="when">CampusChile · Agencia Destacados · 2017 – 2021</p>
@@ -1680,6 +1680,12 @@ bs.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribut
 <span class="gx-thumb"><img alt="" loading="lazy" src="img/ilhabella/portada.webp" decoding="async"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</span><b>Ilhabella</b></span>
 </a>
+
+<a class="gx-card" href="#grafico-suzuki"><span class="gx-thumb"><img alt="" src="portada.webp"></span><span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Mailings</span><b>Mailings Suzuki</b></span></a>
+<a class="gx-card" href="#grafico-otec">
+<span class="gx-thumb"><img alt="" loading="lazy" src="img/gx-mailing-ditraining-1.webp" decoding="async"/></span>
+<span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Publicidad</span><b>Mailings OTEC</b></span>
+</a>
 <a class="gx-card" href="#grafico-afs">
 <span class="gx-thumb"><img alt="" loading="lazy" src="img/afs/portada.webp" decoding="async"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-book"></use></svg>Editorial · revista</span><b>AFS Chile</b></span>
@@ -1696,10 +1702,7 @@ bs.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribut
 <span class="gx-thumb"><img alt="" loading="lazy" src="img/gr-automotoras-rrss-3.webp" decoding="async"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Redes sociales</span><b>Automotoras</b></span>
 </a>
-<a class="gx-card" href="#grafico-otec">
-<span class="gx-thumb"><img alt="" loading="lazy" src="img/gx-mailing-ditraining-1.webp" decoding="async"/></span>
-<span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Publicidad</span><b>Mailings OTEC</b></span>
-</a>
+
 </div>
 <nav class="pnav" aria-label="Navegación entre proyectos"><div class="pn-card"><div class="pn-row"><a class="pn-btn pn-prev" href="#caso-lms" aria-label="Proyecto anterior: LMS OpenCampus"><svg class="pn-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg><span class="pn-t"><small><span class="pn-full">Ver proyecto anterior</span><span class="pn-short">Anterior</span></small><b>LMS OpenCampus</b></span></a><span class="pn-btn pn-next is-off" aria-disabled="true"><span class="pn-t"><small><span class="pn-full">Siguiente proyecto</span><span class="pn-short">Siguiente</span></small></span><svg class="pn-ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></div><a class="pn-home" href="#proyectos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Volver al portafolio</a></div></nav>
 </div>
@@ -2487,7 +2490,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 </div>
 <div class="wrap narrow">
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
-<a href="#grafico-otec"><span>← Anterior</span><b>Mailings OTEC</b></a>
+<a href="#grafico-automotoras"><span>← Anterior</span><b>Automotoras</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
 <a class="nx" href="#grafico-across"><span>Siguiente →</span><b>Across the Universe</b></a>
 </nav>
@@ -3266,7 +3269,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 </div>
 
 <div class="wrap narrow">
-<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="#grafico-afs"><span>Siguiente →</span><b>AFS Chile</b></a></nav>
+<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="#grafico-suzuki"><span>Siguiente →</span><b>Mailings Suzuki</b></a></nav>
 </div>
 </section>
 <!-- ============ GRÁFICO: AFS CHILE ============ -->
@@ -3449,7 +3452,7 @@ initMagazines();
 </script>
 
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
-<a href="#grafico-ilhabella"><span>← Anterior</span><b>Ilhabella</b></a>
+<a href="#grafico-otec"><span>← Anterior</span><b>Mailings OTEC</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
 <a class="nx" href="#grafico-popeye"><span>Siguiente →</span><b>Popeye Matic</b></a>
 </nav>
@@ -3519,10 +3522,23 @@ initMagazines();
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-giselle"><span>← Anterior</span><b>Giselle y Sonríe Mamá</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
-<a class="nx" href="#grafico-otec"><span>Siguiente →</span><b>Mailings OTEC</b></a>
+<a class="nx" href="#grafico-ithilien"><span>Siguiente →</span><b>Ithilien Boutique</b></a>
 </nav>
 </div>
-</section><section class="view project gx-page" data-view="grafico-otec" hidden="" id="grafico-otec">
+</section><section class="view project gx-page" data-view="grafico-suzuki" hidden="" id="grafico-suzuki">
+<nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">Mailings Suzuki</li></ol></nav>
+<div class="wrap narrow gx-head">
+<p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Mailings</p>
+<h1>Mailings Suzuki</h1>
+<p class="sub">Diseñé cinco correos para acompañar a quienes ya habían cotizado un Suzuki, desde las opciones de financiamiento hasta la invitación a visitar una sucursal.</p>
+<div class="tools"><span class="tool">Journey Warm</span><span class="tool">Salesforce Marketing Cloud</span></div>
+</div>
+<div class="wrap narrow"><img src="portada.webp" alt="Las cinco piezas del Journey Warm de Suzuki, de financiamiento a visita en sucursal" width="1600" height="1000" style="display:block;width:100%;height:auto;border-radius:var(--radius-md);margin:0 auto 28px">
+<iframe title="Recorrido interactivo de los cinco mailings Suzuki" id="journeyFrame" style="display:block;width:100%;border:0;height:1550px" src="journey.html"></iframe><nav aria-label="Otros proyectos gráficos" class="gx-pager">
+<a href="#grafico-ilhabella"><span>← Anterior</span><b>Ilhabella</b></a>
+<a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
+<a class="nx" href="#grafico-otec"><span>Siguiente →</span><b>Mailings OTEC</b></a>
+</nav></div></section><section class="view project gx-page" data-view="grafico-otec" hidden="" id="grafico-otec">
 <nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">Mailings OTEC</li></ol></nav>
 <div class="wrap narrow gx-head">
 <p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Publicidad</p>
@@ -3535,9 +3551,9 @@ initMagazines();
 <dialog class="ml-dlg" id="ml-dlg" aria-labelledby="ml-title"><div class="ml-box"><header><b id="ml-title"></b><button type="button" class="ml-x" aria-label="Cerrar"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header><div class="ml-body"><img alt=""/></div></div></dialog>
 <script>(function(){var d=document.getElementById("ml-dlg");if(!d)return;var t=d.querySelector("#ml-title"),im=d.querySelector(".ml-body img"),body=d.querySelector(".ml-body"),last=null;document.querySelectorAll("#grafico-otec .ml-card").forEach(function(c){c.addEventListener("click",function(){last=c;t.textContent=c.getAttribute("data-title");im.src=c.getAttribute("data-src");im.alt=c.getAttribute("data-alt");if(d.showModal)d.showModal();else d.setAttribute("open","");body.scrollTop=0;document.documentElement.style.overflow="hidden"})});function close(){if(d.open)d.close()}d.addEventListener("close",function(){document.documentElement.style.overflow="";if(last)last.focus()});d.querySelector(".ml-x").addEventListener("click",close);d.addEventListener("click",function(e){if(!e.target.closest(".ml-box")||e.target===body)close()});})();</script>
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
-<a href="#grafico-automotoras"><span>← Anterior</span><b>Automotoras</b></a>
+<a href="#grafico-suzuki"><span>← Anterior</span><b>Mailings Suzuki</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
-<a class="nx" href="#grafico-ithilien"><span>Siguiente →</span><b>Ithilien Boutique</b></a>
+<a class="nx" href="#grafico-afs"><span>Siguiente →</span><b>AFS Chile</b></a>
 </nav>
 </div>
 </section>
@@ -3578,7 +3594,7 @@ initMagazines();
 <div class="sv-group sv-car"><div class="sv-ghead"><div><h2>Marca, gráfica y contenidos</h2><p>Una marca reconocible en cada publicación, pieza y curso que lanzas.</p></div><div class="mp-ctrl"><button type="button" class="mp-btn sv-prev" aria-label="Servicios anteriores"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="mp-btn sv-next" aria-label="Más servicios"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div></div><ul class="sv-list sv-track" tabindex="0" aria-label="Marca, gráfica y contenidos"><li><span class="sv-ic"><svg aria-hidden="true" class="ic"><use href="#i-award"></use></svg></span><div class="sv-ctxt"><h3>Brand Base</h3><p class="sv-promise">Una marca con reglas claras para usarla siempre con coherencia.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Logo y sus variantes</li><li>Colores accesibles y tipografías</li><li>Guía de uso de la marca</li></ul></li><li><span class="sv-ic"><svg aria-hidden="true" class="ic"><use href="#i-briefcase"></use></svg></span><div class="sv-ctxt"><h3>Imagen corporativa</h3><p class="sv-promise">Todo lo que entregas se reconoce como parte de tu empresa.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Tarjetas y papelería</li><li>Firmas de correo</li><li>Plantillas de presentación</li></ul></li><li><span class="sv-ic"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg></span><div class="sv-ctxt"><h3>Diseño gráfico</h3><p class="sv-promise">Piezas editoriales e identitarias que comunican con claridad y carácter.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Logos e identidades</li><li>Revistas y brochures</li><li>Catálogos</li></ul></li><li><span class="sv-ic"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg></span><div class="sv-ctxt"><h3>Piezas gráficas</h3><p class="sv-promise">Contenido listo para publicar, pensado para captar atención en segundos.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Redes sociales</li><li>Banners y mailings</li><li>Afiches</li></ul></li><li><span class="sv-ic"><svg aria-hidden="true" class="ic"><use href="#i-book"></use></svg></span><div class="sv-ctxt"><h3>Diseño de cursos</h3><p class="sv-promise">Cursos que se entienden, se recuerdan y se terminan.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Cursos interactivos</li><li>Cursos en video</li><li>Contenidos para plataformas LMS</li></ul></li><li><span class="sv-ic"><svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/></svg></span><div class="sv-ctxt"><h3>Videos y motion graphics</h3><p class="sv-promise">Explica, enseña o lanza algo nuevo en pocos segundos.</p></div><p class="sv-inc-t">Incluye</p><ul class="sv-inc"><li>Animaciones cortas</li><li>Videos explicativos</li><li>Piezas animadas para redes</li></ul></li></ul></div>
 <div class="sv-work-sec"><div class="sv-work-head"><div><h2>Trabajos recientes</h2><p>Proyectos de 2025 y 2026 y los servicios que apliqué en cada uno.</p></div><a class="sv-all" href="#proyectos">Ver todo el portafolio</a></div><ul class="sv-works"><li><a class="sv-work" href="#caso-dtparts"><span class="sv-wimg"><img alt="Home del e-commerce DTPARTS" loading="lazy" src="img/dt-cover.webp" decoding="async"/><span class="sv-go"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="sv-wtxt"><span class="sv-wkind">E-commerce · 2026</span><b>DTPARTS</b><span class="sv-wtags" aria-label="Servicios aplicados"><span>E-commerce</span><span>Prototipo</span></span></span></a></li><li><a class="sv-work" href="#caso-ilhabella"><span class="sv-wimg"><img alt="Marca y tienda en línea de ilhabella" loading="lazy" src="img/ilh-cover.webp" decoding="async"/><span class="sv-go"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="sv-wtxt"><span class="sv-wkind">Marca y e-commerce · 2026</span><b>ilhabella</b><span class="sv-wtags" aria-label="Servicios aplicados"><span>Brand Base</span><span>E-commerce</span><span>Prototipo</span></span></span></a></li><li><a class="sv-work" href="#caso-design-system"><span class="sv-wimg"><img alt="Design System aplicado a Suzuki, Mazda y Renault" loading="lazy" src="img/ds-brands-cover.webp" decoding="async"/><span class="sv-go"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="sv-wtxt"><span class="sv-wkind">Design System · 2023 – 2026</span><b>Design System multimarca</b><span class="sv-wtags" aria-label="Servicios aplicados"><span>Design System</span></span></span></a></li><li><a class="sv-work" href="#caso-cotizador"><span class="sv-wimg"><img alt="Cotizador de autos en un solo paso, en celular" loading="lazy" src="img/q-mobile.webp" decoding="async"/><span class="sv-go"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="sv-wtxt"><span class="sv-wkind">UX y prototipo · 2025</span><b>Cotizador en un solo paso</b><span class="sv-wtags" aria-label="Servicios aplicados"><span>Asesoría UX/UI</span><span>Test con usuarios</span></span></span></a></li><li><a class="sv-work" href="#caso-retail"><span class="sv-wimg"><img alt="Home del sitio Inchcape Retail" loading="lazy" src="img/r-home.webp" decoding="async"/><span class="sv-go"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="sv-wtxt"><span class="sv-wkind">Sitio web · 2025</span><b>Inchcape Retail</b><span class="sv-wtags" aria-label="Servicios aplicados"><span>Sitio web</span></span></span></a></li></ul></div>
 <div class="sv-cta"><p><b>¿Tienes un proyecto en mente?</b> Cuéntame el objetivo y el plazo, y te respondo por WhatsApp con una propuesta a tu medida.</p>
-<a class="btn primary sv-btn" href="https://wa.me/56920151312?text=Hola%20Alejandra%2C%20vi%20tu%20portafolio%20y%20quiero%20cotizar%20un%20proyecto%20de%20dise%C3%B1o." target="_blank" rel="noopener"><svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Quiero cotizar mi proyecto</a></div>
+<a class="btn primary sv-btn" href="https://wa.me/56920151312?text=Hola%20Alejandra%2C%20vi%20tu%20portafolio%20y%20quiero%20cotizar%20un%20proyecto%20de%20dise%C3%B1o." target="_blank" rel="noopener"><svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Quiero cotizar</a></div>
 <div class="sv-how"><h2>Así trabajamos, sin sorpresas</h2><ol class="sv-steps"><li><b>Conversamos</b><span>Cuéntame tu desafío y tu objetivo por WhatsApp.</span></li><li><b>Propuesta clara</b><span>Recibes alcance, entregables, plazos y valor antes de empezar.</span></li><li><b>Diseño por etapas</b><span>Revisas cada avance y ajustamos antes de seguir.</span></li><li><b>Entrega lista</b><span>Archivos editables, listos para desarrollar o publicar.</span></li></ol></div>
 <div class="sv-faq"><h2>Preguntas frecuentes</h2><details><summary>¿Cuánto cuesta un proyecto?</summary><p>Depende del alcance: cuántas piezas o pantallas son, qué entregables necesitas y para cuándo. Me cuentas tu idea y te envío una propuesta con el valor antes de empezar.</p></details><details><summary>¿Entregas los archivos editables?</summary><p>Sí, si los necesitas. Puedes pedir solo la pieza final o también los archivos editables. Queda definido en la propuesta.</p></details><details><summary>¿Qué necesito para empezar?</summary><p>Contarme qué necesitas, para quién es y para cuándo. Si ya tienes logo, textos o referencias, ayudan. Si no, lo vemos en la conversación.</p></details></div>
 </div>
@@ -4005,3 +4021,26 @@ g.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(cur+1)}if(e
 #grafico-ithilien .g1-thumb.is-photo img{width:100%;height:100%;max-height:none;object-fit:cover}
 @media (max-width:640px){#grafico-ithilien .g1-slide.is-photo .im-table{padding:.8rem 3.2rem 2.8rem}#grafico-ithilien .g1-slide.is-photo .im-table img{max-height:250px!important}}
 </style>
+<style>
+.project-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;flex:none}.project-actions .sv-btn{justify-content:center;white-space:nowrap}.project .sv-cta{font-family:var(--font);margin-bottom:32px}.project .sv-cta .project-services{background:transparent!important;color:white!important;border-color:white!important}.project .sv-cta .project-services:is(:hover,:focus-visible){background:#E2B7FF!important;border-color:#E2B7FF!important;color:#421035!important}@media(max-width:700px){.project-actions{grid-template-columns:1fr;width:100%}}
+</style>
+<template id="project-actions"><div class="project-actions"><a class="btn sv-btn" target="_blank" rel="noopener">¡Conversemos!</a><a class="btn sv-btn project-services" href="#servicios">Ver servicios</a></div></template>
+<script>
+(function(){
+  const template=document.getElementById('project-actions');
+  template.content.querySelector('a').href=document.querySelector('a[href^="https://wa.me/"]').href;
+  for(const project of document.querySelectorAll('.view.project')){
+    let block=project.querySelector('.sv-cta');
+    if(block){block.querySelector('.sv-btn').remove()}
+    else{
+      block=document.createElement('div');
+      block.className='sv-cta';
+      block.innerHTML='<p><b>¿Tienes un proyecto en mente?</b>Cuéntame qué necesitas y veamos cómo puedo ayudarte con el diseño.</p>';
+      const pager=project.querySelector('.gx-pager,.pnav');
+      if(pager){pager.before(block)}
+      else{const wrapper=document.createElement('div');wrapper.className='wrap narrow';wrapper.append(block);project.append(wrapper)}
+    }
+    block.append(template.content.cloneNode(true));
+  }
+})();
+</script>
