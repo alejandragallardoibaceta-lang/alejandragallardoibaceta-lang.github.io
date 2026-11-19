@@ -41,7 +41,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;family=Jost:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=Josefin+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=UnifrakturMaguntia&amp;family=Jost:ital,wght@0,300;0,400;0,600;0,700;1,300&amp;family=Josefin+Sans:wght@300;400;600;700&amp;family=Montserrat:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
 <style>
 .top{transition:transform .3s cubic-bezier(.2,.8,.2,1)}body.nav-up .top{transform:translateY(-110%)}.case-nav{position:sticky;top:68px;z-index:19;background:var(--surface-card);border-bottom:1px solid var(--border);box-shadow:0 6px 16px -14px rgba(26,11,22,.35);transition:top .3s cubic-bezier(.2,.8,.2,1);margin:0 calc(50% - 50vw);padding:0 max(16px,calc(50vw - 620px))}body.nav-up .case-nav{top:0}.case-nav-in{display:flex;align-items:center;gap:20px;min-height:52px}.case-nav-title{flex:none;font-weight:800;font-size:15px;color:var(--ink);white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis}.case-nav ol{display:flex;gap:4px;margin:0 auto 0 0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;flex:0 1 auto;min-width:0;scroll-behavior:smooth}.case-nav-in>:first-child{margin-left:auto}.case-nav-title{padding-right:20px;border-right:1px solid var(--border)}.case-nav ol::-webkit-scrollbar{display:none}.case-nav a{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;font-size:14px;font-weight:600;color:var(--ink-muted);padding:8px 12px;border-radius:999px;transition:background .2s,color .2s}.case-nav a .n{font-size:12px;font-weight:800;opacity:.7}.case-nav a:hover{background:var(--surface-subtle);color:var(--ink)}.case-nav a[aria-current="true"]{background:var(--action-primary);color:var(--ink-inverse)}.case-nav a[aria-current="true"] .n{opacity:1}.case-nav a:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}@media (max-width:760px){.case-nav-title{display:none}.case-nav-in{min-height:48px}.case-nav a{font-size:13px;padding:7px 11px}}@media (prefers-reduced-motion:reduce){.top,.case-nav{transition:none}.case-nav ol{scroll-behavior:auto}}
 
@@ -1608,7 +1608,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</span><b>ASOCAM Chile</b></span>
 </a>
 <a class="gx-card" href="#grafico-ilhabella">
-<span class="gx-thumb"><img alt="" loading="lazy" src="img/ilhabella/pagina-1.webp" style="object-position:center"/></span>
+<span class="gx-thumb"><img alt="" loading="lazy" src="img/ilhabella/portada.webp" style="object-position:left center"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</span><b>Ilhabella</b></span>
 </a>
 <a class="gx-card" href="#grafico-afs">
@@ -2772,45 +2772,437 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 <section class="view project gx-page" data-view="grafico-ilhabella" hidden="" id="grafico-ilhabella">
 <nav aria-label="Ruta" class="crumbs"><ol><li><a href="#portafolio">Inicio</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#diseno-grafico">Diseño gráfico</a></li><li aria-current="page">Ilhabella</li></ol></nav>
 <style>
-#grafico-ilhabella .il-hero{background:#fff5e9;color:#34291f;padding:clamp(48px,8vw,100px) 0}
-#grafico-ilhabella .il-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:center}
-#grafico-ilhabella .il-kicker{color:#b34400;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin:0 0 1rem}
-#grafico-ilhabella h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 1rem;color:#34291f}
-#grafico-ilhabella .il-lead{font-size:clamp(1.1rem,2vw,1.35rem);line-height:1.6;max-width:35ch}
-#grafico-ilhabella .il-logo{background:#fff;border-radius:24px;padding:clamp(42px,8vw,95px) clamp(24px,5vw,64px);box-shadow:0 20px 60px -35px rgba(93,51,20,.3)}
-#grafico-ilhabella .il-logo img{display:block;width:100%;height:auto}
-#grafico-ilhabella .il-hero-art{overflow:hidden;border-radius:18px;box-shadow:0 20px 60px -35px rgba(93,51,20,.45)}
-#grafico-ilhabella .il-hero-art img{display:block;width:100%;height:auto}
-#grafico-ilhabella .il-body{padding-block:clamp(48px,7vw,90px)}
-#grafico-ilhabella .il-body h2{font-size:clamp(1.8rem,3vw,2.5rem);margin:0 0 1rem}
-#grafico-ilhabella .il-body p{max-width:65ch;line-height:1.7}
-#grafico-ilhabella .il-values{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:2rem 0 3rem}
-#grafico-ilhabella .il-values span{background:#fff5e9;color:#8e3800;border-radius:14px;padding:1.2rem;font-weight:700;text-align:center}
-#grafico-ilhabella .il-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,28px);margin:2rem 0 4rem}
-#grafico-ilhabella .il-gallery figure{margin:0;min-width:0}
-#grafico-ilhabella .il-gallery img{width:100%;height:auto;display:block;border:1px solid #eee6de;border-radius:12px;box-shadow:0 12px 30px -20px rgba(52,41,31,.35)}
-#grafico-ilhabella .il-gallery figcaption{font-size:.95rem;font-weight:700;color:#594638;margin-top:.7rem}
-#grafico-ilhabella .il-guide{background:#302820;color:#fff;border-radius:24px;padding:clamp(28px,5vw,56px)}
-#grafico-ilhabella .il-guide h2{color:#fff}
-#grafico-ilhabella .il-guide p{color:#f6e9dc}
-#grafico-ilhabella .il-guide a{display:inline-flex;align-items:center;gap:.5rem;margin-top:.7rem;padding:.9rem 1.4rem;border-radius:999px;background:#d95800;color:#fff;font-weight:700;text-decoration:none}
-#grafico-ilhabella .il-guide a:hover{background:#ad4500}
-#grafico-ilhabella .il-guide a:focus-visible{outline:3px solid #ffb26f;outline-offset:4px}
-@media(max-width:700px){#grafico-ilhabella .il-hero-inner,#grafico-ilhabella .il-gallery{grid-template-columns:1fr}#grafico-ilhabella .il-values{grid-template-columns:repeat(2,1fr)}}
+#grafico-ilhabella .il{--o:#E65C00;--ow:#CA4E22;--od:#993D00;--k:#262626;--cr:#FFF5E9;--sa:#F7F1EA;--g:#6B5E54;--line:#EADFD3;--dk:#1D1A17;--ok:#2F7D4F;--no:#B3261E;
+  --ith-header:68px;font-family:"Montserrat","Open Sans",Arial,sans-serif;color:var(--k);font-size:1.06rem;line-height:1.65;background:#fff}
+#grafico-ilhabella .il *{box-sizing:border-box}
+#grafico-ilhabella .il p{margin:0 0 1rem;max-width:62ch}
+#grafico-ilhabella .il img{display:block;max-width:100%;height:auto}
+#grafico-ilhabella .il .case-nav{font-family:"Open Sans",Arial,sans-serif;line-height:1.4}
+#grafico-ilhabella .il .case-nav ol{margin:0 auto 0 0}
+#grafico-ilhabella .il-w{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+#grafico-ilhabella .il-dark{position:relative;color:#fff;background:var(--dk);overflow:hidden}
+#grafico-ilhabella .il-dark>*{position:relative;z-index:1}
+/* etiquetas y titulares */
+#grafico-ilhabella .il-lab{display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ow);margin:0 0 1.1rem;max-width:none}
+#grafico-ilhabella .il-lab::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--o);flex:none}
+#grafico-ilhabella .il-dark .il-lab{color:#FFB98A}
+#grafico-ilhabella .il h2{font-weight:800;font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;color:var(--k);margin:0 0 1.3rem;max-width:22ch}
+#grafico-ilhabella .il h2 em,#grafico-ilhabella .il blockquote em,#grafico-ilhabella .il-lead em{font-style:normal;color:var(--o)}
+#grafico-ilhabella .il-dark h2{color:#fff}
+#grafico-ilhabella .il-dark h2 em{color:#FF8A3D}
+#grafico-ilhabella .il h3{font-weight:800;font-size:1.02rem;color:var(--k);margin:0 0 .4rem}
+#grafico-ilhabella .il-dark h3{color:#fff}
+#grafico-ilhabella .il-cap{font-size:.95rem;line-height:1.5;color:var(--g);margin-top:.8rem}
+#grafico-ilhabella .il-cap b{display:block;font-weight:800;color:var(--k);margin-bottom:.1rem}
+#grafico-ilhabella .il-dark .il-cap{color:#D9CEC4}#grafico-ilhabella .il-dark .il-cap b{color:#fff}
+#grafico-ilhabella .il-pill{display:inline-block;font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .65rem;border-radius:999px}
+#grafico-ilhabella .il-pill.ok{background:#E3F2E8;color:var(--ok)}
+#grafico-ilhabella .il-pill.no{background:#FBE4E2;color:var(--no)}
+/* botones */
+#grafico-ilhabella .il-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.75rem 1.5rem;border-radius:999px;font-family:"Montserrat","Open Sans",Arial,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .16s ease-out,background-color .2s ease}
+#grafico-ilhabella .il-btn:active{transform:scale(.97)}
+#grafico-ilhabella .il-btn svg{width:18px;height:18px;flex:none}
+#grafico-ilhabella .il-btn.or{background:var(--ow);color:#fff}
+#grafico-ilhabella .il-btn.or:hover{background:#A9401B}
+#grafico-ilhabella .il-btn.line{border-color:rgba(255,255,255,.6);color:#fff}
+#grafico-ilhabella .il-btn.line:hover{background:rgba(255,255,255,.1)}
+#grafico-ilhabella .il-btn:focus-visible{outline:3px solid #FFB98A;outline-offset:3px}
+
+/* PORTADA */
+#grafico-ilhabella .il-hero{padding:clamp(64px,9vw,120px) 0}
+#grafico-ilhabella .il-hero .il-bg{position:absolute;inset:0;z-index:0;background:url("img/ilhabella/foto-frasco.webp") 72% 50%/cover no-repeat}
+#grafico-ilhabella .il-hero .il-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,14,.94) 0%,rgba(20,17,14,.82) 45%,rgba(20,17,14,.35) 100%)}
+#grafico-ilhabella .il-hero .il-w{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,5vw,64px);align-items:center}
+#grafico-ilhabella .il-tags{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:0 0 1.6rem;padding:0}
+#grafico-ilhabella .il-tags li{border:1px solid rgba(255,185,138,.55);border-radius:999px;padding:.3rem .85rem;font-weight:700;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#FFB98A}
+#grafico-ilhabella .il h1{font-weight:900;font-size:clamp(3rem,8vw,6rem);line-height:.95;letter-spacing:-.03em;color:#fff;margin:0 0 1.2rem}
+#grafico-ilhabella .il-lead{font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.45;color:#EFE6DE;max-width:30ch;margin-bottom:2rem}
+#grafico-ilhabella .il-lead em{color:#FF8A3D}
+#grafico-ilhabella .il-acts{display:flex;flex-wrap:wrap;gap:.8rem}
+#grafico-ilhabella .il-seal{position:relative;justify-self:center;width:min(100%,320px);aspect-ratio:1;border-radius:50%;background:var(--o);display:grid;place-items:center;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+#grafico-ilhabella .il-seal img{width:72%}
+#grafico-ilhabella .il-seal::before{content:"";position:absolute;inset:-18px;border-radius:50%;border:1.5px solid rgba(255,185,138,.35)}
+#grafico-ilhabella .il-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--o);z-index:2}
+
+/* SECCIONES */
+#grafico-ilhabella .il-sec{padding:clamp(64px,9vw,120px) 0;position:relative;scroll-margin-top:120px}
+#grafico-ilhabella .il-sec.cr{background:var(--cr)}
+
+/* Resumen */
+#grafico-ilhabella .il-ctx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:start}
+#grafico-ilhabella .il-intro{font-weight:500;font-size:clamp(1.3rem,2.1vw,1.65rem);line-height:1.45;max-width:32ch}
+#grafico-ilhabella .il-intro b{font-weight:800;color:var(--o)}
+#grafico-ilhabella .il-ctx aside{border-left:2px solid var(--line);padding-left:clamp(20px,3vw,40px)}
+#grafico-ilhabella .il-ctx aside>div+div{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+#grafico-ilhabella .il-ctx aside p{margin:0;font-size:1rem;color:var(--g)}
+#grafico-ilhabella .il-vals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(48px,7vw,80px);list-style:none;padding:0}
+#grafico-ilhabella .il-vals img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;margin-bottom:1rem}
+#grafico-ilhabella .il-vals p{font-size:.95rem;color:var(--g);margin:0}
+#grafico-ilhabella .il-quote{margin:clamp(56px,8vw,96px) auto 0;text-align:center;max-width:860px}
+#grafico-ilhabella .il-quote blockquote{margin:0;font-weight:900;font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;letter-spacing:-.02em;color:var(--k)}
+#grafico-ilhabella .il-quote cite{display:block;margin-top:.9rem;font-style:normal;font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--g)}
+#grafico-ilhabella .il-swoosh{display:block;width:120px;height:34px;margin:0 auto 1.4rem;border-bottom:8px solid var(--o);border-radius:0 0 50% 50%/0 0 100% 100%}
+
+/* 01 Logo */
+#grafico-ilhabella .il-logo{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:2rem}
+#grafico-ilhabella .il-logo-card{background:var(--cr);border-radius:28px;padding:clamp(40px,7vw,90px) clamp(28px,6vw,80px)}
+#grafico-ilhabella .il-logo-card img{width:100%;max-width:520px;margin:0 auto}
+#grafico-ilhabella .il-steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+#grafico-ilhabella .il-steps li{display:grid;grid-template-columns:44px 1fr;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--line)}
+#grafico-ilhabella .il-steps li:last-child{border-bottom:1px solid var(--line)}
+#grafico-ilhabella .il-steps span{font-weight:900;font-size:1.2rem;color:var(--o)}
+#grafico-ilhabella .il-steps p{margin:0;color:var(--g);font-size:.98rem}
+#grafico-ilhabella .il-steps b{display:block;color:var(--k);font-weight:800}
+#grafico-ilhabella .il-vers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2vw,20px);margin-top:clamp(48px,7vw,72px)}
+#grafico-ilhabella .il-vers figure,#grafico-ilhabella .il-use figure{margin:0;min-width:0}
+#grafico-ilhabella .il-vers .t,#grafico-ilhabella .il-use .t{grid-template-columns:minmax(0,1fr);justify-items:center;min-width:0}
+#grafico-ilhabella .il-vers .t{aspect-ratio:4/3;border-radius:18px;display:grid;place-items:center;border:1px solid var(--line)}
+#grafico-ilhabella .il-vers .t img{width:66%}
+#grafico-ilhabella .il-vers .t .c{width:56%;aspect-ratio:1;border-radius:50%;background:var(--o);display:grid;place-items:center}
+#grafico-ilhabella .il-vers .t .c img{width:72%}
+#grafico-ilhabella .il-use{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.6vw,18px);margin-top:clamp(40px,6vw,64px)}
+#grafico-ilhabella .il-use figure{margin:0}
+#grafico-ilhabella .il-use .t{aspect-ratio:1;border-radius:14px;display:grid;place-items:center;overflow:hidden;position:relative;border:1px solid var(--line)}
+#grafico-ilhabella .il-use .t>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#grafico-ilhabella .il-use .t>img.lg{position:relative;width:70%}
+#grafico-ilhabella .il .il-vers img,#grafico-ilhabella .il .il-use img,#grafico-ilhabella .il .il-logo-card img,#grafico-ilhabella .il .il-type img,#grafico-ilhabella .il .il-icons img{background:none!important;box-shadow:none!important;border:0!important;border-radius:0!important;padding:0!important;cursor:default}
+#grafico-ilhabella .il-use figcaption{font-size:.85rem;line-height:1.4;color:var(--g);margin-top:.5rem}
+#grafico-ilhabella .il-use figcaption .il-pill{margin-bottom:.3rem}
+
+/* 02 Sistema */
+#grafico-ilhabella .il-sys-h{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:2.4rem}
+#grafico-ilhabella .il-sys-h p{margin:0;color:var(--g)}
+#grafico-ilhabella .il-main{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#grafico-ilhabella .il-main>div{border-radius:18px;padding:1.2rem;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;font-size:.88rem;line-height:1.4}
+#grafico-ilhabella .il-main b{font-weight:800;font-size:.95rem}
+#grafico-ilhabella .il-main code{font-family:"Montserrat",sans-serif;font-weight:800;font-size:1.25rem;display:block}
+#grafico-ilhabella .il-sup{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:12px}
+#grafico-ilhabella .il-sup>div{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+#grafico-ilhabella .il-sup .c{height:84px;padding:.6rem .8rem;font-weight:800;font-size:1.3rem}
+#grafico-ilhabella .il-sup .i{padding:.55rem .8rem .7rem;font-size:.78rem;line-height:1.35;color:var(--g)}
+#grafico-ilhabella .il-sup .i b{display:block;color:var(--k);font-size:.8rem}
+#grafico-ilhabella .il-why{margin-top:1.4rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;background:#fff;border-radius:18px;padding:1.2rem 1.4rem;border:1px solid var(--line)}
+#grafico-ilhabella .il-why .dot{width:38px;height:38px;border-radius:50%;background:var(--o);color:#fff;display:grid;place-items:center;font-weight:900}
+#grafico-ilhabella .il-why p{margin:0;font-size:.98rem;color:var(--g);max-width:none}
+#grafico-ilhabella .il-why b{color:var(--k)}
+#grafico-ilhabella .il-type{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,48px);margin-top:clamp(48px,7vw,80px);align-items:stretch}
+#grafico-ilhabella .il-type .tc{background:#fff;border-radius:22px;padding:clamp(20px,3vw,32px);border:1px solid var(--line)}
+#grafico-ilhabella .il-type .tc p{font-size:.95rem;color:var(--g)}
+#grafico-ilhabella .il-treb{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1rem}
+#grafico-ilhabella .il-treb-aa{width:62%;margin-top:1.4rem}
+#grafico-ilhabella .il-scale{display:grid;gap:0;margin-top:.6rem}
+#grafico-ilhabella .il-scale>div{display:grid;grid-template-columns:130px 1fr;gap:1rem;align-items:baseline;padding:.9rem 0;border-top:1px solid var(--line)}
+#grafico-ilhabella .il-scale small{font-size:.78rem;color:var(--g)}
+#grafico-ilhabella .il-chip{display:inline-block;background:var(--ow);color:#fff;font-weight:700;font-size:.92rem;padding:.55rem 1.3rem;border-radius:999px}
+#grafico-ilhabella .il-icons{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,4fr);gap:clamp(16px,3vw,32px);margin-top:clamp(48px,7vw,80px);align-items:start}
+#grafico-ilhabella .il-icons figure{margin:0}
+#grafico-ilhabella .il-icons .t{background:#fff;border-radius:20px;padding:clamp(12px,2vw,20px);border:1px solid var(--line)}
+#grafico-ilhabella .il-icons .t.gr{background:#6B6B6B;border-color:#6B6B6B}
+#grafico-ilhabella .il-shapes{background:#fff;border-radius:20px;padding:clamp(18px,2.6vw,28px);border:1px solid var(--line)}
+#grafico-ilhabella .il-shapes .row{display:flex;gap:14px;align-items:center;margin:.6rem 0 1.2rem}
+#grafico-ilhabella .il-shapes ul{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+#grafico-ilhabella .il-shapes li{position:relative;padding-left:1.3rem;font-size:.95rem;color:var(--g)}
+#grafico-ilhabella .il-shapes li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--o)}
+#grafico-ilhabella .il-shapes li b{color:var(--k)}
+
+/* 03 Aplicaciones */
+#grafico-ilhabella .il-ba{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,3fr) minmax(0,4fr);gap:clamp(16px,3vw,32px);align-items:start;margin-top:2.2rem}
+#grafico-ilhabella .il-ba figure{margin:0}
+#grafico-ilhabella .il .il-ba img{width:100%;border-radius:16px;box-shadow:0 24px 50px -30px rgba(0,0,0,.85)}
+#grafico-ilhabella .il-ba figcaption{margin-top:.8rem;font-size:.92rem;color:#D9CEC4;line-height:1.45}
+#grafico-ilhabella .il-ba figcaption .il-pill{margin-bottom:.35rem}
+#grafico-ilhabella .il-check{list-style:none;margin:0;padding:0;counter-reset:c;display:grid;gap:0}
+#grafico-ilhabella .il-check li{counter-increment:c;display:grid;grid-template-columns:36px 1fr;gap:.8rem;padding:.85rem 0;border-top:1px solid rgba(255,255,255,.14);font-size:.96rem;color:#D9CEC4}
+#grafico-ilhabella .il-check li::before{content:counter(c);font-weight:900;color:#FF8A3D;font-size:1.1rem}
+#grafico-ilhabella .il-check b{color:#fff}
+#grafico-ilhabella .il-web{display:grid;gap:clamp(18px,3vw,28px);margin-top:clamp(48px,7vw,80px)}
+#grafico-ilhabella .il-web figure{margin:0;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3fr);gap:clamp(16px,3vw,32px);align-items:center}
+#grafico-ilhabella .il .il-web img{width:100%;border-radius:14px}
+#grafico-ilhabella .il-web figcaption{font-size:.95rem;color:#D9CEC4;line-height:1.5}
+#grafico-ilhabella .il-web figcaption b{display:block;color:#fff;font-weight:800}
+
+/* 04 Guía */
+#grafico-ilhabella .il-man{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);align-items:center}
+#grafico-ilhabella .il-pages{position:relative;aspect-ratio:1.25;max-width:560px;width:100%}
+#grafico-ilhabella .il-pages img{position:absolute;width:72%;border-radius:10px;box-shadow:0 24px 50px -24px rgba(43,23,10,.55);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+#grafico-ilhabella .il-pages img:nth-child(1){left:0;top:0;transform:rotate(-5deg)}
+#grafico-ilhabella .il-pages img:nth-child(2){left:14%;top:14%;transform:rotate(1deg)}
+#grafico-ilhabella .il-pages img:nth-child(3){left:28%;top:30%;transform:rotate(5deg)}
+@media (hover:hover){#grafico-ilhabella .il-pages:hover img:nth-child(1){transform:rotate(-8deg) translate(-12px,-6px)}#grafico-ilhabella .il-pages:hover img:nth-child(3){transform:rotate(8deg) translate(12px,6px)}}
+#grafico-ilhabella .il-man p{color:var(--g)}
+#grafico-ilhabella .il-man ul{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+#grafico-ilhabella .il-man li{border:1px solid #F0C9AC;background:#fff;border-radius:999px;color:var(--od);padding:.3rem .85rem;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+#grafico-ilhabella .il-man .il-acts{gap:.6rem 1.2rem;align-items:center}
+#grafico-ilhabella .il-man .il-link{font-weight:700;font-size:.92rem;color:var(--ow);text-underline-offset:3px}
+#grafico-ilhabella .il-man small{display:block;margin-top:.9rem;color:var(--g);font-size:.92rem}
+
+/* Ficha */
+#grafico-ilhabella .il-ficha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#grafico-ilhabella .il-ficha>div{padding:1.6rem clamp(14px,2vw,26px)}
+#grafico-ilhabella .il-ficha>div+div{border-left:1px solid var(--line)}
+#grafico-ilhabella .il-ficha dt{font-weight:800;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ow);margin-bottom:.5rem}
+#grafico-ilhabella .il-ficha dd{margin:0;font-size:1rem;line-height:1.45}
+#grafico-ilhabella .il-agwrap .sv-cta{margin-top:clamp(40px,6vw,72px)}
+
+/* aparición */
+#grafico-ilhabella .il.rv-on .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
+#grafico-ilhabella .il.rv-on .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){#grafico-ilhabella .il.rv-on .rv{opacity:1;transform:none;transition:none}#grafico-ilhabella .il *{transition:none!important}}
+
+@media (max-width:900px){
+#grafico-ilhabella .il-hero .il-w,#grafico-ilhabella .il-ctx,#grafico-ilhabella .il-logo,#grafico-ilhabella .il-sys-h,#grafico-ilhabella .il-type,#grafico-ilhabella .il-man{grid-template-columns:minmax(0,1fr)}
+#grafico-ilhabella .il-seal{width:220px;justify-self:start}
+#grafico-ilhabella .il-ctx aside{border-left:0;padding-left:0;border-top:2px solid var(--line);padding-top:1.5rem}
+#grafico-ilhabella .il-vals,#grafico-ilhabella .il-vers,#grafico-ilhabella .il-main{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ilhabella .il-use{grid-template-columns:repeat(3,minmax(0,1fr))}
+#grafico-ilhabella .il-sup{grid-template-columns:repeat(3,minmax(0,1fr))}
+#grafico-ilhabella .il-icons{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#grafico-ilhabella .il-icons .il-shapes{grid-column:1/-1}
+#grafico-ilhabella .il-ba{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+#grafico-ilhabella .il-ba .il-check{grid-column:1/-1}
+#grafico-ilhabella .il-web figure{grid-template-columns:minmax(0,1fr)}
+#grafico-ilhabella .il-ficha{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ilhabella .il-ficha>div:nth-child(3){border-left:0}
+#grafico-ilhabella .il-ficha>div:nth-child(n+3){border-top:1px solid var(--line)}
+#grafico-ilhabella .il-pages{max-width:420px;margin:0 auto}
+}
+@media (max-width:640px){
+#grafico-ilhabella .il-use{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ilhabella .il-sup{grid-template-columns:repeat(2,minmax(0,1fr))}
+#grafico-ilhabella .il-icons{grid-template-columns:minmax(0,1fr)}
+#grafico-ilhabella .il-scale>div{grid-template-columns:minmax(0,1fr);gap:.2rem}
+#grafico-ilhabella .il-ficha{grid-template-columns:minmax(0,1fr)}
+#grafico-ilhabella .il-ficha>div{border-left:0!important}
+#grafico-ilhabella .il-ficha>div+div{border-top:1px solid var(--line)}
+}
 </style>
-<header class="il-hero"><div class="wrap il-hero-inner"><div><p class="il-kicker">Branding · Identidad visual · 2026</p><h1>Ilhabella</h1><p class="il-lead">Rediseño de identidad y guía de marca para una propuesta centrada en el bienestar.</p></div><div class="il-hero-art"><img src="img/ilhabella/pagina-1.webp" alt="Portada de la guía de identidad visual de Ilhabella" width="1600" height="900"></div></div></header>
-<div class="wrap narrow il-body"><p class="il-kicker">La marca</p><h2>Bienestar con una identidad cercana</h2><p>La guía reúne el logotipo y sus usos, el lenguaje visual y las imágenes que acompañan a la marca. Su identidad utiliza el naranjo y una selección de fotografías vinculadas a la naturaleza y el bienestar.</p>
-<div class="il-values" aria-label="Valores de la marca"><span>Confianza</span><span>Bienestar</span><span>Vitalidad</span><span>Compromiso</span></div>
-<p class="il-kicker">Sistema visual</p><h2>Una identidad para distintos formatos</h2><p>Variantes del logotipo, color y aplicaciones digitales forman parte de la guía.</p>
-<div class="il-gallery">
-<figure><img src="img/ilhabella/pagina-7.webp" alt="Variantes del logotipo de Ilhabella sobre fondos claros y naranjos" data-cap="Ilhabella · Variantes del logotipo" width="1600" height="900" loading="lazy"><figcaption>Variantes del logotipo</figcaption></figure>
-<figure><img src="img/ilhabella/pagina-10.webp" alt="Colores principales del logotipo y la web de Ilhabella" data-cap="Ilhabella · Colores principales" width="1600" height="900" loading="lazy"><figcaption>Colores principales</figcaption></figure>
-<figure><img src="img/ilhabella/pagina-14.webp" alt="Ejemplos de buenas prácticas para el uso del logotipo en gráficas" data-cap="Ilhabella · Aplicación de marca" width="1600" height="900" loading="lazy"><figcaption>Aplicación de marca</figcaption></figure>
-<figure><img src="img/ilhabella/pagina-15.webp" alt="Ejemplos de banners para la web de Ilhabella" data-cap="Ilhabella · Gráficas web" width="1600" height="900" loading="lazy"><figcaption>Gráficas web</figcaption></figure>
-<figure><img src="img/ilhabella/pagina-17.webp" alt="Sistema de iconos para la web de Ilhabella" data-cap="Ilhabella · Iconografía web" width="1600" height="900" loading="lazy"><figcaption>Iconografía web</figcaption></figure>
+
+<div class="il" aria-label="Caso de estudio Ilhabella">
+
+  <header class="il-hero il-dark">
+    <div class="il-bg" aria-hidden="true"></div>
+    <div class="il-w">
+      <div>
+        <ul class="il-tags" aria-label="Disciplinas"><li>Branding</li><li>Rediseño de logo</li><li>Guía de marca</li></ul>
+        <h1>ilhabella</h1>
+        <p class="il-lead">Rediseño de logo y guía de marca para una tienda de <em>bienestar natural</em>.</p>
+        <div class="il-acts">
+          <a class="il-btn or" href="files/Guia_de_marca_Ilhabella.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Ver guía (PDF)</a>
+          <a class="il-btn line" href="#il-logo" data-il-scroll="il-logo">Ver el logo</a>
+        </div>
+      </div>
+      <div class="il-seal" aria-hidden="true"><img src="img/ilhabella/logo-blanco.webp" alt="" width="1118" height="459"></div>
+    </div>
+  </header>
+
+  <nav class="case-nav" aria-label="Secciones del proyecto" data-il-nav><div class="case-nav-in"><span class="case-nav-title">Ilhabella</span><ol>
+    <li><a href="#il-resumen" data-il-scroll="il-resumen" aria-current="true">Resumen</a></li>
+    <li><a href="#il-logo" data-il-scroll="il-logo"><span class="n">01</span>Logo</a></li>
+    <li><a href="#il-sistema" data-il-scroll="il-sistema"><span class="n">02</span>Sistema</a></li>
+    <li><a href="#il-aplicaciones" data-il-scroll="il-aplicaciones"><span class="n">03</span>Aplicaciones</a></li>
+    <li><a href="#il-guia" data-il-scroll="il-guia"><span class="n">04</span>Guía</a></li>
+  </ol></div></nav>
+
+  <!-- Resumen -->
+  <section class="il-sec" id="il-resumen">
+    <div class="il-w">
+      <p class="il-lab rv">Resumen · El encargo</p>
+      <div class="il-ctx">
+        <p class="il-intro rv"><b>ilhabella</b> vende suplementos, vitaminas y productos naturales para adultos y adultos mayores. Rediseñé su logo y armé una guía para que la marca se vea igual en la web y en redes.</p>
+        <aside class="rv">
+          <div><h3>El punto de partida</h3><p>Cada sitio usaba fuentes distintas, el naranjo tenía poco contraste y las gráficas costaban de leer.</p></div>
+          <div><h3>La propuesta</h3><p>Un logo más legible, dos naranjos con funciones claras y reglas simples para diseñar gráficas.</p></div>
+        </aside>
+      </div>
+      <ul class="il-vals" aria-label="Valores de la marca">
+        <li class="rv"><img src="img/ilhabella/valor-confianza.webp" alt="Profesional de la salud sonriendo en un laboratorio" width="900" height="600" loading="lazy" style="object-position:72% 40%"><h3>Confianza</h3><p>Productos con altos estándares de calidad y seguridad.</p></li>
+        <li class="rv"><img src="img/ilhabella/valor-bienestar.webp" alt="Mujer sonriendo entre hojas verdes" width="900" height="600" loading="lazy" style="object-position:55% 30%"><h3>Bienestar</h3><p>Cuidado integral con soluciones naturales.</p></li>
+        <li class="rv"><img src="img/ilhabella/valor-vitalidad.webp" alt="Familia jugando en un campo verde" width="900" height="600" loading="lazy" style="object-position:40% 50%"><h3>Vitalidad</h3><p>Hábitos que dan energía en cada etapa de la vida.</p></li>
+        <li class="rv"><img src="img/ilhabella/valor-compromiso.webp" alt="Profesional mostrando un frasco de producto natural" width="900" height="601" loading="lazy" style="object-position:30% 50%"><h3>Compromiso</h3><p>Responsabilidad y cercanía con quien confía en la marca.</p></li>
+      </ul>
+      <div class="il-quote rv">
+        <span class="il-swoosh" aria-hidden="true"></span>
+        <blockquote>Tu bienestar <em>nos importa</em></blockquote>
+        <cite>Espíritu de la marca</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Logo -->
+  <section class="il-sec cr" id="il-logo">
+    <div class="il-w">
+      <p class="il-lab rv">01 · Logo</p>
+      <h2 class="rv">Más legible, <em>más accesible</em></h2>
+      <div class="il-logo">
+        <div class="il-logo-card rv"><img src="img/ilhabella/logo-naranjo.webp" alt="Logo de ilhabella: el nombre en minúsculas, en naranjo, con una curva en forma de sonrisa debajo" width="1118" height="459"></div>
+        <ol class="il-steps rv" aria-label="Cambios del rediseño">
+          <li><span>1</span><p><b>Naranjo más accesible</b>El logo pasó a #E65C00, que cumple WCAG AA para elementos gráficos.</p></li>
+          <li><span>2</span><p><b>Grosores unificados</b>Se corrigieron las letras para alinearlas con la marca Safe Care.</p></li>
+          <li><span>3</span><p><b>Sin eslogan</b>Se quitó del logo porque hacía difícil leerlo en tamaños chicos.</p></li>
+          <li><span>4</span><p><b>Siempre en minúsculas</b>Así la «i» no se confunde con las «ll».</p></li>
+        </ol>
+      </div>
+      <div class="il-vers">
+        <figure class="rv"><div class="t" style="background:#fff"><img src="img/ilhabella/logo-naranjo.webp" alt="Logo principal en naranjo sobre blanco" width="1118" height="459" loading="lazy"></div><figcaption class="il-cap"><b>Principal</b>Sobre fondos blancos y claros.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:var(--o);border-color:var(--o)"><img src="img/ilhabella/logo-blanco.webp" alt="Logo en blanco sobre naranjo" width="1118" height="459" loading="lazy"></div><figcaption class="il-cap"><b>Negativo</b>Sobre naranjo y fotos oscuras.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:#fff"><span class="c"><img src="img/ilhabella/logo-blanco.webp" alt="Ícono: logo blanco dentro de un círculo naranjo" width="1118" height="459" loading="lazy"></span></div><figcaption class="il-cap"><b>Ícono</b>Avatares, sellos y espacios cuadrados.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:#fff"><img src="img/ilhabella/logo-negro.webp" alt="Logo en negro sobre blanco" width="1118" height="459" loading="lazy"></div><figcaption class="il-cap"><b>Negro</b>Impresión a un color.</figcaption></figure>
+      </div>
+      <div class="il-use" aria-label="Buen uso del logo">
+        <figure class="rv"><div class="t"><img class="bg" src="img/ilhabella/foto-hierbas.webp" alt="" loading="lazy" style="filter:brightness(.6)"><img class="lg" src="img/ilhabella/logo-blanco.webp" alt="" loading="lazy"></div><figcaption><span class="il-pill ok">Sí</span><br>Blanco sobre foto oscurecida.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:var(--o);border-color:var(--o)"><img class="lg" src="img/ilhabella/logo-blanco.webp" alt="" loading="lazy"></div><figcaption><span class="il-pill ok">Sí</span><br>Blanco sobre el naranjo de marca.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:#fff"><img class="lg" src="img/ilhabella/logo-naranjo.webp" alt="" loading="lazy"></div><figcaption><span class="il-pill ok">Sí</span><br>Naranjo sobre blanco.</figcaption></figure>
+        <figure class="rv"><div class="t"><img class="bg" src="img/ilhabella/foto-hierbas.webp" alt="" loading="lazy"><img class="lg" src="img/ilhabella/logo-naranjo.webp" alt="" loading="lazy"></div><figcaption><span class="il-pill no">No</span><br>Naranjo sobre foto con poco contraste.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:#FFC235;border-color:#FFC235"><img class="lg" src="img/ilhabella/logo-blanco.webp" alt="" loading="lazy"></div><figcaption><span class="il-pill no">No</span><br>Blanco sobre colores claros.</figcaption></figure>
+        <figure class="rv"><div class="t" style="background:#fff"><img class="lg" src="img/ilhabella/logo-naranjo.webp" alt="" loading="lazy" style="transform:scaleX(1.4) scaleY(.8)"></div><figcaption><span class="il-pill no">No</span><br>Deformar, separar o rotar.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Sistema -->
+  <section class="il-sec" id="il-sistema">
+    <div class="il-w">
+      <p class="il-lab rv">02 · Sistema</p>
+      <div class="il-sys-h">
+        <h2 class="rv">Dos naranjos, <em>cada uno con su función</em></h2>
+        <p class="rv">Un naranjo para el logo y otro para la web, más tonos de apoyo que indican si llevan texto blanco u oscuro.</p>
+      </div>
+      <div class="il-main rv" role="list" aria-label="Colores principales">
+        <div role="listitem" style="background:#E65C00;color:#fff"><b>Naranjo logo</b><div><code>#E65C00</code>Solo para el logo.</div></div>
+        <div role="listitem" style="background:#CA4E22;color:#fff"><b>Naranjo web</b><div><code>#CA4E22</code>Botones y bloques con texto blanco.</div></div>
+        <div role="listitem" style="background:#fff;border:1px solid var(--line)"><b>Blanco</b><div><code>#FFFFFF</code>Fondo principal.</div></div>
+        <div role="listitem" style="background:#262626;color:#fff"><b>Negro</b><div><code>#262626</code>Textos.</div></div>
+      </div>
+      <div class="il-sup rv" role="list" aria-label="Colores de apoyo">
+        <div role="listitem"><div class="c" style="background:#FFC235;color:#262626">Aa</div><div class="i"><b>#FFC235</b>Texto oscuro</div></div>
+        <div role="listitem"><div class="c" style="background:#F78E00;color:#262626">Aa</div><div class="i"><b>#F78E00</b>Texto oscuro</div></div>
+        <div role="listitem"><div class="c" style="background:#C24E00;color:#fff">Aa</div><div class="i"><b>#C24E00</b>Texto blanco</div></div>
+        <div role="listitem"><div class="c" style="background:#993D00;color:#fff">Aa</div><div class="i"><b>#993D00</b>Texto blanco</div></div>
+        <div role="listitem"><div class="c" style="background:#1B7EA1;color:#fff">Aa</div><div class="i"><b>#1B7EA1</b>Texto blanco</div></div>
+        <div role="listitem"><div class="c" style="background:#308B91;color:#fff">Aa</div><div class="i"><b>#308B91</b>Texto blanco grande</div></div>
+      </div>
+      <div class="il-why rv"><span class="dot" aria-hidden="true">?</span><p><b>¿Por qué dos naranjos?</b> El texto blanco sobre #E65C00 tiene un contraste de 3,6:1, que no alcanza para leer cómodo. Sobre #CA4E22 llega a 4,5:1, por eso es el naranjo de la web.</p></div>
+
+      <div class="il-type">
+        <div class="tc rv">
+          <h3>Trebuchet</h3>
+          <p>Para el logo y futuras submarcas.</p>
+          <div class="il-treb"><img src="img/ilhabella/trebuchet-bold.webp" alt="Alfabeto Trebuchet Bold" width="1000" height="420" loading="lazy"><img src="img/ilhabella/trebuchet-reg.webp" alt="Alfabeto Trebuchet Regular" width="1000" height="425" loading="lazy"></div>
+          <img class="il-treb-aa" src="img/ilhabella/trebuchet-aa.webp" alt="" width="900" height="580" loading="lazy">
+        </div>
+        <div class="tc rv">
+          <h3>Montserrat</h3>
+          <p>Para la web y las gráficas. Unifica sitios que usaban fuentes distintas y se lee bien en pantalla.</p>
+          <div class="il-scale">
+            <div><small>Black · títulos</small><span style="font-weight:900;font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.1;letter-spacing:-.01em">Tu bienestar nos importa</span></div>
+            <div><small>Bold · subtítulos</small><span style="font-weight:700;font-size:1.15rem">Vitaminas para tu bienestar</span></div>
+            <div><small>Regular · textos</small><span style="font-size:.98rem">Productos naturales para el cuidado diario.</span></div>
+            <div><small>Bold · botones</small><span><span class="il-chip">Ver producto →</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="il-icons">
+        <figure class="rv"><div class="t"><img src="img/ilhabella/iconos-web.webp" alt="Dieciséis íconos web de línea con puntas redondeadas: billetera, bolsa, calendario, documento, corazón, hoja de arce y otros" width="1000" height="1000" loading="lazy"></div><figcaption class="il-cap"><b>Íconos web</b>Línea sin relleno y puntas redondeadas: se ven limpios en cualquier fondo.</figcaption></figure>
+        <figure class="rv"><div class="t gr"><img src="img/ilhabella/sellos.webp" alt="Sellos de marca: Health Canada calidad certificada, Beauty and Wellness y despacho individual" width="1200" height="402" loading="lazy"></div><div class="t" style="margin-top:12px"><img src="img/ilhabella/iconos-marca.webp" alt="Íconos de marca en círculos naranjos y amarillos: salud, despacho, Health Canada y redes sociales" width="1000" height="492" loading="lazy"></div><figcaption class="il-cap"><b>Sellos e íconos de marca</b>Comunican respaldo: Health Canada, calidad certificada y despacho.</figcaption></figure>
+        <div class="il-shapes rv">
+          <h3>Qué formas usar</h3>
+          <div class="row" aria-hidden="true"><span style="width:52px;height:52px;border-radius:50%;background:var(--o)"></span><span style="width:70px;height:52px;border-radius:14px;background:#FFC235"></span><span style="width:84px;height:34px;border-bottom:8px solid var(--o);border-radius:0 0 50% 50%/0 0 100% 100%"></span></div>
+          <ul>
+            <li><b>Círculos,</b> como el punto de la «i» y los sellos.</li>
+            <li><b>Curvas</b> que recuerden la sonrisa del logo, sin desarmarlo.</li>
+            <li><b>Rectángulos</b> siempre con esquinas redondeadas.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Aplicaciones -->
+  <section class="il-sec il-dark" id="il-aplicaciones">
+    <div class="il-w">
+      <p class="il-lab rv">03 · Aplicaciones</p>
+      <h2 class="rv">De una gráfica confusa <em>a un mensaje claro</em></h2>
+      <div class="il-ba">
+        <figure class="rv"><img src="img/ilhabella/grafica-antes.webp" alt="Gráfica anterior: logo casi invisible, textos finos sobre la foto y anotaciones de revisión" data-cap="Ilhabella · Gráfica antes del rediseño" width="720" height="900" loading="lazy"><figcaption><span class="il-pill no">Antes</span><br>Logo casi invisible, textos finos sobre la foto y elementos que no se leen.</figcaption></figure>
+        <figure class="rv"><img src="img/ilhabella/grafica-despues.webp" alt="Gráfica nueva: logo visible arriba, foto de familia y una tarjeta blanca con el mensaje Se acabó la espera, ilhabellaShop ya está disponible" data-cap="Ilhabella · Gráfica después del rediseño" width="721" height="900" loading="lazy"><figcaption><span class="il-pill ok">Después</span><br>Logo visible, un mensaje principal y una acción clara.</figcaption></figure>
+        <ol class="il-check rv" aria-label="Lista para revisar antes de publicar">
+          <li><span><b>¿Qué gana la persona?</b> Responde eso primero: dónde comprar y qué beneficio tiene.</span></li>
+          <li><span><b>Jerarquía.</b> Destaca lo importante con tamaño, color y forma.</span></li>
+          <li><span><b>Contraste.</b> Oscurece la foto y agranda el texto si no se lee.</span></li>
+          <li><span><b>Menos es más.</b> Si un elemento no se ve o no aporta, se quita.</span></li>
+          <li><span><b>Rostros libres.</b> El logo y los textos no tapan caras.</span></li>
+        </ol>
+      </div>
+      <div class="il-web">
+        <figure class="rv"><img src="img/ilhabella/web-hero.webp" alt="Banner principal de invierno con vitaminas y una pareja abrigada" data-cap="Ilhabella · Banner principal" width="1800" height="453" loading="lazy"><figcaption><b>Banner principal</b>Producto y personas a un lado, mensaje corto y etiqueta de campaña.</figcaption></figure>
+        <figure class="rv"><img src="img/ilhabella/web-cards.webp" alt="Cuatro tarjetas de productos destacados con nombre, dos datos y botón Ver producto" data-cap="Ilhabella · Tarjetas de producto" width="1800" height="356" loading="lazy"><figcaption><b>Tarjetas de producto</b>Foto, nombre en negrita, dos datos clave y un botón.</figcaption></figure>
+        <figure class="rv"><img src="img/ilhabella/web-categoria.webp" alt="Banner de categoría con fondo suave y un set de productos al centro" data-cap="Ilhabella · Banner de categoría" width="1800" height="310" loading="lazy"><figcaption><b>Banner de categoría</b>Fondo suave y el producto al centro, sin texto encima.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Guía -->
+  <section class="il-sec cr" id="il-guia">
+    <div class="il-w il-man">
+      <div class="il-pages rv" aria-hidden="true">
+        <img src="img/ilhabella/guia-pag-3.webp" alt="" width="1100" height="777" loading="lazy">
+        <img src="img/ilhabella/guia-pag-6.webp" alt="" width="1100" height="777" loading="lazy">
+        <img src="img/ilhabella/guia-pag-8.webp" alt="" width="1100" height="777" loading="lazy">
+      </div>
+      <div class="rv">
+        <p class="il-lab">04 · Guía de marca</p>
+        <h2>La guía <em>completa</em></h2>
+        <p>14 páginas en formato horizontal con la esencia de la marca, el logo, el sistema visual y cómo aplicarlo.</p>
+        <ul aria-label="Contenido de la guía"><li>Esencia y valores</li><li>Voz y tono</li><li>Logo y buen uso</li><li>Color</li><li>Tipografía</li><li>Íconos y fotografía</li><li>Gráficas web y redes</li></ul>
+        <div class="il-acts">
+          <a class="il-btn or" href="files/Guia_de_marca_Ilhabella.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>Ver guía (PDF)</a>
+          <a class="il-link" href="https://www.figma.com/deck/1BsesJzHko7GHqNMPTL6dz" target="_blank" rel="noopener noreferrer">Ver la versión original en Figma ↗</a>
+        </div>
+        <small>PDF horizontal · 4,6 MB</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ficha -->
+  <section class="il-sec" aria-labelledby="il-ficha-h">
+    <div class="il-w">
+      <p class="il-lab" id="il-ficha-h">Ficha del proyecto</p>
+      <dl class="il-ficha">
+        <div><dt>Proyecto</dt><dd>Rediseño de logo y guía de marca</dd></div>
+        <div><dt>Alcance</dt><dd>Logo, color, tipografía, íconos y reglas para gráficas</dd></div>
+        <div><dt>Entregables</dt><dd>Guía de marca y gráficas para web y redes</dd></div>
+        <div><dt>Herramientas</dt><dd>Figma</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    var root=document.currentScript.parentNode;
+    var nav=root.querySelector('[data-il-nav]');
+    var links=[].slice.call(nav.querySelectorAll('[data-il-scroll]'));
+    var secs=links.map(function(l){return document.getElementById(l.getAttribute('data-il-scroll'))});
+    function header(){return parseFloat(getComputedStyle(root).getPropertyValue('--ith-header'))||0}
+    function jump(id){var el=document.getElementById(id);if(!el)return;var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;var top=el.getBoundingClientRect().top+window.pageYOffset;var down=top>window.pageYOffset+nav.offsetHeight;window.scrollTo({top:top-nav.offsetHeight-(down?0:header())+1,behavior:rm?'auto':'smooth'})}
+    root.querySelectorAll('[data-il-scroll]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();jump(l.getAttribute('data-il-scroll'))})});
+    var cur=-1;
+    function setCurrent(i){if(i===cur)return;cur=i;links.forEach(function(l,j){if(j===i)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});var l=links[i],ol=nav.querySelector('ol');if(ol&&ol.scrollWidth>ol.clientWidth){ol.scrollLeft=Math.max(0,l.offsetLeft-(ol.clientWidth-l.offsetWidth)/2)}}
+    function spy(){if(!root.offsetParent)return;var line=nav.getBoundingClientRect().bottom+60,idx=0;secs.forEach(function(sc,i){if(sc.getBoundingClientRect().top<=line)idx=i});setCurrent(idx)}
+    var tk=false;window.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){spy();tk=false})}},{passive:true});window.addEventListener('resize',spy);spy();
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if('IntersectionObserver' in window&&!rm){root.classList.add('rv-on');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});root.querySelectorAll('.rv').forEach(function(el){io.observe(el)})}
+  })();
+  </script>
 </div>
-<div class="il-guide"><p class="il-kicker" style="color:#ffb26f">Guía de marca</p><h2>Explora la identidad completa</h2><p>Una presentación de 21 páginas con el sistema visual, las aplicaciones del logotipo y las recomendaciones de uso.</p><a href="files/Guia_de_marca_Ilhabella.pdf" target="_blank" rel="noopener noreferrer">Ver guía completa (PDF) <span aria-hidden="true">↗</span></a> <a href="https://www.figma.com/deck/1BsesJzHko7GHqNMPTL6dz" target="_blank" rel="noopener noreferrer">Ver en Figma <span aria-hidden="true">↗</span></a></div>
-<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="#grafico-afs"><span>Siguiente →</span><b>AFS Chile</b></a></nav></div>
+<div class="wrap narrow il-agwrap">
+<div class="sv-cta"><p><b>¿Tu marca necesita orden y coherencia?</b> Cuéntame de tu proyecto y te ayudo a ordenar tu identidad y dejarla lista para usar en web y redes.</p>
+        <a class="btn sv-btn" href="#contacto">Conversemos sobre tu proyecto</a></div>
+</div>
+
+<div class="wrap narrow">
+<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="#grafico-afs"><span>Siguiente →</span><b>AFS Chile</b></a></nav>
+</div>
 </section>
 <!-- ============ GRÁFICO: AFS CHILE ============ -->
 <section class="view project gx-page" data-view="grafico-afs" hidden="" id="grafico-afs">
