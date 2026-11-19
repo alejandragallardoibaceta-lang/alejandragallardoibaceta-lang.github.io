@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-<head><script>window.addEventListener('message',e=>{const f=document.getElementById('journeyFrame');if(f&&e.source===f.contentWindow&&Number.isFinite(e.data?.journeyHeight)&&e.data.journeyHeight>100)f.style.height=e.data.journeyHeight+'px'})</script><style>
+<head><script>function redirectLegacyPage(){const routes={"#servicios": "/servicios/", "#grafico-suzuki": "/proyectos/mailings-suzuki/"};const path=routes[location.hash];if(path)location.replace(path+location.search)}redirectLegacyPage();addEventListener("hashchange",redirectLegacyPage)</script><script>window.addEventListener('message',e=>{const f=document.getElementById('journeyFrame');if(f&&e.source===f.contentWindow&&Number.isFinite(e.data?.journeyHeight)&&e.data.journeyHeight>100)f.style.height=e.data.journeyHeight+'px'})</script><style>
 #grafico-ithilien .ith-manual{--ag-plum:#421035!important;font-family:"Open Sans",Arial,sans-serif!important;color:#2A0A22!important}
 #grafico-ithilien .ith-manual h2{font-family:"Open Sans",Arial,sans-serif!important;color:#421035!important;font-weight:800!important;letter-spacing:-.01em!important}
 #grafico-ithilien .ith-manual h3{font-family:"Open Sans",Arial,sans-serif!important;color:#8E2C67!important;letter-spacing:.14em!important}
@@ -1014,7 +1014,7 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <a data-nav="portafolio" href="#portafolio">Portafolio</a>
 <a data-nav="sobre-mi" href="#sobre-mi">Sobre mí</a>
 <a data-nav="contacto" href="#contacto">Contacto</a>
-<a data-nav="servicios" href="#servicios">Servicios</a>
+<a data-nav="servicios" href="/servicios/">Servicios</a>
 </nav>
 </div>
 <div aria-hidden="true" class="progress"><span id="progress"></span></div>
@@ -1681,7 +1681,7 @@ bs.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribut
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding</span><b>Ilhabella</b></span>
 </a>
 
-<a class="gx-card" href="#grafico-suzuki"><span class="gx-thumb"><img alt="" src="portada.webp"></span><span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Mailings</span><b>Mailings Suzuki</b></span></a>
+<a class="gx-card" href="/proyectos/mailings-suzuki/"><span class="gx-thumb"><img alt="" src="portada.webp"></span><span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Mailings</span><b>Mailings Suzuki</b></span></a>
 <a class="gx-card" href="#grafico-otec">
 <span class="gx-thumb"><img alt="" loading="lazy" src="img/gx-mailing-ditraining-1.webp" decoding="async"/></span>
 <span class="gx-txt"><span class="gx-kind"><svg aria-hidden="true" class="ic"><use href="#i-megaphone"></use></svg>Publicidad</span><b>Mailings OTEC</b></span>
@@ -3269,7 +3269,7 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 </div>
 
 <div class="wrap narrow">
-<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="#grafico-suzuki"><span>Siguiente →</span><b>Mailings Suzuki</b></a></nav>
+<nav aria-label="Otros proyectos gráficos" class="gx-pager"><a href="#grafico-asocam"><span>← Anterior</span><b>ASOCAM Chile</b></a><a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a><a class="nx" href="/proyectos/mailings-suzuki/"><span>Siguiente →</span><b>Mailings Suzuki</b></a></nav>
 </div>
 </section>
 <!-- ============ GRÁFICO: AFS CHILE ============ -->
@@ -3551,7 +3551,7 @@ initMagazines();
 <dialog class="ml-dlg" id="ml-dlg" aria-labelledby="ml-title"><div class="ml-box"><header><b id="ml-title"></b><button type="button" class="ml-x" aria-label="Cerrar"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header><div class="ml-body"><img alt=""/></div></div></dialog>
 <script>(function(){var d=document.getElementById("ml-dlg");if(!d)return;var t=d.querySelector("#ml-title"),im=d.querySelector(".ml-body img"),body=d.querySelector(".ml-body"),last=null;document.querySelectorAll("#grafico-otec .ml-card").forEach(function(c){c.addEventListener("click",function(){last=c;t.textContent=c.getAttribute("data-title");im.src=c.getAttribute("data-src");im.alt=c.getAttribute("data-alt");if(d.showModal)d.showModal();else d.setAttribute("open","");body.scrollTop=0;document.documentElement.style.overflow="hidden"})});function close(){if(d.open)d.close()}d.addEventListener("close",function(){document.documentElement.style.overflow="";if(last)last.focus()});d.querySelector(".ml-x").addEventListener("click",close);d.addEventListener("click",function(e){if(!e.target.closest(".ml-box")||e.target===body)close()});})();</script>
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
-<a href="#grafico-suzuki"><span>← Anterior</span><b>Mailings Suzuki</b></a>
+<a href="/proyectos/mailings-suzuki/"><span>← Anterior</span><b>Mailings Suzuki</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
 <a class="nx" href="#grafico-afs"><span>Siguiente →</span><b>AFS Chile</b></a>
 </nav>
@@ -3619,7 +3619,7 @@ initMagazines();
 <h2 id="ct-sv-h">¿Tienes un proyecto propio?</h2>
 <p>También trabajo de forma independiente: diseño sitios, tiendas, sistemas de diseño, marcas, piezas y cursos para emprendimientos, empresas y equipos de producto.</p>
 <ul aria-label="Tipos de servicio"><li><svg aria-hidden="true" class="ic"><use href="#i-layout"></use></svg>UX/UI y web</li><li><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Branding y gráfica</li><li><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning</li><li><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics</li></ul>
-<a class="btn ct-sv-btn" href="#servicios">Ver servicios<svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="btn ct-sv-btn" href="/servicios/">Ver servicios<svg aria-hidden="true" class="ic" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </aside>
 </section>
 </main>
@@ -4024,7 +4024,7 @@ g.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(cur+1)}if(e
 <style>
 .project-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;flex:none}.project-actions .sv-btn{justify-content:center;white-space:nowrap}.project .sv-cta{font-family:var(--font);margin-bottom:32px}.project .sv-cta .project-services{background:transparent!important;color:white!important;border-color:white!important}.project .sv-cta .project-services:is(:hover,:focus-visible){background:#E2B7FF!important;border-color:#E2B7FF!important;color:#421035!important}@media(max-width:700px){.project-actions{grid-template-columns:1fr;width:100%}}
 </style>
-<template id="project-actions"><div class="project-actions"><a class="btn sv-btn" target="_blank" rel="noopener">¡Conversemos!</a><a class="btn sv-btn project-services" href="#servicios">Ver servicios</a></div></template>
+<template id="project-actions"><div class="project-actions"><a class="btn sv-btn" target="_blank" rel="noopener">¡Conversemos!</a><a class="btn sv-btn project-services" href="/servicios/">Ver servicios</a></div></template>
 <script>
 (function(){
   const template=document.getElementById('project-actions');

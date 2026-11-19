@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alejandragallardoibaceta-lang.github.io/sitemap.xml
