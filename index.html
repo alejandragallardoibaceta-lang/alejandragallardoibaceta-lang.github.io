@@ -1039,11 +1039,11 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 </div>
 <div class="proj-head pf-head" id="proyectos"><div><p class="eyebrow">Mi trabajo</p><h2>Proyectos</h2><p class="pf-sub">UX/UI, diseño gráfico, e-learning y motion graphics. Filtra por disciplina para ver un tipo de trabajo.</p></div>
 <div class="pf-filters" role="group" aria-label="Filtrar proyectos por disciplina">
-<button type="button" class="pf-f" data-f="all" aria-pressed="true"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>Todos<span class="n"></span></button>
-<button type="button" class="pf-f" data-f="ux" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-layout"></use></svg>UX/UI<span class="n"></span></button>
-<button type="button" class="pf-f" data-f="dg" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Diseño gráfico<span class="n"></span></button>
-<button type="button" class="pf-f" data-f="el" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning<span class="n"></span></button>
-<button type="button" class="pf-f" data-f="mg" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics<span class="n"></span></button>
+<button type="button" class="pf-f" data-f="all" aria-pressed="true"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>Todos</button>
+<button type="button" class="pf-f" data-f="ux" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-layout"></use></svg>UX/UI</button>
+<button type="button" class="pf-f" data-f="dg" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-palette"></use></svg>Diseño gráfico</button>
+<button type="button" class="pf-f" data-f="el" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning</button>
+<button type="button" class="pf-f" data-f="mg" aria-pressed="false"><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics</button>
 </div><p class="pf-status" role="status" aria-live="polite"></p></div><div class="covers pf-grid" id="pf-grid">
 <a class="cover" href="#caso-cotizador" data-disc="ux">
 <div class="cover-text">
@@ -1098,9 +1098,9 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <div class="tools"><span class="tool">Illustrator</span><span class="tool">Photoshop</span><span class="tool">InDesign</span></div>
 <p class="when">2017 – 2021</p>
 </div>
-<div class="cover-img bg-berry dg-fill"><img alt="" loading="lazy" src="img/diseno-grafico-portada.webp"/></div>
+<div class="cover-img bg-berry dg-fill"><p class="proof badge"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>9 proyectos</p><img alt="" loading="lazy" src="img/diseno-grafico-portada.webp"/></div>
 </a><a class="cover" href="#elearning" data-disc="el mg"><div class="cover-text">
-<p class="disc"><span><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning</span><span><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics</span></p><h3>E-learning y Motion graphics</h3><p class="kicker">Cursos interactivos y animación</p><p class="desc">Cursos e-learning con contenido interactivo y piezas animadas para empresas, como el curso de Prevención de IAAS para Clínica Las Condes.</p><div class="tools"><span class="tool">Claude</span><span class="tool">Genially</span><span class="tool">After Effects</span></div><p class="when">Carpeta de proyectos</p></div><div class="cover-img bg-lavender"><img alt="" loading="lazy" src="img/elearn-iaas-inicio.webp"/></div></a><a class="cover" href="#caso-retail" data-disc="ux">
+<p class="disc"><span><svg aria-hidden="true" class="ic"><use href="#i-cap"></use></svg>E-learning</span><span><svg aria-hidden="true" class="ic"><use href="#i-play"></use></svg>Motion graphics</span></p><h3>E-learning y Motion graphics</h3><p class="kicker">Cursos interactivos y animación</p><p class="desc">Cursos e-learning con contenido interactivo y piezas animadas para empresas, como el curso de Prevención de IAAS para Clínica Las Condes.</p><div class="tools"><span class="tool">Claude</span><span class="tool">Genially</span><span class="tool">After Effects</span></div><p class="when">Carpeta de proyectos</p></div><div class="cover-img bg-lavender"><p class="proof badge"><svg aria-hidden="true" class="ic"><use href="#i-grid"></use></svg>4 cursos</p><img alt="" loading="lazy" src="img/elearn-iaas-inicio.webp"/></div></a><a class="cover" href="#caso-retail" data-disc="ux">
 <div class="cover-text">
 <p class="disc"><span><svg aria-hidden="true" class="ic"><use href="#i-layout"></use></svg>UX/UI</span></p>
 <h3>Inchcape Retail</h3>
@@ -1146,10 +1146,9 @@ body.nav-up #grafico-ithilien .ith-manual{--ith-sticky-top:0px}
 <script>
 (function(){var g=document.getElementById('pf-grid');if(!g)return;var bs=[].slice.call(document.querySelectorAll('.pf-f')),cs=[].slice.call(g.children),st=document.querySelector('.pf-status');
 function has(c,f){return f==='all'||(' '+(c.getAttribute('data-disc')||'')+' ').indexOf(' '+f+' ')>-1}
-bs.forEach(function(b){var f=b.getAttribute('data-f');b.querySelector('.n').textContent=cs.filter(function(c){return has(c,f)}).length});
 function apply(f){var n=0;cs.forEach(function(c){var on=has(c,f);if(on){n++;if(c.hidden){c.hidden=false;c.classList.remove('pf-in');void c.offsetWidth;c.classList.add('pf-in')}}else c.hidden=true});
 bs.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===f?'true':'false')});
-var l=bs.filter(function(b){return b.getAttribute('data-f')===f})[0];if(st)st.textContent=n+(n===1?' proyecto':' proyectos')+(f==='all'?'':' de '+l.firstChild.parentNode.textContent.replace(/\d+$/,''))}
+var l=bs.filter(function(b){return b.getAttribute('data-f')===f})[0];if(st)st.textContent=n+(n===1?' proyecto':' proyectos')+(f==='all'?'':' de '+l.firstChild.parentNode.textContent)}
 bs.forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-f'))})});})();
 </script>
 
