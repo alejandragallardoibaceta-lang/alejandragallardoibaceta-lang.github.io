@@ -16,15 +16,38 @@
     script.async = true;
     script.src = 'https://static.hotjar.com/c/hotjar-6855358.js?sv=6';
     document.head.append(script);
+    const measurementId = document.querySelector('meta[name="ga-measurement-id"]')?.content;
+    if (measurementId) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+      const tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+      document.head.append(tag);
+    }
+    function record(name) {
+      window.hj('event', name);
+      if (measurementId) window.gtag('event', name);
+    }
     document.addEventListener('click', event => {
       const link = event.target.closest('a');
       if (!link) return;
-      if (link.hostname === 'wa.me') window.hj('event','clic_whatsapp');
-      if (link.matches('.project-services')) window.hj('event','clic_ver_servicios');
+      if (link.hostname === 'wa.me') {
+        const label = link.textContent.trim();
+        if (label === 'Quiero cotizar') record('clic_quiero_cotizar');
+        else if (label === '¡Conversemos!') record('clic_conversemos');
+        record('clic_whatsapp');
+      }
+      if (link.matches('.project-services')) record('clic_ver_servicios');
     });
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) {
-        window.hj('event','bloque_servicios_visible');
+        record('bloque_servicios_visible');
         observer.unobserve(entry.target);
       }
     });
@@ -42,7 +65,7 @@
     else if (window._hjSettings) {
       for (const item of document.cookie.split(';')) {
         const name = item.trim().split('=')[0];
-        if (name.startsWith('_hj')) {
+        if (name.startsWith('_hj') || name === '_ga' || name.startsWith('_ga_')) {
           document.cookie = name + '=; Max-Age=0; Path=/';
           document.cookie = name + '=; Max-Age=0; Path=/; Domain=' + location.hostname;
         }
