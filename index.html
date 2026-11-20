@@ -3210,15 +3210,87 @@ body.nav-up #grafico-ithilien .i2{--ith-sticky-top:0px}
 <div class="wrap narrow gx-head">
 <p class="eyebrow eb-ic"><svg aria-hidden="true" class="ic"><use href="#i-book"></use></svg>Editorial · revista</p>
 <h1>AFS Chile</h1>
-<p class="sub">Diseño editorial de la revista completa de AFS Chile que presenta sus programas de intercambio: una doble página por destino, con mapa, fotografías de estudiantes e información de cada país.</p>
+<p class="sub">Diseño editorial para AFS Chile: la revista de destinos de intercambio y el brochure corporativo de sus programas. Hojea las dos piezas página por página.</p>
 <div class="tools"><span class="tool">InDesign</span><span class="tool">Photoshop</span><span class="tool">Illustrator</span></div>
 </div>
 <div class="wrap narrow">
-<div class="gx-gallery g2"><figure><img alt="Portada del brochure Destinos de AFS Chile con estudiante y globo terráqueo" data-cap="AFS Chile · Portada y contraportada" loading="lazy" src="img/gx-afs-01.webp"/><figcaption>Portada y contraportada</figcaption></figure>
-<figure><img alt="Doble página con el índice de destinos por continente y el mapa de Oceanía" data-cap="AFS Chile · Índice de destinos · Oceanía" loading="lazy" src="img/gx-afs-02.webp"/><figcaption>Índice de destinos · Oceanía</figcaption></figure>
-<figure><img alt="Doble página de América del Norte y Estados Unidos con mapa y fotografías" data-cap="AFS Chile · América del Norte · Estados Unidos" loading="lazy" src="img/gx-afs-03.webp"/><figcaption>América del Norte · Estados Unidos</figcaption></figure>
-<figure><img alt="Doble página de Australia y Nueva Zelanda con fotografías de estudiantes" data-cap="AFS Chile · Australia · Nueva Zelanda" loading="lazy" src="img/gx-afs-04.webp"/><figcaption>Australia · Nueva Zelanda</figcaption></figure>
+<style>
+#grafico-afs .mg-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px;padding:5px;border-radius:999px;background:var(--surface-subtle);width:max-content;max-width:100%}
+#grafico-afs .mg-tab{border:0;background:none;font:inherit;font-weight:700;font-size:15px;color:var(--ink-muted);padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px;transition:background .2s,color .2s}
+#grafico-afs .mg-tab[aria-selected="true"]{background:var(--action-primary);color:var(--ink-inverse)}
+#grafico-afs .mg-tab:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+#grafico-afs .mg{background:#1D1B26;border-radius:var(--radius-lg);padding:clamp(18px,3.5vw,40px) clamp(14px,3vw,36px) clamp(16px,2.5vw,28px);color:#F4F2F6}
+#grafico-afs .mg:focus-visible{outline:3px solid var(--focus-ring);outline-offset:3px}
+#grafico-afs .mg-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:clamp(14px,2.4vw,24px)}
+#grafico-afs .mg-head b{font-size:clamp(1.05rem,1.8vw,1.3rem)}
+#grafico-afs .mg-head span{font-size:13px;color:#B9B4C3;letter-spacing:.06em}
+#grafico-afs .mg-stage{display:flex;justify-content:center;align-items:center;min-height:clamp(220px,38vw,520px);perspective:1800px;touch-action:pan-y}
+#grafico-afs .mg-sheet{width:100%;max-width:1040px;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55));position:relative}
+#grafico-afs .mg-sheet.single{width:50%;max-width:500px}
+#grafico-afs .mg-sheet svg{display:block;width:100%;height:auto;background:#fff}
+#grafico-afs .mg-sheet:not(.single)::after{content:"";position:absolute;top:0;bottom:0;left:49.3%;right:49.3%;background:linear-gradient(90deg,transparent,rgba(0,0,0,.16),transparent);pointer-events:none}
+#grafico-afs .mg-sheet.turn{animation:mg-open .42s cubic-bezier(.23,1,.32,1)}
+@keyframes mg-open{from{opacity:.4;transform:rotateY(-8deg) scale(.985)}to{opacity:1;transform:none}}
+#grafico-afs .mg-ctrl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:clamp(16px,2.6vw,26px)}
+#grafico-afs .mg-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;min-width:44px;padding:0 18px;border:0;border-radius:999px;background:#F4F2F6;color:#24202A;font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:background .2s,transform .16s}
+#grafico-afs .mg-btn:hover:not(:disabled){background:#E8A1B8}
+#grafico-afs .mg-btn:active:not(:disabled){transform:scale(.97)}
+#grafico-afs .mg-btn:disabled{opacity:.3;cursor:default}
+#grafico-afs .mg-btn:focus-visible{outline:2px solid #E8A1B8;outline-offset:3px}
+#grafico-afs .mg-count{min-width:min(46vw,260px);text-align:center;font-size:14px;color:#D6D2DD}
+#grafico-afs .mg-dots{display:flex;justify-content:center;gap:2px;margin-top:10px}
+#grafico-afs .mg-dot{width:28px;height:28px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+#grafico-afs .mg-dot::before{content:"";width:9px;height:9px;border-radius:50%;background:#6F6979;transition:background .2s,transform .2s}
+#grafico-afs .mg-dot[aria-current="page"]::before{background:#E8A1B8;transform:scale(1.25)}
+#grafico-afs .mg-dot:focus-visible{outline:2px solid #E8A1B8;border-radius:50%}
+#grafico-afs .mg-hint{text-align:center;font-size:12.5px;color:#9C96A6;margin:8px 0 0}
+#grafico-afs .mg-desc{margin:14px 0 0;color:var(--ink-muted);font-size:16px;line-height:1.55}
+@media (prefers-reduced-motion:reduce){#grafico-afs .mg-sheet.turn{animation:none}}
+@media (max-width:650px){#grafico-afs .mg-tabs{display:grid;grid-template-columns:1fr 1fr;width:100%;border-radius:16px}#grafico-afs .mg-tab{font-size:14px;padding:8px 10px;border-radius:12px}#grafico-afs .mg-sheet.single{width:78%}#grafico-afs .mg-ctrl{gap:8px}#grafico-afs .mg-btn{padding:0 14px}#grafico-afs .mg-btn .t{display:none}#grafico-afs .mg-count{font-size:12.5px}}
+</style>
+<div class="mg-tabs" role="tablist" aria-label="Revistas de AFS Chile">
+<button class="mg-tab" role="tab" id="mg-tab-destinos" aria-controls="mg-destinos" aria-selected="true" data-mg="destinos">Revista Destinos</button>
+<button class="mg-tab" role="tab" id="mg-tab-programas" aria-controls="mg-programas" aria-selected="false" tabindex="-1" data-mg="programas">Brochure Programas</button>
 </div>
+<div class="mg" id="mg-destinos" role="tabpanel" aria-labelledby="mg-tab-destinos" tabindex="0" data-mg-viewer="destinos">
+<div class="mg-head"><b>Destinos · programas de intercambio</b><span>Revista interactiva · 2017</span></div>
+<div class="mg-stage"><div class="mg-sheet single" data-mg-sheet></div></div>
+<div class="mg-ctrl"><button class="mg-btn" type="button" data-mg-prev aria-label="Página anterior">←<span class="t"> Anterior</span></button><span class="mg-count" aria-live="polite" data-mg-count></span><button class="mg-btn" type="button" data-mg-next aria-label="Página siguiente"><span class="t">Siguiente </span>→</button></div>
+<div class="mg-dots" data-mg-dots></div>
+<p class="mg-hint">Usa los botones, las flechas del teclado o desliza en el celular.</p>
+</div>
+<div class="mg" id="mg-programas" role="tabpanel" aria-labelledby="mg-tab-programas" tabindex="0" data-mg-viewer="programas" hidden>
+<div class="mg-head"><b>Programas de intercambio escolar</b><span>Brochure corporativo · 2017</span></div>
+<div class="mg-stage"><div class="mg-sheet single" data-mg-sheet></div></div>
+<div class="mg-ctrl"><button class="mg-btn" type="button" data-mg-prev aria-label="Página anterior">←<span class="t"> Anterior</span></button><span class="mg-count" aria-live="polite" data-mg-count></span><button class="mg-btn" type="button" data-mg-next aria-label="Página siguiente"><span class="t">Siguiente </span>→</button></div>
+<div class="mg-dots" data-mg-dots></div>
+<p class="mg-hint">Usa los botones, las flechas del teclado o desliza en el celular.</p>
+</div>
+<p class="mg-desc">Dos piezas editoriales para AFS Chile: la revista de destinos, con una doble página por país, y el brochure corporativo con la historia, la misión y el enfoque educativo de los programas.</p>
+<script>
+(function(){
+var D='img/afs/destinos/',P='img/afs/programas/';
+var books={
+destinos:[{n:'Portada',i:D+'cubiertas.webp',b:'156 147 834 1078',h:1316,s:1},{n:'Índice y Oceanía · págs. 2–3',i:D+'indice.webp',b:'156 145 1668 1081',h:1316},{n:'Australia y Nueva Zelanda · págs. 4–5',i:D+'oceania.webp',b:'156 145 1668 1081',h:1316},{n:'América del Norte · págs. 12–13',i:D+'america.webp',b:'156 145 1668 1081',h:1316},{n:'Contraportada',i:D+'cubiertas.webp',b:'1006 147 834 1078',h:1316,s:1}],
+programas:[{n:'Portada',i:P+'cubiertas.webp',b:'156 145 838 1078',h:1276,s:1},{n:'Misión e índice',i:P+'indice.webp',b:'156 145 1668 1079',h:1276},{n:'Historia de AFS · págs. 4–5',i:P+'historia.webp',b:'156 145 1668 1079',h:1276},{n:'¿Qué es AFS? · págs. 6–7',i:P+'contenido.webp',b:'1008 151 842 545',h:1922},{n:'Aprendizaje intercultural · págs. 8–9',i:P+'contenido.webp',b:'140 151 842 545',h:1922},{n:'Enfoque educacional · págs. 10–11',i:P+'contenido.webp',b:'140 718 1710 1106',h:1922},{n:'Contraportada',i:P+'cubiertas.webp',b:'1031 145 834 1078',h:1276,s:1}]
+};
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.querySelectorAll('#grafico-afs [data-mg-viewer]').forEach(function(v){
+ var pages=books[v.getAttribute('data-mg-viewer')],cur=0,sheet=v.querySelector('[data-mg-sheet]'),prev=v.querySelector('[data-mg-prev]'),next=v.querySelector('[data-mg-next]'),count=v.querySelector('[data-mg-count]'),dots=v.querySelector('[data-mg-dots]');
+ pages.forEach(function(p,k){var b=document.createElement('button');b.type='button';b.className='mg-dot';b.setAttribute('aria-label','Ir a '+p.n);b.onclick=function(){go(k)};dots.appendChild(b)});
+ function render(anim){var p=pages[cur];sheet.className='mg-sheet'+(p.s?' single':'');sheet.innerHTML='<svg viewBox="'+p.b+'" role="img" aria-label="'+p.n+'"><image href="'+p.i+'" width="1920" height="'+p.h+'"/></svg>';if(anim&&!rm){void sheet.offsetWidth;sheet.classList.add('turn')}count.textContent=p.n+' · '+(cur+1)+' de '+pages.length;prev.disabled=cur===0;next.disabled=cur===pages.length-1;[].forEach.call(dots.children,function(d,k){if(k===cur)d.setAttribute('aria-current','page');else d.removeAttribute('aria-current')})}
+ function go(k){if(k<0||k>=pages.length||k===cur)return;cur=k;render(true)}
+ prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+ v.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}else if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
+ var x0=null;sheet.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});sheet.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(d)>50)go(cur+(d<0?1:-1))},{passive:true});
+ pages.forEach(function(p){var im=new Image();im.src=p.i});
+ render(false);
+});
+var tabs=[].slice.call(document.querySelectorAll('#grafico-afs .mg-tab'));
+function sel(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+tabs.forEach(function(t,k){t.onclick=function(){sel(t)};t.onkeydown=function(e){var n=e.key==='ArrowRight'?k+1:e.key==='ArrowLeft'?k-1:null;if(n===null)return;e.preventDefault();var o=tabs[(n+tabs.length)%tabs.length];sel(o);o.focus()}});
+})();
+</script>
 <nav aria-label="Otros proyectos gráficos" class="gx-pager">
 <a href="#grafico-ilhabella"><span>← Anterior</span><b>Ilhabella</b></a>
 <a class="all" href="#diseno-grafico"><span>Ver todos</span><b>Diseño gráfico</b></a>
