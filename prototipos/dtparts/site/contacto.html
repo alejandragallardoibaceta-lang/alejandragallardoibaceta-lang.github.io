@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTPARTS — Contacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff;font-family:Montserrat,-apple-system,"segoe ui",arial,sans-serif;color:#000000}
+a{color:#ffffff}a:hover{color:#ff5f00}
+::selection{background:#ff5f00;color:#000000}
+:focus-visible{outline:3px solid #ff5f00;outline-offset:2px}
+@media (min-width: 1100px){.fgrid{grid-template-columns:1.1fr 1fr 0.9fr 1.1fr 1.6fr !important}}
+@media (max-width: 640px){.phbar{flex-direction:column !important;gap:4px !important}.phsep{display:none !important}.phmsg{justify-content:center}}
+.phbar:hover .phcta{text-decoration-thickness:2px}
+.phbar:hover{color:#ffffff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.navlink:hover{color:#ff5f00}
+.menuitem:hover,.menuitem:focus-visible{background:#f4f4f4}
+.send:hover{filter:brightness(1.08)}
+.chan:hover{border-color:#132530}
+.cta:hover{filter:brightness(1.08)}
+.flink:hover{color:#ff5f00}
+input::placeholder,textarea::placeholder{color:#595959}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-tpl">
+
+<div style="width: 100%; min-height: 100vh; background: #ffffff; font-family: Montserrat, -apple-system, 'segoe ui', arial, sans-serif; color: #000000;">
+
+<!-- BARRA SUPERIOR · AutoDay -->
+<div role="region" aria-label="Campaña AutoDay" style="background: #1367fb; color: #ffffff;">
+<a href="productos.html" data-cat="todas" onClick="{{goCat}}" aria-label="AutoDay, ahorrando ando, 2, 3 y 4 de noviembre: ver todas las ofertas" class="phbar" style="color: #ffffff; text-decoration: none; max-width: 1280px; margin: 0 auto; padding: 7px 24px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; font-size: 13px; line-height: 18px;">
+<img src="img/24a47ca0211ce972ec37627cdc553f8b.png" alt="AutoDay.cl" style="height: 20px; width: auto; display: block;">
+<span class="phsep" aria-hidden="true" style="width: 1px; height: 18px; background: rgba(255,255,255,0.45);"></span>
+<p class="phmsg" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;"><strong style="font-size: 15px; font-weight: 700; font-style: italic; letter-spacing: 0.5px;">AHORRANDO ANDO.</strong><span style="font-weight: 700; letter-spacing: 1px;">2, 3 Y 4 DE NOVIEMBRE</span><span class="phcta" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 700; letter-spacing: 1px; text-decoration: underline; text-underline-offset: 3px;">VER OFERTAS<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span></p>
+</a>
+</div>
+
+<!-- HEADER -->
+<header style="position: relative; z-index: 30; background: #042437; color: #ffffff;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; font-weight: 700; letter-spacing: 1px;">
+<div data-menu-wrap="true" style="position: relative;">
+<button type="button" onClick="{{toggleMenu}}" aria-label="Menú de categorías" aria-expanded="{{menuExpanded}}" aria-controls="menu-categorias" class="navlink" style="background: transparent; border: 0; color: #ffffff; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div id="menu-categorias" role="menu" aria-label="Categorías" style="position: absolute; top: calc(100% + 14px); left: 0; z-index: 40; width: 300px; background: #ffffff; border-radius: 8px; box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.2), 0px 16px 40px 0px rgba(0,0,0,0.18); padding: 8px; display: flex; flex-direction: column;">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40; padding: 10px 14px 6px;">CATEGORÍAS</span>
+<a role="menuitem" href="productos.html" data-cat="baterias" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Baterías<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="neumaticos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Neumáticos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="lubricantes" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Lubricantes<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="generacion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Generación<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="turbos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Turbos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="herramientas" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Equipo y Herramientas<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="inyeccion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Inyección<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="todas" onClick="{{goCat}}" style="margin-top: 6px; display: flex; justify-content: center; align-items: center; padding: 12px 14px; border-radius: 8px; background: #ff5f00; color: #000000; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 2px;">VER TODAS LAS OFERTAS</a>
+</div>
+</sc-if>
+</div>
+</nav>
+<a href="index.html" aria-label="DTPARTS, ir al inicio" style="display: flex; flex: 0 0 auto;"><img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS Diesel Turbo &amp; Autoparts" style="height: 46px; width: auto; display: block;"></a>
+<form role="search" style="flex: 1 1 260px; display: flex; min-width: 0; background: #ffffff; border-radius: 4px; overflow: hidden;">
+<label for="q-con" class="sr-only">Buscar repuesto</label>
+<input id="q-con" type="search" placeholder="Busca por repuesto, marca o código OEM" style="flex: 1 1 auto; min-width: 0; border: 0; padding: 12px 14px; font-family: inherit; font-size: 14px; color: #000000; outline-offset: -2px;">
+<button type="button" aria-label="Buscar" style="border: 0; background: #ffffff; padding: 0 14px; cursor: pointer; display: flex; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#132530" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+</form>
+<div style="display: flex; align-items: center; gap: 20px;">
+<a href="#" aria-label="Carro de compras, 0 productos" style="color: #ffffff; position: relative; display: flex;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h2.6l2.3 10.5h10.8l2.1-7.5H6.2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
+<span style="position: absolute; top: -6px; right: -8px; background: #ff5f00; color: #000000; font-size: 11px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">0</span></a>
+</div>
+</div>
+</header>
+
+<!-- TÍTULO -->
+<section style="background: #163649; color: #ffffff;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 48px; display: flex; flex-direction: column; gap: 12px;">
+<nav aria-label="Ruta" style="font-size: 13px;"><a href="index.html" style="color: #ffffff;">Inicio</a> <span aria-hidden="true">/</span> <span>Contacto</span></nav>
+<h1 style="margin: 0; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; font-weight: 700;">Hablemos de tu repuesto</h1>
+<p style="margin: 0; font-size: 16px; line-height: 24px; max-width: 640px;">Cuéntanos qué necesitas y un especialista te responde. Si es urgente, escríbenos por WhatsApp.</p>
+</div>
+</section>
+
+<!-- FORMULARIO + CANALES -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 72px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+
+<div style="flex: 3 1 520px; min-width: 0; background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+<h2 style="margin: 0; font-size: 22px; line-height: 26px; font-weight: 700; letter-spacing: 2px;">CONTÁCTANOS</h2>
+
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form novalidate="" style="display: flex; flex-direction: column; gap: 18px;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-nombre" style="font-size: 14px; font-weight: 700;">Nombre <span aria-hidden="true" style="color: #b00020;">*</span></label><input id="c-nombre" required="" aria-invalid="{{eNombreInvalid}}" aria-describedby="c-nombre-err" type="text" autocomplete="name" placeholder="Tu nombre" style="border: 0; box-shadow: inset 0 0 0 2px {{eNombreRing}}; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; min-height: 44px; box-sizing: border-box;"><sc-if value="{{eNombre}}" hint-placeholder-val="{{ false }}"><p id="c-nombre-err" style="margin: 0; font-size: 13px; font-weight: 700; color: #b00020;">Escribe tu nombre.</p></sc-if></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-correo" style="font-size: 14px; font-weight: 700;">Correo electrónico <span aria-hidden="true" style="color: #b00020;">*</span></label><input id="c-correo" required="" aria-invalid="{{eCorreoInvalid}}" aria-describedby="c-correo-err" type="email" autocomplete="email" placeholder="nombre@correo.cl" style="border: 0; box-shadow: inset 0 0 0 2px {{eCorreoRing}}; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; min-height: 44px; box-sizing: border-box;"><sc-if value="{{eCorreo}}" hint-placeholder-val="{{ false }}"><p id="c-correo-err" style="margin: 0; font-size: 13px; font-weight: 700; color: #b00020;">Escribe un correo válido, por ejemplo nombre@correo.cl.</p></sc-if></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-tel" style="font-size: 14px; font-weight: 700;">Teléfono <span style="font-weight: 400; color: #3f3f40;">(opcional)</span></label><input id="c-tel" type="tel" autocomplete="tel" placeholder="+56 9" style="border: 0; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; min-height: 44px; box-sizing: border-box;"></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-motivo" style="font-size: 14px; font-weight: 700;">Motivo</label><select id="c-motivo" style="border: 0; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; color: #000000; min-height: 44px;"><option>Cotizar un repuesto</option><option>Estado de mi pedido</option><option>Devoluciones y garantía</option><option>Ventas para talleres y flotas</option><option>Otro</option></select></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-vehiculo" style="font-size: 14px; font-weight: 700;">Vehículo <span style="font-weight: 400; color: #3f3f40;">(opcional)</span></label><input id="c-vehiculo" type="text" placeholder="Marca, modelo, año y cilindrada" style="border: 0; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; min-height: 44px; box-sizing: border-box;"></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="c-msg" style="font-size: 14px; font-weight: 700;">Escríbenos <span aria-hidden="true" style="color: #b00020;">*</span></label><textarea id="c-msg" required="" aria-invalid="{{eMsgInvalid}}" aria-describedby="c-msg-err" rows="5" placeholder="¿Qué repuesto necesitas? Si lo tienes, incluye el código OEM." style="border: 0; box-shadow: inset 0 0 0 2px {{eMsgRing}}; background: #e7e7e7; border-radius: 8px; padding: 13px 12px; font-family: inherit; font-size: 15px; resize: vertical;"></textarea><sc-if value="{{eMsg}}" hint-placeholder-val="{{ false }}"><p id="c-msg-err" style="margin: 0; font-size: 13px; font-weight: 700; color: #b00020;">Cuéntanos qué repuesto necesitas.</p></sc-if></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+<p style="margin: 0; font-size: 13px; color: #3f3f40; max-width: 420px;"><span aria-hidden="true" style="color: #b00020;">*</span> Campos obligatorios. Al enviar aceptas nuestras políticas de privacidad. Respondemos en horario hábil.</p>
+<button type="button" class="send" onClick="{{send}}" style="background: #ff5f00; color: #000000; border: 0; border-radius: 8px; padding: 15px 40px; font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 1px; cursor: pointer; min-height: 48px;">ENVIAR</button>
+</div>
+</form>
+</sc-if>
+
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="background: #f4f4f4; border-radius: 10px; padding: 32px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#075e54" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="20"></circle><path d="M15 24l6 6 12-13"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 700;">¡Gracias! Recibimos tu mensaje</h3>
+<p style="margin: 0; font-size: 15px; line-height: 23px; color: #3f3f40;">Un especialista de DTPARTS te contactará pronto. Si es urgente, escríbenos al +56 9 9914 9117.</p>
+<button type="button" onClick="{{reset}}" style="background: transparent; color: #132530; border: 1.5px solid #132530; border-radius: 8px; padding: 12px 20px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 44px;">ENVIAR OTRO MENSAJE</button>
+</div>
+</sc-if>
+</div>
+
+<aside style="flex: 2 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<a href="#" class="chan" style="background: #075e54; color: #ffffff; text-decoration: none; border-radius: 10px; padding: 24px; display: flex; align-items: center; gap: 16px; border: 1px solid #075e54;">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"></path><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .9a4.5 4.5 0 0 1-2.9-2.9l.9-1-1-2z"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 13px; font-weight: 700; letter-spacing: 2px;">ASISTENCIA INMEDIATA</span><span style="font-size: 20px; font-weight: 700;">WhatsApp +56 9 9914 9117</span></span>
+</a>
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff5f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">TELÉFONOS</span><span style="font-size: 16px; font-weight: 700;">+56 9 9914 9117 · +56 9 3379 8997</span></span>
+</a>
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff5f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6l8.5 7 8.5-7"></path></svg>
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">CORREO</span><span style="font-size: 16px; font-weight: 700;">contacto@dtparts.cl</span></span>
+</a>
+<div style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; overflow: hidden;">
+<div style="padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff5f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">DIRECCIÓN</span><span style="font-size: 16px; font-weight: 700; line-height: 22px;">Avda. Pdte. Eduardo Frei Montalva 5325, Conchalí, Santiago</span></span>
+</div>
+<div style="height: 200px; background: #e7e7e7; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #3f3f40; letter-spacing: 1px;">[MAPA DE UBICACIÓN]</div>
+</div>
+<div style="background: #f4f4f4; border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 16px;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#132530" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h11v9H2zM13 10h4.5l3.5 3.5V16h-8"></path><circle cx="6" cy="17.5" r="1.8"></circle><circle cx="17" cy="17.5" r="1.8"></circle></svg>
+<p style="margin: 0; font-size: 14px; line-height: 21px;"><strong>Despacho:</strong> compra antes de las 12:30 hrs de lunes a viernes y recibe hoy en Santiago. Envíos a todo Chile.</p>
+</div>
+</aside>
+</section>
+
+<!-- AYUDA RÁPIDA -->
+<section style="background: #f4f4f4;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 24px; display: flex; flex-direction: column; gap: 24px;">
+<h2 style="margin: 0; font-size: 22px; line-height: 26px; font-weight: 700;">AYUDA RÁPIDA</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 700;">Políticas de despacho <span aria-hidden="true" style="color: #132530;">→</span></a>
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 700;">Devoluciones y garantía <span aria-hidden="true" style="color: #132530;">→</span></a>
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 700;">Preguntas frecuentes <span aria-hidden="true" style="color: #132530;">→</span></a>
+<a href="#" class="chan" style="background: #ffffff; color: #000000; text-decoration: none; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 700;">Promociones y cupones <span aria-hidden="true" style="color: #132530;">→</span></a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #343333; color: #ffffff;">
+<div class="fgrid" style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS" style="height: 44px; width: auto; align-self: flex-start; display: block;">
+<p style="margin: 0; font-size: 14px; line-height: 22px;">Repuestos diésel, turbos y autopartes con despacho a todo Chile.</p>
+<div style="display: flex; gap: 14px;">
+<a href="#" aria-label="Instagram de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#ffffff"></circle></svg></a>
+<a href="#" aria-label="Facebook de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a20 20 0 0 0-2.4-.1c-2.4 0-4 1.4-4 4.1v2.1H8.5v3h2.7V21"></path></svg></a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">SERVICIO</h3>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Términos y condiciones</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Devoluciones y garantía</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de privacidad</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Preguntas frecuentes</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de despacho</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Promociones y cupones</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NOSOTROS</h3>
+<a href="nosotros.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Sobre nosotros</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Consejo de expertos</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Trabaja con nosotros</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">CONTACTO</h3>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Contáctanos</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 9914 9117</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 3379 8997</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">contacto@dtparts.cl</a>
+<span style="font-size: 15px; line-height: 22px;">Avda. Pdte. Eduardo Frei Montalva 5325, Conchalí, Santiago</span>
+</div>
+<form style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NEWSLETTER</h3>
+<label for="nl-con" style="font-size: 15px; line-height: 22px;">Suscríbete y recibe las ofertas antes que nadie</label>
+<div style="display: flex; flex-wrap: nowrap; gap: 8px;">
+<input id="nl-con" type="email" placeholder="Ingresa tu correo" style="flex: 1 1 auto; min-width: 0; width: 100%; border: 0; border-radius: 5px; padding: 13px 12px; font-family: inherit; font-size: 14px;">
+<button type="button" class="cta" style="background: #ff5f00; color: #000000; border: 0; border-radius: 5px; padding: 13px 14px; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; min-height: 44px; flex: 0 0 auto; white-space: nowrap;">SUSCRIBIRSE</button>
+</div>
+</form>
+</div>
+<div style="background: #141414;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #ffffff;">
+<span>© 2026 DTPARTS · Diesel, Turbo &amp; Autoparts</span>
+<span>Precios en pesos chilenos. Ofertas válidas hasta agotar stock.</span>
+</div>
+</div>
+</footer>
+
+</div>
+</template>
+<script type="text/x-dc">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sent: false };
+}
+renderVals() {
+var self = this;
+var o = this._pageVals();
+var m = !!(this.state && this.state.menuOpen);
+o.menuOpen = m;
+o.menuExpanded = m ? 'true' : 'false';
+o.toggleMenu = function (e) { self._menuToggle(e); };
+o.goCat = function (e) { self._goCat(e); self._readCat && self._readCat(); };
+return o;
+}
+componentDidMount() {
+this._menuMount();
+}
+componentWillUnmount() {
+this._menuUnmount();
+}
+_menuMount() {
+var self = this;
+this._onKey = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+if (e.key === 'Escape') { self.setState({ menuOpen: false }); if (self._menuBtn) { try { self._menuBtn.focus(); } catch (_) {} } return; }
+if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+var wrap = self._menuBtn && self._menuBtn.closest('[data-menu-wrap]');
+var items = wrap ? Array.prototype.slice.call(wrap.querySelectorAll('[role="menuitem"]')) : [];
+if (!items.length) return;
+var i = items.indexOf(document.activeElement);
+var n = e.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+items[n].focus(); e.preventDefault();
+}
+};
+this._onDown = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+var t = e.target;
+if (t && t.closest && t.closest('[data-menu-wrap]')) return;
+self.setState({ menuOpen: false });
+};
+document.addEventListener('keydown', this._onKey);
+document.addEventListener('mousedown', this._onDown);
+}
+_menuUnmount() {
+document.removeEventListener('keydown', this._onKey);
+document.removeEventListener('mousedown', this._onDown);
+}
+_menuToggle(e) {
+var open = !(this.state && this.state.menuOpen);
+if (e && e.currentTarget) { this._menuBtn = e.currentTarget; }
+this.setState({ menuOpen: open });
+var btn = this._menuBtn;
+if (open && btn) {
+setTimeout(function () { var wrap = btn.closest('[data-menu-wrap]'); var first = wrap && wrap.querySelector('[role="menuitem"]'); if (first) { first.focus(); } }, 40);
+}
+}
+_goCat(e) {
+try {
+var id = e && e.currentTarget && e.currentTarget.getAttribute('data-cat');
+if (id) { window.localStorage.setItem('dtparts.cat', id + '|' + Date.now()); }
+} catch (_) {}
+if (this.state && this.state.menuOpen) { this.setState({ menuOpen: false }); }
+}
+_pageVals() {
+var self = this;
+var sent = !!(this.state && this.state.sent);
+var er = (this.state && this.state.err) || {};
+var ring = function (b) { return b ? '#b00020' : 'transparent'; };
+return {
+sent: sent,
+eNombre: !!er.eNombre, eNombreInvalid: er.eNombre ? 'true' : 'false', eNombreRing: ring(er.eNombre),
+eCorreo: !!er.eCorreo, eCorreoInvalid: er.eCorreo ? 'true' : 'false', eCorreoRing: ring(er.eCorreo),
+eMsg: !!er.eMsg, eMsgInvalid: er.eMsg ? 'true' : 'false', eMsgRing: ring(er.eMsg),
+notSent: !sent,
+send: function () {
+function val(id) { var el = document.getElementById(id); return el ? String(el.value || '').trim() : ''; }
+var err = { eNombre: !val('c-nombre'), eCorreo: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('c-correo')), eMsg: !val('c-msg') };
+if (err.eNombre || err.eCorreo || err.eMsg) {
+self.setState({ err: err });
+var first = err.eNombre ? 'c-nombre' : (err.eCorreo ? 'c-correo' : 'c-msg');
+setTimeout(function () { var el = document.getElementById(first); if (el) { el.focus(); } }, 30);
+return;
+}
+self.setState({ sent: true, err: {} });
+},
+reset: function () { self.setState({ sent: false, err: {} }); }
+};
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-runtime-lite.js"></script>
+</body>
+</html>

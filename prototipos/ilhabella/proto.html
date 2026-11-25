@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ilhabella Prototipo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}
+
+/* Layout: e-commerce responsive 1440 → 360, contenido a 1296px máx, tokens del design system "Safe Care / ilhabella" en Figma.
+   Tema único claro por decisión: replica la marca tal cual está diseñada. */
+:root{
+  --brand:#ca4e22; --brand-alt:#e48546; --brand-logo:#e65c00;
+  --brand-2:#ffc235; --brand-light:#fffcf5; --brand-subdued:#ffeadc; --orange-95:#fff1e6;
+  --fg:#181a1b; --fg-2:#494d50; --fg-3:#949a9e; --fg-dis:#00000073;
+  --bg:#ffffff; --bg-2:#f7f7f8; --bg-dis:#f2f2f3; --press:#0000000d;
+  --line:#0000001a; --line-2:#00000033; --line-3:#00000066;
+  --error:#ba1a1a; --on-error:#ffedea; --ink:#26282a; --teal:#01444b;
+  --sh-1:0 1px 2px #4e51531a; --sh-3:0 8px 16px #4e515314;
+  --font:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-xs:8px; --r-sm:16px; --r-md:24px; --pill:500px;
+  --maxw:1296px; --gut:max(16px, env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:14px;line-height:1.4;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--brand-light)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+.wrap{max-width:calc(var(--maxw) + 2*72px);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:1024px){.wrap{padding-left:72px;padding-right:72px}}
+.wrap-24{max-width:1440px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:1024px){.wrap-24{padding-left:24px;padding-right:24px}}
+.ico{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico.sm{width:18px;height:18px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 24px;border-radius:var(--pill);font-weight:600;font-size:15px;white-space:nowrap;transition:filter .15s,background .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn-brand{background:var(--brand);color:#fff}
+.btn-brand:hover{filter:brightness(1.08)}
+.btn-yellow{background:var(--brand-2);color:var(--fg)}
+.btn-yellow:hover{filter:brightness(.96)}
+.btn-out{border:1.5px solid var(--brand);color:var(--fg);height:36px;padding:0 16px;font-size:13px}
+.btn-out:hover{background:var(--orange-95)}
+.btn-sm{height:36px;padding:0 16px 0 22px;font-size:14px}
+.iconbtn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;transition:background .15s}
+.iconbtn:hover{background:var(--press)}
+
+/* ---------- Header ---------- */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--brand-light);box-shadow:var(--sh-1)}
+.hdr-row{display:flex;align-items:center;gap:16px;height:78px}
+.logo{display:block;flex:none;line-height:0}
+.logo img{width:90px;height:auto;mix-blend-mode:multiply}
+.cats-btn{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;padding:0 8px 0 0;border-radius:var(--pill);margin-left:20px}
+.cats-btn .iconbtn{width:44px;height:44px}
+.cats-btn[aria-expanded="true"] .iconbtn{background:var(--brand-subdued)}
+.search{position:relative;flex:1;max-width:605px;margin-left:24px}
+.search-box{display:flex;align-items:center;height:54px;border:1px solid var(--line-3);border-radius:var(--pill);background:#fff;padding:0 6px 0 20px;transition:border-color .15s,box-shadow .15s}
+.search-box:focus-within{border-color:var(--line-3);box-shadow:0 0 0 1px var(--line-3)}
+.search-box input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:16px;height:100%}
+.search-box input::placeholder{color:var(--fg-3)}
+.search-go{width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.search.has-q .search-go{background:var(--brand-2)}
+.search-clear{width:36px;height:36px;display:grid;place-items:center;border-radius:50%}
+.search-clear:hover{background:var(--press)}
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 0px);background:#fff;border-radius:0 0 16px 16px;box-shadow:var(--sh-3);max-height:min(70vh,620px);overflow:auto;padding:16px 12px 12px;z-index:5}
+.suggest h4{font-size:12px;font-weight:700;margin:0 0 6px}
+.suggest .s-cat{display:block;width:100%;text-align:left;padding:11px 16px;font-weight:600;color:var(--fg-2);border-radius:8px}
+.suggest .s-cat:hover{background:var(--bg-2)}
+.suggest .s-sec+.s-sec{margin-top:18px}
+.s-prod{display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center;border:1px solid var(--line);border-radius:6px;padding:12px;margin-top:10px;cursor:pointer}
+.s-prod:hover{border-color:var(--line-2)}
+.s-prod img{width:72px;height:72px;object-fit:contain}
+.s-prod .b{font-size:12px;font-weight:600;color:var(--fg-2);text-decoration:underline}
+.s-prod .n{font-size:13px;font-weight:700;margin-top:2px}
+.s-empty{padding:12px 16px;color:var(--fg-2)}
+.nav-links{display:flex;gap:44px;margin-left:auto;font-weight:600;font-size:15px}
+.nav-links a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a[aria-current="page"]{border-color:var(--brand)}
+.cart-btn{position:relative}
+.cart-badge{position:absolute;top:0;right:-4px;min-width:26px;height:18px;border-radius:9px;background:var(--brand);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;padding:0 6px}
+.cart-badge.bump{animation:bump .35s}
+@keyframes bump{40%{transform:scale(1.35)}}
+.m-only{display:none}
+@media (max-width:1023px){
+  .nav-links{display:none}
+  .cats-btn span.lbl{display:none}
+  .cats-btn{margin-left:0;order:-1;padding:0}
+  .hdr-row{height:68px;gap:8px}
+  .logo img{width:78px}
+  .search{order:5;flex-basis:100%;max-width:none;margin:0}
+  .hdr-row{flex-wrap:wrap;height:auto;padding-block:8px}
+  .hdr-row .cart-btn{margin-left:auto}
+  .search-box{height:44px}
+  .m-only{display:grid}
+}
+
+/* Mega menú */
+.mega{position:fixed;inset:0;z-index:45;display:flex;padding-top:var(--hdr-h,78px)}
+.mega-scrim{position:absolute;inset:0;background:#000000a6;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.mega-panel{position:relative;display:flex;background:#fff;max-height:100%;animation:slide .22s ease-out}
+@keyframes slide{from{transform:translateX(-24px);opacity:0}}
+.mega-list{width:360px;border-right:1px solid var(--line);overflow:auto;padding-block:16px;border-bottom:1px solid var(--line);align-self:flex-start}
+.mega-list button{display:flex;align-items:center;gap:10px;width:100%;height:54px;padding:0 16px 0 20px;font-weight:600;color:var(--fg-2);text-align:left}
+.mega-list button img{width:24px;height:24px;mix-blend-mode:multiply}
+.mega-list button .ico{margin-left:auto}
+.mega-list button[aria-current="true"]{background:var(--brand-light);color:var(--fg)}
+.mega-list button[aria-current="true"] .ico{color:var(--brand)}
+.mega-sub{width:400px;overflow:auto;box-shadow:var(--sh-3)}
+.mega-sub-h{display:flex;align-items:center;gap:12px;padding:26px 24px;border-bottom:1px solid var(--line);font-size:18px;font-weight:700}
+.mega-sub-h img{width:32px;height:32px;mix-blend-mode:multiply}
+.mega-sub ul{list-style:none;margin:0;padding:16px 0}
+.mega-sub li a{display:block;padding:16px 56px;font-weight:700;font-size:13px;text-decoration:none}
+.mega-sub li a:hover{background:var(--bg-2);color:var(--brand)}
+.mega-back{display:none}
+@media (max-width:1023px){
+  .mega-panel{width:100%;flex-direction:column}
+  .mega-list,.mega-sub{width:100%;border:0;box-shadow:none;align-self:auto}
+  .mega.sub-open .mega-list{display:none}
+  .mega:not(.sub-open) .mega-sub{display:none}
+  .mega-back{display:flex;align-items:center;gap:8px;padding:16px;font-weight:600;color:var(--fg-2)}
+  .mega-sub li a{padding:16px 24px}
+}
+
+/* ---------- Común ---------- */
+main{min-height:60vh}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;color:var(--fg-2);padding-block:14px}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.crumbs b{color:var(--fg);font-weight:700}
+.crumbs .ico{width:12px;height:12px}
+.sec-h{font-size:20px;font-weight:700;padding-block:32px 20px}
+@media (max-width:767px){.sec-h{font-size:16px;padding-block:24px 12px}}
+.ad-bar{margin-block:12px;border-radius:12px;background:var(--brand-subdued);border:1px solid #f5c9ad;padding:12px 16px;display:flex;gap:10px;justify-content:center;align-items:center;font-size:13px;font-weight:500;text-align:center}
+.ad-bar b{color:var(--brand)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:var(--pill);font-weight:600;z-index:90;display:flex;align-items:center;gap:12px;box-shadow:var(--sh-3);animation:up .25s;max-width:calc(100vw - 32px)}
+.toast button{color:var(--brand-2);font-weight:700;text-decoration:underline}
+@keyframes up{from{transform:translate(-50%,16px);opacity:0}}
+
+/* Hero */
+.hero{display:block;position:relative;line-height:0}
+.hero img{width:100%;height:auto;display:block}
+.hero .cta-hot{position:absolute;left:6.1%;top:77.7%;width:28.2%;height:10.4%;border-radius:var(--pill)}
+.hero-m{display:none}
+@media (max-width:767px){
+  .hero-d{display:none!important}
+  .hero-m{display:block;position:relative;height:440px;overflow:hidden;line-height:1.2;background:#ebf1f7}
+  .hero-m .hp{position:absolute;left:50%;top:14px;transform:translateX(-50%);width:200px;height:auto;mix-blend-mode:multiply}
+  .hero-m .pe{position:absolute;right:0;bottom:0;width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%);mask-image:linear-gradient(180deg,transparent,#000 22%)}
+  .hero-m::after{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(0deg,#2b3a48e6,#2b3a4800)}
+  .hero-m .ht{position:absolute;left:16px;right:16px;bottom:18px;z-index:1;display:grid;gap:16px}
+  .hero-m h2{color:#fff;font-size:30px;font-weight:700;letter-spacing:-.02em;text-shadow:0 1px 8px #0005}
+  .hero-m .btn{width:100%;height:48px}
+}
+
+/* Categorías chips */
+.cat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;padding-block:48px 24px}
+.cat-box{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:box-shadow .2s,transform .2s;background:#fff}
+.cat-box:hover{box-shadow:var(--sh-3);transform:translateY(-2px)}
+.cat-box img{width:100%;aspect-ratio:206/122;object-fit:cover;display:block}
+.cat-box span{padding:8px 4px 10px;text-align:center;font-size:16px;color:var(--fg-2)}
+@media (max-width:1023px){.cat-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-block:24px 8px;scrollbar-width:none}.cat-row::-webkit-scrollbar{display:none}.cat-box{flex:0 0 207px;scroll-snap-align:start}.cat-box span{font-size:14px}}
+
+/* Promos */
+.promos{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.promos a{display:block;border-radius:16px;overflow:hidden;line-height:0;transition:transform .2s,box-shadow .2s}
+.promos a:hover{transform:translateY(-3px);box-shadow:var(--sh-3)}
+.promos img{width:100%;height:100%;object-fit:cover}
+.promos .w2{grid-column:span 2}
+@media (max-width:1023px){.promos{grid-template-columns:repeat(2,1fr);gap:12px}.promos .w2{grid-column:span 2}}
+@media (max-width:600px){.promos{grid-template-columns:1fr}.promos .w2{grid-column:auto}.promos a:not(.w2){aspect-ratio:330/420}.promos .w2{aspect-ratio:684/420}}
+
+/* Banner de categoría */
+.cbanner{position:relative;display:flex;align-items:flex-end;min-height:256px;border-radius:16px;overflow:hidden;background:linear-gradient(90deg,var(--c1),var(--c2) 45%);text-decoration:none;color:#fff}
+.cbanner img{position:absolute;right:0;top:0;height:100%;width:62%;object-fit:cover;object-position:left center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%);mask-image:linear-gradient(90deg,transparent,#000 8%)}
+.cbanner .txt{position:relative;padding:24px;display:grid;gap:24px;justify-items:start}
+.cbanner h3{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.cbanner .btn{height:44px}
+.cbanner.plp{min-height:226px}
+.cbanner.plp h3{font-size:24px}
+.cbanner.plp p{font-size:13px;opacity:.9;margin-top:-16px}
+@media (max-width:767px){.cbanner{min-height:223px;align-items:flex-end}.cbanner img{width:100%;height:62%;object-fit:cover;object-position:62% center;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}.cbanner .txt{gap:14px;padding:16px}.cbanner h3{font-size:20px;text-shadow:0 1px 6px #0006}.cbanner.plp{min-height:170px}.cbanner.plp img{height:100%;opacity:.45;-webkit-mask-image:none;mask-image:none}.cbanner.plp p{font-size:12px}}
+
+/* Tarjeta de producto */
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;background:#fff;padding:24px 24px 28px;transition:box-shadow .2s;min-width:0}
+.card:hover{box-shadow:var(--sh-3)}
+.card .tag{position:absolute;left:16px;top:16px;background:var(--error);color:#fff;font-size:11px;font-weight:600;padding:5px 10px;border-radius:var(--pill)}
+.card .ph{display:block;height:216px;margin:-4px 0 18px;line-height:0}
+.card .ph img{width:100%;height:100%;object-fit:contain}
+.card .brand{font-size:13px;font-weight:600;color:var(--fg-2);text-decoration:underline}
+.card .name{display:block;font-size:13px;font-weight:700;margin-top:6px;text-decoration:none;line-height:1.3;min-height:2.6em}
+.card .name:hover{color:var(--brand)}
+.chip{display:inline-block;border:1px solid var(--line-2);border-radius:var(--pill);font-size:11px;padding:3px 8px;margin-top:8px;align-self:flex-start}
+.old{color:var(--fg-2);text-decoration:line-through;font-size:14px;font-weight:500;margin-top:10px}
+.price{display:flex;align-items:center;gap:6px;font-size:18px;font-weight:700}
+.off{background:var(--error);color:var(--on-error);font-size:11px;font-weight:500;border-radius:var(--pill);padding:3px 7px}
+.card .desc{font-size:12px;color:var(--fg-2);margin-top:12px}
+.card .actions{margin-top:16px;min-height:44px}
+.stepper{display:inline-flex;align-items:center;height:44px;border-radius:var(--pill);background:var(--brand-2);overflow:hidden}
+.stepper button{width:44px;height:44px;display:grid;place-items:center}
+.stepper button:hover{background:#0000000f}
+.stepper output{min-width:30px;text-align:center;font-weight:700}
+@media (max-width:767px){.card{padding:16px}.card .ph{height:150px}.card .tag{left:10px;top:10px}.price{font-size:16px}}
+
+/* Carrusel */
+.carousel{position:relative}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*12px)/4);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 0 4px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.track>*{scroll-snap-align:start}
+.car-arrow{position:absolute;top:calc(50% - 40px);width:44px;height:44px;border-radius:8px;background:var(--bg-2);display:grid;place-items:center;z-index:2;box-shadow:var(--sh-1)}
+.car-arrow.next{background:var(--brand-subdued);color:var(--brand)}
+.car-arrow:disabled{opacity:.35;cursor:default}
+.car-arrow.prev{left:-22px}.car-arrow.next{right:-22px}
+.dots{display:flex;justify-content:center;gap:10px;padding-block:20px 8px}
+.dots button{width:12px;height:12px;border-radius:6px;background:#8a8a8a;transition:width .2s,background .2s}
+.dots button[aria-current="true"]{width:20px;background:var(--brand-alt)}
+@media (max-width:1023px){.track{grid-auto-columns:calc((100% - 12px)/2.3)}.car-arrow{display:none}}
+@media (max-width:480px){.track{grid-auto-columns:72%}}
+
+/* Marcas */
+.brands{display:flex;align-items:center;gap:16px}
+.brands .track{grid-auto-columns:calc((100% - 7*16px)/8);gap:16px;flex:1}
+.brand-logo{height:64px;display:grid;place-items:center;font-weight:700;letter-spacing:.02em;color:var(--fg-3);font-size:14px;text-align:center;border-radius:8px;text-decoration:none;transition:color .15s,background .15s;padding:0 6px}
+.brand-logo:hover{color:var(--fg);background:var(--bg-2)}
+.brands .car-arrow{position:static;flex:none}
+@media (max-width:1023px){.brands .track{grid-auto-columns:40%}.brands .car-arrow{display:none}}
+
+/* ---------- Footer ---------- */
+.news{position:relative;background:var(--teal) url(img/news.jpg) center/cover;color:#fff;text-align:center}
+.news::after{content:"";position:absolute;inset:0;background:transparent}
+.news .wrap{position:relative;z-index:1;grid-template-columns:minmax(0,1fr);padding-block:110px 104px;display:grid;justify-items:center;gap:40px}
+.news .wrap>*{max-width:100%}
+.news h2{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.mail{display:flex;width:100%;max-width:608px;height:52px;background:#f7f7f8;border:1px solid #fff;border-radius:var(--pill);padding:3px;color:var(--fg)}
+.mail input{flex:1;min-width:0;border:0;background:none;outline:0;padding:0 20px;font-size:16px}
+.mail .btn{height:44px;padding:0 20px}
+.mail-msg{font-size:13px;font-weight:600;min-height:18px;margin-top:-28px}
+@media (max-width:767px){.news{background-position:30% center}.news::after{background:#01444b80}.news .wrap{padding-block:56px}.news h2{font-size:20px}}
+.adv h2{text-align:center;font-size:24px;font-weight:700;padding-block:56px 32px}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:var(--orange-95);border-radius:24px;padding:38px 24px}
+.adv-grid div{text-align:center;display:grid;justify-items:center;gap:6px;padding-inline:8px}
+.adv-grid img{width:66px;height:66px;border-radius:50%;margin-bottom:16px}
+.adv-grid b{font-size:16px}
+.adv-grid p{color:var(--fg-2);font-size:14px}
+@media (max-width:1023px){.adv-grid{grid-template-columns:1fr 1fr;row-gap:32px}.adv h2{font-size:18px}}
+@media (max-width:520px){.adv-grid{grid-template-columns:1fr}}
+.trust{background:var(--bg-dis);border-radius:40px 40px 0 0;margin-top:48px}
+.trust .wrap{display:flex;align-items:center;gap:32px;padding-block:48px}
+.trust .lc{width:112px;height:112px;border-radius:50%;flex:none}
+.trust h3{font-size:20px;font-weight:700;margin-bottom:12px}
+.trust p{color:var(--fg-2);font-size:14px;max-width:680px}
+.trust .badges{display:flex;gap:22px;margin-left:auto}
+.trust .badges img{width:130px;height:130px;border-radius:50%}
+@media (max-width:1023px){.trust .wrap{flex-direction:column;text-align:center}.trust .badges{margin:0;gap:12px}.trust .badges img{width:96px;height:96px}}
+.foot{background:var(--ink);color:#fff}
+.foot-grid{display:grid;grid-template-columns:1fr 1.4fr 1.4fr 1.4fr 1.2fr;gap:24px;padding-block:52px 36px}
+.foot h4{font-size:15px;font-weight:700;margin:0 0 26px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:22px;font-size:14px}
+.foot a{text-decoration:none}
+.foot a:hover{text-decoration:underline;color:var(--brand-2)}
+.social{display:flex;gap:12px}
+.social a{width:44px;height:44px;border-radius:50%;background:var(--brand-2);color:var(--fg);display:grid;place-items:center}
+.social a:hover{color:var(--fg);filter:brightness(1.05)}
+.foot small{display:block;font-size:12px;margin:16px 0 18px;line-height:1.35}
+.mail.sm{height:50px}
+.mail.sm .go{width:42px;height:42px;border-radius:50%;background:var(--brand-2);display:grid;place-items:center;flex:none}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid #ffffff26;padding-block:22px 28px;font-size:12px}
+.foot-bottom img{height:42px;width:auto}
+@media (max-width:1023px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}.foot ul{gap:16px}}
+
+/* ---------- PLP ---------- */
+.plp-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:24px}
+.plp-top h1{font-size:20px;font-weight:700}
+.plp-top .sub{font-size:14px;color:var(--fg-2);margin-top:6px}
+.sort{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500}
+.select{position:relative}
+.select select{appearance:none;height:52px;width:310px;max-width:100%;border:1px solid var(--line-3);border-radius:8px;padding:0 44px 0 16px;background:#fff;font-size:15px}
+.select .ico{position:absolute;right:12px;top:14px;pointer-events:none;color:var(--brand)}
+.plp-body{display:grid;grid-template-columns:311px 1fr;gap:12px;align-items:start}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.filters{border-right:1px solid var(--line);padding-right:12px}
+.facet{border-bottom:1px solid var(--line);padding:20px 16px}
+.facet>button{display:flex;width:100%;justify-content:space-between;align-items:center;font-size:13px;font-weight:600}
+.facet>button .ico{color:var(--brand);transition:transform .2s;width:20px;height:20px}
+.facet>button[aria-expanded="false"] .ico{transform:rotate(180deg)}
+.facet .opts{display:grid;gap:4px;margin-top:16px}
+.opt{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:14px;cursor:pointer}
+.opt input{width:20px;height:20px;accent-color:var(--brand);margin:0}
+.opt .n{margin-left:auto;color:var(--fg-2);font-size:13px}
+.fsearch{display:flex;align-items:center;height:44px;border:1px solid var(--line-3);border-radius:var(--pill);padding:0 14px 0 16px;margin-top:16px}
+.fsearch input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:13px}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.prices label{font-size:11px;color:var(--fg-2);display:grid;gap:4px}
+.prices input{height:52px;border:1px solid var(--line-3);border-radius:8px;padding:0 14px;font-size:16px;width:100%}
+.range{position:relative;height:28px;margin-top:14px}
+.range input{position:absolute;inset:0;width:100%;pointer-events:none;appearance:none;background:none;margin:0}
+.range input::-webkit-slider-thumb{pointer-events:auto;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--brand);border:3px solid #fff;box-shadow:0 0 0 1px var(--brand);cursor:pointer}
+.range input::-moz-range-thumb{pointer-events:auto;width:16px;height:16px;border-radius:50%;background:var(--brand);border:3px solid #fff;cursor:pointer}
+.range .rail{position:absolute;left:0;right:0;top:12px;height:4px;background:var(--line);border-radius:2px}
+.range .fill{position:absolute;top:12px;height:4px;background:var(--brand);border-radius:2px}
+.range-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--fg-2);margin-top:6px}
+.filter-tab{display:none}
+.sheet-head,.sheet-foot{display:none}
+.pager{display:flex;justify-content:center;align-items:center;gap:8px;padding-block:32px 8px}
+.pager button{min-width:44px;height:44px;border-radius:50%;font-weight:600;color:var(--fg-2)}
+.pager button:hover{background:var(--bg-2)}
+.pager button[aria-current="page"]{background:var(--brand);color:#fff}
+.chips-on{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chips-on button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--brand);background:var(--orange-95);border-radius:var(--pill);padding:6px 10px 6px 14px;font-size:12px;font-weight:600}
+.no-res{grid-column:1/-1;padding:48px 16px;text-align:center;color:var(--fg-2);display:grid;gap:16px;justify-items:center}
+@media (max-width:1279px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:1023px){
+  .plp-body{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .sort{display:none}
+  .plp-top h1{font-size:16px}
+  .filter-tab{display:grid;grid-template-columns:1fr 1fr;position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr-h,120px));z-index:20;background:#fff;border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+  .filter-tab button,.filter-tab .select{height:52px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600}
+  .filter-tab .select{border-left:1px solid var(--line)}
+  .filter-tab select{border:0;width:100%;height:52px;text-align:center;padding:0 36px 0 16px;background:transparent;font-weight:600}
+  .filters{display:none;position:fixed;inset:0;z-index:70;background:#fff;border:0;padding:0;overflow:auto;padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .filters.open{display:block}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:16px max(16px,env(safe-area-inset-left,0px));padding-top:calc(16px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line);font-size:16px;font-weight:700;position:sticky;top:0;background:#fff;z-index:1}
+  .sheet-foot{display:flex;gap:12px;position:fixed;left:0;right:0;bottom:0;padding:16px max(16px,env(safe-area-inset-left,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#fff;box-shadow:0 -4px 12px #0000000f;z-index:71}
+  .filters:not(.open)+.sheet-foot{display:none}
+  .sheet-foot .btn{flex:1}
+}
+
+/* ---------- PDP ---------- */
+.pdp{display:grid;grid-template-columns:746px 1fr;gap:24px;padding-block:36px 48px}
+.gallery .main{position:relative;height:407px;display:grid;place-items:center;border-radius:16px;overflow:hidden;background:#fff}
+.gallery .main img{height:100%;width:auto;object-fit:contain;transition:opacity .2s}
+.gallery .zoom{position:absolute;right:16px;top:16px;background:var(--bg-2)}
+.thumbs{display:flex;justify-content:center;gap:8px;margin-top:24px}
+.thumbs button{width:160px;height:100px;border-radius:8px;border:1.5px solid transparent;display:grid;place-items:center;transition:border-color .15s}
+.thumbs button:hover{border-color:var(--line-2)}
+.thumbs button[aria-current="true"]{border-color:var(--brand-alt)}
+.thumbs img{height:84px;width:auto}
+.gal-dots{display:none}
+.info{padding-left:24px;display:grid;gap:24px;align-content:start}
+.info .top{display:flex;align-items:center;justify-content:space-between}
+.stars{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600}
+.stars svg{width:20px;height:20px;fill:#d6c21f}
+.stars .pill{background:var(--bg-2);border-radius:var(--pill);padding:4px 8px}
+.stars a{text-decoration:underline}
+.info .brandl{font-size:13px;font-weight:700;text-decoration:underline}
+.info h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-top:16px}
+.info .pr{display:flex;align-items:baseline;gap:16px}
+.info .pr b{font-size:28px}
+.info .pr s{color:var(--fg-2);font-size:18px}
+.hr{height:1px;background:var(--line)}
+.lbl{font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center}
+.lbl a{font-weight:600;font-size:13px;text-decoration:underline}
+.swatches{display:flex;gap:12px;align-items:center;margin-top:10px}
+.swatches button{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);transition:transform .15s}
+.swatches button[aria-pressed="true"]{width:40px;height:40px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--fg)}
+.swatches button svg{display:none;color:#fff;width:18px;height:18px}
+.swatches button[aria-pressed="true"] svg{display:block}
+.swatches button.light svg{color:var(--fg)}
+.sizes{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.sizes button{height:44px;min-width:86px;padding:0 20px;border:1px solid var(--line-2);border-radius:6px;font-size:15px;font-weight:500}
+.sizes button[aria-pressed="true"]{border:2px solid var(--brand);background:var(--brand-light)}
+.sizes button:disabled{color:var(--fg-dis);border-color:var(--line);cursor:not-allowed}
+.buy{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;height:44px;border:1px solid var(--line-2);border-radius:var(--pill)}
+.qty button{width:44px;height:42px;display:grid;place-items:center;border-radius:50%}
+.qty button:hover{background:var(--press)}
+.qty input{width:36px;text-align:center;border:0;outline:0;font-weight:700;font-size:15px;background:none}
+.qty-note{font-size:12px;color:var(--fg-2)}
+.tabs{display:flex;border-bottom:2px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:1 0 auto;padding:16px 24px;font-size:14px;font-weight:500;color:var(--fg-2);border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs button[aria-selected="true"]{color:var(--fg);border-color:var(--brand)}
+.tabpanel{padding-block:28px;display:grid;gap:20px;max-width:65ch}
+.tabpanel h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.tabpanel p,.tabpanel li{color:var(--fg-2);font-size:15px;line-height:1.55}
+.tabpanel ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.spec{width:100%;border-collapse:collapse;font-size:14px}
+.spec th,.spec td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}
+.spec th{width:40%;font-weight:600}
+@media (max-width:1279px){.pdp{grid-template-columns:1.2fr 1fr}}
+@media (max-width:1023px){
+  .pdp{grid-template-columns:1fr;padding-block:8px 32px}
+  .gallery{margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)))}
+  .gallery .main{height:276px;border-radius:0}
+  .thumbs{display:none}
+  .gal-dots{display:flex}
+  .info{padding-left:0}
+  .info h1{font-size:20px}
+  .info .pr b{font-size:24px}
+}
+
+/* ---------- Modales / drawer ---------- */
+.overlay{position:fixed;inset:0;z-index:80;background:#000000a6;display:flex;animation:fade .2s}
+.drawer{margin-left:auto;width:min(440px,100%);height:100%;background:#fff;display:flex;flex-direction:column;animation:slideR .25s ease-out;padding-top:env(safe-area-inset-top,0px)}
+@keyframes slideR{from{transform:translateX(40px);opacity:0}}
+.drawer-h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.drawer-h h2{font-size:18px;font-weight:700}
+.drawer-b{flex:1;overflow:auto;padding:8px 20px}
+.drawer-f{border-top:1px solid var(--line);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:12px}
+.ship-bar{background:var(--orange-95);border-radius:12px;padding:12px;font-size:12px;display:grid;gap:8px}
+.ship-bar .bar{height:6px;border-radius:3px;background:#fff;overflow:hidden}
+.ship-bar .bar i{display:block;height:100%;background:var(--brand);border-radius:3px;transition:width .3s}
+.line{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding-block:16px;border-bottom:1px solid var(--line);align-items:start}
+.line img{width:72px;height:72px;object-fit:contain}
+.line .n{font-size:13px;font-weight:700}
+.line .b{font-size:12px;color:var(--fg-2)}
+.line .rm{font-size:12px;text-decoration:underline;color:var(--fg-2);margin-top:8px}
+.line .p{font-weight:700;text-align:right}
+.line .qty{height:36px;margin-top:8px}
+.line .qty button{width:34px;height:34px}
+.tot{display:flex;justify-content:space-between;font-size:16px}
+.tot b{font-size:20px}
+.empty-cart{display:grid;justify-items:center;gap:16px;text-align:center;padding:56px 16px;color:var(--fg-2)}
+.empty-cart .ico{width:56px;height:56px;color:var(--brand)}
+.modal{margin:auto;width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:#fff;border-radius:24px;padding:28px;animation:up2 .25s}
+@keyframes up2{from{transform:translateY(16px);opacity:0}}
+.modal-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+.modal-h h2{font-size:20px;font-weight:700}
+@media (max-width:767px){.overlay.sheet .modal{margin:auto 0 0;width:100%;border-radius:24px 24px 0 0;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}}
+.zoom-img{width:100%;max-height:70vh;object-fit:contain}
+.field{display:grid;gap:6px;font-size:13px;font-weight:600}
+.field input{height:52px;border:1px solid var(--line-3);border-radius:8px;padding:0 16px;font-size:16px;font-weight:400}
+.steps{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding-bottom:18px;position:relative}
+.steps li::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--line-2);margin:3px 0 0 7px}
+.steps li.done::before{background:var(--brand)}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:20px;bottom:0;width:2px;background:var(--line)}
+.steps li.done:not(:last-child)::after{background:var(--brand-alt)}
+.steps b{display:block;font-size:14px}
+.steps span{font-size:12px;color:var(--fg-2)}
+
+/* ---------- Institucional / legales ---------- */
+.title-block{background:var(--bg-dis);text-align:center}
+.title-block .wrap{padding-block:56px;display:grid;gap:14px;justify-items:center}
+.title-block h1{font-size:32px;font-weight:700;letter-spacing:-.01em}
+.title-block p{font-size:15px;color:var(--fg-2)}
+.title-block .btn{margin-top:14px}
+@media (max-width:767px){.title-block h1{font-size:24px}.title-block .wrap{padding-block:40px}}
+.article{max-width:1152px;margin:0 auto;padding-block:40px 24px;display:grid;gap:36px}
+.article p,.article li{font-size:15px;line-height:1.6;color:var(--fg-2);max-width:80ch}
+.article h2{font-size:20px;font-weight:700;margin-bottom:14px}
+.article ul{margin:12px 0 0;padding-left:20px;display:grid;gap:4px}
+.article p+p{margin-top:12px}
+.cta-box{background:var(--bg-dis);border-radius:16px;padding:48px 24px;text-align:center;display:grid;gap:20px;justify-items:center;margin-block:24px 8px}
+.cta-box h2{font-size:24px;font-weight:700}
+.legal-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-block:4px 8px}
+.legal-nav a{font-size:13px;font-weight:600;padding:8px 14px;border-radius:var(--pill);border:1px solid var(--line-2);text-decoration:none}
+.legal-nav a[aria-current="page"]{border-color:var(--brand);background:var(--orange-95)}
+.faq{display:grid;max-width:1152px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 16px;font-weight:600;font-size:15px;cursor:pointer;border-radius:8px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{background:var(--bg-2)}
+.faq details[open] summary{background:var(--brand-light);color:var(--fg)}
+.faq summary .ico{color:var(--brand);transition:transform .2s;width:20px;height:20px}
+.faq details[open] summary .ico{transform:rotate(180deg)}
+.faq details p{padding:12px 16px 24px;color:var(--fg-2);font-size:14px;line-height:1.6;max-width:90ch}
+.promo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:24px}
+.promo-head h2{font-size:20px;font-weight:700}
+.promo-head label{display:flex;align-items:center;gap:12px;font-size:15px}
+.promo-head input{height:52px;border:1px solid var(--line-3);border-radius:8px;padding:0 14px;font-size:15px;width:240px;max-width:100%}
+.promo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:24px 48px}
+.promo-card{border:1px solid var(--line);border-radius:8px;padding:20px 24px;display:grid;gap:6px;justify-items:start}
+.promo-card h3{font-size:16px;font-weight:700}
+.promo-card p{font-size:12px;color:var(--fg-2);margin-bottom:10px}
+@media (max-width:1023px){.promo-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.promo-grid{grid-template-columns:1fr}}
+
+/* About */
+.about-hero{position:relative;min-height:474px;display:flex;align-items:center;background:linear-gradient(90deg,#1d341a,#2c5a27);color:#fff;overflow:hidden}
+.about-hero img{position:absolute;right:0;top:0;height:100%;width:72%;object-fit:cover;object-position:left center}
+.about-hero .wrap{position:relative;width:100%}
+.about-hero .t{display:grid;gap:16px;max-width:440px}
+.about-hero .k{font-size:24px;font-weight:700}
+.about-hero h1{font-size:48px;font-weight:700}
+@media (max-width:767px){.about-hero{min-height:284px}.about-hero img{width:100%;opacity:.5}.about-hero h1{font-size:28px}.about-hero .k{font-size:18px}}
+.who{text-align:center;display:grid;justify-items:center;gap:20px;padding-block:24px 56px}
+.who img{width:110px;height:110px;border-radius:50%}
+.who h2{font-size:32px;font-weight:700}
+.who p{max-width:900px;font-size:16px;color:var(--fg-2);line-height:1.55}
+.cert{background:radial-gradient(ellipse at 70% 40%,#11475a,#08202b 70%);color:#fff;text-align:center}
+.cert .wrap{padding-block:56px;display:grid;justify-items:center;gap:22px}
+.cert .eyebrow{font-size:14px;font-weight:600;letter-spacing:.06em}
+.cert h2{font-size:32px;font-weight:700}
+.cert p{max-width:900px;line-height:1.55}
+.cert .badges{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.cert .badges img{width:112px;height:112px;border-radius:50%;background:#fff}
+.group{background:var(--ink);color:#fff;text-align:center}
+.group .wrap{padding-block:48px;display:grid;justify-items:center;gap:18px}
+.group h2{font-size:28px;font-weight:700}
+.group p{max-width:900px;line-height:1.55;color:#ffffffd9}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding-block:48px}
+.split img{width:100%;aspect-ratio:2/1;object-fit:cover;border-radius:16px}
+.split h2{font-size:32px;font-weight:700;margin-bottom:24px}
+.split p{font-size:16px;line-height:1.5;color:var(--fg-2);max-width:56ch}
+.bg-dis{background:var(--bg-dis)}
+@media (max-width:1023px){.split{grid-template-columns:1fr;gap:24px}.split.rev img{order:-1}.split h2{font-size:24px}}
+.values{background:var(--bg-dis);border-radius:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:40px 24px;text-align:center}
+.values div{display:grid;justify-items:center;gap:8px}
+.values svg{width:56px;height:56px;padding:12px;border-radius:50%;background:#fff;stroke:var(--fg);fill:none;stroke-width:1.5}
+.values b{font-size:18px}
+.values p{font-size:13px;color:var(--fg-2)}
+@media (max-width:1023px){.values{grid-template-columns:1fr 1fr}}
+.center-h{text-align:center;display:grid;gap:12px;padding-block:56px 32px}
+.center-h h2{font-size:32px;font-weight:700}
+.center-h p{color:var(--fg-2);font-size:15px}
+@media (max-width:767px){.center-h h2,.who h2,.cert h2{font-size:22px}.group h2{font-size:20px}}
+.search-head{padding-block:12px 24px}
+.search-head h1{font-size:20px;font-weight:700}
+.search-head p{color:var(--fg-2);margin-top:6px}
+.sorry{text-align:center;font-size:28px;font-weight:700;padding-block:24px 8px}
+@media (max-width:767px){.sorry{font-size:20px}}
+.view{animation:fade .25s}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2.5 3.5h2.6l2.4 11.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2l1.7-7.3H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20M10.5 8v5M8 10.5h5"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 4l17 8-17 8 3-8z" fill="currentColor"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l3 3v4h-7"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.8 3.3 1.4-6.4L2.7 9.5l6.5-.7z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="3.6" stroke="#ffc235" stroke-width="2"/><circle cx="16.6" cy="7.4" r="1" fill="#ffc235" stroke="none"/></symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3-3.46M14 4c.4 2.6 2 4 4.5 4.2" stroke-width="2.2"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="currentColor" stroke="none"/><path d="M13.2 20v-6.5h2.2l.3-2.5h-2.5V9.6c0-.7.3-1.2 1.3-1.2h1.3V6.2a14 14 0 0 0-1.9-.1c-1.9 0-3.2 1.2-3.2 3.3V11H8.6v2.5h2.1V20" fill="#ffc235" stroke="none"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12.5" rx="4" fill="currentColor" stroke="none"/><path d="M10.5 9.6v5.3l4.5-2.65z" fill="#ffc235" stroke="none"/></symbol>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap-24">
+    <div class="hdr-row">
+      <a class="logo" href="#home" aria-label="ilhabella, ir al inicio"><img src="img/logo.png" alt="ilhabella" width="94" height="44"></a>
+      <button class="cats-btn" id="catsBtn" aria-expanded="false" aria-controls="mega">
+        <span class="iconbtn"><svg class="ico"><use href="#i-menu"/></svg></span><span class="lbl">Categorías</span>
+      </button>
+      <form class="search" id="search" role="search" autocomplete="off">
+        <label class="vh" for="q">Buscar productos</label>
+        <div class="search-box">
+          <input id="q" type="search" placeholder="¿Qué estás buscando?" aria-autocomplete="list" aria-controls="suggest">
+          <button type="button" class="search-clear" id="qClear" hidden aria-label="Borrar búsqueda"><svg class="ico"><use href="#i-x"/></svg></button>
+          <button type="submit" class="search-go" aria-label="Buscar"><svg class="ico"><use href="#i-search"/></svg></button>
+        </div>
+        <div class="suggest" id="suggest" hidden></div>
+      </form>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#nosotros" data-nav="nosotros">Nosotros</a>
+        <a href="#" data-act="track">Seguimiento</a>
+        <a href="#" data-act="contact">Contacto</a>
+      </nav>
+      <button class="iconbtn cart-btn" id="cartBtn" aria-label="Abrir carro">
+        <svg class="ico"><use href="#i-cart"/></svg><span class="cart-badge tnum" id="cartBadge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mega" id="mega" hidden>
+  <div class="mega-scrim" data-close-mega></div>
+  <div class="mega-panel" role="dialog" aria-label="Categorías">
+    <div class="mega-list" id="megaList"></div>
+    <div class="mega-sub" id="megaSub"></div>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<footer id="footer">
+  <section class="news">
+    <div class="wrap">
+      <h2>No te pierdas nuestras ofertas y novedades</h2>
+      <form class="mail" data-mail>
+        <label class="vh" for="mail1">Correo electrónico</label>
+        <input id="mail1" type="email" placeholder="Ingresar mail" required>
+        <button class="btn btn-yellow" type="submit">Suscríbete <svg class="ico sm"><use href="#i-send"/></svg></button>
+      </form>
+      <p class="mail-msg" aria-live="polite"></p>
+    </div>
+  </section>
+  <section class="adv wrap">
+    <h2>Ventajas de comprar con nosotros</h2>
+    <div class="adv-grid">
+      <div><img src="img/adv1.png" alt=""><b>Origen canadiense certificado</b><p>Productos licenciados por Health Canada, enviados directamente desde Calgary.</p></div>
+      <div><img src="img/adv2.png" alt=""><b>Lo que no encuentras en Chile</b><p>Estándares de bienestar internacionales, disponibles para ti.</p></div>
+      <div><img src="img/adv3.png" alt=""><b>Enviado por DHL desde Canadá</b><p>Despacho internacional rápido y confiable directo a tu puerta.</p></div>
+      <div><img src="img/adv4.png" alt=""><b>Importación sin trámites</b><p>Gestionamos la importación para uso personal, hasta 3 unidades por pedido.</p></div>
+    </div>
+  </section>
+  <section class="trust">
+    <div class="wrap">
+      <img class="lc" src="img/logo-circle.png" alt="ilhabella">
+      <div>
+        <h3>Garantía de confianza Cross-Border</h3>
+        <p>Safe Care Chile e Ilhabella Shop son marcas operadas en origen por Safe Care Canada Ltd. (Calgary, AB), empresa registrada y licenciada ante Health Canada para la gestión y exportación de productos de bienestar. Todos los despachos B2C individuales se realizan bajo la modalidad de uso personal.</p>
+      </div>
+      <div class="badges"><img src="img/badge1.png" alt="Health Canada, calidad certificada"><img src="img/badge2.png" alt="Beauty & Wellness, calidad certificada"><img src="img/badge3.png" alt="Despacho individual, uso personal"></div>
+    </div>
+  </section>
+  <section class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div><h4>Acerca de ilhabella</h4><ul><li><a href="#nosotros">Nosotros</a></li><li><a href="#preguntas">Preguntas Frecuentes</a></li><li><a href="#" data-act="track">Seguimiento</a></li><li><a href="#bases-legales">Bases legales</a></li></ul></div>
+        <div><h4>Categorías</h4><ul id="footCats"></ul></div>
+        <div><h4>Informaciones</h4><ul><li><a href="#devoluciones">Política de Cambios y Devoluciones</a></li><li><a href="#despacho">Política de Despacho</a></li><li><a href="#privacidad">Política de Privacidad</a></li><li><a href="#terminos">Términos y Condiciones</a></li><li><a href="#privacidad">Política de Cookies</a></li></ul></div>
+        <div id="contacto"><h4>Contacto</h4><ul><li>Pozo Almonte 8950, Las Condes</li><li><b>contacto@ilhabellashop.cl</b></li><li><b>+56 9 8315 6684</b></li><li>Horario de atención<br><b>Lun - Vie: 9:00 - 18:00 hrs</b></li></ul></div>
+        <div>
+          <h4>Síguenos</h4>
+          <div class="social">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico"><use href="#i-ig"/></svg></a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ico"><use href="#i-tt"/></svg></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico"><use href="#i-fb"/></svg></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ico"><use href="#i-yt"/></svg></a>
+          </div>
+          <h4 style="margin:30px 0 0">¡Suscríbete!</h4>
+          <small>Te mantendremos informado sobre nuestras mejores ofertas, promociones y productos pensados para ti</small>
+          <form class="mail sm" data-mail>
+            <label class="vh" for="mail2">Correo electrónico</label>
+            <input id="mail2" type="email" placeholder="Ingresar mail" required>
+            <button class="go" type="submit" aria-label="Suscribirme"><svg class="ico sm"><use href="#i-send"/></svg></button>
+          </form>
+          <p class="mail-msg" aria-live="polite" style="margin-top:8px"></p>
+        </div>
+      </div>
+      <div class="foot-bottom"><img src="img/pay.png" alt="Medios de pago: Webpay, Visa, Mastercard, Diners"><span>© Copyright 2026 ilhabella. Todos los derechos reservados</span></div>
+    </div>
+  </section>
+</footer>
+
+<div id="layer"></div>
+
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const clp=n=>'$'+n.toLocaleString('es-CL');
+const ic=(id,cls='ico')=>`<svg class="${cls}"><use href="#i-${id}"/></svg>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- Datos ---------- */
+const CATS=[
+ {id:'salud',name:'Salud y Bienestar',short:'Salud y bienestar',img:'cat1',c1:'#645336',c2:'#877a4d',subs:['Vitaminas','Minerales','Suplementos para dormir','Omega 3','Probióticos','Defensas','Energía y vitalidad','Articulaciones','Digestión','Salud de la mujer','Homeopatía']},
+ {id:'personal',name:'Cuidado personal e Higiene',short:'Cuidado personal',img:'cat2',c1:'#3e403f',c2:'#3a525c',subs:['Desodorantes','Jabones','Gel de ducha','Higiene bucal','Cuidado de manos','Protección solar','Cuidado íntimo','Afeitado','Repelentes','Kits de viaje','Bebés']},
+ {id:'piel',name:'Cuidado de la piel',short:'Cuidado de la piel',img:'cat3',c1:'#634431',c2:'#865b40',subs:['Limpiadores','Hidratantes','Sérums','Contorno de ojos','Exfoliantes','Mascarillas','Antiacné','Bálsamos labiales','Cremas corporales','Antiedad','Piel sensible']},
+ {id:'fragancias',name:'Fragancias y perfumería',short:'Perfumes',img:'cat4',c1:'#5f5039',c2:'#7a714f',subs:['Perfumes','Body mist','Aceites esenciales','Colonias','Velas aromáticas','Sets de regalo']},
+ {id:'capilar',name:'Cuidado capilar',short:'Cuidado capilar',img:'cat5',c1:'#5f4946',c2:'#7a626b',subs:['Shampoo','Acondicionador','Mascarillas capilares','Tratamientos','Fijación y estilo','Cuero cabelludo']},
+ {id:'maquillaje',name:'Maquillaje',short:'Maquillaje',img:'cat6',c1:'#644032',c2:'#84503e',subs:['Labiales','Brillos','Bases','Rubores','Máscaras de pestañas','Desmaquillantes']}
+];
+CATS.forEach((c,i)=>{c.banner='img/cb'+(i+1)+'.jpg';c.ico='img/ico'+(i+1)+'.png'});
+const catById=id=>CATS.find(c=>c.id===id)||CATS[0];
+const BASE=[
+ {brand:'Wellness',name:'Wellness by London Drugs Folic Acid - 1mg - 180s',img:'img/prod.jpg',price:7900,old:8800,chip:'180 Comprimidos',type:'Vitaminas',desc:'Ácido fólico de 1 mg, fórmula sin levadura.'},
+ {brand:'Natural Vitality',name:'Natural Calm Sueño Tranquilo – sabor frutos del bosque',img:'img/pdp1.jpg',price:24990,old:27990,chip:'113 g',type:'Suplementos para dormir',desc:'Magnesio con melatonina, L-teanina y GABA.',gallery:['img/pdp1.jpg','img/pdp3.jpg','img/pdp4.jpg']},
+ {brand:'Wellness',name:'Wellness by London Drugs Folic Acid - 1mg - 180s',img:'img/prod.jpg',price:6900,old:7900,chip:'180 Comprimidos',type:'Minerales',desc:'Esta es una descripción breve del producto.'},
+ {brand:'Natural Vitality',name:'Natural Calm Sueño Tranquilo – sabor frutos del bosque',img:'img/pdp1.jpg',price:19990,old:0,chip:'113 g',type:'Suplementos para dormir',desc:'Bebida en polvo para el descanso nocturno.',gallery:['img/pdp1.jpg','img/pdp3.jpg','img/pdp4.jpg']}
+];
+const PRODUCTS=[];
+CATS.forEach(c=>{for(let i=0;i<10;i++){const b=BASE[i%4];PRODUCTS.push({...b,id:c.id+'-'+i,cat:c.id,price:b.price+((i*700)%3500),old:b.old?b.old+((i*700)%3500):0})}});
+const prod=id=>PRODUCTS.find(p=>p.id===id)||PRODUCTS[1];
+const BRANDS=['Wellness','Natural Vitality','Herbion','Whole Earth & Sea','Adrien Gagnon','Alba Botanica','Acure','Cocokind','Burt\'s Bees','Andalou'];
+const pct=p=>p.old?Math.round((1-p.price/p.old)*100):0;
+
+/* ---------- Estado ---------- */
+const S={cart:{},plp:{cat:'salud',sub:null,sort:'rel',page:1,f:{promo:[],brand:[],type:[],min:0,max:40000}},pdp:'salud-1',q:'',gal:0,color:0,size:0,qty:1,tab:0};
+try{const c=JSON.parse(localStorage.getItem('ilh-cart')||'{}');if(c&&typeof c==='object')S.cart=c}catch(e){}
+const saveCart=()=>{try{localStorage.setItem('ilh-cart',JSON.stringify(S.cart))}catch(e){}};
+const cartCount=()=>Object.values(S.cart).reduce((a,b)=>a+b,0);
+
+/* ---------- Carro ---------- */
+function setQty(id,n){n=Math.max(0,Math.min(3,n));if(n)S.cart[id]=n;else delete S.cart[id];saveCart();paintBadge();
+  $$(`[data-actions="${id}"]`).forEach(el=>el.innerHTML=actionsHTML(id));
+  if($('#cartDrawer'))renderCart();}
+function add(id,n=1){const cur=S.cart[id]||0;if(cur+n>3){toast('Máximo 3 unidades por producto (importación para uso personal)');setQty(id,3);return}
+  setQty(id,cur+n);toast('Producto añadido al carro','Ver carro',openCart);}
+function paintBadge(){const b=$('#cartBadge');b.textContent=cartCount();b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}
+function actionsHTML(id){const q=S.cart[id];
+  return q?`<div class="stepper" role="group" aria-label="Cantidad en el carro"><button data-dec="${id}" aria-label="Quitar uno">${ic('minus','ico sm')}</button><output class="tnum">${q}</output><button data-inc="${id}" aria-label="Agregar uno">${ic('plus','ico sm')}</button></div>`
+           :`<button class="btn btn-yellow btn-sm" data-add="${id}">Añadir ${ic('plus','ico sm')}</button>`}
+
+/* ---------- Componentes ---------- */
+const crumbs=items=>`<nav class="crumbs" aria-label="Migas de pan">${items.map((it,i)=>i<items.length-1?`<a href="${it[1]}"${it[2]?` data-cat="${it[2]}"`:''}>${esc(it[0])}</a>${ic('right','ico')}`:`<b>${esc(it[0])}</b>`).join('')}</nav>`;
+function card(p,tag=true){return `<article class="card">${tag&&p.old?'<span class="tag">Oferta</span>':''}
+  <a class="ph" href="#producto" data-p="${p.id}" tabindex="-1"><img src="${p.img}" alt="" loading="lazy"></a>
+  <span class="brand">${esc(p.brand)}</span>
+  <a class="name" href="#producto" data-p="${p.id}">${esc(p.name)}</a>
+  ${tag?`<span class="chip">${p.chip}</span>`:''}
+  ${p.old?`<s class="old tnum">${clp(p.old)}</s>`:'<span class="old" style="visibility:hidden">-</span>'}
+  <div class="price tnum">${clp(p.price)}${p.old?`<span class="off">-${pct(p)}%</span>`:''}</div>
+  ${tag?`<p class="desc">${esc(p.desc)}</p>`:''}
+  <div class="actions" data-actions="${p.id}">${actionsHTML(p.id)}</div></article>`}
+let carId=0;
+function carousel(list,cls=''){const id='car'+(carId++);const pages=Math.max(1,Math.ceil(list.length/4));
+  return `<div class="carousel ${cls}" data-car="${id}"><button class="car-arrow prev" aria-label="Anterior">${ic('left')}</button>
+   <div class="track" tabindex="0" aria-label="Carrusel de productos">${list.map(p=>card(p,false)).join('')}</div>
+   <button class="car-arrow next" aria-label="Siguiente">${ic('right')}</button></div>
+   <div class="dots" data-dots="${id}">${Array.from({length:pages},(_,i)=>`<button aria-label="Página ${i+1}"${i?'':' aria-current="true"'}></button>`).join('')}</div>`}
+function wireCarousels(root){$$('.carousel',root).forEach(c=>{const t=$('.track',c),prev=$('.prev',c),next=$('.next',c);const dots=$(`[data-dots="${c.dataset.car}"]`,root);
+  const step=()=>t.clientWidth;
+  const upd=()=>{const max=t.scrollWidth-t.clientWidth-2;if(prev)prev.disabled=t.scrollLeft<=2;if(next)next.disabled=t.scrollLeft>=max;
+    if(dots){const n=dots.children.length;const i=max>0?Math.round(t.scrollLeft/max*(n-1)):0;[...dots.children].forEach((d,j)=>d.setAttribute('aria-current',j===i))}};
+  prev&&prev.addEventListener('click',()=>t.scrollBy({left:-step()}));next&&next.addEventListener('click',()=>t.scrollBy({left:step()}));
+  dots&&[...dots.children].forEach((d,j)=>d.addEventListener('click',()=>{const n=dots.children.length;t.scrollTo({left:(t.scrollWidth-t.clientWidth)*(n>1?j/(n-1):0)})}));
+  t.addEventListener('scroll',upd,{passive:true});upd();})}
+const cbanner=(c,plp)=>`<a class="cbanner${plp?' plp':''}" href="#catalogo" data-cat="${c.id}" style="--c1:${c.c1};--c2:${c.c2}"><img src="${c.banner}" alt="" loading="lazy"><div class="txt"><h3>${esc(plp&&S.plp.sub?S.plp.sub:c.name)}</h3>${plp?`<p>${plp}</p>`:`<span class="btn btn-brand">Ver categoría ${ic('arrow','ico sm')}</span>`}</div></a>`;
+const brandsRow=()=>`<div class="brands"><button class="car-arrow prev" aria-label="Marcas anteriores">${ic('left')}</button><div class="carousel" data-car="brands" style="flex:1;min-width:0"><div class="track">${BRANDS.map(b=>`<a class="brand-logo" href="#catalogo" data-brand="${esc(b)}">${esc(b)}</a>`).join('')}</div></div><button class="car-arrow next" aria-label="Más marcas">${ic('right')}</button></div>`;
+function wireBrands(root){const w=$('.brands',root);if(!w)return;const t=$('.track',w);$('.prev',w).onclick=()=>t.scrollBy({left:-t.clientWidth/2});$('.next',w).onclick=()=>t.scrollBy({left:t.clientWidth/2})}
+
+/* ---------- Vistas ---------- */
+const V={};
+V.home=()=>`
+<div class="wrap-24" style="padding-inline:0"><a class="hero" href="#catalogo" data-cat="salud" data-sub="Vitaminas" aria-label="Cuídate este invierno: ver vitaminas">
+  <img class="hero-d" src="img/hero-d.jpg" alt="Cuídate este invierno. Especiales invierno: vitaminas para tu bienestar." width="1440" height="458">
+  <div class="hero-m"><img class="hp" src="img/hero-prod.jpg" alt="Especiales invierno: vitaminas para tu bienestar"><img class="pe" src="img/hero-people.jpg" alt=""><div class="ht"><h2>Cuídate<br>este invierno</h2><span class="btn btn-brand">Ver productos <svg class="ico sm"><use href="#i-arrow"/></svg></span></div></div></a></div>
+<div class="wrap-24"><div class="ad-bar">${ic('truck','ico sm')}<span>Obtén tu <b>envío gratis</b> en pedidos desde los <b>$100.000 CLP</b></span></div></div>
+<div class="wrap" style="padding-inline:max(16px,env(safe-area-inset-left,0px))"><div style="max-width:1360px;margin:0 auto" class="cat-row">${CATS.map(c=>`<a class="cat-box" href="#catalogo" data-cat="${c.id}"><img src="img/${c.img}.jpg" alt=""><span>${c.short}</span></a>`).join('')}</div></div>
+<section class="wrap-24"><h2 class="sec-h">Destacados</h2>
+<div class="promos">
+ <a href="#producto" data-p="salud-0"><img src="img/promo1.jpg" alt="Gomitas Vitamina C, sin azúcar 125 mg. Ver producto"></a>
+ <a href="#producto" data-p="salud-2"><img src="img/promo2.jpg" alt="Multivitamínico D3, sin gluten 110 g. Ver producto"></a>
+ <a class="w2" href="#producto" data-p="salud-4"><img src="img/promo3.jpg" alt="Pastillas para la tos sin azúcar 70 g. Ver producto"></a>
+ <a class="w2" href="#producto" data-p="piel-1"><img src="img/promo4.jpg" alt="Crema polipeptídica de colágeno 95 g. Ver producto"></a>
+ <a href="#producto" data-p="piel-3"><img src="img/promo5.jpg" alt="Limpiador antiacné con ácido salicílico 168 g. Ver producto"></a>
+ <a href="#producto" data-p="piel-5"><img src="img/promo6.jpg" alt="Crema limpiadora facial de argán 118 ml. Ver producto"></a>
+</div></section>
+<section class="wrap-24"><h2 class="sec-h">Productos por categoría</h2>
+${CATS.map(c=>`<div style="display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:24px">${cbanner(c)}<div style="padding-inline:clamp(0px,2vw,24px)">${carousel(PRODUCTS.filter(p=>p.cat===c.id).slice(0,8))}</div></div>`).join('')}
+</section>
+<section class="wrap-24"><h2 class="sec-h" style="text-align:center;font-size:24px">Nuestras marcas</h2>${brandsRow()}</section>`;
+
+function filtered(){const st=S.plp;let L=PRODUCTS.filter(p=>p.cat===st.cat);
+  if(st.f.brand.length)L=L.filter(p=>st.f.brand.includes(p.brand));
+  if(st.f.type.length)L=L.filter(p=>st.f.type.includes(p.type));
+  if(st.f.promo.includes('Promo'))L=L.filter(p=>p.old);
+  if(st.f.promo.includes('Cyber Day'))L=L.filter(p=>pct(p)>=10);
+  L=L.filter(p=>p.price>=st.f.min&&p.price<=st.f.max);
+  if(st.sort==='asc')L=[...L].sort((a,b)=>a.price-b.price);
+  if(st.sort==='desc')L=[...L].sort((a,b)=>b.price-a.price);
+  if(st.sort==='off')L=[...L].sort((a,b)=>pct(b)-pct(a));
+  return L}
+const sortSel=id=>`<div class="select"><label class="vh" for="${id}">Ordenar por</label><select id="${id}" data-sort>${[['rel','Más relevantes'],['asc','Menor precio'],['desc','Mayor precio'],['off','Mayor descuento']].map(o=>`<option value="${o[0]}"${S.plp.sort===o[0]?' selected':''}>${o[1]}</option>`).join('')}</select>${ic('down')}</div>`;
+function facet(key,title,body,open=true){return `<div class="facet"><button aria-expanded="${open}" data-facet>${title}${ic('up')}</button><div class="fbody"${open?'':' hidden'}>${body}</div></div>`}
+function filtersHTML(){const st=S.plp,all=PRODUCTS.filter(p=>p.cat===st.cat);
+  const cnt=(k,v)=>all.filter(p=>p[k]===v).length;
+  const types=[...new Set(all.map(p=>p.type))],brands=[...new Set(PRODUCTS.map(p=>p.brand))].concat(['Herbion','Adrien Gagnon','Acure']);
+  const pctMin=st.f.min/40000*100,pctMax=st.f.max/40000*100;
+  return `<aside class="filters" id="filters" aria-label="Filtros">
+  <div class="sheet-head">Filtrar <button class="iconbtn" data-close-filters aria-label="Cerrar filtros">${ic('x')}</button></div>
+  ${facet('promo','Promociones',`<div class="opts">${['Cyber Day','Promo'].map(v=>`<label class="opt"><input type="checkbox" data-f="promo" value="${v}"${st.f.promo.includes(v)?' checked':''}>${v}</label>`).join('')}</div>`)}
+  ${facet('cat','Categorías',`<div class="opts">${CATS.map(c=>`<label class="opt"><input type="radio" name="fcat" data-fcat value="${c.id}"${c.id===st.cat?' checked':''}>${c.name}</label>`).join('')}</div>`)}
+  ${facet('type','Tipo de producto',`<div class="fsearch"><input placeholder="Buscar tipo de producto" data-fsearch aria-label="Buscar tipo de producto">${ic('search','ico sm')}</div><div class="opts">${types.map(v=>`<label class="opt"><input type="checkbox" data-f="type" value="${esc(v)}"${st.f.type.includes(v)?' checked':''}>${esc(v)}<span class="n">${cnt('type',v)}</span></label>`).join('')}</div>`)}
+  ${facet('price','Precio',`<div class="prices"><label>Mínimo<input type="number" inputmode="numeric" id="pmin" value="${st.f.min}" step="500" min="0" max="40000"></label><label>Máximo<input type="number" inputmode="numeric" id="pmax" value="${st.f.max}" step="500" min="0" max="40000"></label></div>
+     <div class="range"><span class="rail"></span><span class="fill" style="left:${pctMin}%;right:${100-pctMax}%"></span><input type="range" id="rmin" min="0" max="40000" step="500" value="${st.f.min}" aria-label="Precio mínimo"><input type="range" id="rmax" min="0" max="40000" step="500" value="${st.f.max}" aria-label="Precio máximo"></div><div class="range-lbl tnum"><span>$0</span><span>$40.000</span></div>`)}
+  ${facet('brand','Marca',`<div class="fsearch"><input placeholder="Buscar por marca" data-fsearch aria-label="Buscar por marca">${ic('search','ico sm')}</div><div class="opts">${[...new Set(brands)].map(v=>`<label class="opt"><input type="checkbox" data-f="brand" value="${esc(v)}"${st.f.brand.includes(v)?' checked':''}>${esc(v)}<span class="n">${all.filter(p=>p.brand===v).length}</span></label>`).join('')}</div>`)}
+  </aside><div class="sheet-foot"><button class="btn btn-out" style="height:44px" data-clear-f>Limpiar</button><button class="btn btn-brand" data-close-filters>Ver resultados</button></div>`}
+function activeChips(){const f=S.plp.f,c=[];f.promo.forEach(v=>c.push(['promo',v]));f.type.forEach(v=>c.push(['type',v]));f.brand.forEach(v=>c.push(['brand',v]));
+  if(f.min>0||f.max<40000)c.push(['price',`${clp(f.min)} – ${clp(f.max)}`]);
+  return c.length?`<div class="chips-on">${c.map(x=>`<button data-unf="${x[0]}" data-v="${esc(x[1])}">${esc(x[1])}${ic('x','ico sm')}</button>`).join('')}<button data-clear-f style="border-color:transparent;background:none;text-decoration:underline">Limpiar todo</button></div>`:''}
+function gridHTML(){const L=filtered(),per=12,pages=Math.max(1,Math.ceil(L.length/per));S.plp.page=Math.min(S.plp.page,pages);
+  const items=L.slice((S.plp.page-1)*per,S.plp.page*per);
+  return `${activeChips()}<div class="grid">${items.length?items.map(p=>card(p)).join(''):`<div class="no-res"><b style="font-size:18px;color:var(--fg)">Ningún producto coincide con estos filtros</b><p>Prueba quitando algún filtro o ampliando el rango de precio.</p><button class="btn btn-brand" data-clear-f>Limpiar filtros</button></div>`}</div>
+  ${items.length?`<nav class="pager" aria-label="Paginación"><button data-page="${S.plp.page-1}" aria-label="Página anterior"${S.plp.page===1?' disabled':''}>${ic('left','ico sm')}</button>${Array.from({length:Math.max(pages,5)},(_,i)=>`<button data-page="${i+1}"${i+1===S.plp.page?' aria-current="page"':''}>${i+1}</button>`).join('')}<button data-page="${S.plp.page+1}" aria-label="Página siguiente">${ic('right','ico sm')}</button></nav>`:''}`}
+V.catalogo=()=>{const c=catById(S.plp.cat),title=S.plp.sub||c.name;
+  return `<div class="wrap">${crumbs([['Inicio','#home'],[c.name,'#catalogo',c.id]].concat(S.plp.sub?[[S.plp.sub]]:[]).map((x,i,a)=>i===a.length-1?[x[0]]:x))}
+  ${cbanner(c,'Productos licenciados por Health Canada, despachados desde Calgary')}
+  <div class="plp-top"><h1>${esc(title)}</h1><div class="sort"><span>Ordenar por:</span>${sortSel('sortD')}</div></div>
+  <div class="filter-tab"><button data-open-filters>${ic('filter')} Filtrar</button>${sortSel('sortM')}</div>
+  <div class="plp-body">${filtersHTML()}<div id="gridWrap" style="min-width:0">${gridHTML()}</div></div></div>`};
+
+V.busqueda=()=>{const q=S.q.trim().toLowerCase();const L=q?PRODUCTS.filter(p=>(p.name+' '+p.brand+' '+p.type+' '+catById(p.cat).name).toLowerCase().includes(q)):[];
+  const uniq=[];const seen=new Set();L.forEach(p=>{const k=p.name+p.price;if(!seen.has(k)){seen.add(k);uniq.push(p)}});
+  return `<div class="wrap">${crumbs([['Inicio','#home'],['Resultados de búsqueda']])}
+  <div class="search-head"><h1>Resultados para: ${esc(S.q)}</h1><p class="tnum">${uniq.length} productos encontrados</p></div>
+  ${uniq.length?`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(230px,44%),1fr))">${uniq.slice(0,16).map(p=>card(p)).join('')}</div>`
+  :`<p class="sorry">Lo sentimos, no encontramos el producto que buscabas</p><p style="text-align:center;color:var(--fg-2)">Revisa la ortografía o prueba con términos como “Folic”, “Calm” o “Vitaminas”.</p>
+    <h2 class="sec-h">Te podría interesar</h2>${carousel(PRODUCTS.slice(0,8))}`}</div>`};
+
+V.producto=()=>{const p=prod(S.pdp),c=catById(p.cat);const gal=p.gallery||['img/prod.jpg','img/prod.jpg','img/prod.jpg'];const colors=[['Negro','#26282a'],['Crema','#f5e9e0','light'],['Azul','#0f6aa5']];
+  const sizes=p.gallery?['113 g','200 g','300 g']:['90 un.','180 un.','360 un.'];const q=S.cart[p.id]||0;
+  return `<div class="wrap">${crumbs([['Inicio','#home'],[c.name,'#catalogo',c.id],[p.type]])}
+  <div class="pdp">
+   <div class="gallery">
+     <div class="main"><img id="galMain" src="${gal[S.gal]}" alt="${esc(p.name)}"><button class="iconbtn zoom" data-zoom aria-label="Ampliar imagen">${ic('zoom')}</button></div>
+     <div class="thumbs">${gal.map((g,i)=>`<button data-gal="${i}" aria-label="Imagen ${i+1}"${i===S.gal?' aria-current="true"':''}><img src="${g}" alt=""></button>`).join('')}</div>
+     <div class="dots gal-dots">${gal.map((g,i)=>`<button data-gal="${i}" aria-label="Imagen ${i+1}"${i===S.gal?' aria-current="true"':''}></button>`).join('')}</div>
+   </div>
+   <div class="info">
+     <div class="top"><div class="stars">${'<svg><use href="#i-star"/></svg>'.repeat(5)}<span class="pill">5.0</span><a href="#" data-tab-go="1">(2)</a></div><button class="iconbtn" data-share aria-label="Compartir">${ic('share')}</button></div>
+     <div><a class="brandl" href="#catalogo" data-brand="${esc(p.brand)}">Marca: ${esc(p.brand)}</a><h1>${esc(p.name)}</h1></div>
+     <div class="pr tnum"><b>${clp(p.price)}</b>${p.old?`<s>${clp(p.old)}</s><span class="off">-${pct(p)}%</span>`:''}</div>
+     <div class="hr"></div>
+     <div><div class="lbl">Elegir color: ${colors[S.color][0]}</div><div class="swatches" role="group" aria-label="Color">${colors.map((x,i)=>`<button class="${x[2]||''}" style="background:${x[1]}" data-color="${i}" aria-label="${x[0]}" aria-pressed="${i===S.color}">${ic('check')}</button>`).join('')}</div></div>
+     <div><div class="lbl">Elegir formato <a href="#" data-details>Ver detalles</a></div><div class="sizes" role="group" aria-label="Formato">${sizes.map((s,i)=>`<button data-size="${i}" aria-pressed="${i===S.size}"${i===2?' disabled title="Sin stock"':''}>${s}</button>`).join('')}</div></div>
+     <div class="hr"></div>
+     <div class="buy">
+       <div class="qty" role="group" aria-label="Cantidad"><button data-q="-1" aria-label="Menos">${ic('minus','ico sm')}</button><input id="pdpQty" class="tnum" inputmode="numeric" value="${S.qty}" aria-label="Cantidad"><button data-q="1" aria-label="Más">${ic('plus','ico sm')}</button></div>
+       <button class="btn btn-yellow" data-add-pdp="${p.id}" style="min-width:189px;justify-content:space-between">Añadir ${ic('plus','ico sm')}</button>
+     </div>
+     <p class="qty-note">${q?`Tienes ${q} en tu carro. `:''}Máximo 3 unidades por pedido (importación para uso personal).</p>
+   </div>
+  </div>
+  <div style="max-width:746px">
+   <div class="tabs" role="tablist">${['Descripción','Información adicional','Aviso legal'].map((t,i)=>`<button role="tab" id="tab${i}" aria-selected="${i===S.tab}" aria-controls="tp" data-tab="${i}">${t}</button>`).join('')}</div>
+   <div class="tabpanel" id="tp" role="tabpanel" aria-labelledby="tab${S.tab}">${tabHTML(p)}</div>
+  </div>
+  <h2 class="sec-h">Te podría interesar</h2>${carousel(PRODUCTS.filter(x=>x.cat===p.cat&&x.id!==p.id).slice(0,8))}</div>`};
+function tabHTML(p){if(S.tab===0)return p.gallery?`<h2>Un descanso profundo, sin depender de fármacos</h2>
+  <p>Natural Calm Sueño Tranquilo combina magnesio altamente absorbible con 5 mg de melatonina, L-teanina y GABA. Se disuelve en agua tibia y ayuda a relajar el cuerpo antes de dormir.</p>
+  <p>Su sabor a frutos del bosque es natural y no contiene azúcar añadida, gluten ni OGM. Producto verificado por Non-GMO Project.</p>
+  <h2>Modo de uso</h2><ul><li>Disolver 1 cucharadita (aprox. 3 g) en 120 ml de agua caliente.</li><li>Tomar 30 a 60 minutos antes de acostarse.</li><li>No exceder la dosis diaria recomendada.</li></ul>`
+  :`<h2>Ácido fólico para el cuidado diario</h2><p>Cada tableta entrega 1 mg de ácido fólico, una vitamina del complejo B que participa en la formación de glóbulos rojos y en el desarrollo normal durante el embarazo.</p><p>Fórmula sin levadura, apta para vegetarianos. Frasco de 180 tabletas, rinde seis meses.</p><h2>Modo de uso</h2><ul><li>Adultos: 1 tableta al día con alimentos.</li><li>Consulte a su médico si está embarazada o en lactancia.</li></ul>`;
+  if(S.tab===1)return `<table class="spec"><tbody><tr><th>Marca</th><td>${esc(p.brand)}</td></tr><tr><th>Formato</th><td>${p.chip}</td></tr><tr><th>Origen</th><td>Canadá</td></tr><tr><th>Registro</th><td>Health Canada (NPN)</td></tr><tr><th>Despacho</th><td>DHL Express desde Calgary, 5 a 10 días hábiles</td></tr><tr><th>Opiniones</th><td>★★★★★ 5.0 · 2 reseñas</td></tr></tbody></table>`;
+  return `<p>Producto importado para uso personal bajo la modalidad de courier. No se comercializa en Chile a través de canales retail. Este producto no reemplaza una alimentación equilibrada ni un tratamiento médico. Ante cualquier duda consulte a un profesional de la salud.</p>`}
+
+V.nosotros=()=>`<div class="wrap">${crumbs([['Inicio','#home'],['Nosotros']])}</div>
+<section class="about-hero"><img src="img/about-photo.jpg" alt="Familia jugando en un campo verde"><div class="wrap"><div class="t"><span class="k">ilhabella</span><h1>Tu bienestar nos importa</h1><p>Somos parte del grupo Safe Care</p></div></div></section>
+<section class="wrap who"><img src="img/logo-circle.png" alt=""><h2>¿Quiénes somos?</h2><p>Ilhabella nació de la convicción de que el bienestar verdadero comienza con el cuidado diario. Nuestra misión es acompañar a las personas en la construcción de hábitos saludables a través de productos naturales y homeopáticos que contribuyan al equilibrio, la vitalidad y el bienestar integral, porque creemos que cuidarse bien no debería ser complicado.</p></section>
+<section class="cert"><div class="wrap"><span class="eyebrow">Certificación Canadiense</span><h2>Respaldados por altos estándares internacionales</h2><p>La confianza, la seguridad y la eficacia son pilares fundamentales de nuestra marca. Por ello, comercializamos productos desarrollados en Canadá bajo altos estándares de calidad y respaldados por Health Canada, garantizando procesos rigurosos y un compromiso constante con el bienestar de las personas.</p><div class="badges"><img src="img/badge1.png" alt="Health Canada"><img src="img/badge2.png" alt="Beauty & Wellness"><img src="img/badge3.png" alt="Despacho individual"></div></div></section>
+<section class="group"><div class="wrap"><h2>Parte del Grupo Safe Care</h2><p>Como parte de Grupo Safe Care, Ilhabella hereda una trayectoria orientada al cuidado de la salud y al desarrollo de soluciones confiables. Esta experiencia nos permite llevar a Chile y a toda la región alternativas naturales con el respaldo de altos estándares internacionales, ofreciendo a nuestros clientes información clara y una experiencia de compra cercana, confiable y sin complicaciones.</p></div></section>
+<div class="wrap"><div class="cta-box"><h2>Conoce nuestros productos</h2><a class="btn btn-brand" href="#catalogo" data-cat="salud">Ver productos ${ic('arrow','ico sm')}</a></div></div>
+<section class="wrap split"><img src="img/mision.jpg" alt="Profesional de laboratorio sonriendo"><div><h2>Nuestra misión</h2><p>Facilitar el acceso a productos naturales y homeopáticos de calidad comprobada, para que más personas puedan incorporar hábitos saludables a su vida cotidiana. Lo hacemos con cercanía, transparencia y el respaldo de estándares internacionales que garantizan seguridad y eficacia en cada producto que ofrecemos.</p></div></section>
+<section class="bg-dis"><div class="wrap split rev"><div><h2>Nuestra visión</h2><p>Ser el referente de confianza en bienestar natural en Chile y Latinoamérica, reconocidos por la calidad de nuestra selección, la claridad de nuestra comunicación y el impacto positivo que generamos en la salud y la calidad de vida de las personas que confían en nosotros.</p></div><img src="img/vision.jpg" alt="Familia al aire libre"></div></section>
+<section class="wrap"><div class="center-h"><h2>Nuestros valores</h2><p>Estos son los principios que guían cada decisión que tomamos, desde la selección de productos hasta la forma en que nos comunicamos contigo.</p></div>
+<div class="values">
+ <div><svg viewBox="0 0 24 24"><path d="M3 12l4-4 4 2 3-3 7 6-4 4-2-2-2 2-3-3-2 2z"/></svg><b>Confianza</b><p>Productos bajo altos estándares, respaldados por procesos rigurosos y certificaciones reconocidas internacionalmente.</p></div>
+ <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 17V10M12 13c-2 0-3.5-1.5-3.5-3.5C10.5 9.5 12 11 12 13zm0-1c0-2 1.5-3.5 3.5-3.5 0 2-1.5 3.5-3.5 3.5z"/></svg><b>Bienestar</b><p>Soluciones naturales para una vida saludable, equilibrada y plena, pensadas para el cuidado cotidiano.</p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg><b>Vitalidad</b><p>Fomentamos hábitos saludables que favorecen la energía, la vitalidad y el equilibrio día a día.</p></div>
+ <div><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg><b>Compromiso</b><p>Actuamos con responsabilidad y cercanía, con foco constante en la calidad y la satisfacción de quienes confían en nosotros.</p></div>
+</div>
+<h2 class="sec-h" style="text-align:center">Nuestras categorías</h2><div class="cat-row" style="padding-top:0">${CATS.map(c=>`<a class="cat-box" href="#catalogo" data-cat="${c.id}"><img src="img/${c.img}.jpg" alt=""><span>${c.short}</span></a>`).join('')}</div>
+<div class="center-h"><h2>Preguntas frecuentes</h2><p>Ilhabella — Parte de Grupo Safe Care</p></div>${faqHTML(8)}
+<div class="cta-box" style="margin-top:56px"><h2>Contáctanos para más información</h2><button class="btn btn-yellow" data-act="contact">Contactar ${ic('arrow','ico sm')}</button></div>
+<h2 class="sec-h" style="text-align:center;font-size:24px">Nuestras marcas</h2>${brandsRow()}</section>`;
+
+const FAQ=[
+ ['¿Qué es Ilhabella?','Ilhabella es una tienda en línea especializada en productos naturales y homeopáticos para el bienestar: suplementos, vitaminas y soluciones de cuidado de la salud. Nuestra misión es acompañarte en la construcción de hábitos saludables.'],
+ ['¿Ilhabella es parte de otra empresa?','Sí. Ilhabella forma parte de Grupo Safe Care y opera en origen a través de Safe Care Canada Ltd., con sede en Calgary, Alberta.'],
+ ['¿Dónde se fabrican los productos que venden?','Nuestros productos se fabrican en Canadá bajo licencia de Health Canada y se despachan directamente desde Calgary.'],
+ ['¿En qué países venden actualmente?','Hoy despachamos a todo Chile. Estamos trabajando para llegar a otros países de Latinoamérica.'],
+ ['¿Qué tipo de productos ofrece Ilhabella?','Vitaminas y suplementos, cuidado personal e higiene, cuidado de la piel, fragancias, cuidado capilar y maquillaje de origen natural.'],
+ ['¿Los productos cuentan con algún respaldo o certificación?','Sí. Todos cuentan con número de producto natural (NPN) o licencia equivalente emitida por Health Canada.'],
+ ['¿Cuántas unidades del mismo producto puedo comprar?','Hasta 3 unidades por producto en cada pedido. Es el límite que permite la importación para uso personal sin trámites adicionales.'],
+ ['¿Qué medios de pago aceptan?','Webpay, tarjetas Visa, Mastercard y Diners, de débito y crédito.'],
+ ['¿Cuánto demora mi pedido?','Entre 5 y 10 días hábiles desde la confirmación del pago. Recibirás un número de seguimiento DHL por correo.'],
+ ['¿Debo pagar impuestos al recibir mi pedido?','No. Los aranceles e impuestos de importación están incluidos en el precio publicado.'],
+ ['¿Puedo devolver un producto?','Sí, dentro de 10 días desde la recepción si el producto está sellado. Revisa la Política de Cambios y Devoluciones.'],
+ ['¿Cómo hago seguimiento de mi pedido?','Desde el enlace Seguimiento en el menú superior, ingresando tu número de pedido.']];
+const faqHTML=n=>`<div class="faq">${FAQ.slice(0,n).map((f,i)=>`<details${i===0?' open':''}><summary>${f[0]}${ic('down')}</summary><p>${f[1]}</p></details>`).join('')}</div>`;
+const LEGAL=[['privacidad','Política de privacidad'],['despacho','Política de despacho'],['devoluciones','Política de devolución'],['terminos','Términos y condiciones'],['preguntas','Preguntas frecuentes'],['bases-legales','Bases legales']];
+const legalNav=cur=>`<nav class="legal-nav" aria-label="Información legal">${LEGAL.map(l=>`<a href="#${l[0]}"${l[0]===cur?' aria-current="page"':''}>${l[1]}</a>`).join('')}</nav>`;
+function legalPage(id,title,sections,intro){return `<div class="wrap">${crumbs([['Inicio','#home'],[title]])}</div>
+<section class="title-block"><div class="wrap"><h1>${title}</h1><p>Ilhabella — Parte de Grupo Safe Care</p>${id==='preguntas'?'':`<button class="btn btn-out" data-dl>Descargar políticas ${ic('dl','ico sm')}</button>`}</div></section>
+<div class="wrap"><div style="padding-top:20px">${legalNav(id)}</div><article class="article">${intro?`<p>${intro}</p>`:''}${sections.map(s=>`<section><h2>${s[0]}</h2>${s[1]}</section>`).join('')}</article>
+<div class="cta-box"><h2>${title}</h2><button class="btn btn-out" data-dl>Descargar ${ic('dl','ico sm')}</button></div></div>`}
+const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+V.privacidad=()=>legalPage('privacidad','Política de privacidad',[
+ ['1. Datos que recopilamos','<p>Recopilamos los siguientes datos personales cuando usted realiza una compra o se contacta con nosotros:</p>'+ul(['Datos de identificación: nombre completo, RUT o documento de identidad.','Datos de contacto: correo electrónico, número de teléfono.','Datos de entrega: dirección postal, ciudad, región.','Datos de pago: procesados de forma segura por plataformas certificadas (no almacenamos datos de tarjetas).','Datos de navegación: cookies de sesión y análisis de uso del sitio (ver sección 6).'])],
+ ['2. Finalidad del tratamiento','<p>Sus datos son utilizados exclusivamente para:</p>'+ul(['Procesar y gestionar sus pedidos de compra.','Enviar confirmaciones de compra, estado del pedido y comunicaciones relacionadas.','Cumplir obligaciones legales y tributarias.','Mejorar la experiencia de usuario en nuestro sitio web.','Enviar comunicaciones comerciales, solo si usted ha dado su consentimiento expreso.'])],
+ ['3. Almacenamiento y seguridad','<p>Ilhabella almacena sus datos en servidores seguros con protocolos de encriptación SSL/TLS. Adoptamos medidas técnicas y organizativas razonables para proteger su información contra acceso no autorizado, pérdida o alteración. Sus datos se conservan durante el tiempo necesario para cumplir los fines descritos y las obligaciones legales vigentes.</p>'],
+ ['4. Compartición de datos','<p>No vendemos ni cedemos sus datos personales a terceros con fines comerciales. Solo los compartimos con:</p>'+ul(['Empresas de logística y transporte, para gestionar la entrega de su pedido.','Plataformas de pago certificadas (ej. Transbank, Mercado Pago), para procesar transacciones.','Autoridades competentes, cuando la ley lo exija.'])],
+ ['5. Derechos del titular','<p>Conforme a la Ley N° 19.628, usted tiene derecho a:</p>'+ul(['Acceder a sus datos personales que tratamos.','Rectificar datos incorrectos o desactualizados.','Cancelar o eliminar sus datos cuando ya no sean necesarios.','Oponerse al tratamiento de sus datos para fines comerciales.'])+'<p>Para ejercer estos derechos, escríbanos a contacto@ilhabellashop.cl indicando su nombre y solicitud. Responderemos en un plazo máximo de 10 días hábiles.</p>'],
+ ['6. Cookies','<p>Nuestro sitio utiliza cookies técnicas necesarias para su funcionamiento, y cookies analíticas para comprender el comportamiento de navegación (p. ej., Google Analytics). Las cookies analíticas solo se activan con su consentimiento. Puede gestionar o deshabilitar las cookies desde la configuración de su navegador; tenga en cuenta que esto podría afectar la funcionalidad del sitio.</p>'],
+ ['7. Cambios a esta política','<p>Ilhabella se reserva el derecho de actualizar esta política cuando sea necesario para adecuarla a cambios legales o mejoras en nuestros procesos. La versión vigente siempre estará disponible en nuestro sitio web.</p><p>Consultas sobre privacidad: WhatsApp +56 9 8315 6684 · contacto@ilhabellashop.cl · Lunes a viernes, 9:00 a 17:00 hrs.</p><p>Fecha de última actualización: junio 2026.</p>']],
+ 'En Ilhabella, responsable del sitio web ilhabellashop.cl, nos comprometemos a proteger la privacidad de nuestros usuarios conforme a la Ley N° 19.628 sobre Protección de la Vida Privada de Chile y demás normativa aplicable. Al utilizar nuestro sitio y realizar compras, usted acepta las prácticas descritas en esta política.');
+V.despacho=()=>legalPage('despacho','Política de despacho',[
+ ['1. Cobertura','<p>Realizamos despachos a todas las regiones de Chile continental. Para Isla de Pascua y zonas extremas el plazo puede extenderse hasta 5 días hábiles adicionales.</p>'],
+ ['2. Plazos de entrega','<p>Todos los pedidos se envían por DHL Express desde Calgary, Canadá.</p>'+ul(['Preparación del pedido: 1 a 2 días hábiles.','Tránsito internacional y aduana: 3 a 6 días hábiles.','Entrega en domicilio: 1 a 2 días hábiles.'])],
+ ['3. Costos','<p>El despacho es gratuito en pedidos desde $100.000 CLP. Bajo ese monto, el costo se calcula en el carro según la región de destino. Los impuestos de importación están incluidos en el precio.</p>'],
+ ['4. Seguimiento','<p>Al despachar su pedido le enviaremos por correo el número de seguimiento DHL. También puede consultarlo en la sección Seguimiento del sitio.</p>']],
+ 'Esta política describe cómo, cuándo y bajo qué condiciones entregamos los pedidos realizados en ilhabellashop.cl.');
+V.devoluciones=()=>legalPage('devoluciones','Política de devolución',[
+ ['1. Derecho a retracto','<p>Puede solicitar la devolución dentro de 10 días corridos desde la recepción, siempre que el producto esté sellado, sin uso y en su empaque original.</p>'],
+ ['2. Productos defectuosos o equivocados','<p>Si su producto llegó dañado o no corresponde a lo comprado, escríbanos dentro de 48 horas desde la recepción con fotografías del producto y del embalaje. Lo reemplazaremos sin costo.</p>'],
+ ['3. Reembolsos','<p>Una vez recibido y revisado el producto, el reembolso se realiza al mismo medio de pago en un plazo de 5 a 10 días hábiles.</p>']]);
+V.terminos=()=>legalPage('terminos','Términos y condiciones de uso',[
+ ['1. Aceptación','<p>Al usar ilhabellashop.cl usted acepta estos términos. Si no está de acuerdo, le pedimos no utilizar el sitio.</p>'],
+ ['2. Compras para uso personal','<p>Los productos se importan bajo la modalidad de uso personal. Por ello, cada pedido admite un máximo de 3 unidades por producto, y los productos no pueden revenderse.</p>'],
+ ['3. Precios y stock','<p>Los precios se expresan en pesos chilenos e incluyen impuestos de importación. El stock está sujeto a disponibilidad en Canadá al momento de confirmar la compra.</p>'],
+ ['4. Información de salud','<p>La información publicada en el sitio es referencial y no reemplaza la indicación de un profesional de la salud.</p>'],
+ ['5. Legislación aplicable','<p>Estos términos se rigen por las leyes de la República de Chile, incluida la Ley N° 19.496 sobre Protección de los Derechos de los Consumidores.</p>']]);
+V.preguntas=()=>`<div class="wrap">${crumbs([['Inicio','#home'],['Preguntas frecuentes']])}</div>
+<section class="title-block"><div class="wrap"><h1>Preguntas frecuentes</h1><p>Ilhabella — Parte de Grupo Safe Care</p></div></section>
+<div class="wrap"><div style="padding-top:20px">${legalNav('preguntas')}</div><div style="padding-block:32px">${faqHTML(FAQ.length)}</div>
+<div class="cta-box"><h2>¿No encontraste tu respuesta?</h2><button class="btn btn-yellow" data-act="contact">Contactar ${ic('arrow','ico sm')}</button></div></div>`;
+V['bases-legales']=()=>{const d=S.promoDate||'2026-06-09';const [y,m]=d.split('-');const mes=new Date(+y,+m-1,1).toLocaleDateString('es-CL',{month:'long'});const Mes=mes[0].toUpperCase()+mes.slice(1);
+  return `<div class="wrap">${crumbs([['Inicio','#home'],['Bases legales']])}</div>
+<section class="title-block"><div class="wrap"><h1>Bases Legales</h1><p>Ilhabella — Parte de Grupo Safe Care</p></div></section>
+<div class="wrap"><div style="padding-top:20px">${legalNav('bases-legales')}</div>
+<div class="promo-head"><h2>${Mes} ${y}</h2><label for="pdate">Fecha:<input type="date" id="pdate" value="${d}"></label></div>
+<div class="promo-grid">${['Cyber Day','Envío gratis','Especiales invierno','2x1 Skincare','Concurso Instagram','Promoción'].concat(Array(6).fill('Promoción')).map(t=>`<div class="promo-card"><h3>${t}</h3><p>${Mes} ${y}</p><button class="btn btn-out" data-dl>Descargar ${ic('dl','ico sm')}</button></div>`).join('')}</div></div>`};
+
+/* ---------- Router ---------- */
+const app=$('#app');
+function route(){let v=location.hash.slice(1)||'home';if(!V[v])v='home';
+  closeMega();closeSuggest();$('#layer').innerHTML='';document.body.style.overflow='';
+  app.innerHTML=`<div class="view">${V[v]()}</div>`;carId=0;wireCarousels(app);wireBrands(app);
+  $$('.nav-links a').forEach(a=>a.toggleAttribute('aria-current',a.dataset.nav===v));if($('[data-nav="nosotros"]'))$('[data-nav="nosotros"]').setAttribute('aria-current',v==='nosotros'?'page':'false');
+  if(!route.keep)window.scrollTo({top:0,behavior:'instant'});route.keep=false;
+  document.title=({home:'ilhabella Prototipo',catalogo:catById(S.plp.cat).name,producto:prod(S.pdp).name,busqueda:'Búsqueda: '+S.q,nosotros:'Nosotros'}[v]||'ilhabella')+' · ilhabella';}
+function go(v){if(location.hash==='#'+v)route();else location.hash=v}
+window.addEventListener('hashchange',route);
+
+/* ---------- Header ---------- */
+function setHdrH(){document.documentElement.style.setProperty('--hdr-h',$('#hdr').offsetHeight+'px')}
+window.addEventListener('resize',setHdrH);
+$('#footCats').innerHTML=CATS.map(c=>`<li><a href="#catalogo" data-cat="${c.id}">${c.name}</a></li>`).join('');
+$('#megaList').innerHTML=CATS.map((c,i)=>`<button data-mcat="${c.id}"${i===0?' aria-current="true"':''}><img src="${c.ico}" alt="">${c.name}${ic('right')}</button>`).join('');
+function megaSub(id){const c=catById(id);$$('#megaList button').forEach(b=>b.setAttribute('aria-current',b.dataset.mcat===id));
+  $('#megaSub').innerHTML=`<button class="mega-back" data-mback>${ic('left','ico sm')} Todas las categorías</button><div class="mega-sub-h"><img src="${c.ico}" alt="">${c.name}</div><ul><li><a href="#catalogo" data-cat="${c.id}" style="color:var(--brand)">Ver todo ${c.short.toLowerCase()}</a></li>${c.subs.map(s=>`<li><a href="#catalogo" data-cat="${c.id}" data-sub="${esc(s)}">${esc(s)}</a></li>`).join('')}</ul>`}
+function openMega(){setHdrH();megaSub(S.plp.cat);$('#mega').hidden=false;$('#mega').classList.remove('sub-open');$('#catsBtn').setAttribute('aria-expanded','true');$('#catsBtn use').setAttribute('href','#i-x');document.body.style.overflow='hidden'}
+function closeMega(){if($('#mega').hidden)return;$('#mega').hidden=true;$('#catsBtn').setAttribute('aria-expanded','false');$('#catsBtn use').setAttribute('href','#i-menu');document.body.style.overflow=''}
+$('#catsBtn').onclick=()=>$('#mega').hidden?openMega():closeMega();
+$('#megaList').addEventListener('mouseover',e=>{const b=e.target.closest('[data-mcat]');if(b&&matchMedia('(min-width:1024px)').matches)megaSub(b.dataset.mcat)});
+$('#megaList').addEventListener('click',e=>{const b=e.target.closest('[data-mcat]');if(b){megaSub(b.dataset.mcat);$('#mega').classList.add('sub-open')}});
+
+/* Búsqueda */
+const qEl=$('#q'),sug=$('#suggest');
+function renderSuggest(){const q=qEl.value.trim().toLowerCase();$('#search').classList.toggle('has-q',!!q);$('#qClear').hidden=!q;
+  if(!q){closeSuggest();return}
+  let cats=CATS.filter(c=>(c.name+' '+c.subs.join(' ')).toLowerCase().includes(q));if(!cats.length)cats=CATS.slice(0,5);
+  const seen=new Set(),ps=PRODUCTS.filter(p=>(p.name+' '+p.brand+' '+p.type).toLowerCase().includes(q)).filter(p=>{const k=p.name;if(seen.has(k))return false;seen.add(k);return true}).slice(0,4);
+  sug.innerHTML=`<div class="s-sec"><h4>Categorías sugeridas</h4>${cats.map(c=>`<a class="s-cat" href="#catalogo" data-cat="${c.id}">${c.name}</a>`).join('')}</div>
+  <div class="s-sec"><h4>Productos sugeridos</h4>${ps.length?ps.map(p=>`<div class="s-prod" data-p="${p.id}" role="link" tabindex="0"><img src="${p.img}" alt=""><div><span class="b">${esc(p.brand)}</span><div class="n">${esc(p.name)}</div><div class="price tnum" style="font-size:15px;margin-top:8px">${clp(p.price)}${p.old?`<span class="off">-${pct(p)}%</span>`:''}</div></div><div data-actions="${p.id}">${actionsHTML(p.id)}</div></div>`).join(''):`<p class="s-empty">Sin coincidencias para “${esc(qEl.value)}”. Presiona Enter para ver resultados.</p>`}</div>`;
+  sug.hidden=false}
+function closeSuggest(){sug.hidden=true}
+qEl.addEventListener('input',renderSuggest);qEl.addEventListener('focus',()=>{if(qEl.value)renderSuggest()});
+$('#qClear').onclick=()=>{qEl.value='';renderSuggest();qEl.focus()};
+$('#search').addEventListener('submit',e=>{e.preventDefault();if(!qEl.value.trim())return qEl.focus();S.q=qEl.value.trim();closeSuggest();qEl.blur();go('busqueda')});
+document.addEventListener('click',e=>{if(!e.target.closest('#search'))closeSuggest()});
+sug.addEventListener('keydown',e=>{const r=e.target.closest('.s-prod');if(r&&e.key==='Enter'){S.pdp=r.dataset.p;go('producto')}});
+
+/* ---------- Overlays ---------- */
+function overlay(html,cls=''){const L=$('#layer');L.innerHTML=`<div class="overlay ${cls}" data-ov>${html}</div>`;document.body.style.overflow='hidden';
+  const ov=L.firstChild;ov.addEventListener('click',e=>{if(e.target===ov||e.target.closest('[data-close]'))closeOv()});const f=ov.querySelector('input,button');f&&f.focus();return ov}
+function closeOv(){$('#layer').innerHTML='';document.body.style.overflow=''}
+function openCart(){overlay(`<aside class="drawer" id="cartDrawer" role="dialog" aria-label="Carro de compras"></aside>`);renderCart()}
+function renderCart(){const d=$('#cartDrawer');const ids=Object.keys(S.cart);const total=ids.reduce((a,id)=>a+prod(id).price*S.cart[id],0);const free=100000,pc=Math.min(100,total/free*100);
+  d.innerHTML=`<div class="drawer-h"><h2>Tu carro (${cartCount()})</h2><button class="iconbtn" data-close aria-label="Cerrar carro">${ic('x')}</button></div>
+  <div class="drawer-b">${ids.length?`<div class="ship-bar">${total>=free?'<b>¡Tienes envío gratis!</b>':`Te faltan <b class="tnum">${clp(free-total)}</b> para el envío gratis`}<div class="bar"><i style="width:${pc}%"></i></div></div>
+   ${ids.map(id=>{const p=prod(id);return `<div class="line"><img src="${p.img}" alt=""><div><div class="b">${esc(p.brand)}</div><div class="n">${esc(p.name)}</div>
+   <div class="qty"><button data-dec="${id}" aria-label="Menos">${ic('minus','ico sm')}</button><input class="tnum" value="${S.cart[id]}" readonly aria-label="Cantidad"><button data-inc="${id}" aria-label="Más">${ic('plus','ico sm')}</button></div><br><button class="rm" data-rm="${id}">Eliminar</button></div><div class="p tnum">${clp(p.price*S.cart[id])}</div></div>`}).join('')}`
+   :`<div class="empty-cart">${ic('cart')}<b style="color:var(--fg);font-size:16px">Tu carro está vacío</b><p>Explora nuestras categorías y añade tus productos favoritos.</p><a class="btn btn-brand" href="#catalogo" data-cat="salud" data-close>Ver productos</a></div>`}</div>
+  ${ids.length?`<div class="drawer-f"><div class="tot"><span>Subtotal</span><b class="tnum">${clp(total)}</b></div><p class="qty-note">Impuestos de importación incluidos. Envío calculado en el siguiente paso.</p><button class="btn btn-brand" data-checkout>Ir a pagar ${ic('arrow','ico sm')}</button><button class="btn btn-out" style="height:44px" data-close>Seguir comprando</button></div>`:''}`}
+$('#cartBtn').onclick=openCart;
+function openTrack(){const ov=overlay(`<div class="modal" role="dialog" aria-label="Seguimiento de pedido"><div class="modal-h"><h2>Seguimiento de pedido</h2><button class="iconbtn" data-close aria-label="Cerrar">${ic('x')}</button></div>
+  <form id="trackF" style="display:grid;gap:16px"><label class="field" for="tn">Número de pedido<input id="tn" placeholder="Ej: ILH-20481" required></label><button class="btn btn-brand" type="submit">Consultar</button></form><div id="trackR"></div></div>`,'sheet');
+  $('#trackF',ov).onsubmit=e=>{e.preventDefault();const n=esc($('#tn',ov).value.trim().toUpperCase());$('#trackR',ov).innerHTML=`<p style="margin-top:24px;font-weight:600">Pedido ${n} · DHL 4821 0937 55</p><ol class="steps"><li class="done"><div><b>Pedido confirmado</b><span>Pago aprobado por Webpay</span></div></li><li class="done"><div><b>Despachado desde Calgary</b><span>DHL Express, Canadá</span></div></li><li class="done"><div><b>En tránsito internacional</b><span>Llegada estimada a Santiago en 2 días</span></div></li><li><div><b>En reparto</b><span>Pendiente</span></div></li><li><div><b>Entregado</b><span>Pendiente</span></div></li></ol><p class="qty-note">Ejemplo de estado para el prototipo.</p>`}}
+let toastT;function toast(msg,act,fn){const L=document.getElementById('toastL')||document.body.appendChild(Object.assign(document.createElement('div'),{id:'toastL'}));
+  L.innerHTML=`<div class="toast" role="status">${esc(msg)}${act?`<button>${act}</button>`:''}</div>`;if(act)L.querySelector('button').onclick=()=>{L.innerHTML='';fn()};
+  clearTimeout(toastT);toastT=setTimeout(()=>L.innerHTML='',3200)}
+
+/* ---------- Delegación global ---------- */
+document.addEventListener('click',e=>{const t=e.target;let el;
+  if(t.closest('[data-close-mega]')){closeMega();return}
+  if((el=t.closest('[data-mback]'))){$('#mega').classList.remove('sub-open');return}
+  if((el=t.closest('[data-add]'))){e.preventDefault();e.stopPropagation();add(el.dataset.add);return}
+  if((el=t.closest('[data-inc]'))){e.preventDefault();e.stopPropagation();const id=el.dataset.inc;if((S.cart[id]||0)>=3)toast('Máximo 3 unidades por producto');setQty(id,(S.cart[id]||0)+1);return}
+  if((el=t.closest('[data-dec]'))){e.preventDefault();e.stopPropagation();setQty(el.dataset.dec,(S.cart[el.dataset.dec]||0)-1);return}
+  if((el=t.closest('[data-rm]'))){setQty(el.dataset.rm,0);return}
+  if((el=t.closest('[data-checkout]'))){toast('El checkout aún no está diseñado en Figma');return}
+  if((el=t.closest('[data-p]'))){e.preventDefault();S.pdp=el.dataset.p;S.gal=0;S.color=0;S.size=0;S.qty=1;S.tab=0;closeSuggest();go('producto');return}
+  if((el=t.closest('[data-cat]'))){e.preventDefault();S.plp.cat=el.dataset.cat;S.plp.sub=el.dataset.sub||null;S.plp.page=1;S.plp.f={promo:[],brand:[],type:[],min:0,max:40000};if(el.closest('[data-close]'))closeOv();closeSuggest();qEl.value='';$('#qClear').hidden=true;$('#search').classList.remove('has-q');go('catalogo');return}
+  if((el=t.closest('[data-brand]'))){e.preventDefault();const b=el.dataset.brand;const p=PRODUCTS.find(x=>x.brand===b);S.plp.cat=p?p.cat:'salud';S.plp.sub=null;S.plp.page=1;S.plp.f={promo:[],brand:p?[b]:[],type:[],min:0,max:40000};if(!p)toast(b+': productos disponibles próximamente');go('catalogo');return}
+  if((el=t.closest('[data-act]'))){e.preventDefault();if(el.dataset.act==='track')openTrack();else{closeOv();$('#contacto').scrollIntoView({behavior:'smooth',block:'center'});$('#contacto').animate([{background:'#ca4e2266'},{background:'transparent'}],{duration:1600})}return}
+  if((el=t.closest('[data-dl]'))){toast('Descarga del PDF disponible en la versión final');return}
+  // PLP
+  if((el=t.closest('[data-facet]'))){const o=el.getAttribute('aria-expanded')==='true';el.setAttribute('aria-expanded',!o);el.nextElementSibling.hidden=o;return}
+  if((el=t.closest('[data-open-filters]'))){$('#filters').classList.add('open');document.body.style.overflow='hidden';return}
+  if((el=t.closest('[data-close-filters]'))){$('#filters').classList.remove('open');document.body.style.overflow='';return}
+  if((el=t.closest('[data-clear-f]'))){S.plp.f={promo:[],brand:[],type:[],min:0,max:40000};refreshPLP(true);return}
+  if((el=t.closest('[data-unf]'))){const k=el.dataset.unf,v=el.dataset.v;if(k==='price'){S.plp.f.min=0;S.plp.f.max=40000}else S.plp.f[k]=S.plp.f[k].filter(x=>x!==v);refreshPLP(true);return}
+  if((el=t.closest('[data-page]'))&&!el.disabled){S.plp.page=Math.max(1,+el.dataset.page);$('#gridWrap').innerHTML=gridHTML();$('.plp-top').scrollIntoView({behavior:'smooth'});return}
+  // PDP
+  if((el=t.closest('[data-gal]'))){S.gal=+el.dataset.gal;const img=$('#galMain');img.style.opacity=0;setTimeout(()=>{img.src=prod(S.pdp).gallery?prod(S.pdp).gallery[S.gal]:'img/prod.jpg';img.style.opacity=1},120);$$('[data-gal]').forEach(b=>b.setAttribute('aria-current',+b.dataset.gal===S.gal));return}
+  if((el=t.closest('[data-zoom]'))){overlay(`<div class="modal" style="width:min(900px,calc(100% - 32px))" role="dialog" aria-label="Imagen ampliada"><div class="modal-h"><h2>${esc(prod(S.pdp).name)}</h2><button class="iconbtn" data-close aria-label="Cerrar">${ic('x')}</button></div><img class="zoom-img" src="${$('#galMain').src}" alt=""></div>`);return}
+  if((el=t.closest('[data-share]'))){const u=location.href;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast('Enlace copiado')).catch(()=>toast('Comparte este enlace: '+u));return}
+  if((el=t.closest('[data-color]'))){S.color=+el.dataset.color;route.keep=true;route();return}
+  if((el=t.closest('[data-size]'))){S.size=+el.dataset.size;$$('[data-size]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.size===S.size));return}
+  if((el=t.closest('[data-q]'))){S.qty=Math.max(1,Math.min(3,S.qty+ +el.dataset.q));$('#pdpQty').value=S.qty;if(S.qty===3&&+el.dataset.q>0)toast('Máximo 3 unidades por pedido');return}
+  if((el=t.closest('[data-add-pdp]'))){add(el.dataset.addPdp,S.qty);route.keep=true;route();return}
+  if((el=t.closest('[data-tab]'))){S.tab=+el.dataset.tab;$$('[data-tab]').forEach(b=>b.setAttribute('aria-selected',+b.dataset.tab===S.tab));$('#tp').innerHTML=tabHTML(prod(S.pdp));return}
+  if((el=t.closest('[data-tab-go]'))){e.preventDefault();S.tab=+el.dataset.tabGo;$$('[data-tab]').forEach(b=>b.setAttribute('aria-selected',+b.dataset.tab===S.tab));$('#tp').innerHTML=tabHTML(prod(S.pdp));$('.tabs').scrollIntoView({behavior:'smooth',block:'center'});return}
+  if((el=t.closest('[data-details]'))){e.preventDefault();const p=prod(S.pdp);overlay(`<div class="modal" role="dialog" aria-label="Detalles del formato"><div class="modal-h"><h2>Detalles del formato</h2><button class="iconbtn" data-close aria-label="Cerrar">${ic('x')}</button></div><table class="spec"><tbody>${(p.gallery?[['113 g','≈ 38 porciones'],['200 g','≈ 66 porciones'],['300 g','Sin stock']]:[['90 un.','3 meses'],['180 un.','6 meses'],['360 un.','Sin stock']]).map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</tbody></table></div>`,'sheet');return}
+  if(t.closest('a[href^="#"]')&&t.closest('#mega'))closeMega();
+});
+document.addEventListener('change',e=>{const t=e.target;
+  if(t.matches('[data-sort]')){S.plp.sort=t.value;$$('[data-sort]').forEach(s=>s.value=t.value);S.plp.page=1;$('#gridWrap').innerHTML=gridHTML();return}
+  if(t.matches('[data-f]')){const k=t.dataset.f,arr=S.plp.f[k];if(t.checked)arr.push(t.value);else S.plp.f[k]=arr.filter(x=>x!==t.value);S.plp.page=1;$('#gridWrap').innerHTML=gridHTML();return}
+  if(t.matches('[data-fcat]')){S.plp.cat=t.value;S.plp.sub=null;S.plp.page=1;S.plp.f.type=[];route.keep=true;route();return}
+  if(t.id==='pmin'||t.id==='pmax'){let a=+$('#pmin').value||0,b=+$('#pmax').value||40000;if(a>b)[a,b]=[b,a];S.plp.f.min=a;S.plp.f.max=b;refreshPLP();return}
+  if(t.id==='pdate'){S.promoDate=t.value;route.keep=true;route();return}
+  if(t.id==='pdpQty'){S.qty=Math.max(1,Math.min(3,parseInt(t.value)||1));t.value=S.qty}
+});
+document.addEventListener('input',e=>{const t=e.target;
+  if(t.id==='rmin'||t.id==='rmax'){let a=+$('#rmin').value,b=+$('#rmax').value;if(a>b-500){if(t.id==='rmin')a=b-500;else b=a+500;t.value=t.id==='rmin'?a:b}
+    S.plp.f.min=a;S.plp.f.max=b;$('#pmin').value=a;$('#pmax').value=b;const f=$('.range .fill');f.style.left=a/400+'%';f.style.right=(100-b/400)+'%';clearTimeout(t._d);t._d=setTimeout(()=>{$('#gridWrap').innerHTML=gridHTML()},120);return}
+  if(t.matches('[data-fsearch]')){const q=t.value.toLowerCase();$$('.opt',t.closest('.fbody')).forEach(o=>o.hidden=!o.textContent.toLowerCase().includes(q))}
+});
+function refreshPLP(full){S.plp.page=1;if(full){const open=$('#filters')&&$('#filters').classList.contains('open');route.keep=true;route();if(open){$('#filters').classList.add('open');document.body.style.overflow='hidden'}}else $('#gridWrap').innerHTML=gridHTML()}
+$$('[data-mail]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const m=f.nextElementSibling;m.textContent='¡Listo! Te suscribiste con '+f.querySelector('input').value;f.reset()}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeMega();closeSuggest();if($('#layer').innerHTML)closeOv();const fl=$('#filters.open');if(fl){fl.classList.remove('open');document.body.style.overflow=''}}});
+
+$('#cartBadge').textContent=cartCount();setHdrH();route();
+})();
+</script>
+
+</body>
+</html>

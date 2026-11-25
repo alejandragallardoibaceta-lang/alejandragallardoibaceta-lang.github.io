@@ -1,0 +1,146 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>DTPARTS AutoDay Prototipo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap">
+<style>
+/* Layout: barra de control fija arriba; escenario que ocupa el resto, con el sitio en un marco de navegador (escritorio, escalado a 1440) o de teléfono (390 × 844). Un solo look oscuro de DTPARTS. */
+:root{
+  --stage:#06151f; --bar:#042437; --bar-line:rgba(255,255,255,.10);
+  --ink:#ffffff; --ink-muted:#b9c6cf; --accent:#ff5f00; --accent-ink:#000000;
+  --seg:#0d3147; --frame:#132530; --chrome:#e7e7e7; --chrome-ink:#3f3f40;
+  --font:"Montserrat",-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{background:var(--stage);color:var(--ink);font-family:var(--font);display:flex;flex-direction:column;overflow:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bar)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bar);border-bottom:1px solid var(--bar-line);
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px}
+.name{display:flex;align-items:baseline;gap:10px;min-width:0}
+.name b{font-size:17px;font-weight:800;letter-spacing:.5px}
+.name b span{color:var(--accent)}
+.name small{font-size:12px;font-weight:500;color:var(--ink-muted);white-space:nowrap}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.seg{display:inline-flex;background:var(--seg);border-radius:8px;padding:3px}
+.seg button{font:700 13px/1 var(--font);letter-spacing:.5px;color:var(--ink-muted);background:transparent;border:0;border-radius:6px;padding:9px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;min-height:36px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.seg button:not([aria-pressed="true"]):hover{color:var(--ink)}
+.seg svg{width:16px;height:16px}
+label.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+select{font:600 13px var(--font);color:var(--ink);background:var(--seg);border:1px solid var(--bar-line);border-radius:8px;padding:9px 30px 9px 12px;min-height:38px;cursor:pointer;
+  appearance:none;background-image:linear-gradient(45deg,transparent 50%,#b9c6cf 50%),linear-gradient(135deg,#b9c6cf 50%,transparent 50%);background-position:calc(100% - 16px) 16px,calc(100% - 11px) 16px;background-size:5px 5px;background-repeat:no-repeat}
+.open{font:700 13px var(--font);color:var(--ink);text-decoration:none;border:1px solid var(--bar-line);border-radius:8px;padding:10px 12px;display:inline-flex;align-items:center;gap:6px;min-height:38px;box-sizing:border-box}
+.open:hover{border-color:var(--accent);color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.stage{flex:1 1 auto;min-height:0;position:relative;overflow:hidden;display:grid;place-items:center;
+  padding:18px max(16px,env(safe-area-inset-right,0px)) calc(36px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.device{position:relative;transform-origin:top left;flex:none}
+/* escritorio */
+.browser{width:1440px;background:var(--frame);border-radius:12px;overflow:hidden;box-shadow:0 30px 70px -25px rgba(0,0,0,.75)}
+.browser .chrome{height:40px;background:var(--chrome);display:flex;align-items:center;gap:8px;padding:0 16px}
+.browser .dot{width:12px;height:12px;border-radius:50%;background:#c9c9c9}
+.browser .url{margin-left:18px;flex:1;max-width:520px;height:26px;border-radius:13px;background:#ffffff;color:var(--chrome-ink);font:500 13px var(--font);display:flex;align-items:center;padding:0 14px}
+.browser iframe{display:block;width:1440px;border:0;background:#fff}
+/* mobile */
+.phone{width:390px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px -25px rgba(0,0,0,.75)}
+.phone iframe{display:block;width:390px;height:844px;border:0}
+.hint{position:absolute;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:11px;color:var(--ink-muted);pointer-events:none}
+@media (max-width:640px){.name small{display:none}.open span{display:none}.hint{display:none}.stage{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion:no-preference){.device{transition:opacity .2s ease}}
+.ag-link{display:inline-flex;align-items:center;gap:8px;font:600 14px/20px "Open Sans","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:0;color:#6B4F65;text-decoration:none;padding-block:4px;border-bottom:2px solid transparent;white-space:nowrap}.ag-link .ag-logo{height:20px;width:auto;color:#421035;flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}.ag-link:hover{color:#8E2C67;border-bottom-color:#8E2C67}.ag-link:hover .ag-logo{transform:rotate(-6deg) scale(1.06)}.ag-link:focus-visible{outline:2px solid #7587D9;outline-offset:3px;border-radius:4px}.ag-link.on-dark{color:#E3D6E5}.ag-link.on-dark .ag-logo{color:#B890C2}.ag-link.on-dark:hover{color:#E89BC6;border-bottom-color:#E89BC6}@media (prefers-reduced-motion:reduce){.ag-link .ag-logo{transition:none}}.name{align-items:center}.ag-sep{width:1px;height:20px;background:rgba(255,255,255,.18)}@media (max-width:1380px){.name small{display:none}}
+.ag-link .ag-chev{width:16px;height:16px;flex:none;margin-right:-2px}.ribbon .ag-link .ag-chev{width:13px;height:13px}
+@media (max-width:640px){.name{flex-wrap:wrap;row-gap:8px}.name .ag-sep{display:none}.name b{flex-basis:100%}}
+</style>
+
+<header class="bar">
+  <div class="name"><a class="ag-link on-dark" href="/#caso-dtparts" aria-label="Volver al portafolio de Alejandra Gallardo"><svg class="ag-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><svg class="ag-logo" viewBox="39 61 400 258" aria-hidden="true"><path d="M400.1 126.5 A109.0 109.0 0 1 0 439.0 210 L405.0 210 A75.0 75.0 0 1 1 378.2 152.5 Z" fill="currentColor"/><path d="M364.6 176 H417.0 A22 22 0 0 1 439.0 198 V211.5 H335.0 Z" fill="currentColor"/><path d="M221.0 140 H245.0 V210 H221.0 Z" fill="currentColor"/><path d="M131.6 212 L204.0 212 L175.6 246 L103.2 246 Z" fill="currentColor"/><path d="M59.0 299.0 L241.0 81 L241.0 170" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/></svg><span>Volver al portafolio</span></a><span class="ag-sep" aria-hidden="true"></span><b>DT<span>PARTS</span> · AutoDay</b><small>Prototipo navegable · venta especial 2, 3 y 4 de noviembre</small></div>
+  <div class="controls">
+    <div class="seg" role="group" aria-label="Vista">
+      <button type="button" id="v-desk" data-view="escritorio" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Escritorio</button>
+      <button type="button" id="v-mob" data-view="mobile" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>Mobile</button>
+    </div>
+    <label class="sr" for="page">Página</label>
+    <select id="page">
+      <option value="index.html">Home</option>
+      <option value="productos.html">Productos</option>
+      <option value="producto.html">Detalle de producto</option>
+      <option value="contacto.html">Contacto</option>
+      <option value="nosotros.html">Sobre nosotros</option>
+    </select>
+    <a class="open" id="open" href="site/index.html" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>Abrir sola</span></a>
+  </div>
+</header>
+
+<main class="stage" id="stage">
+  <div class="device" id="device"></div>
+  <p class="hint" id="hint">Haz clic dentro del sitio para navegar: menú, banners, cards, filtros y formulario funcionan.</p>
+</main>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage'), device=document.getElementById('device');
+  var sel=document.getElementById('page'), open=document.getElementById('open');
+  var btns=[document.getElementById('v-desk'),document.getElementById('v-mob')];
+  var view='escritorio', page='index.html', frame=null;
+
+  function build(){
+    device.innerHTML='';
+    if(view==='escritorio'){
+      device.innerHTML='<div class="browser"><div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url" id="url">dtparts.cl</span></div><iframe id="frame" title="Sitio DTPARTS en escritorio"></iframe></div>';
+    } else {
+      device.innerHTML='<div class="phone"><iframe id="frame" title="Sitio DTPARTS en mobile"></iframe></div>';
+    }
+    frame=document.getElementById('frame');
+    frame.addEventListener('load',sync);
+    frame.src='site/'+page;
+    fit();
+  }
+  function sync(){
+    try{
+      var p=frame.contentWindow.location.pathname.split('/').pop()||'index.html';
+      if(p!==page){page=p;}
+      if([].some.call(sel.options,function(o){return o.value===p})) sel.value=p;
+      open.href='site/'+p;
+      var u=document.getElementById('url'); if(u) u.textContent='dtparts.cl/'+(p==='index.html'?'':p.replace('.html',''));
+    }catch(e){}
+  }
+  function fit(){
+    var r=stage.getBoundingClientRect();
+    var cs=getComputedStyle(stage);
+    var aw=r.width-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+    var ah=r.height-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    if(view==='escritorio'){
+      var s=Math.min(1,aw/1440);
+      var ih=Math.max(400,Math.floor(ah/s)-40);
+      if(frame) frame.style.height=ih+'px';
+      device.style.transform='scale('+s+')';
+      device.style.width='1440px'; device.style.height=(ih+40)+'px';
+      device.style.marginRight=(1440*s-1440)+'px'; device.style.marginBottom=((ih+40)*s-(ih+40))+'px';
+    } else {
+      var s2=Math.min(1,ah/844,aw/390);
+      device.style.transform='scale('+s2+')';
+      device.style.width='390px'; device.style.height='844px';
+      device.style.marginRight=(390*s2-390)+'px'; device.style.marginBottom=(844*s2-844)+'px';
+    }
+  }
+  function setView(v,push){
+    view=v;
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.view===v))});
+    if(push){ try{history.replaceState(null,'','#'+v)}catch(e){location.hash=v} }
+    build();
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){ if(view!==b.dataset.view) setView(b.dataset.view,true) })});
+  sel.addEventListener('change',function(){page=sel.value;frame.src='site/'+page;open.href='site/'+page});
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if((h==='mobile'||h==='escritorio')&&h!==view)setView(h,false)});
+  if(window.ResizeObserver) new ResizeObserver(fit).observe(stage); else window.addEventListener('resize',fit);
+  var h=location.hash.slice(1);
+  setView(h==='mobile'||h==='escritorio'?h:(window.innerWidth<700?'mobile':'escritorio'),false);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTPARTS — Sobre nosotros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff;font-family:Montserrat,-apple-system,"segoe ui",arial,sans-serif;color:#000000}
+a{color:#ffffff}a:hover{color:#ff5f00}
+::selection{background:#ff5f00;color:#000000}
+:focus-visible{outline:3px solid #ff5f00;outline-offset:2px}
+@media (min-width: 1100px){.fgrid{grid-template-columns:1.1fr 1fr 0.9fr 1.1fr 1.6fr !important}}
+@media (max-width: 640px){.phbar{flex-direction:column !important;gap:4px !important}.phsep{display:none !important}.phmsg{justify-content:center}}
+.phbar:hover .phcta{text-decoration-thickness:2px}
+.phbar:hover{color:#ffffff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.navlink:hover{color:#ff5f00}
+.menuitem:hover,.menuitem:focus-visible{background:#f4f4f4}
+.cta:hover{filter:brightness(1.08)}
+.ghost:hover{background:rgba(255,255,255,0.08)}
+.flink:hover{color:#ff5f00}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-tpl">
+
+<div style="width: 100%; min-height: 100vh; background: #ffffff; font-family: Montserrat, -apple-system, 'segoe ui', arial, sans-serif; color: #000000;">
+
+<!-- BARRA SUPERIOR · AutoDay -->
+<div role="region" aria-label="Campaña AutoDay" style="background: #1367fb; color: #ffffff;">
+<a href="productos.html" data-cat="todas" onClick="{{goCat}}" aria-label="AutoDay, ahorrando ando, 2, 3 y 4 de noviembre: ver todas las ofertas" class="phbar" style="color: #ffffff; text-decoration: none; max-width: 1280px; margin: 0 auto; padding: 7px 24px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; font-size: 13px; line-height: 18px;">
+<img src="img/24a47ca0211ce972ec37627cdc553f8b.png" alt="AutoDay.cl" style="height: 20px; width: auto; display: block;">
+<span class="phsep" aria-hidden="true" style="width: 1px; height: 18px; background: rgba(255,255,255,0.45);"></span>
+<p class="phmsg" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;"><strong style="font-size: 15px; font-weight: 700; font-style: italic; letter-spacing: 0.5px;">AHORRANDO ANDO.</strong><span style="font-weight: 700; letter-spacing: 1px;">2, 3 Y 4 DE NOVIEMBRE</span><span class="phcta" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 700; letter-spacing: 1px; text-decoration: underline; text-underline-offset: 3px;">VER OFERTAS<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span></p>
+</a>
+</div>
+
+<!-- HEADER -->
+<header style="position: relative; z-index: 30; background: #042437; color: #ffffff;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; font-weight: 700; letter-spacing: 1px;">
+<div data-menu-wrap="true" style="position: relative;">
+<button type="button" onClick="{{toggleMenu}}" aria-label="Menú de categorías" aria-expanded="{{menuExpanded}}" aria-controls="menu-categorias" class="navlink" style="background: transparent; border: 0; color: #ffffff; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div id="menu-categorias" role="menu" aria-label="Categorías" style="position: absolute; top: calc(100% + 14px); left: 0; z-index: 40; width: 300px; background: #ffffff; border-radius: 8px; box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.2), 0px 16px 40px 0px rgba(0,0,0,0.18); padding: 8px; display: flex; flex-direction: column;">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40; padding: 10px 14px 6px;">CATEGORÍAS</span>
+<a role="menuitem" href="productos.html" data-cat="baterias" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Baterías<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="neumaticos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Neumáticos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="lubricantes" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Lubricantes<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="generacion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Generación<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="turbos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Turbos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="herramientas" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Equipo y Herramientas<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="inyeccion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Inyección<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="todas" onClick="{{goCat}}" style="margin-top: 6px; display: flex; justify-content: center; align-items: center; padding: 12px 14px; border-radius: 8px; background: #ff5f00; color: #000000; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 2px;">VER TODAS LAS OFERTAS</a>
+</div>
+</sc-if>
+</div>
+</nav>
+<a href="index.html" aria-label="DTPARTS, ir al inicio" style="display: flex; flex: 0 0 auto;"><img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS Diesel Turbo &amp; Autoparts" style="height: 46px; width: auto; display: block;"></a>
+<form role="search" style="flex: 1 1 260px; display: flex; min-width: 0; background: #ffffff; border-radius: 4px; overflow: hidden;">
+<label for="q-nos" class="sr-only">Buscar repuesto</label>
+<input id="q-nos" type="search" placeholder="Busca por repuesto, marca o código OEM" style="flex: 1 1 auto; min-width: 0; border: 0; padding: 12px 14px; font-family: inherit; font-size: 14px; color: #000000; outline-offset: -2px;">
+<button type="button" aria-label="Buscar" style="border: 0; background: #ffffff; padding: 0 14px; cursor: pointer; display: flex; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#132530" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+</form>
+<div style="display: flex; align-items: center; gap: 20px;">
+<a href="#" aria-label="Carro de compras, 0 productos" style="color: #ffffff; position: relative; display: flex;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h2.6l2.3 10.5h10.8l2.1-7.5H6.2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
+<span style="position: absolute; top: -6px; right: -8px; background: #ff5f00; color: #000000; font-size: 11px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">0</span></a>
+</div>
+</div>
+</header>
+
+<!-- HERO NOSOTROS -->
+<section style="background: #042437; color: #ffffff; border-top: 1px solid rgba(255,255,255,0.08);">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px;">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<nav aria-label="Ruta" style="font-size: 13px;"><a href="index.html" style="color: #ffffff;">Inicio</a> <span aria-hidden="true">/</span> <span>Nosotros</span></nav>
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #ff5f00;">SOBRE NOSOTROS</span>
+<h1 style="margin: 0; font-size: clamp(32px, 4vw, 52px); line-height: 1.1; font-weight: 700;">Especialistas en diésel, turbo y autopartes</h1>
+<p style="margin: 0; font-size: 18px; line-height: 28px; max-width: 580px;">En DTPARTS reunimos la mayor parte de lo que necesita un vehículo diésel: turbos, inyectores, bombas inyectoras, cartridges, prefiltros, filtros decantadores de combustible, válvulas, golillas y viscosos. Hoy sumamos baterías, neumáticos, lubricantes, generación y herramientas.</p>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; background: #ff5f00; border-radius: 10px; overflow: hidden; display: flex; justify-content: flex-end;"><img src="img/074e433a29e1226e65011ff87010db7e.png" alt="Turbo diésel" style="width: 85%; height: auto; display: block;"></div>
+</div>
+</section>
+
+<!-- HISTORIA -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px;">
+<div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #132530;">NUESTRA EMPRESA</span>
+<h2 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 700;">Repuestos que mantienen tu motor en ruta</h2>
+</div>
+<div style="flex: 2 1 520px; display: flex; flex-direction: column; gap: 18px; font-size: 16px; line-height: 26px; color: #3f3f40;">
+<p style="margin: 0;">Trabajamos con repuestos originales de marcas como Bosch, Delphi y Siemens Continental, y con fabricantes de turbos como Holset e IHI. Atendemos a particulares, talleres y flotas que necesitan el repuesto correcto, rápido.</p>
+<p style="margin: 0;">Desde nuestra bodega en Conchalí despachamos a todo Chile, y en Santiago puedes recibir tu pedido el mismo día comprando antes de las 12:30 hrs, de lunes a viernes.</p>
+<p style="margin: 0; padding: 16px 18px; background: #f4f4f4; border-radius: 8px; color: #000000;">[Historia de la empresa: año de fundación, origen y principales hitos]</p>
+</div>
+</section>
+
+<!-- PILARES -->
+<section style="background: #f4f4f4;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 32px;">
+<h2 style="margin: 0; font-size: 22px; line-height: 26px; font-weight: 700;">LO QUE NOS DIFERENCIA</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+<div style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4l16 6v12c0 10-7 18-16 22C15 40 8 32 8 22V10z"></path><path d="M17 24l5 5 9-10"></path></svg>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700;">Repuestos originales</h3>
+<p style="margin: 0; font-size: 15px; line-height: 23px; color: #3f3f40;">Inyectores, bombas y turbos de fabricantes reconocidos, con código OEM y aplicación claros.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="9" width="34" height="32" rx="3"></rect><path d="M7 18h34M15 5v8M33 5v8M15 26h4M22 26h4M29 26h4M15 33h4M22 33h4"></path></svg>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700;">Disponibilidad inmediata</h3>
+<p style="margin: 0; font-size: 15px; line-height: 23px; color: #3f3f40;">Stock en bodega para que tu vehículo o tu flota no se detenga.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 26a16 16 0 0 1 32 0"></path><path d="M8 26v8h6V24H8M40 26v8h-6V24h6"></path><path d="M34 34c0 4-4 6-10 6"></path></svg>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700;">Consejo de expertos</h3>
+<p style="margin: 0; font-size: 15px; line-height: 23px; color: #3f3f40;">Especialistas que te orientan por WhatsApp y consejos para el cuidado de tu vehículo en nuestro blog.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+<svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h24v19H3zM27 19h9l7 7v6H27"></path><circle cx="11" cy="35" r="3.5"></circle><circle cx="35" cy="35" r="3.5"></circle></svg>
+<h3 style="margin: 0; font-size: 18px; font-weight: 700;">Envíos a todo Chile</h3>
+<p style="margin: 0; font-size: 15px; line-height: 23px; color: #3f3f40;">Despacho nacional y entrega el mismo día en Santiago antes de las 12:30 hrs.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CIFRAS -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+<div style="border-top: 3px solid #ff5f00; padding-top: 18px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 48px; line-height: 52px; font-weight: 700; color: #042437;">4.5</span><span style="font-size: 15px; color: #3f3f40;">Calificación promedio en 750 opiniones verificadas</span></div>
+<div style="border-top: 3px solid #ff5f00; padding-top: 18px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 48px; line-height: 52px; font-weight: 700; color: #042437;">7</span><span style="font-size: 15px; color: #3f3f40;">Categorías de repuestos y autopartes</span></div>
+<div style="border-top: 3px solid #ff5f00; padding-top: 18px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 48px; line-height: 52px; font-weight: 700; color: #042437;">12:30</span><span style="font-size: 15px; color: #3f3f40;">Hora de corte para recibir hoy en Santiago</span></div>
+<div style="border-top: 3px solid #ff5f00; padding-top: 18px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 48px; line-height: 52px; font-weight: 700; color: #042437;">Chile</span><span style="font-size: 15px; color: #3f3f40;">Envíos a todo el país desde nuestra bodega en Conchalí</span></div>
+</section>
+
+<!-- MARCAS Y PARTNERS -->
+<section style="background: #f4f4f4;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; gap: 48px;">
+<div style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 20px;">
+<h2 style="margin: 0; font-size: 22px; line-height: 26px; font-weight: 700;">ALGUNAS MARCAS QUE TRABAJAMOS</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px;">
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">JMC</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">JOHN DEERE</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">DEUTZ</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">KIA</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">KOMATSU</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">MACK</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">MAHINDRA</li>
+</ul>
+</div>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 20px;">
+<h2 style="margin: 0; font-size: 22px; line-height: 26px; font-weight: 700;">NUESTROS PARTNERS</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px;">
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">HOLSET</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">IHI</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">JRONE</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">KANSO</li>
+<li style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 8px; padding: 12px 18px; font-size: 15px; font-weight: 700; letter-spacing: 1px; color: #3f3f40;">LAUNCH</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- VISÍTANOS -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 72px 24px;">
+<div style="background: #163649; color: #ffffff; border-radius: 10px; padding: 48px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 32px;">
+<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px;">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #ff5f00;">VISÍTANOS</span>
+<h2 style="margin: 0; font-size: 28px; line-height: 34px; font-weight: 700;">Avda. Pdte. Eduardo Frei Montalva 5325, Conchalí, Santiago</h2>
+<p style="margin: 0; font-size: 16px; line-height: 24px;">¿Quieres trabajar con nosotros o necesitas una cotización para tu taller o flota? Conversemos.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a href="contacto.html" class="cta" style="background: #ff5f00; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 1px; padding: 15px 26px; border-radius: 8px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center;">CONTÁCTANOS</a>
+<a href="#" class="ghost" style="color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 1px; padding: 15px 26px; border-radius: 8px; border: 1.5px solid #ffffff; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center;">TRABAJA CON NOSOTROS</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #343333; color: #ffffff;">
+<div class="fgrid" style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS" style="height: 44px; width: auto; align-self: flex-start; display: block;">
+<p style="margin: 0; font-size: 14px; line-height: 22px;">Repuestos diésel, turbos y autopartes con despacho a todo Chile.</p>
+<div style="display: flex; gap: 14px;">
+<a href="#" aria-label="Instagram de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#ffffff"></circle></svg></a>
+<a href="#" aria-label="Facebook de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a20 20 0 0 0-2.4-.1c-2.4 0-4 1.4-4 4.1v2.1H8.5v3h2.7V21"></path></svg></a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">SERVICIO</h3>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Términos y condiciones</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Devoluciones y garantía</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de privacidad</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Preguntas frecuentes</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de despacho</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Promociones y cupones</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NOSOTROS</h3>
+<a href="nosotros.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Sobre nosotros</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Consejo de expertos</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Trabaja con nosotros</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">CONTACTO</h3>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Contáctanos</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 9914 9117</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 3379 8997</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">contacto@dtparts.cl</a>
+<span style="font-size: 15px; line-height: 22px;">Avda. Pdte. Eduardo Frei Montalva 5325, Conchalí, Santiago</span>
+</div>
+<form style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NEWSLETTER</h3>
+<label for="nl-nos" style="font-size: 15px; line-height: 22px;">Suscríbete y recibe las ofertas antes que nadie</label>
+<div style="display: flex; flex-wrap: nowrap; gap: 8px;">
+<input id="nl-nos" type="email" placeholder="Ingresa tu correo" style="flex: 1 1 auto; min-width: 0; width: 100%; border: 0; border-radius: 5px; padding: 13px 12px; font-family: inherit; font-size: 14px;">
+<button type="button" class="cta" style="background: #ff5f00; color: #000000; border: 0; border-radius: 5px; padding: 13px 14px; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; min-height: 44px; flex: 0 0 auto; white-space: nowrap;">SUSCRIBIRSE</button>
+</div>
+</form>
+</div>
+<div style="background: #141414;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #ffffff;">
+<span>© 2026 DTPARTS · Diesel, Turbo &amp; Autoparts</span>
+<span>Precios en pesos chilenos. Ofertas válidas hasta agotar stock.</span>
+</div>
+</div>
+</footer>
+
+<a href="contacto.html" style="position: fixed; right: 24px; bottom: 24px; z-index: 10; background: #075e54; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 14px 22px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.16);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"></path><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .9a4.5 4.5 0 0 1-2.9-2.9l.9-1-1-2z"></path></svg>Contáctanos</a>
+
+</div>
+</template>
+<script type="text/x-dc">
+class Component extends DCLogic {
+renderVals() {
+var self = this;
+var o = this._pageVals();
+var m = !!(this.state && this.state.menuOpen);
+o.menuOpen = m;
+o.menuExpanded = m ? 'true' : 'false';
+o.toggleMenu = function (e) { self._menuToggle(e); };
+o.goCat = function (e) { self._goCat(e); self._readCat && self._readCat(); };
+return o;
+}
+componentDidMount() {
+this._menuMount();
+}
+componentWillUnmount() {
+this._menuUnmount();
+}
+_menuMount() {
+var self = this;
+this._onKey = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+if (e.key === 'Escape') { self.setState({ menuOpen: false }); if (self._menuBtn) { try { self._menuBtn.focus(); } catch (_) {} } return; }
+if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+var wrap = self._menuBtn && self._menuBtn.closest('[data-menu-wrap]');
+var items = wrap ? Array.prototype.slice.call(wrap.querySelectorAll('[role="menuitem"]')) : [];
+if (!items.length) return;
+var i = items.indexOf(document.activeElement);
+var n = e.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+items[n].focus(); e.preventDefault();
+}
+};
+this._onDown = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+var t = e.target;
+if (t && t.closest && t.closest('[data-menu-wrap]')) return;
+self.setState({ menuOpen: false });
+};
+document.addEventListener('keydown', this._onKey);
+document.addEventListener('mousedown', this._onDown);
+}
+_menuUnmount() {
+document.removeEventListener('keydown', this._onKey);
+document.removeEventListener('mousedown', this._onDown);
+}
+_menuToggle(e) {
+var open = !(this.state && this.state.menuOpen);
+if (e && e.currentTarget) { this._menuBtn = e.currentTarget; }
+this.setState({ menuOpen: open });
+var btn = this._menuBtn;
+if (open && btn) {
+setTimeout(function () { var wrap = btn.closest('[data-menu-wrap]'); var first = wrap && wrap.querySelector('[role="menuitem"]'); if (first) { first.focus(); } }, 40);
+}
+}
+_goCat(e) {
+try {
+var id = e && e.currentTarget && e.currentTarget.getAttribute('data-cat');
+if (id) { window.localStorage.setItem('dtparts.cat', id + '|' + Date.now()); }
+} catch (_) {}
+if (this.state && this.state.menuOpen) { this.setState({ menuOpen: false }); }
+}
+_pageVals() {
+return {};
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-runtime-lite.js"></script>
+</body>
+</html>

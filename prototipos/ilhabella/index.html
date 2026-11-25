@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ilhabella Prototipo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap">
+<style>
+/* Visor del prototipo: barra superior con selector de dispositivo + iframe escalado al ancho disponible. */
+:root{--bg:#ecebe8;--bar:#ffffff;--fg:#181a1b;--fg-2:#494d50;--line:#0000001a;--brand:#ca4e22;--seg:#f2f2f3;
+  --font:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121314;--bar:#1c1e1f;--fg:#f2f2f3;--fg-2:#b9bdc0;--line:#ffffff1f;--brand:#e48546;--seg:#2a2c2e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121314;--bar:#1c1e1f;--fg:#f2f2f3;--fg-2:#b9bdc0;--line:#ffffff1f;--brand:#e48546;--seg:#2a2c2e;color-scheme:dark}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bar);border-bottom:1px solid var(--line);
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar b{font-size:14px;font-weight:700}
+.bar .meta{font-size:12px;color:var(--fg-2)}
+.seg{display:inline-flex;background:var(--seg);border-radius:999px;padding:3px;margin-left:auto}
+.seg button{font:inherit;font-size:13px;font-weight:600;border:0;background:none;color:var(--fg-2);padding:8px 16px;border-radius:999px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.seg button[aria-pressed="true"]{background:var(--bar);color:var(--fg);box-shadow:0 1px 3px #0000001f}
+.seg button:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+.seg svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}
+.stage{flex:1;min-height:0;position:relative;overflow:hidden;display:flex;justify-content:center;padding:16px}
+.frame{position:relative;background:#fff;box-shadow:0 8px 24px #0000001f;overflow:hidden;flex:none;transform-origin:top left}
+.frame iframe{border:0;display:block;transform-origin:top left;background:#fff}
+.mobile .frame{border-radius:12px}
+.stage.flush{padding:0}
+.flush .frame{box-shadow:none}
+.ag-link{display:inline-flex;align-items:center;gap:8px;font:600 14px/20px "Open Sans","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:0;color:#6B4F65;text-decoration:none;padding-block:4px;border-bottom:2px solid transparent;white-space:nowrap}.ag-link .ag-logo{height:20px;width:auto;color:#421035;flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}.ag-link:hover{color:#8E2C67;border-bottom-color:#8E2C67}.ag-link:hover .ag-logo{transform:rotate(-6deg) scale(1.06)}.ag-link:focus-visible{outline:2px solid #7587D9;outline-offset:3px;border-radius:4px}.ag-link.on-dark{color:#E3D6E5}.ag-link.on-dark .ag-logo{color:#B890C2}.ag-link.on-dark:hover{color:#E89BC6;border-bottom-color:#E89BC6}@media (prefers-reduced-motion:reduce){.ag-link .ag-logo{transition:none}}.ag-sep{width:1px;height:20px;background:#0000001a}@media (max-width:520px){.bar .meta{display:none}}
+.ag-link .ag-chev{width:16px;height:16px;flex:none;margin-right:-2px}.ribbon .ag-link .ag-chev{width:13px;height:13px}
+</style>
+
+<header class="bar">
+  <a class="ag-link" href="/#caso-ilhabella" aria-label="Volver al portafolio de Alejandra Gallardo"><svg class="ag-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><svg class="ag-logo" viewBox="39 61 400 258" aria-hidden="true"><path d="M400.1 126.5 A109.0 109.0 0 1 0 439.0 210 L405.0 210 A75.0 75.0 0 1 1 378.2 152.5 Z" fill="currentColor"/><path d="M364.6 176 H417.0 A22 22 0 0 1 439.0 198 V211.5 H335.0 Z" fill="currentColor"/><path d="M221.0 140 H245.0 V210 H221.0 Z" fill="currentColor"/><path d="M131.6 212 L204.0 212 L175.6 246 L103.2 246 Z" fill="currentColor"/><path d="M59.0 299.0 L241.0 81 L241.0 170" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/></svg><span>Volver al portafolio</span></a><span class="ag-sep" aria-hidden="true"></span>
+  <b>ilhabella</b><span class="meta" id="meta">Escritorio · 1440 px</span>
+  <div class="seg" role="group" aria-label="Dispositivo">
+    <button id="bDesk" aria-pressed="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Escritorio</button>
+    <button id="bMob" aria-pressed="false"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg>Mobile</button>
+  </div>
+</header>
+<div class="stage" id="stage"><div class="frame" id="frame"><iframe id="ifr" src="proto.html" title="Prototipo ilhabella"></iframe></div></div>
+
+<script>
+const stage=document.getElementById('stage'),frame=document.getElementById('frame'),ifr=document.getElementById('ifr');
+const D={desk:{w:1440,label:'Escritorio · 1440 px'},mob:{w:390,h:844,label:'Mobile · 390 px'}};
+let mode='desk';
+try{const m=localStorage.getItem('ilh-device');if(m==='mob'||m==='desk')mode=m}catch(e){}
+function fit(){
+  const d=D[mode],W=stage.clientWidth,H=stage.clientHeight;
+  const small=W<520;
+  stage.classList.toggle('mobile',mode==='mob'&&!small);
+  stage.classList.toggle('flush',mode==='desk'||small);
+  let s,w,h,fw,fh;
+  if(mode==='desk'){w=Math.max(1440,W);s=W/w;h=H/s;fw=W;fh=H}
+  else if(small){w=W;s=1;h=H;fw=W;fh=H}
+  else{w=d.w;h=d.h;s=Math.min(1,(W-32)/w,(H-32)/h);fw=w*s;fh=h*s}
+  ifr.style.width=w+'px';ifr.style.height=h+'px';ifr.style.transform=`scale(${s})`;
+  frame.style.width=fw+'px';frame.style.height=fh+'px';
+  document.getElementById('meta').textContent=(mode==='desk'?`Escritorio · ${w} px`:`Mobile · ${w} px`)+(s<1?` · ${Math.round(s*100)}%`:'');
+}
+function set(m){mode=m;try{localStorage.setItem('ilh-device',m)}catch(e){}
+  document.getElementById('bDesk').setAttribute('aria-pressed',m==='desk');document.getElementById('bMob').setAttribute('aria-pressed',m==='mob');fit()}
+document.getElementById('bDesk').onclick=()=>set('desk');
+document.getElementById('bMob').onclick=()=>set('mob');
+new ResizeObserver(fit).observe(stage);set(mode);
+</script>
+
+</body></html>

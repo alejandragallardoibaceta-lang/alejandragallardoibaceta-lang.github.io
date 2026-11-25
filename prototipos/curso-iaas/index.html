@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curso IAAS · Unidad 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: header de marca + índice lateral de lecciones + una lección a la vez; en móvil el índice pasa a un panel desplegable */
+:root{
+  --azul:#0033A0;        /* azul institucional */
+  --azul-medio:#536DAB;  /* botones secundarios del sitio */
+  --azul-claro:#B5C4DF;
+  --celeste:#ECF4FC;
+  --verde:#A5C536;       /* botones de acción del sitio */
+  --verde-osc:#95B133;
+  --tinta:#14264D;
+  --texto:#33405C;
+  --suave:#5E6B85;
+  --linea:#DCE3F0;
+  --fondo:#F5F7FB;
+  --blanco:#FFFFFF;
+  --font:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r:4px; --r-card:14px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font);background:var(--fondo);color:var(--texto);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--tinta);line-height:1.15;text-wrap:balance;margin:0;font-weight:800;letter-spacing:-.01em}
+p{margin:0}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* header */
+.top{position:sticky;top:0;padding-top:env(safe-area-inset-top);z-index:20;background:var(--blanco);border-bottom:1px solid var(--linea)}
+.top-in{display:flex;align-items:center;gap:20px;padding:14px clamp(16px,3vw,32px)}
+.logo{height:36px;width:auto;flex:none}
+.top-title{display:flex;flex-direction:column;gap:2px;padding-left:20px;border-left:1px solid var(--linea);min-width:0}
+.top-title small{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--suave)}
+.top-title strong{font-size:15px;color:var(--tinta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-prog{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:var(--suave);white-space:nowrap}
+.bar{width:160px;height:8px;border-radius:8px;background:var(--celeste);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--verde);border-radius:8px;transition:width .4s}
+.menu-btn{display:none}
+
+/* shell */
+.shell{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:1400px;margin:0 auto}
+.side{position:sticky;top:65px;align-self:start;height:calc(100vh - 65px);overflow:auto;padding:28px 20px 28px clamp(16px,3vw,32px);border-right:1px solid var(--linea);background:var(--blanco)}
+.side h2{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);margin-bottom:14px}
+.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;counter-reset:l}
+.toc a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--texto);font-size:14px;font-weight:500;line-height:1.3}
+.toc a:hover{background:var(--celeste)}
+.toc a[aria-current="page"]{background:var(--azul);color:#fff;font-weight:600}
+.toc .dot{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;background:var(--celeste);color:var(--azul)}
+.toc a[aria-current="page"] .dot{background:#fff;color:var(--azul)}
+.toc a.done .dot{background:var(--verde);color:var(--tinta)}
+
+main{padding:clamp(24px,4vw,56px) clamp(16px,4vw,64px) 80px;min-width:0}
+.lesson{display:none;max-width:960px;margin:0 auto;flex-direction:column;gap:32px}
+.lesson.on{display:flex;animation:in .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes in{from{opacity:.001;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{display:inline-flex;align-self:flex-start;gap:8px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);background:var(--celeste);padding:6px 12px;border-radius:var(--r)}
+.lead{font-size:clamp(17px,1.6vw,19px);max-width:62ch;color:var(--texto)}
+.lesson h1{font-size:clamp(32px,4.4vw,52px)}
+.lesson h2.t{font-size:clamp(28px,3.4vw,40px)}
+.head{display:flex;flex-direction:column;gap:16px}
+
+.card{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-card);padding:clamp(20px,3vw,32px)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.split{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr);gap:32px;align-items:center}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 22px;border-radius:var(--r);border:0;cursor:pointer;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-v{background:var(--verde);color:var(--tinta)}
+.btn-v:hover{background:var(--verde-osc)}
+.btn-a{background:var(--azul-medio);color:#fff}
+.btn-a:hover{background:#45609E}
+.btn-g{background:transparent;color:var(--azul);border:1.5px solid var(--azul-claro)}
+.btn-g:hover{background:var(--celeste)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--linea)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:20px;background:var(--azul);color:#fff;padding:clamp(28px,5vw,60px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(200px,.7fr);gap:24px;align-items:end}
+.hero h1{color:#fff;font-size:clamp(36px,5vw,62px)}
+.hero h1 span{color:var(--verde)}
+.hero p{color:#DCE6F7;font-size:clamp(16px,1.6vw,19px);max-width:46ch}
+.hero .eyebrow{background:rgba(255,255,255,.14);color:#fff}
+.hero-txt{display:flex;flex-direction:column;gap:20px;position:relative;z-index:1}
+.hero-art{position:relative;z-index:1;height:clamp(260px,32vw,400px)}
+.hero::before{content:"";position:absolute;right:-120px;top:-140px;width:520px;height:520px;border-radius:50%;background:#1745AE}
+.hero::after{content:"";position:absolute;right:40px;bottom:-200px;width:380px;height:380px;border-radius:50%;border:2px dashed rgba(181,196,223,.4)}
+.learn{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;list-style:none;margin:0;padding:0}
+.learn li{display:flex;gap:14px;align-items:flex-start;background:var(--blanco);border:1px solid var(--linea);border-radius:var(--r-card);padding:18px;font-weight:500;color:var(--tinta);font-size:15px;line-height:1.45}
+.learn b{flex:none;width:32px;height:32px;border-radius:50%;background:var(--celeste);color:var(--azul);display:grid;place-items:center;font-size:14px}
+
+/* stat cards */
+.up{display:flex;gap:16px;align-items:center}
+.up .ic{flex:none;width:56px;height:56px;border-radius:50%;background:#FDECEA;display:grid;place-items:center}
+.up strong{display:block;font-size:19px;color:var(--tinta)}
+.up span{font-size:14px;color:var(--suave)}
+.art{height:clamp(240px,30vw,380px)}
+
+/* tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{min-height:46px;padding:0 18px;border-radius:var(--r);border:1.5px solid var(--azul-claro);background:var(--blanco);color:var(--azul);font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:10px}
+.tab .n{width:26px;height:26px;border-radius:50%;background:var(--celeste);display:grid;place-items:center;font-size:13px}
+.tab[aria-selected="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.tab[aria-selected="true"] .n{background:var(--verde);color:var(--tinta)}
+.panel{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center}
+.panel[hidden]{display:none}
+.big-ic{width:120px;height:120px;border-radius:50%;background:var(--celeste);display:grid;place-items:center;position:relative}
+.panel p{font-size:clamp(17px,1.6vw,20px);color:var(--tinta);line-height:1.55}
+.hint{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--suave)}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end;background:linear-gradient(var(--celeste),var(--celeste)) bottom/100% 30% no-repeat;border-radius:var(--r-card);padding:24px 16px 0}
+.team>div{height:clamp(160px,22vw,260px)}
+.quote{background:var(--azul);color:#fff;border-radius:var(--r-card);padding:clamp(22px,3vw,34px);font-size:clamp(18px,1.8vw,22px);font-weight:600;line-height:1.45}
+.quote b{color:var(--verde)}
+
+/* objetivo */
+.obj{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+.obj p{font-size:clamp(17px,1.7vw,21px);color:var(--tinta);line-height:1.55}
+.obj p u{text-decoration-color:var(--verde);text-decoration-thickness:3px;text-underline-offset:4px}
+.who{display:flex;gap:20px}
+.who figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--tinta)}
+.bust{width:120px;height:120px;border-radius:50%;background:var(--celeste);position:relative;overflow:hidden}
+.bust>div{position:absolute;left:3px;top:14px;width:114px;height:122px}
+
+/* medidas */
+.medida{display:flex;flex-direction:column;gap:18px;min-height:220px}
+.medida .num{font-size:64px;font-weight:800;line-height:.9;color:var(--verde)}
+.medida h3{font-size:20px}
+.medida .ic{width:56px;height:56px;border-radius:50%;background:var(--celeste);display:grid;place-items:center;margin-left:auto}
+.medida.dest{background:var(--azul);border-color:var(--azul)}
+.medida.dest h3{color:#fff}
+.medida.dest .ic{background:rgba(255,255,255,.14)}
+.medida .row{display:flex;align-items:flex-start}
+.medida p{font-size:14px;color:var(--suave)}
+.medida.dest p{color:#DCE6F7}
+
+/* 5 momentos */
+.mom-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:stretch}
+.zone{position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto}
+.zone .env{position:absolute;inset:8%;border-radius:50%;border:2.5px dashed var(--azul-claro);background:var(--blanco)}
+.zone .env span{position:absolute;left:16px;top:14px;font-size:12px;font-weight:700;color:var(--suave);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.zone .pat{position:absolute;left:27%;top:27%;width:46%;height:46%;border-radius:50%;background:var(--celeste);overflow:hidden}
+.zone .pat>div{position:absolute;left:4%;top:12%;width:92%;height:98%}
+.mbtn{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:3px solid #fff;background:var(--azul-medio);color:#fff;font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,51,160,.25);transition:transform .15s,background .15s}
+.mbtn:hover{transform:scale(1.08)}
+.mbtn[aria-pressed="true"]{background:var(--verde);color:var(--tinta);transform:scale(1.12)}
+.mbtn.seen:not([aria-pressed="true"]){background:var(--azul)}
+.zone-cap{grid-column:1;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:600;color:var(--suave);margin-top:-8px}
+.zone-cap i{width:14px;height:14px;border-radius:50%;background:var(--celeste);border:1px solid var(--azul-claro)}
+.zone-cap i.o{margin-left:12px;border-radius:50%;background:#fff;border:2px dashed var(--azul-claro)}
+.mom-wrap .mdet{grid-column:2;grid-row:1 / span 2}
+.mdet{display:flex;flex-direction:column;gap:16px;justify-content:center}
+.mdet .k{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--azul)}
+.mdet h3{font-size:clamp(22px,2.4vw,28px)}
+.mdet p{color:var(--texto)}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pills i{width:28px;height:6px;border-radius:6px;background:var(--linea)}
+.pills i.on{background:var(--verde)}
+
+/* lavado */
+.lens{position:relative;width:100%;max-width:340px;aspect-ratio:1/1;margin:0 auto}
+.lens .g{position:absolute;inset:0 18% 18% 0;border-radius:50%;background:var(--celeste);border:16px solid var(--azul);display:grid;place-items:center;overflow:hidden}
+.lens .h{position:absolute;right:6%;bottom:2%;width:34px;height:40%;background:var(--verde);border-radius:18px;transform:rotate(-40deg);transform-origin:top}
+.germ{position:absolute;width:48px;height:48px;transition:opacity .5s,transform .5s}
+.clean .germ{opacity:0;transform:scale(0)}
+.bub{position:absolute;width:30px;height:30px;border-radius:50%;border:3px solid #8FB3F5;background:rgba(255,255,255,.7);opacity:0}
+.clean .bub{animation:bub 1.8s ease-out infinite}
+@keyframes bub{0%{opacity:0;transform:translateY(0) scale(.5)}20%{opacity:1}100%{opacity:0;transform:translateY(-120px) scale(1.1)}}
+.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.check li{display:flex;gap:12px;align-items:flex-start;font-size:17px;color:var(--tinta)}
+.check li::before{content:"";flex:none;width:22px;height:22px;margin-top:3px;border-radius:50%;background:var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314264D' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
+
+.vid{border-radius:var(--r-card);overflow:hidden;background:#14264D;aspect-ratio:16/9;box-shadow:0 20px 50px rgba(20,38,77,.15)}
+.vid video{display:block;width:100%;height:100%;object-fit:contain;background:#14264D}
+.vlist{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 24px}
+.vlist li{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--linea);color:var(--tinta);font-weight:500;font-size:15px}
+.vlist .ts{flex:none;border:0;background:var(--celeste);border-radius:var(--r);padding:6px 10px;min-height:32px;font-family:inherit;font-size:13px;font-weight:700;color:var(--azul);font-variant-numeric:tabular-nums;cursor:pointer}
+.vlist .ts:hover{background:var(--azul-claro)}
+/* quiz */
+.q{display:flex;flex-direction:column;gap:16px}
+.q legend{font-size:clamp(18px,1.9vw,21px);font-weight:700;color:var(--tinta);padding:0;margin-bottom:6px;line-height:1.35}
+.q fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;min-height:52px;padding:12px 16px;border:1.5px solid var(--linea);border-radius:10px;background:var(--blanco);cursor:pointer;font-weight:500;color:var(--tinta);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--azul-claro);background:#FAFCFF}
+.opt input{width:20px;height:20px;accent-color:var(--azul);flex:none;margin:0}
+.opt.ok{border-color:#5E8C1E;background:#F2F8E4}
+.opt.bad{border-color:#C8453A;background:#FDF0EE}
+.fb{font-size:15px;font-weight:600;padding:12px 16px;border-radius:10px}
+.fb.ok{background:#F2F8E4;color:#3F6312}
+.fb.bad{background:#FDF0EE;color:#9C2F25}
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;font-weight:700;color:var(--suave);letter-spacing:.06em;text-transform:uppercase}
+.result{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding:clamp(28px,4vw,48px)}
+.result .score{font-size:clamp(56px,8vw,88px);font-weight:800;color:var(--azul);line-height:1}
+.result .art{height:240px;width:200px}
+
+/* characters */
+.c-blink{transform-box:fill-box;transform-origin:center;animation:cblink 3.4s linear infinite}
+@keyframes cblink{0%,91%,100%{transform:scaleY(1)}95%{transform:scaleY(.12)}}
+.c-bob{animation:cbob 1.5s ease-in-out infinite alternate}
+@keyframes cbob{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+.c-wave{animation:cwave .5s ease-in-out infinite alternate}
+@keyframes cwave{from{transform:rotate(-16deg)}to{transform:rotate(14deg)}}
+.c-sway{animation:csway 2.4s ease-in-out infinite alternate}
+@keyframes csway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+.c-clip{animation:cclip 1.2s ease-in-out infinite alternate}
+@keyframes cclip{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.wob{animation:wob 3s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:translate(0,0) rotate(0)}33%{transform:translate(6px,-8px) rotate(18deg)}66%{transform:translate(-5px,5px) rotate(-12deg)}}
+.float{animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.spin{animation:sp 4s linear infinite;transform-origin:50% 100%}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+@media (max-width:960px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;top:65px;left:0;bottom:0;width:min(320px,86vw);height:auto;z-index:30;transform:translateX(-102%);transition:transform .25s;box-shadow:0 20px 60px rgba(20,38,77,.2)}
+  .side.open{transform:none}
+  .menu-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border-radius:var(--r);border:1.5px solid var(--azul-claro);background:var(--blanco);color:var(--azul);font-weight:700;font-size:13px;cursor:pointer}
+  .scrim{position:fixed;inset:65px 0 0 0;background:rgba(20,38,77,.35);z-index:25;display:none}
+  .scrim.on{display:block}
+  .bar{width:90px}
+  .split,.mom-wrap,.obj{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .hero-art{height:260px;max-width:220px}
+}
+@media (max-width:620px){
+  .top-title{display:none}
+  .who{justify-content:center}
+}
+
+.lnum{display:none}
+@media (max-width:620px){
+  .top-in{gap:12px;padding:10px 16px 14px}
+  .menu-btn{order:3;margin-left:auto;padding:0;width:44px;height:44px;justify-content:center}
+  .menu-btn .t{display:none}
+  .logo{height:30px}
+  .lnum{display:block;font-size:12px;font-weight:700;color:var(--azul);background:var(--celeste);padding:5px 10px;border-radius:var(--r);white-space:nowrap}
+  .top-prog{position:absolute;left:0;right:0;bottom:0;margin:0;gap:0}
+  .top-prog .lbl,.top-prog #pct{display:none}
+  .bar{width:100%;height:4px;border-radius:0}
+  .bar>i{border-radius:0}
+  .side{top:69px}
+  .scrim{inset:69px 0 0 0}
+  main{padding:24px 16px 120px}
+  .lesson{gap:24px}
+  .lesson h2.t{font-size:26px}
+  .lead{font-size:16px}
+  .hero{border-radius:16px;padding:24px 20px 0;gap:8px}
+  .hero h1{font-size:36px}
+  .hero p{font-size:15px}
+  .hero .btn{width:100%}
+  .hero-art{height:220px;max-width:none;justify-self:center;width:160px}
+  .hero::before{width:300px;height:300px;right:-120px;top:auto;bottom:-120px}
+  .learn li{padding:14px;font-size:14px}
+  .art{height:220px;order:-1}
+  .split{gap:16px}
+  .card{padding:20px}
+  .up strong{font-size:17px}
+  .tabs{display:grid;grid-template-columns:1fr 1fr}
+  .tab{justify-content:center;padding:0 10px;font-size:13px;text-align:left}
+  .panel{grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start}
+  .panel p{font-size:16px}
+  .big-ic{width:72px;height:72px}
+  .big-ic>svg{width:44px;height:44px}
+  .big-ic>div{left:34px!important;top:20px!important;height:16px!important}
+  .team{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:16px 8px 0}
+  .team>div{height:140px}
+  .quote{font-size:17px;padding:20px}
+  .obj{gap:20px}
+  .obj p{font-size:17px}
+  .bust{width:96px;height:96px}
+  .bust>div{left:2px;top:11px;width:92px;height:98px}
+  .medida{min-height:0;gap:10px}
+  .medida .num{font-size:44px}
+  .medida h3{font-size:18px}
+  .mom-wrap{gap:12px}
+  .mom-wrap .mdet{grid-column:1;grid-row:auto}
+  .zone{max-width:300px}
+  .mbtn{width:46px;height:46px;margin:-23px 0 0 -23px;font-size:17px}
+  .zone-cap{margin-top:0}
+  .lens{max-width:240px}
+  .check li{font-size:16px}
+  .opt{min-height:56px;font-size:15px}
+  .q .btn{width:100%}
+  .result .art{height:200px;width:160px;order:0}
+  .nav{position:fixed;left:0;right:0;bottom:0;z-index:15;margin:0!important;max-width:none!important;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--blanco);border-top:1px solid var(--linea);box-shadow:0 -8px 24px rgba(20,38,77,.08);flex-wrap:nowrap}
+  .nav .btn{flex:1;padding:0 12px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side" aria-label="Ver lecciones">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <span class="t">Lecciones</span>
+    </button>
+    <svg class="logo" role="img" aria-label="Clínica Las Condes" viewBox="0 0 190 45" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_94_1075)">
+<path d="M94.4954 5.73071H92.4764C92.4764 5.73071 92.3364 5.73071 92.3364 5.58199V5.44318L94.0656 2.4291C94.0656 2.2903 94.2155 2.2903 94.2155 2.2903L96.9542 3.15288C97.1042 3.29169 97.1042 3.29169 97.2441 3.44041L97.1042 3.58913L94.6453 5.74062C94.6453 5.73071 94.6453 5.73071 94.4954 5.73071Z" fill="#0033A0"/>
+<path d="M95.3649 19.6411V7.01961C95.3649 6.8808 95.215 6.73208 95.075 6.59328H92.0464C91.8965 6.59328 91.7566 6.8808 91.7566 7.01961V19.6411C91.7566 19.7799 91.8965 19.9286 92.0464 20.0674H95.075C95.215 19.9187 95.3649 19.7799 95.3649 19.6411Z" fill="#0033A0"/>
+<path d="M116.025 19.6411V7.01961C116.025 6.8808 115.895 6.73208 115.605 6.59328H112.707C112.567 6.59328 112.417 6.8808 112.417 7.01961V19.6411C112.417 19.7799 112.567 19.9286 112.707 20.0674H115.735C115.885 19.9187 116.025 19.7799 116.025 19.6411Z" fill="#0033A0"/>
+<path d="M109.668 19.9187C109.958 19.9187 110.098 19.7799 110.098 19.6311V7.01961C110.098 6.8808 109.948 6.59328 109.668 6.59328H106.919C106.63 6.59328 106.49 6.8808 106.49 7.01961V13.7616L101.282 6.8808C101.142 6.742 100.852 6.59328 100.712 6.59328H97.9637C97.8138 6.59328 97.6738 6.8808 97.6738 7.01961V19.6411C97.6738 19.7799 97.8238 19.9286 97.9637 19.9286H100.852C101.142 19.9286 101.282 19.7898 101.282 19.6411V12.7602C101.282 12.7602 106.63 19.7799 106.78 19.7799C106.919 19.9187 107.069 19.9187 107.219 19.9187H109.668V19.9187Z" fill="#0033A0"/>
+<path d="M89.8776 16.7658H83.8104V7.01961C83.8104 6.8808 83.6605 6.73208 83.5206 6.59328H80.6319C80.3421 6.59328 80.2021 6.8808 80.2021 7.01961V19.6411C80.2021 19.7799 80.3521 19.9286 80.492 20.0674H89.8876C90.0275 20.0674 90.1774 19.7799 90.3274 19.6411V17.0533C90.1674 16.9145 90.0175 16.7658 89.8776 16.7658Z" fill="#0033A0"/>
+<path d="M130.338 17.3409C130.338 17.1921 130.178 17.0533 130.178 17.0533L128.019 15.4769C127.869 15.3381 127.579 15.4769 127.44 15.6157C127.44 15.6157 127.28 15.7545 127.28 15.9032C126.57 16.4783 125.83 16.9046 124.681 16.9046C122.942 16.9046 121.652 15.3282 121.652 13.3254C121.652 11.3226 122.942 9.74618 124.681 9.74618C125.83 9.74618 126.7 10.3212 127.44 11.0351C127.579 11.1838 127.729 11.1838 128.019 11.0351L130.178 9.45866C130.178 9.30993 130.178 9.30994 130.178 9.17113C130.338 9.02241 130.178 9.02241 130.178 8.8836C129.029 7.44597 127.29 6.44458 124.841 6.44458C120.793 6.44458 117.914 9.44874 117.914 13.3254C117.914 17.3409 120.933 20.2062 124.691 20.2062C127.45 20.2062 129.019 19.2048 130.338 17.6284C130.338 17.4797 130.338 17.3409 130.338 17.3409Z" fill="#0033A0"/>
+<path d="M78.6028 17.3409C78.6028 17.1921 78.6028 17.0533 78.4629 17.0533L76.2939 15.4769C76.154 15.3381 75.8641 15.4769 75.7242 15.6157C75.7242 15.6157 75.5743 15.7545 75.5743 15.9032C74.8446 16.4783 74.125 16.9046 72.9755 16.9046C71.2463 16.9046 69.9369 15.3282 69.9369 13.3254C69.9369 11.3226 71.2363 9.74618 72.9755 9.74618C74.125 9.74618 74.9945 10.3212 75.7242 11.0351C75.8641 11.1838 76.0141 11.1838 76.2939 11.0351L78.4629 9.45866C78.4629 9.30993 78.4629 9.30994 78.4629 9.17113C78.6028 9.02241 78.4629 9.02241 78.4629 8.8836C77.3134 7.44597 75.5743 6.44458 73.1154 6.44458C69.0673 6.44458 66.1787 9.44874 66.1787 13.3254C66.1787 17.3409 69.2073 20.2062 72.9655 20.2062C75.7142 20.2062 77.3034 19.2048 78.5928 17.6284C78.6028 17.4797 78.6028 17.3409 78.6028 17.3409Z" fill="#0033A0"/>
+<path d="M136.555 14.763L138.135 10.8963L139.574 14.763H136.555ZM145.221 19.4923L140.024 6.8808C139.864 6.742 139.584 6.59328 139.444 6.59328H136.845C136.555 6.59328 136.406 6.742 136.266 6.8808L130.908 19.4923C130.758 19.7799 130.908 19.9187 131.198 19.9187H134.087C134.376 19.9187 134.666 19.7799 134.666 19.4923L135.526 17.6284H140.594L141.453 19.4923C141.453 19.7799 141.743 19.9187 142.033 19.9187H144.931C145.221 19.9187 145.361 19.7799 145.221 19.4923Z" fill="#0033A0"/>
+<path d="M132.647 31.2413V31.0925C132.647 29.2286 131.338 27.5133 129.309 27.5133C127.29 27.5133 126 29.2385 126 31.0925C126 33.0953 127.29 34.6817 129.309 34.6817C131.338 34.6817 132.647 33.1052 132.647 31.2413ZM122.242 31.2413V31.0925C122.242 27.3646 125.271 24.2216 129.309 24.2216C133.357 24.2216 136.405 27.2258 136.405 31.0925C136.405 34.9593 133.357 38.1122 129.309 38.1122C125.271 38.1221 122.242 34.9692 122.242 31.2413Z" fill="#0033A0"/>
+<path d="M161.693 31.2413C161.693 33.3928 160.094 34.533 157.935 34.533H156.486V27.8009H157.935C160.094 27.8009 161.693 28.951 161.693 31.0926V31.2413ZM157.935 24.5092H153.157C153.017 24.5092 152.867 24.6579 152.867 24.9355V37.4083C152.867 37.6958 153.017 37.8346 153.157 37.8346H157.775C162.553 37.8346 165.441 34.9692 165.441 31.1025C165.441 27.2259 162.693 24.5092 157.935 24.5092Z" fill="#0033A0"/>
+<path d="M177.456 34.6817H170.659V32.5302H176.726C176.876 32.5302 177.016 32.3914 177.016 32.2427V30.0912C177.016 29.8037 176.876 29.6649 176.726 29.6649H170.659V27.6522H177.296C177.586 27.6522 177.736 27.5134 177.736 27.2258V24.9355C177.736 24.648 177.586 24.5092 177.296 24.5092H167.471C167.321 24.5092 167.031 24.6579 167.031 24.9355V37.4083C167.031 37.6958 167.321 37.8346 167.471 37.8346H177.456C177.586 37.8346 177.876 37.6958 177.876 37.4083V35.118C177.876 34.8304 177.586 34.6817 177.456 34.6817Z" fill="#0033A0"/>
+<path d="M150.269 37.8346C150.429 37.8346 150.719 37.6958 150.719 37.4083V24.9355C150.719 24.648 150.429 24.5092 150.269 24.5092H147.38C147.24 24.5092 147.09 24.6579 147.09 24.9355V31.5288L141.753 24.7967C141.603 24.648 141.463 24.5092 141.303 24.5092H138.564C138.404 24.5092 138.125 24.6579 138.125 24.9355V37.4083C138.125 37.6958 138.414 37.8346 138.564 37.8346H141.453C141.593 37.8346 141.743 37.6958 141.743 37.4083V30.5275C141.743 30.5275 147.23 37.5471 147.36 37.5471C147.36 37.6958 147.65 37.8346 147.8 37.8346H150.269Z" fill="#0033A0"/>
+<path d="M75.8541 34.533H69.787V24.9256C69.787 24.6381 69.6471 24.4993 69.4971 24.4993H66.4686C66.3186 24.4993 66.1787 24.648 66.1787 24.9256V37.3984C66.1787 37.6859 66.3186 37.8247 66.4686 37.8247H75.8541C76.0041 37.8247 76.144 37.6859 76.144 37.5372V34.9593C76.144 34.6817 76.0041 34.533 75.8541 34.533Z" fill="#0033A0"/>
+<path d="M185.092 29.526C183.363 29.0997 182.783 28.8122 182.783 28.2371C182.783 27.8108 183.223 27.2357 184.223 27.2357C185.092 27.3745 186.252 27.6621 187.271 28.2371C187.401 28.2371 187.401 28.3858 187.561 28.3858C187.701 28.5346 187.981 28.5346 188.141 28.2371L189.3 26.6607V26.5219L189.44 26.3731C189.59 26.2343 189.59 26.0856 189.59 26.0856C189.59 25.9468 189.44 25.9468 189.44 25.7981C188.001 24.648 186.422 24.2216 184.243 24.2216C181.214 24.2216 179.195 25.9369 179.195 28.5147C179.195 31.3801 181.504 32.0939 184.103 32.669C185.972 33.0953 186.412 33.5316 186.412 33.9579V34.1066C186.412 34.6817 185.832 34.9692 184.812 34.9692C183.523 34.9692 182.214 34.5429 181.054 33.6803H180.914C180.764 33.5415 180.475 33.5415 180.335 33.6803L178.735 35.5443C178.735 35.6831 178.735 35.6831 178.735 35.8318C178.735 35.9805 178.735 35.9805 178.735 36.1193C180.335 37.4082 182.783 37.9833 184.663 37.9833C187.981 37.9833 190 36.268 190 33.6803V33.5415C190 30.9537 187.701 30.0912 185.092 29.526Z" fill="#0033A0"/>
+<path d="M121.383 35.108C121.383 34.9692 121.383 34.9692 121.223 34.8205C121.223 34.8205 119.204 33.2441 119.074 33.2441C118.924 33.2441 118.784 33.2441 118.624 33.3928C118.484 33.3928 118.334 33.6803 118.334 33.6803C117.764 34.2554 116.885 34.6817 115.885 34.6817C114.006 34.6817 112.707 33.1053 112.707 31.0926C112.707 29.2286 114.006 27.6522 115.885 27.6522C117.035 27.6522 117.914 28.0884 118.484 28.9411C118.624 28.9411 118.914 29.0799 119.064 28.9411L121.213 27.2159C121.373 27.2159 121.373 27.0672 121.373 26.9284C121.373 26.9284 121.373 26.7896 121.213 26.6409C120.053 25.2032 118.474 24.2018 115.885 24.2018C111.837 24.2018 108.948 27.206 108.948 31.0727V31.2215C108.948 35.0882 111.977 38.1023 115.735 38.1023C118.494 38.1023 120.223 36.9522 121.383 35.3757C121.383 35.2567 121.513 35.2567 121.383 35.108Z" fill="#0033A0"/>
+<path d="M82.361 32.5302L83.9502 28.8023L85.3995 32.5302H82.361ZM91.1768 37.2595L85.8293 24.7967C85.6894 24.5092 85.3995 24.3704 85.2496 24.3704H82.6508C82.361 24.3704 82.221 24.5092 82.0711 24.7967L76.7237 37.2595C76.5837 37.5471 76.7237 37.8346 77.0135 37.8346H79.9021C80.192 37.8346 80.4819 37.5471 80.4819 37.4082L81.3515 35.4055H86.4091L87.2786 37.4082C87.2786 37.5471 87.5685 37.8346 87.8584 37.8346H90.747C91.0269 37.8346 91.1768 37.5471 91.1768 37.2595Z" fill="#0033A0"/>
+<path d="M97.8238 29.526C96.0846 29.0997 95.5149 28.8122 95.5149 28.2371C95.5149 27.8108 95.9447 27.3844 96.9642 27.3844C97.9837 27.3844 98.9832 27.672 100.143 28.2371C100.143 28.3858 100.143 28.3858 100.283 28.3858C100.433 28.5346 100.722 28.5346 100.862 28.2371L102.022 26.6607L102.162 26.5219V26.3731C102.302 26.2343 102.302 26.0856 102.302 26.0856C102.302 25.9468 102.302 25.9468 102.162 25.7981C100.722 24.648 99.1232 24.2216 96.9642 24.2216C93.9256 24.2216 91.9066 25.9369 91.9066 28.5147V28.6535C91.9066 31.3801 94.2155 32.0939 96.8243 32.6591C98.7034 33.0854 99.1332 33.5217 99.1332 33.948V34.0967C99.1332 34.6718 98.5634 34.9593 97.5439 34.9593C96.2445 34.9593 94.9452 34.533 93.7857 33.8092L93.6358 33.6605C93.4958 33.5217 93.206 33.5217 93.056 33.6605L91.4668 35.5244C91.4668 35.6632 91.4668 35.6632 91.4668 35.812C91.4668 35.9607 91.4668 35.9607 91.6067 36.0995C93.056 37.3884 95.5049 37.9635 97.384 37.9635C100.712 38.1023 102.731 36.2482 102.731 33.6605V33.5217C102.731 30.9537 100.423 30.0912 97.8238 29.526Z" fill="#0033A0"/>
+<path d="M3.3292 41.7112C9.68619 42.4251 16.9028 29.6747 16.9028 29.6747C16.9028 29.6747 10.5458 29.6747 10.4059 29.6747C8.67667 29.6747 8.52674 28.2371 9.10647 26.8094L13.1546 16.6369H4.04886C4.1888 16.6369 0.000780148 23.0814 0.000780148 32.2526C0.000780148 32.3914 -0.139154 41.4237 3.3292 41.7112Z" fill="#0033A0"/>
+<path d="M44.07 34.1067C44.07 29.8037 30.9162 28.8023 30.9162 28.8023L29.1871 33.3829C28.4674 35.2468 26.7282 36.5358 24.6992 36.5358H13.8743L10.5459 44.418H22.97C32.8054 44.4279 44.07 37.4083 44.07 34.1067Z" fill="#B5BD00"/>
+<path d="M49.5575 3.44041C43.2005 2.72655 35.9839 15.4769 35.9839 15.4769H42.4908C44.22 15.4769 44.3699 16.7658 43.7902 18.3422L39.7421 28.5147H48.8478C48.7079 28.5147 52.8959 22.0702 52.8959 12.7503C52.8859 12.7503 53.0258 3.72794 49.5575 3.44041Z" fill="#B8C3DD"/>
+<path d="M8.67676 10.46C8.67676 14.763 21.9705 15.7644 21.9705 15.7644L23.7096 11.0351C24.4293 9.31984 26.0185 8.03093 28.0476 8.03093H39.0224L42.3408 0H29.7668C20.0914 0 8.67676 7.01962 8.67676 10.46Z" fill="#446DAF"/>
+</g>
+<defs>
+<clipPath id="clip0_94_1075">
+<rect width="190" height="44.4279" fill="white"/>
+</clipPath>
+</defs></svg>
+    <div class="top-title"><small>Curso Prevención de IAAS</small><strong>Unidad 1 · Fundamentos e higiene de manos</strong></div>
+    <span class="lnum" id="lnum">Lección 1 de 10</span>
+    <div class="top-prog"><span class="lbl">Avance</span><div class="bar" role="progressbar" aria-label="Avance del curso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><i id="barFill" style="width:0%"></i></div><span id="pct">0%</span></div>
+  </div>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+  <nav class="side" id="side" aria-label="Lecciones de la unidad">
+    <h2>Unidad 1 · 10 lecciones</h2>
+    <ol class="toc" id="toc"></ol>
+  </nav>
+
+  <main id="main">
+
+    <!-- 1 -->
+    <section class="lesson" id="l-inicio" data-key="inicio" data-title="Bienvenida">
+      <div class="hero">
+        <div class="hero-txt">
+          <span class="eyebrow">Módulo 1 · Unidad 1</span>
+          <h1>Prevención de las <span>IAAS</span></h1>
+          <p>Infecciones Asociadas a la Atención en Salud. Aprende qué son, cuándo se consideran IAAS y cuáles son las medidas para prevenirlas en Clínica Las Condes.</p>
+          <div><a class="btn btn-v" href="#que-son">Comenzar unidad
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div style="width:100%;height:100%" data-char='{"coat":true,"steth":true,"top":"#FFFFFF","collar":"#A5C536","bottom":"#14264D","shoe":"#14264D","hair":"#2B2A6B","R":[178,92],"mouth":"open","body":"c-bob","anim":{"R":"c-wave"}}'></div></div>
+      </div>
+      <div class="head">
+        <h2 class="t" style="font-size:clamp(22px,2.4vw,28px)">En esta unidad aprenderás a</h2>
+      </div>
+      <ul class="learn">
+        <li><b>1</b>Reconocer qué son las IAAS y por qué importan.</li>
+        <li><b>2</b>Identificar cuándo una infección es asociada a la atención de salud.</li>
+        <li><b>3</b>Conocer el objetivo del programa IAAS y las 3 medidas de prevención.</li>
+        <li><b>4</b>Aplicar los 5 momentos de la higiene de manos.</li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="lesson" id="l-que-son" data-key="que-son" data-title="¿Qué son las IAAS?">
+      <div class="split">
+        <div class="head">
+          <span class="eyebrow">Lección 2</span>
+          <h2 class="t">¿Qué son las IAAS?</h2>
+          <p class="lead">Las Infecciones Asociadas a la Atención de Salud (IAAS) son uno de los principales <strong>indicadores de calidad de atención</strong> y representan un problema de salud pública.</p>
+        </div>
+        <div class="art" aria-hidden="true"><div style="width:100%;height:100%" data-char='{"coat":true,"steth":true,"top":"#FFFFFF","collar":"#A5C536","bottom":"#14264D","shoe":"#14264D","hairStyle":"long","hair":"#C26A3A","R":[150,214],"props":{"R":"clip"},"mouth":"smile","body":"c-sway","anim":{"R":"c-clip"}}'></div></div>
+      </div>
+      <p style="font-weight:700;color:var(--tinta)">Esto ocurre porque las IAAS aumentan:</p>
+      <div class="grid2">
+        <div class="card up"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8453A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="float" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></div><div><strong>La morbimortalidad</strong><span>Más complicaciones y muertes en pacientes.</span></div></div>
+        <div class="card up"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8453A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="float" style="animation-delay:.4s" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></div><div><strong>Los costos de hospitalización</strong><span>Más días de estadía y tratamientos.</span></div></div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="lesson" id="l-cuando" data-key="cuando" data-title="¿Cuándo es IAAS?">
+      <div class="head">
+        <span class="eyebrow">Lección 3</span>
+        <h2 class="t">¿Cuándo una infección es asociada a la atención de salud?</h2>
+        <p class="lead">Hay dos situaciones. Selecciona cada una para conocerla.</p>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:28px">
+        <div class="tabs" role="tablist" aria-label="Criterios de IAAS">
+          <button class="tab" role="tab" id="t-c1" aria-controls="p-c1" aria-selected="true"><span class="n">1</span>Según el tiempo</button>
+          <button class="tab" role="tab" id="t-c2" aria-controls="p-c2" aria-selected="false" tabindex="-1"><span class="n">2</span>Según el procedimiento</button>
+        </div>
+        <div class="panel" role="tabpanel" id="p-c1" aria-labelledby="t-c1">
+          <div class="big-ic" aria-hidden="true">
+            <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/></svg>
+            <div style="position:absolute;left:58px;top:34px;width:4px;height:26px;margin-left:-2px;border-radius:2px;background:var(--tinta)" class="spin"></div>
+          </div>
+          <p>Si la infección se presenta <strong>después de las 48 horas de ingreso del paciente</strong> y existe evidencia de que no estaba presente ni en incubación al momento de su ingreso a la clínica.</p>
+        </div>
+        <div class="panel" role="tabpanel" id="p-c2" aria-labelledby="t-c2" hidden>
+          <div class="big-ic" aria-hidden="true"><svg width="62" height="62" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="float"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></div>
+          <p>Si se relaciona con algún <strong>procedimiento invasivo</strong> realizado en hospitalización o en forma ambulatoria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="lesson" id="l-responsabilidad" data-key="responsabilidad" data-title="Una responsabilidad de todos">
+      <div class="head">
+        <span class="eyebrow">Lección 4</span>
+        <h2 class="t">Una responsabilidad de todos</h2>
+        <p class="lead">Sabemos que las IAAS <strong>no pueden ser eliminadas por completo</strong>, por los riesgos que supone la atención de salud. Sin embargo, una importante proporción puede evitarse.</p>
+      </div>
+      <div class="team" aria-hidden="true">
+        <div data-char='{"coat":true,"steth":true,"top":"#FFFFFF","collar":"#A5C536","bottom":"#14264D","shoe":"#14264D","hair":"#2B1B12","R":[178,92],"mouth":"open","body":"c-bob","anim":{"R":"c-wave"}}'></div>
+        <div data-char='{"hairStyle":"bun","hair":"#5A3A22","skin":"#D9A07A","top":"#22A699","bottom":"#22A699","shoe":"#FFFFFF","R":[150,214],"props":{"R":"clip"},"mouth":"smile","body":"c-bob"}'></div>
+        <div data-char='{"hairStyle":"curly","hair":"#1B1036","skin":"#8D5A3B","top":"#536DAB","bottom":"#536DAB","shoe":"#FFFFFF","L":[22,92],"mouth":"open","body":"c-bob","anim":{"L":"c-wave"}}'></div>
+        <div data-char='{"coat":true,"top":"#FFFFFF","collar":"#0033A0","bottom":"#5C7BB5","shoe":"#14264D","hairStyle":"long","hair":"#2B1B12","skin":"#F6D3B5","mouth":"smile","body":"c-bob"}'></div>
+      </div>
+      <div class="quote">Es responsabilidad de <b>cada uno de los integrantes del equipo de salud</b> cumplir con las normas y todos los aspectos vinculados a ellas, para realizar las actividades de prevención y control de las infecciones asociadas a la atención de salud.</div>
+    </section>
+
+    <!-- 5 -->
+    <section class="lesson" id="l-objetivo" data-key="objetivo" data-title="Objetivo del programa">
+      <div class="head">
+        <span class="eyebrow">Lección 5</span>
+        <h2 class="t">¿Cuál es el objetivo general del programa de IAAS en CLC?</h2>
+      </div>
+      <div class="card obj">
+        <p>Prevenir y controlar las Infecciones Asociadas a la Atención de Salud <strong>tanto en el paciente como en el personal de salud</strong>, de manera costo-efectiva, <u>mejorando la calidad de atención</u> brindada en Clínica Las Condes.</p>
+        <div class="who" aria-hidden="true">
+          <figure><div class="bust"><div data-char='{"bust":true,"top":"#A7D3F5","hair":"#5A3A22","mouth":"smile","body":"c-bob"}'></div></div>Paciente</figure>
+          <figure><div class="bust"><div data-char='{"bust":true,"coat":true,"steth":true,"top":"#FFFFFF","collar":"#A5C536","hairStyle":"bun","hair":"#2B1B12","skin":"#D9A07A","mouth":"smile","body":"c-bob"}'></div></div>Personal de salud</figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="lesson" id="l-medidas" data-key="medidas" data-title="3 medidas para prevenir">
+      <div class="head">
+        <span class="eyebrow">Lección 6</span>
+        <h2 class="t">3 medidas para prevenir las IAAS</h2>
+        <p class="lead">Estas tres medidas son la base de la prevención. En esta unidad profundizamos en la primera.</p>
+      </div>
+      <div class="grid3">
+        <div class="card medida dest"><div class="row"><span class="num">1</span><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v1"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div></div><h3>Realizar higiene de manos</h3><p>Lo veremos en las próximas lecciones.</p></div>
+        <div class="card medida"><div class="row"><span class="num">2</span><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12v.01"/></svg></div></div><h3>Cumplir con las normas de aislamiento</h3></div>
+        <div class="card medida"><div class="row"><span class="num">3</span><div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div></div><h3>Aplicar las precauciones estándar</h3></div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="lesson" id="l-momentos" data-key="momentos" data-title="Higiene de manos: 5 momentos">
+      <div class="head">
+        <span class="eyebrow">Lección 7</span>
+        <h2 class="t">Higiene de manos: los 5 momentos</h2>
+        <p class="lead">La higiene de manos es la <strong>medida más sencilla</strong> para prevenir la diseminación de microorganismos, cuyo vehículo son las manos. El tipo de procedimiento dependerá del objetivo que se quiera lograr.</p>
+      </div>
+      <div class="card mom-wrap">
+        <div class="zone" id="zone">
+          <div class="env"></div>
+          <div class="pat" aria-hidden="true"><div data-char='{"bust":true,"top":"#A7D3F5","hair":"#2B1B12","mouth":"smile","body":"c-bob"}'></div></div>
+        </div>
+        <p class="zone-cap"><i></i>Zona del paciente <i class="o"></i>Entorno del paciente</p>
+        <div class="mdet" aria-live="polite">
+          <div class="pills" id="pills" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="k" id="mK">Momento 1 de 5</span>
+          <h3 id="mT"></h3>
+          <p id="mP"></p>
+          <p class="hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>Recorre los números del 1 al 5 en el sentido del reloj.</p>
+          <div><button class="btn btn-a" id="mNext">Siguiente momento</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="lesson" id="l-lavado" data-key="lavado" data-title="Lavado clínico de manos">
+      <div class="split">
+        <div class="head">
+          <span class="eyebrow">Lección 8</span>
+          <h2 class="t">Lavado clínico de manos</h2>
+          <ul class="check">
+            <li>Las manos son el vehículo más común de transmisión de infecciones.</li>
+            <li>El lavado clínico de manos es la medida más efectiva comprobada para prevenir las IAAS.</li>
+          </ul>
+        </div>
+        <div class="lens" id="lens" aria-hidden="true">
+          <div class="g">
+            <svg width="44%" height="44%" viewBox="0 0 24 24" fill="none" stroke="var(--tinta)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v1"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+            <div class="germ" style="left:22%;top:22%"><div class="wob" style="width:100%;height:100%" data-germ="#E86A8A"></div></div>
+            <div class="germ" style="left:62%;top:18%;width:38px;height:38px"><div class="wob" style="width:100%;height:100%;animation-delay:.6s" data-germ="#A5C536"></div></div>
+            <div class="germ" style="left:60%;top:58%"><div class="wob" style="width:100%;height:100%;animation-delay:.3s" data-germ="#F2A93B"></div></div>
+            <div class="germ" style="left:24%;top:62%;width:36px;height:36px"><div class="wob" style="width:100%;height:100%;animation-delay:1s" data-germ="#E86A8A"></div></div>
+            <span class="bub" style="left:30%;top:70%"></span><span class="bub" style="left:52%;top:76%;animation-delay:.5s"></span><span class="bub" style="left:68%;top:66%;animation-delay:1s"></span>
+          </div>
+          <div class="h"></div>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:24px">
+        <div class="head" style="gap:8px">
+          <h3 style="font-size:22px">¿Microorganismos de las manos?</h3>
+          <p>Los microorganismos que se encuentran en nuestras manos pueden ser de dos tipos:</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Tipos de microorganismos">
+          <button class="tab" role="tab" id="t-tr" aria-controls="p-tr" aria-selected="true">Transitorios</button>
+          <button class="tab" role="tab" id="t-re" aria-controls="p-re" aria-selected="false" tabindex="-1">Residentes</button>
+        </div>
+        <div role="tabpanel" id="p-tr" aria-labelledby="t-tr" style="display:flex;flex-direction:column;gap:16px">
+          <p style="font-size:18px;color:var(--tinta)">Están en la <strong>superficie de la piel</strong> de las manos. Se adquieren durante las actividades normales de nuestro trabajo y pueden transmitirse a los pacientes si no cumplimos con el lavado clínico de manos. <strong>Se eliminan fácilmente</strong> con el lavado clínico de manos.</p>
+          <div><button class="btn btn-a" id="washBtn">Lavar las manos</button></div>
+        </div>
+        <div role="tabpanel" id="p-re" aria-labelledby="t-re" hidden>
+          <p style="font-size:18px;color:var(--tinta)">Viven en las <strong>capas más profundas de la piel</strong>. Son más difíciles de eliminar y para reducirlos se requiere el uso de productos antisépticos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 video -->
+    <section class="lesson" id="l-video" data-key="video" data-title="Resumen en video">
+      <div class="head">
+        <span class="eyebrow">Lección 9</span>
+        <h2 class="t">Resumen en video</h2>
+        <p class="lead">Repasa en menos de un minuto las ideas clave de la unidad antes de la evaluación.</p>
+      </div>
+      <div class="vid">
+        <video id="vid" controls playsinline preload="metadata" poster="video/poster.jpg" aria-describedby="vidDesc">
+          <source src="video/resumen-iaas.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+      <div class="card" id="vidDesc" style="display:flex;flex-direction:column;gap:16px">
+        <h3 style="font-size:20px">En este video</h3>
+        <ol class="vlist">
+          <li><span>0:00</span>Prevención de las IAAS</li>
+          <li><span>0:04</span>Indicadores de calidad de atención</li>
+          <li><span>0:10</span>¿Cuándo es IAAS? 48 horas y procedimientos invasivos</li>
+          <li><span>0:16</span>Las 3 medidas de prevención</li>
+          <li><span>0:22</span>Higiene de manos</li>
+          <li><span>0:26</span>Los 5 momentos</li>
+          <li><span>0:33</span>Lavado clínico de manos</li>
+          <li><span>0:39</span>La prevención es responsabilidad de todos</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="lesson" id="l-evaluacion" data-key="evaluacion" data-title="Evaluación final">
+      <div class="head">
+        <span class="eyebrow">Lección 10</span>
+        <h2 class="t">Evaluación de la unidad</h2>
+        <p class="lead">Responde 6 preguntas. Necesitas al menos 5 respuestas correctas para aprobar.</p>
+      </div>
+      <div class="card q" id="quiz"></div>
+    </section>
+
+    <div class="nav" id="nav" style="max-width:960px;margin:40px auto 0">
+      <a class="btn btn-g" id="prev" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>Anterior</a>
+      <a class="btn btn-v" id="next" href="#">Siguiente
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+  </main>
+</div>
+
+<script>
+// Friendly flat characters, drawn as SVG. Coordinates: 200 x 400 body box.
+(function () {
+  const SH_L = [70, 166], SH_R = [130, 166], HIP_L = [88, 255], HIP_R = [112, 255];
+
+  function hairBack(o) {
+    if (o.hairStyle === 'long') return `<path d="M58 100 Q56 52 100 52 Q144 52 142 100 L148 176 Q100 190 52 176 Z" fill="${o.hair}"/>`;
+    return '';
+  }
+  function hairFront(o) {
+    const h = o.hair;
+    if (o.cap) return `<path d="M60 88 Q60 50 100 48 Q140 50 140 88 Z" fill="#2E2250"/><rect x="56" y="82" width="98" height="11" rx="5.5" fill="#1B1036"/><circle cx="100" cy="66" r="7" fill="#FFB020"/>`;
+    if (o.hairStyle === 'curly') return [[66, 86, 16], [76, 68, 17], [92, 58, 17], [110, 58, 17], [125, 68, 17], [134, 86, 16]].map(c => `<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}" fill="${h}"/>`).join('');
+    let s = `<path d="M61 100 Q58 56 100 54 Q142 56 139 100 Q131 80 104 78 Q86 78 74 86 Q66 92 61 100 Z" fill="${h}"/>`;
+    if (o.hairStyle === 'bun') s += `<circle cx="100" cy="46" r="15" fill="${h}"/>`;
+    if (o.hairStyle === 'long') s = `<path d="M61 100 Q60 56 100 54 Q140 56 139 100 Q128 76 98 80 Q76 84 61 100 Z" fill="${h}"/>`;
+    return s;
+  }
+  function face(o) {
+    const ink = '#2A1B3D';
+    let f = `<ellipse class="c-blink" cx="86" cy="103" rx="4.2" ry="5.2" fill="${ink}"/><ellipse class="c-blink" cx="114" cy="103" rx="4.2" ry="5.2" fill="${ink}"/>`;
+    f += `<circle cx="78" cy="115" r="6" fill="#FF7A6B" opacity=".28"/><circle cx="122" cy="115" r="6" fill="#FF7A6B" opacity=".28"/>`;
+    const mouths = {
+      smile: `<path d="M89 115 Q100 125 111 115" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`,
+      open: `<path d="M88 113 Q100 131 112 113 Z" fill="#8A2E3B"/><path d="M92 121 Q100 126 108 121" stroke="#FF8FA0" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+      frown: `<path d="M90 122 Q100 113 110 122" stroke="${ink}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`,
+      flat: `<path d="M92 119 H108" stroke="${ink}" stroke-width="3.2" stroke-linecap="round"/>`,
+    };
+    const m = o.mouth || 'smile';
+    if (o.swap) {
+      const [from, to, at] = o.swap;
+      f += `<g style="animation:cOut .15s linear ${at}s both">${mouths[from]}</g><g style="animation:cIn .15s linear ${at}s both">${mouths[to]}</g>`;
+      if (from === 'frown') f += `<g style="animation:cOut .15s linear ${at}s both"><path d="M79 93 L91 89" stroke="${ink}" stroke-width="3" stroke-linecap="round"/><path d="M121 93 L109 89" stroke="${ink}" stroke-width="3" stroke-linecap="round"/></g>`;
+    } else {
+      f += mouths[m];
+      if (m === 'frown') f += `<path d="M79 93 L91 89" stroke="${ink}" stroke-width="3" stroke-linecap="round"/><path d="M121 93 L109 89" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>`;
+    }
+    return f;
+  }
+  function prop(kind, hx, hy, o) {
+    if (kind === 'bag') {
+      const c = o.bagColor || '#FFB020';
+      return `<path d="M${hx - 9} ${hy + 8} Q${hx} ${hy - 8} ${hx + 9} ${hy + 8}" stroke="${c}" stroke-width="3.5" fill="none"/><rect x="${hx - 19}" y="${hy + 7}" width="38" height="44" rx="7" fill="${c}"/><rect x="${hx - 19}" y="${hy + 7}" width="38" height="9" rx="4" fill="#000" opacity=".1"/>`;
+    }
+    if (kind === 'mega') return `<path d="M${hx - 4} ${hy - 7} L${hx + 38} ${hy - 26} L${hx + 38} ${hy + 18} L${hx - 4} ${hy + 6} Z" fill="#FFB020"/><rect x="${hx + 34}" y="${hy - 28}" width="8" height="48" rx="4" fill="#E0951A"/>`;
+    if (kind === 'clip') return `<rect x="${hx - 22}" y="${hy - 52}" width="44" height="56" rx="6" fill="#8B5E3C"/><rect x="${hx - 17}" y="${hy - 45}" width="34" height="44" rx="3" fill="#FFFFFF"/><rect x="${hx - 9}" y="${hy - 56}" width="18" height="9" rx="3" fill="#B8C2D9"/><rect x="${hx - 12}" y="${hy - 36}" width="24" height="3" rx="1.5" fill="#9DB8EC"/><rect x="${hx - 12}" y="${hy - 28}" width="18" height="3" rx="1.5" fill="#9DB8EC"/><rect x="${hx - 12}" y="${hy - 20}" width="22" height="3" rx="1.5" fill="#9DB8EC"/>`;
+    if (kind === 'phone') return `<rect x="${hx - 9}" y="${hy - 30}" width="18" height="32" rx="4" fill="#1B1036"/><rect x="${hx - 6}" y="${hy - 26}" width="12" height="21" rx="2" fill="#8F7BFF"/>`;
+    return '';
+  }
+  function arm(o, side) {
+    const sh = side === 'L' ? SH_L : SH_R;
+    const hand = o[side] || (side === 'L' ? [58, 252] : [142, 252]);
+    const cls = o.anim && o.anim[side] ? o.anim[side] : '';
+    const p = o.props && o.props[side] ? prop(o.props[side], hand[0], hand[1], o) : '';
+    return `<g class="${cls}" style="transform-origin:${sh[0]}px ${sh[1]}px"><line x1="${sh[0]}" y1="${sh[1]}" x2="${hand[0]}" y2="${hand[1]}" stroke="${o.top}" stroke-width="19" stroke-linecap="round"/><circle cx="${hand[0]}" cy="${hand[1]}" r="10.5" fill="${o.skin}"/>${p}</g>`;
+  }
+  function leg(o, side) {
+    const hip = side === 'L' ? HIP_L : HIP_R;
+    const foot = side === 'L' ? [84, 372] : [116, 372];
+    const cls = o.anim && o.anim['leg' + side] ? o.anim['leg' + side] : '';
+    const sx = side === 'L' ? foot[0] - 6 : foot[0] + 6;
+    return `<g class="${cls}" style="transform-origin:${hip[0]}px ${hip[1]}px"><line x1="${hip[0]}" y1="${hip[1]}" x2="${foot[0]}" y2="${foot[1]}" stroke="${o.bottom}" stroke-width="23" stroke-linecap="round"/><ellipse cx="${sx}" cy="${foot[1] + 10}" rx="17" ry="9.5" fill="${o.shoe}"/></g>`;
+  }
+
+  window.charSVG = function (o) {
+    o = Object.assign({ skin: '#F2C6A0', hair: '#2B1B12', hairStyle: 'short', top: '#5B3DF5', bottom: '#1B1036', shoe: '#1B1036' }, o);
+    const vb = o.bust ? '22 36 156 166' : '0 28 200 372';
+    let s = `<svg viewBox="${vb}" width="100%" height="100%" overflow="visible" xmlns="http://www.w3.org/2000/svg"><g class="${o.body || ''}">`;
+    s += hairBack(o);
+    if (!o.bust) s += leg(o, 'L') + leg(o, 'R') + `<rect x="68" y="238" width="64" height="34" rx="14" fill="${o.bottom}"/>`;
+    // arms that go behind the torso (walk swing) are drawn first
+    if (o.behind) s += arm(o, o.behind);
+    s += `<rect x="62" y="146" width="76" height="118" rx="32" fill="${o.top}"/>`;
+    if (o.collar) s += `<path d="M86 148 L100 166 L114 148 Z" fill="${o.collar}"/>`;
+    if (o.coat) s += `<path d="M84 148 L100 176 L100 262" stroke="#D5DEEE" stroke-width="3" fill="none"/><path d="M116 148 L100 176" stroke="#D5DEEE" stroke-width="3" fill="none"/><rect x="74" y="214" width="18" height="14" rx="3" fill="#E6ECF7"/>`;
+    if (o.steth) s += `<path d="M86 150 Q80 196 100 204 Q120 196 114 150" stroke="#3B4A8F" stroke-width="3.5" fill="none"/><circle cx="100" cy="208" r="6" fill="#3B4A8F"/><circle cx="100" cy="208" r="2.5" fill="#C9D4F0"/>`;
+    if (o.tag) s += `<rect x="110" y="184" width="20" height="13" rx="3" fill="#FFFFFF"/><rect x="113" y="188" width="14" height="2.5" rx="1" fill="#8F7BFF"/>`;
+    s += `<rect x="91" y="124" width="18" height="28" rx="8" fill="${o.skin}"/>`;
+    s += `<circle cx="62" cy="104" r="8" fill="${o.skin}"/><circle cx="138" cy="104" r="8" fill="${o.skin}"/>`;
+    s += `<circle cx="100" cy="100" r="39" fill="${o.skin}"/>`;
+    s += hairFront(o) + face(o);
+    if (o.headset) s += `<path d="M58 104 Q56 50 100 50 Q144 50 142 104" stroke="#1B1036" stroke-width="7" fill="none"/><rect x="51" y="92" width="15" height="26" rx="7" fill="#1B1036"/><rect x="134" y="92" width="15" height="26" rx="7" fill="#1B1036"/><path d="M60 116 Q64 134 86 132" stroke="#1B1036" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="88" cy="132" r="5" fill="#FFB020"/>`;
+    if (o.behind !== 'L') s += arm(o, 'L');
+    if (o.behind !== 'R') s += arm(o, 'R');
+    s += `</g></svg>`;
+    return s;
+  };
+
+  window.germSVG = function (c) {
+    let k = '';
+    for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI * 2; k += `<line x1="50" y1="50" x2="${50 + Math.cos(a) * 44}" y2="${50 + Math.sin(a) * 44}" stroke="${c}" stroke-width="5" stroke-linecap="round"/><circle cx="${50 + Math.cos(a) * 45}" cy="${50 + Math.sin(a) * 45}" r="6" fill="${c}"/>`; }
+    return `<svg viewBox="0 0 100 100" width="100%" height="100%" overflow="visible">${k}<circle cx="50" cy="50" r="30" fill="${c}"/><circle cx="42" cy="44" r="5" fill="#fff" opacity=".55"/><circle cx="58" cy="58" r="4" fill="#000" opacity=".12"/><circle cx="44" cy="60" r="3" fill="#000" opacity=".12"/></svg>`;
+  };
+  window.mountChars = function () {
+    document.querySelectorAll('[data-char]').forEach(el => { el.innerHTML = charSVG(JSON.parse(el.getAttribute('data-char'))); });
+    document.querySelectorAll('[data-germ]').forEach(el => { el.innerHTML = germSVG(el.getAttribute('data-germ')); });
+  };
+})();
+
+</script>
+<script>
+(function(){
+  const lessons=[...document.querySelectorAll('.lesson')];
+  const ids=lessons.map(l=>l.dataset.key);
+  const KEY='clc-iaas-u1';
+  let st={seen:[],passed:false};
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s)st=s;}catch(e){}
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}};
+
+  // índice
+  const toc=document.getElementById('toc');
+  lessons.forEach((l,i)=>{const li=document.createElement('li');li.innerHTML='<a href="#'+l.dataset.key+'"><span class="dot">'+(i+1)+'</span><span></span></a>';li.querySelector('span:last-child').textContent=l.dataset.title;toc.appendChild(li);});
+  const links=[...toc.querySelectorAll('a')];
+
+  function progress(){
+    const done=ids.filter(id=>id==='evaluacion'?st.passed:st.seen.includes(id)).length;
+    const p=Math.round(done/ids.length*100);
+    document.getElementById('barFill').style.width=p+'%';
+    document.getElementById('pct').textContent=p+'%';
+    document.getElementById('bar').setAttribute('aria-valuenow',p);
+    links.forEach((a,i)=>{const id=ids[i];a.classList.toggle('done',id==='evaluacion'?st.passed:st.seen.includes(id));});
+  }
+  function show(){
+    let id=location.hash.slice(1);
+    if(!ids.includes(id))id='inicio';
+    const i=ids.indexOf(id);
+    lessons.forEach(l=>l.classList.toggle('on',l.dataset.key===id));
+    links.forEach((a,k)=>{if(k===i)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    if(id!=='evaluacion'&&!st.seen.includes(id)){st.seen.push(id);save();}
+    progress();
+    const prev=document.getElementById('prev'),next=document.getElementById('next');
+    prev.style.visibility=i===0?'hidden':'visible';prev.href='#'+ids[Math.max(0,i-1)];
+    next.style.display=i===ids.length-1?'none':'inline-flex';next.href='#'+ids[Math.min(ids.length-1,i+1)];
+    document.getElementById('nav').style.display=id==='inicio'?'none':'flex';
+    closeMenu();
+    document.getElementById('lnum').textContent='Lección '+(i+1)+' de '+ids.length;
+    window.scrollTo(0,0);requestAnimationFrame(()=>window.scrollTo(0,0));
+    const h=lessons[i].querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');}
+  }
+  window.addEventListener('hashchange',show);
+
+  // menú móvil
+  const side=document.getElementById('side'),scrim=document.getElementById('scrim'),mb=document.getElementById('menuBtn');
+  function closeMenu(){side.classList.remove('open');scrim.classList.remove('on');mb.setAttribute('aria-expanded','false');}
+  mb.addEventListener('click',()=>{const o=!side.classList.contains('open');side.classList.toggle('open',o);scrim.classList.toggle('on',o);mb.setAttribute('aria-expanded',String(o));});
+  scrim.addEventListener('click',closeMenu);
+
+  // pestañas
+  document.querySelectorAll('[role=tablist]').forEach(list=>{
+    const tabs=[...list.querySelectorAll('[role=tab]')];
+    const sel=t=>{tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});};
+    tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];sel(n);n.focus();}});});
+  });
+
+  // 5 momentos
+  const M=[
+    {t:'Antes del contacto con el paciente',p:'Lávate las manos antes de tocar al paciente, para protegerlo de los microorganismos que traes en tus manos.',x:50,y:8},
+    {t:'Antes de un procedimiento limpio o aséptico',p:'Inmediatamente antes de realizar cualquier procedimiento limpio o aséptico, para evitar que ingresen microorganismos al paciente.',x:90,y:37},
+    {t:'Después de la exposición a fluidos corporales',p:'Inmediatamente después de una posible exposición a fluidos corporales, para protegerte a ti y al entorno.',x:74.7,y:84},
+    {t:'Después del contacto con el paciente',p:'Al terminar de atender al paciente, antes de alejarte de él.',x:25.3,y:84},
+    {t:'Después del contacto con el entorno del paciente',p:'Después de tocar objetos o superficies cercanas al paciente, aunque no lo hayas tocado a él. También después del uso de teléfonos y teclados.',x:10,y:37}
+  ];
+  const zone=document.getElementById('zone');const seen=new Set();
+  let mCur=0;
+  const btns=M.map((m,i)=>{const b=document.createElement('button');b.className='mbtn';b.textContent=i+1;b.style.left=m.x+'%';b.style.top=m.y+'%';b.setAttribute('aria-label','Momento '+(i+1)+': '+m.t);b.addEventListener('click',()=>pickM(i));zone.appendChild(b);return b;});
+  const pills=[...document.querySelectorAll('#pills i')];
+  function pickM(i){mCur=i;seen.add(i);btns.forEach((b,k)=>{b.setAttribute('aria-pressed',k===i);b.classList.toggle('seen',seen.has(k));});pills.forEach((p,k)=>p.classList.toggle('on',seen.has(k)));
+    document.getElementById('mK').textContent='Momento '+(i+1)+' de 5';document.getElementById('mT').textContent=M[i].t;document.getElementById('mP').textContent=M[i].p;}
+  pickM(0);
+  document.getElementById('mNext').addEventListener('click',()=>pickM((mCur+1)%5));
+
+  // lavado
+  const lens=document.getElementById('lens'),wb=document.getElementById('washBtn');
+  wb.addEventListener('click',()=>{const c=lens.classList.toggle('clean');wb.textContent=c?'Ver de nuevo':'Lavar las manos';});
+
+  // evaluación
+  const Q=[
+    {q:'¿Desde cuántas horas posteriores al ingreso del paciente una infección puede considerarse IAAS?',o:['Desde las 12 horas','Desde las 24 horas','Después de las 48 horas','Después de 7 días'],a:2,e:'Se considera IAAS si se presenta después de las 48 horas de ingreso y no estaba presente ni en incubación.'},
+    {q:'¿Pueden las IAAS eliminarse por completo?',o:['Sí, con buenas normas','No, por los riesgos que supone la atención de salud','Sí, solo en hospitalización','No, porque no se pueden prevenir'],a:1,e:'No pueden eliminarse por completo, pero una importante proporción puede evitarse.'},
+    {q:'¿Cuál de estas NO es una de las 3 medidas para prevenir las IAAS?',o:['Realizar higiene de manos','Cumplir con las normas de aislamiento','Usar guantes en todo momento','Aplicar las precauciones estándar'],a:2,e:'Las 3 medidas son: higiene de manos, normas de aislamiento y precauciones estándar.'},
+    {q:'¿Cuál es la medida más sencilla para prevenir la diseminación de microorganismos?',o:['La higiene de manos','El uso de mascarilla','El aislamiento del paciente','La limpieza del entorno'],a:0,e:'La higiene de manos es la medida más sencilla, ya que las manos son el principal vehículo.'},
+    {q:'¿Cuál es el momento 2 de la higiene de manos?',o:['Después del contacto con el paciente','Antes de un procedimiento limpio o aséptico','Después del contacto con el entorno del paciente','Antes de salir de la clínica'],a:1,e:'El momento 2 es antes de un procedimiento limpio o aséptico.'},
+    {q:'Los microorganismos transitorios…',o:['Viven en las capas profundas de la piel','No pueden transmitirse a los pacientes','Están en la superficie de la piel y se eliminan fácilmente con el lavado clínico','Solo se eliminan con antibióticos'],a:2,e:'Los transitorios están en la superficie y se eliminan fácilmente con el lavado clínico de manos.'}
+  ];
+  const quiz=document.getElementById('quiz');let qi=0,score=0;
+  function renderQ(){
+    const it=Q[qi];
+    quiz.innerHTML='<div class="qhead"><span>Pregunta '+(qi+1)+' de '+Q.length+'</span><span>'+score+' correctas</span></div><fieldset><legend></legend></fieldset><div class="fb" hidden></div><div><button class="btn btn-v" id="qNext" disabled>Responder</button></div>';
+    quiz.querySelector('legend').textContent=it.q;
+    const fs=quiz.querySelector('fieldset');
+    it.o.forEach((o,k)=>{const l=document.createElement('label');l.className='opt';l.innerHTML='<input type="radio" name="q'+qi+'" id="q'+qi+'o'+k+'" value="'+k+'"><span></span>';l.querySelector('span').textContent=o;fs.appendChild(l);});
+    const nb=quiz.querySelector('#qNext');let answered=false;
+    fs.addEventListener('change',()=>{if(!answered)nb.disabled=false;});
+    nb.addEventListener('click',()=>{
+      if(!answered){const v=+fs.querySelector('input:checked').value;answered=true;const ok=v===it.a;if(ok)score++;
+        fs.querySelectorAll('.opt').forEach((l,k)=>{l.querySelector('input').disabled=true;if(k===it.a)l.classList.add('ok');else if(k===v)l.classList.add('bad');});
+        const fb=quiz.querySelector('.fb');fb.hidden=false;fb.className='fb '+(ok?'ok':'bad');fb.textContent=(ok?'¡Correcto! ':'No es correcto. ')+it.e;
+        quiz.querySelector('.qhead span:last-child').textContent=score+' correctas';
+        nb.textContent=qi<Q.length-1?'Siguiente pregunta':'Ver resultado';nb.focus();}
+      else{qi++;if(qi<Q.length)renderQ();else result();}
+    });
+  }
+  function result(){
+    const pass=score>=5;if(pass){st.passed=true;save();progress();}
+    quiz.innerHTML='<div class="result"><div class="art" aria-hidden="true"><div style="width:100%;height:100%" data-char=\''+JSON.stringify(pass?{coat:true,steth:true,top:'#FFFFFF',collar:'#A5C536',bottom:'#14264D',shoe:'#14264D',hair:'#2B2A6B',L:[22,92],R:[178,92],mouth:'open',body:'c-bob',anim:{L:'c-wave',R:'c-wave'}}:{coat:true,steth:true,top:'#FFFFFF',collar:'#A5C536',bottom:'#14264D',shoe:'#14264D',hair:'#2B2A6B',R:[118,126],mouth:'flat',body:'c-sway'})+'\'></div></div><div class="score">'+score+'/'+Q.length+'</div><h3 style="font-size:26px"></h3><p class="lead" style="max-width:48ch"></p><button class="btn btn-a" id="again">Repetir evaluación</button></div>';
+    quiz.querySelector('h3').textContent=pass?'¡Unidad 1 aprobada!':'Aún no apruebas';
+    quiz.querySelector('p').textContent=pass?'Completaste la Unidad 1: Prevención de las IAAS. Recuerda: la prevención es responsabilidad de todos.':'Necesitas al menos 5 respuestas correctas. Revisa las lecciones y vuelve a intentarlo.';
+    mountChars();
+    quiz.querySelector('#again').addEventListener('click',()=>{qi=0;score=0;renderQ();});
+  }
+  const vid=document.getElementById('vid');
+  document.querySelectorAll('.vlist li').forEach(li=>{const sp=li.querySelector('span');const b=document.createElement('button');b.type='button';b.className='ts';b.textContent=sp.textContent;b.setAttribute('aria-label','Ir al '+sp.textContent+' del video');const [m,se]=sp.textContent.split(':');b.addEventListener('click',()=>{vid.currentTime=(+m)*60+(+se);vid.play().catch(()=>{});vid.scrollIntoView({behavior:'smooth',block:'center'});});sp.replaceWith(b);});
+  window.addEventListener('hashchange',()=>{if(location.hash!=='#video')vid.pause();});
+  renderQ();
+
+  mountChars();
+  show();
+})();
+</script>
+</body>
+</html>

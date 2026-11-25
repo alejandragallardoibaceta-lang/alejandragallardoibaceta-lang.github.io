@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DTPARTS — Productos venta especial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff;font-family:Montserrat,-apple-system,"segoe ui",arial,sans-serif;color:#000000}
+a{color:#ffffff}a:hover{color:#ff5f00}
+::selection{background:#ff5f00;color:#000000}
+:focus-visible{outline:3px solid #ff5f00;outline-offset:2px}
+.pcard{position:relative;cursor:pointer}
+.pcard .stretch::after{content:"";position:absolute;inset:0;z-index:1;border-radius:10px}
+.pcard button{position:relative;z-index:2}
+@media (min-width: 1100px){.fgrid{grid-template-columns:1.1fr 1fr 0.9fr 1.1fr 1.6fr !important}}
+@media (max-width: 640px){.phbar{flex-direction:column !important;gap:4px !important}.phsep{display:none !important}.phmsg{justify-content:center}}
+.phbar:hover .phcta{text-decoration-thickness:2px}
+.phbar:hover{color:#ffffff}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.navlink:hover{color:#ff5f00}
+.menuitem:hover,.menuitem:focus-visible{background:#f4f4f4}
+.cta:hover{filter:brightness(1.08)}
+.pill:hover{border-color:#132530}
+.pcard:hover{box-shadow:0px 8px 20px 0px rgba(0,0,0,0.16)}
+.vermas:hover{background:#042437}
+.flink:hover{color:#ff5f00}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-tpl">
+
+<div style="width: 100%; min-height: 100vh; background: #ffffff; font-family: Montserrat, -apple-system, 'segoe ui', arial, sans-serif; color: #000000;">
+
+<!-- BARRA SUPERIOR · AutoDay -->
+<div role="region" aria-label="Campaña AutoDay" style="background: #1367fb; color: #ffffff;">
+<a href="productos.html" data-cat="todas" onClick="{{goCat}}" aria-label="AutoDay, ahorrando ando, 2, 3 y 4 de noviembre: ver todas las ofertas" class="phbar" style="color: #ffffff; text-decoration: none; max-width: 1280px; margin: 0 auto; padding: 7px 24px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; font-size: 13px; line-height: 18px;">
+<img src="img/24a47ca0211ce972ec37627cdc553f8b.png" alt="AutoDay.cl" style="height: 20px; width: auto; display: block;">
+<span class="phsep" aria-hidden="true" style="width: 1px; height: 18px; background: rgba(255,255,255,0.45);"></span>
+<p class="phmsg" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;"><strong style="font-size: 15px; font-weight: 700; font-style: italic; letter-spacing: 0.5px;">AHORRANDO ANDO.</strong><span style="font-weight: 700; letter-spacing: 1px;">2, 3 Y 4 DE NOVIEMBRE</span><span class="phcta" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 700; letter-spacing: 1px; text-decoration: underline; text-underline-offset: 3px;">VER OFERTAS<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></span></p>
+</a>
+</div>
+
+<!-- HEADER -->
+<header style="position: relative; z-index: 30; background: #042437; color: #ffffff;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; font-weight: 700; letter-spacing: 1px;">
+<div data-menu-wrap="true" style="position: relative;">
+<button type="button" onClick="{{toggleMenu}}" aria-label="Menú de categorías" aria-expanded="{{menuExpanded}}" aria-controls="menu-categorias" class="navlink" style="background: transparent; border: 0; color: #ffffff; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div id="menu-categorias" role="menu" aria-label="Categorías" style="position: absolute; top: calc(100% + 14px); left: 0; z-index: 40; width: 300px; background: #ffffff; border-radius: 8px; box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.2), 0px 16px 40px 0px rgba(0,0,0,0.18); padding: 8px; display: flex; flex-direction: column;">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40; padding: 10px 14px 6px;">CATEGORÍAS</span>
+<a role="menuitem" href="productos.html" data-cat="baterias" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Baterías<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="neumaticos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Neumáticos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="lubricantes" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Lubricantes<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="generacion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Generación<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="turbos" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Turbos<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="herramientas" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Equipo y Herramientas<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="inyeccion" onClick="{{goCat}}" class="menuitem" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 6px; color: #000000; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0;">Inyección<span aria-hidden="true" style="color: #ff5f00;">›</span></a>
+<a role="menuitem" href="productos.html" data-cat="todas" onClick="{{goCat}}" style="margin-top: 6px; display: flex; justify-content: center; align-items: center; padding: 12px 14px; border-radius: 8px; background: #ff5f00; color: #000000; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 2px;">VER TODAS LAS OFERTAS</a>
+</div>
+</sc-if>
+</div>
+</nav>
+<a href="index.html" aria-label="DTPARTS, ir al inicio" style="display: flex; flex: 0 0 auto;"><img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS Diesel Turbo &amp; Autoparts" style="height: 46px; width: auto; display: block;"></a>
+<form role="search" style="flex: 1 1 260px; display: flex; min-width: 0; background: #ffffff; border-radius: 4px; overflow: hidden;">
+<label for="q-prod" class="sr-only">Buscar repuesto</label>
+<input id="q-prod" type="search" placeholder="Busca por repuesto, marca o código OEM" style="flex: 1 1 auto; min-width: 0; border: 0; padding: 12px 14px; font-family: inherit; font-size: 14px; color: #000000; outline-offset: -2px;">
+<button type="button" aria-label="Buscar" style="border: 0; background: #ffffff; padding: 0 14px; cursor: pointer; display: flex; align-items: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#132530" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+</form>
+<div style="display: flex; align-items: center; gap: 20px;">
+<a href="#" aria-label="Carro de compras, 0 productos" style="color: #ffffff; position: relative; display: flex;">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4h2.6l2.3 10.5h10.8l2.1-7.5H6.2"></path><circle cx="9" cy="19" r="1.4"></circle><circle cx="17" cy="19" r="1.4"></circle></svg>
+<span style="position: absolute; top: -6px; right: -8px; background: #ff5f00; color: #000000; font-size: 11px; font-weight: 700; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">0</span></a>
+</div>
+</div>
+</header>
+
+<!-- BANNER DE CATEGORÍA · ancho completo (cambia según la categoría elegida) -->
+<section aria-label="Banner de categoría" style="background: #042437; line-height: 0;"><picture><source media="(max-width: 640px)" srcset="{{catBannerSq}}"><img src="{{catBanner}}" alt="{{catBannerAlt}}" style="width: 100%; height: auto; display: block;"></picture></section>
+
+<h1 class="sr-only">Productos en venta especial</h1>
+
+<!-- FILTRO POR VEHÍCULO -->
+<section style="max-width: 1280px; margin: 40px auto 0; padding: 0 24px;">
+<form style="background: #ffffff; border-radius: 15px 15px 10px 10px; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); overflow: hidden;">
+<div style="background: #042437; color: #ffffff; text-align: center; padding: 14px 16px; font-size: 18px; line-height: 21px; letter-spacing: 1px;">FILTRAR REPUESTO POR TIPO DE AUTOMÓVIL</div>
+<div style="padding: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; align-items: end;">
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-cat" style="font-size: 14px; font-weight: 700;">Categoría</label><select id="f-cat" value="{{catValue}}" onChange="{{pickSelect}}" style="font-family: inherit; font-size: 14px; color: #000000; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option value="todas">Todas las categorías</option><option value="baterias">Baterías</option><option value="neumaticos">Neumáticos</option><option value="lubricantes">Lubricantes</option><option value="generacion">Generación</option><option value="turbos">Turbos</option><option value="herramientas">Equipo y Herramientas</option><option value="inyeccion">Inyección</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-sub" style="font-size: 14px; font-weight: 700;">Sub-categoría</label><select id="f-sub" style="font-family: inherit; font-size: 14px; color: #6d6d6d; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option>Elige una opción</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-marca" style="font-size: 14px; font-weight: 700;">Marca</label><select id="f-marca" style="font-family: inherit; font-size: 14px; color: #6d6d6d; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option>Elige una opción</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-modelo" style="font-size: 14px; font-weight: 700;">Modelo</label><select id="f-modelo" style="font-family: inherit; font-size: 14px; color: #6d6d6d; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option>Elige una opción</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-anio" style="font-size: 14px; font-weight: 700;">Año</label><select id="f-anio" style="font-family: inherit; font-size: 14px; color: #6d6d6d; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option>Elige una opción</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-cil" style="font-size: 14px; font-weight: 700;">Cilindrada</label><select id="f-cil" style="font-family: inherit; font-size: 14px; color: #6d6d6d; padding: 10px; border: 0; border-radius: 8px; background: #ffffff; box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1), 0px -4px 6px 0px rgba(0,0,0,0.05), 4px 0px 6px 0px rgba(0,0,0,0.05), -4px 0px 6px 0px rgba(0,0,0,0.05); min-height: 44px;"><option>Elige una opción</option></select></div>
+<button type="button" class="cta" onClick="{{filtrar}}" style="background: #ff5f00; color: #000000; border: 0; border-radius: 8px; padding: 12px 20px; font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 1px; cursor: pointer; min-height: 44px;">FILTRAR</button>
+</div>
+</form>
+</section>
+
+<!-- LISTADO -->
+<section id="listado" style="max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+<div role="group" aria-label="Filtrar por categoría" style="display: flex; flex-wrap: wrap; gap: 10px;">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="8">
+<sc-if value="{{c.active}}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-pressed="true" onClick="{{c.pick}}" style="background: #163649; color: #ffffff; border: 1px solid #132530; border-radius: 8px; padding: 11px 18px; font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; min-height: 44px;">{{c.label}}</button>
+</sc-if>
+<sc-if value="{{c.inactive}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="pill" aria-pressed="false" onClick="{{c.pick}}" style="background: #ffffff; color: #000000; border: 1px solid rgba(19,37,48,0.35); border-radius: 8px; padding: 11px 18px; font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; cursor: pointer; min-height: 44px;">{{c.label}}</button>
+</sc-if>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+<span style="font-size: 14px; color: #3f3f40;" aria-live="polite">{{count}} productos</span>
+<label for="orden" class="sr-only">Ordenar por</label>
+<select id="orden" style="font-family: inherit; font-size: 14px; padding: 10px 12px; border: 1px solid rgba(19,37,48,0.35); border-radius: 8px; background: #ffffff; color: #000000; min-height: 44px;"><option>Ordenar: mayor descuento</option><option>Precio: menor a mayor</option><option>Precio: mayor a menor</option><option>Más vendidos</option></select>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px;">
+
+<!-- INYECCIÓN -->
+<sc-if value="{{show.inyeccion}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<a href="producto.html" aria-label="Ver Filtro Decantador de Agua Racor Fuel Manager 35014" style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/b26276d7367b4efc98deeee99e4bf187.png" alt="Filtro Fuel Manager 35014" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-19%</span></a>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Filtro Decantador de Agua Racor Fuel Manager 35014</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$25.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$31.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$30.821 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/aa8555287ff1b0abffab025139721ec8.png" alt="Inyector Original Delphi 338004A710" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-14%</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Inyector Original Delphi 338004A710</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$225.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$263.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$268.821 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/ca7b7a67b9ddf73baba074561aea7d3f.png" alt="Inyector Original Siemens Continental Ford" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-25%</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Inyector Original Siemens Continental Ford</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$225.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$299.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$268.821 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/bfbafdcecec684bc8828a0e8050cc691.png" alt="Inyector Original Bosch 0445110498" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-17%</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Inyector Original Bosch 0445110498 Mahindra Motor 2.2</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$117.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$141.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$140.301 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/af8190bd9d23bfd3f8f3e6c0195519d0.png" alt="Inyector Original Delphi Ssangyong New Actyon" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-17%</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Inyector Original Delphi Ssangyong New Actyon</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$236.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$284.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$281.911 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 0; left: 0; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block;"><img src="img/2b29fc845c940488a5d56429e1a8ad4e.png" alt="Inyector Original Bosch Volkswagen" style="max-height: 197px; width: auto; display: block;"><span style="position: absolute; top: 0; right: 0; background: #ff5f00; color: #000000; font-size: 13px; font-weight: 700; padding: 4px 8px; border-radius: 4px;">-17%</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Inyector Original Bosch Volkswagen</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$169.900 <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 14px; text-decoration: line-through;">$203.900</span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$202.181 IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center; background: #f4f4f4; border-radius: 6px; overflow: hidden;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><img src="img/ce5bc69419e94cc08bb752c4f6a4be01.png" alt="Bomba inyectora diésel" style="max-height: 210px; width: auto; display: block;"></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">INYECCIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Bomba Inyectora [MARCA · CÓDIGO OEM]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- TURBOS -->
+<sc-if value="{{show.turbos}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center; background: #ff5f00; border-radius: 6px; overflow: hidden;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><img src="img/074e433a29e1226e65011ff87010db7e.png" alt="Turbo Holset" style="max-height: 210px; width: auto; display: block;"></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">TURBOS</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Turbo Holset [CÓDIGO · APLICACIÓN]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; align-items: center; justify-content: center; background: #ff5f00; border-radius: 6px; overflow: hidden;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><img src="img/62bf21e7f120ca043b26c131001aad03.png" alt="Cartridge de turbo" style="max-height: 200px; width: auto; display: block;"></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">TURBOS</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Cartridge de Turbo [CÓDIGO · APLICACIÓN]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- BATERÍAS -->
+<sc-if value="{{show.baterias}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; background: #042437; border-radius: 6px;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="36" height="26" rx="3"></rect><path d="M12 14v-4h7v4M29 14v-4h7v4M12 27h7M15.5 23.5v7M29 27h7"></path></svg><span style="font-size: 12px; color: #ffffff; letter-spacing: 1px;">[FOTO DEL PRODUCTO]</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">BATERÍAS</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Batería 12V [MARCA · AMPERAJE]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- NEUMÁTICOS -->
+<sc-if value="{{show.neumaticos}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; background: #042437; border-radius: 6px;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="18"></circle><circle cx="24" cy="24" r="8"></circle><circle cx="24" cy="24" r="2"></circle><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11.3 11.3l4.2 4.2M32.5 32.5l4.2 4.2M36.7 11.3l-4.2 4.2M15.5 32.5l-4.2 4.2"></path></svg><span style="font-size: 12px; color: #ffffff; letter-spacing: 1px;">[FOTO DEL PRODUCTO]</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">NEUMÁTICOS</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Neumático [MARCA · MEDIDA]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- LUBRICANTES -->
+<sc-if value="{{show.lubricantes}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; background: #042437; border-radius: 6px;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6h12v6l4 4v24a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V16l4-4z"></path><path d="M18 12h12"></path><path d="M24 22c-3 4-4.5 6.2-4.5 8.2a4.5 4.5 0 0 0 9 0c0-2-1.5-4.2-4.5-8.2z"></path></svg><span style="font-size: 12px; color: #ffffff; letter-spacing: 1px;">[FOTO DEL PRODUCTO]</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">LUBRICANTES</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Aceite Motor Diésel [MARCA · VISCOSIDAD · LITROS]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- GENERACIÓN -->
+<sc-if value="{{show.generacion}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; background: #042437; border-radius: 6px;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="12" width="36" height="24" rx="3"></rect><path d="M26 16l-6 9h8l-6 8"></path><path d="M12 36v4M36 36v4"></path></svg><span style="font-size: 12px; color: #ffffff; letter-spacing: 1px;">[FOTO DEL PRODUCTO]</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">GENERACIÓN</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Generador [MARCA · POTENCIA]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+<!-- HERRAMIENTAS -->
+<sc-if value="{{show.herramientas}}" hint-placeholder-val="{{ true }}">
+<article class="pcard" style="background: #ffffff; border: 1px solid rgba(19,37,48,0.15); border-radius: 10px; padding: 12px 12px 16px; display: flex; flex-direction: column; gap: 10px;">
+<div style="position: relative; height: 210px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; background: #042437; border-radius: 6px;"><img src="img/c9b6c9549e74c996f63d7ce7462d29ac.png" alt="AutoDay" style="position: absolute; top: 8px; left: 8px; z-index: 1; height: 26px; width: auto; border-radius: 4px; display: block; box-shadow: 0 0 0 1.5px #ffffff;"><svg width="72" height="72" viewBox="0 0 48 48" fill="none" stroke="#ff5f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M30 6a9 9 0 0 0-8.5 12L7 32.5a3.5 3.5 0 0 0 5 5L26.5 23A9 9 0 0 0 38.5 14l-5.5 5.5-5-1-1-5L32.5 8A9 9 0 0 0 30 6z"></path></svg><span style="font-size: 12px; color: #ffffff; letter-spacing: 1px;">[FOTO DEL PRODUCTO]</span></div>
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #3f3f40;">EQUIPO Y HERRAMIENTAS</span>
+<h3 style="margin: 0; font-size: 14px; line-height: 18px; font-weight: 700; color: #3f3f40; min-height: 36px;">Herramienta de taller [MARCA · MODELO]</h3>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 20px; line-height: 24px; font-weight: 700; color: #ff5f00;">$[PRECIO] <span style="font-size: 14px; color: #3f3f40;">+ IVA</span></span><span style="font-size: 13px; font-weight: 500; color: #0056a6;">$[PRECIO] IVA incluido</span></div>
+<button type="button" class="vermas" style="margin-top: auto; background: #163649; border: 1px solid #132530; color: #ffffff; font-family: inherit; font-size: 15px; font-weight: 700; padding: 13px 10px; border-radius: 4px; cursor: pointer;">AGREGAR AL CARRO</button>
+<a href="producto.html" class="stretch" style="color: #132530; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0;">VER DETALLE</a>
+</article>
+</sc-if>
+
+</div>
+
+<nav aria-label="Paginación" style="display: flex; justify-content: center; gap: 8px; padding-top: 16px;">
+<a href="#" aria-current="page" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #163649; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700;">1</a>
+<a href="#" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #ffffff; color: #000000; text-decoration: none; border-radius: 8px; border: 1px solid rgba(19,37,48,0.35); font-weight: 700;">2</a>
+<a href="#" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #ffffff; color: #000000; text-decoration: none; border-radius: 8px; border: 1px solid rgba(19,37,48,0.35); font-weight: 700;">3</a>
+<a href="#" aria-label="Página siguiente" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: #ffffff; color: #000000; text-decoration: none; border-radius: 8px; border: 1px solid rgba(19,37,48,0.35); font-weight: 700;">→</a>
+</nav>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #343333; color: #ffffff;">
+<div class="fgrid" style="max-width: 1280px; margin: 0 auto; padding: 56px 24px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<img src="img/6a262225f6593267ddc4d88edb47979b.png" alt="DTPARTS" style="height: 44px; width: auto; align-self: flex-start; display: block;">
+<p style="margin: 0; font-size: 14px; line-height: 22px;">Repuestos diésel, turbos y autopartes con despacho a todo Chile.</p>
+<div style="display: flex; gap: 14px;">
+<a href="#" aria-label="Instagram de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#ffffff"></circle></svg></a>
+<a href="#" aria-label="Facebook de DTPARTS" style="color: #ffffff; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.3); border-radius: 22px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a20 20 0 0 0-2.4-.1c-2.4 0-4 1.4-4 4.1v2.1H8.5v3h2.7V21"></path></svg></a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">SERVICIO</h3>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Términos y condiciones</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Devoluciones y garantía</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de privacidad</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Preguntas frecuentes</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Políticas de despacho</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Promociones y cupones</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NOSOTROS</h3>
+<a href="nosotros.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Sobre nosotros</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Consejo de expertos</a>
+<a href="#" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Trabaja con nosotros</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">CONTACTO</h3>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">Contáctanos</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 9914 9117</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">+56 9 3379 8997</a>
+<a href="contacto.html" class="flink" style="color: #ffffff; text-decoration: none; font-size: 15px;">contacto@dtparts.cl</a>
+<span style="font-size: 15px; line-height: 22px;">Avda. Pdte. Eduardo Frei Montalva 5325, Conchalí, Santiago</span>
+</div>
+<form style="display: flex; flex-direction: column; gap: 14px;">
+<h3 style="margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 3px; padding-bottom: 10px; border-bottom: 2px solid #ffffff; align-self: flex-start;">NEWSLETTER</h3>
+<label for="nl-prod" style="font-size: 15px; line-height: 22px;">Suscríbete y recibe las ofertas antes que nadie</label>
+<div style="display: flex; flex-wrap: nowrap; gap: 8px;">
+<input id="nl-prod" type="email" placeholder="Ingresa tu correo" style="flex: 1 1 auto; min-width: 0; width: 100%; border: 0; border-radius: 5px; padding: 13px 12px; font-family: inherit; font-size: 14px;">
+<button type="button" class="cta" style="background: #ff5f00; color: #000000; border: 0; border-radius: 5px; padding: 13px 14px; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 1px; cursor: pointer; min-height: 44px; flex: 0 0 auto; white-space: nowrap;">SUSCRIBIRSE</button>
+</div>
+</form>
+</div>
+<div style="background: #141414;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: 13px; color: #ffffff;">
+<span>© 2026 DTPARTS · Diesel, Turbo &amp; Autoparts</span>
+<span>Precios en pesos chilenos. Ofertas válidas hasta agotar stock.</span>
+</div>
+</div>
+</footer>
+
+<a href="contacto.html" style="position: fixed; right: 24px; bottom: 24px; z-index: 10; background: #075e54; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 14px 22px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.16);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"></path><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .9a4.5 4.5 0 0 1-2.9-2.9l.9-1-1-2z"></path></svg>Contáctanos</a>
+
+</div>
+</template>
+<script type="text/x-dc">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { cat: 'todas' };
+}
+renderVals() {
+var self = this;
+var o = this._pageVals();
+var m = !!(this.state && this.state.menuOpen);
+o.menuOpen = m;
+o.menuExpanded = m ? 'true' : 'false';
+o.toggleMenu = function (e) { self._menuToggle(e); };
+o.goCat = function (e) { self._goCat(e); self._readCat && self._readCat(); };
+return o;
+}
+_menuMount() {
+var self = this;
+this._onKey = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+if (e.key === 'Escape') { self.setState({ menuOpen: false }); if (self._menuBtn) { try { self._menuBtn.focus(); } catch (_) {} } return; }
+if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+var wrap = self._menuBtn && self._menuBtn.closest('[data-menu-wrap]');
+var items = wrap ? Array.prototype.slice.call(wrap.querySelectorAll('[role="menuitem"]')) : [];
+if (!items.length) return;
+var i = items.indexOf(document.activeElement);
+var n = e.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+items[n].focus(); e.preventDefault();
+}
+};
+this._onDown = function (e) {
+if (!(self.state && self.state.menuOpen)) return;
+var t = e.target;
+if (t && t.closest && t.closest('[data-menu-wrap]')) return;
+self.setState({ menuOpen: false });
+};
+document.addEventListener('keydown', this._onKey);
+document.addEventListener('mousedown', this._onDown);
+}
+_menuUnmount() {
+document.removeEventListener('keydown', this._onKey);
+document.removeEventListener('mousedown', this._onDown);
+}
+_menuToggle(e) {
+var open = !(this.state && this.state.menuOpen);
+if (e && e.currentTarget) { this._menuBtn = e.currentTarget; }
+this.setState({ menuOpen: open });
+var btn = this._menuBtn;
+if (open && btn) {
+setTimeout(function () { var wrap = btn.closest('[data-menu-wrap]'); var first = wrap && wrap.querySelector('[role="menuitem"]'); if (first) { first.focus(); } }, 40);
+}
+}
+_goCat(e) {
+try {
+var id = e && e.currentTarget && e.currentTarget.getAttribute('data-cat');
+if (id) { window.localStorage.setItem('dtparts.cat', id + '|' + Date.now()); }
+} catch (_) {}
+if (this.state && this.state.menuOpen) { this.setState({ menuOpen: false }); }
+}
+componentDidMount() {
+var self = this;
+this._menuMount();
+this._readCat = function () {
+var ok = ['todas', 'baterias', 'neumaticos', 'lubricantes', 'generacion', 'turbos', 'herramientas', 'inyeccion'];
+var id = null;
+try { var m = ((window.location.search || '') + (window.location.hash || '')).match(/cat=([a-z]+)/); if (m) { id = m[1]; } } catch (_) {}
+try { var v = window.localStorage.getItem('dtparts.cat'); if (v) { id = v.split('|')[0]; window.localStorage.removeItem('dtparts.cat'); } } catch (_) {}
+if (id && ok.indexOf(id) !== -1 && id !== (self.state && self.state.cat)) { self.setState({ cat: id }); }
+};
+this._onStorage = function (e) { if (!e || e.key === 'dtparts.cat') { self._readCat(); } };
+this._onFocus = function () { self._readCat(); };
+this._readCat();
+window.addEventListener('storage', this._onStorage);
+window.addEventListener('focus', this._onFocus);
+}
+componentWillUnmount() {
+this._menuUnmount();
+window.removeEventListener('storage', this._onStorage);
+window.removeEventListener('focus', this._onFocus);
+}
+_pageVals() {
+var cat = (this.state && this.state.cat) || 'todas';
+var self = this;
+var defs = [
+{ id: 'todas', label: 'TODAS', n: 14 },
+{ id: 'baterias', label: 'BATERÍAS', n: 1 },
+{ id: 'neumaticos', label: 'NEUMÁTICOS', n: 1 },
+{ id: 'lubricantes', label: 'LUBRICANTES', n: 1 },
+{ id: 'generacion', label: 'GENERACIÓN', n: 1 },
+{ id: 'turbos', label: 'TURBOS', n: 2 },
+{ id: 'herramientas', label: 'EQUIPO Y HERRAMIENTAS', n: 1 },
+{ id: 'inyeccion', label: 'INYECCIÓN', n: 7 }
+];
+var cats = defs.map(function (d) {
+return {
+label: d.label,
+active: d.id === cat,
+inactive: d.id !== cat,
+pick: function () { self.setState({ cat: d.id }); }
+};
+});
+var show = {};
+defs.forEach(function (d) { if (d.id !== 'todas') { show[d.id] = (cat === 'todas' || cat === d.id); } });
+var count = defs.filter(function (d) { return d.id === cat; })[0].n;
+var banners = {
+todas: ['img/5c0a6d18ebee3309fab5cbdd5c79fe58.jpg', 'Todo DTPARTS: hasta 68% de descuento en productos seleccionados'],
+baterias: ['img/7ce9f451f5988a2c117750e3a96274b7.jpg', 'Baterías: hasta 56% de descuento en productos seleccionados'],
+neumaticos: ['img/5ce4e1e8b8cf8f85fb8595899ebdfbd2.jpg', 'Neumáticos: hasta 18% de descuento en productos seleccionados'],
+lubricantes: ['img/0ca49215ae782daceef60dd6722f0c92.jpg', 'Lubricantes: descuento en productos seleccionados'],
+generacion: ['img/261ed2d23a9f8c56760233b0b59b3e32.jpg', 'Generadores: hasta 32% de descuento en productos seleccionados'],
+turbos: ['img/e9218486882fcee3ca86682ffcf9e6f7.jpg', 'Turbos: hasta 68% de descuento en productos seleccionados'],
+herramientas: ['img/342ae32cf30140dbe05fd6b01b143a01.jpg', 'Equipo y herramientas: 30% de descuento en productos seleccionados'],
+inyeccion: ['img/e98046b2d9b8ed091361217420089b31.jpg', 'Inyección diésel: hasta 25% de descuento en productos seleccionados']
+};
+var bn = banners[cat] || banners.todas;
+var sq = { todas: 'img/1ceb510aebf5110acb29cf6252aa0a80.jpg', baterias: 'img/5bd552a80db69d27216258cd07434d25.jpg', neumaticos: 'img/0fcf7f9787522e9617893d3f67a99a01.jpg', lubricantes: 'img/59b4e1660d5a8616034c623cde67a881.jpg', generacion: 'img/c568ce1682f4b22c3a9e1e0ef32aa27c.jpg', turbos: 'img/3350a1c3d536501f411a736761b55f39.jpg', herramientas: 'img/2c9c97d4cafd58e98282581c314ca318.jpg', inyeccion: 'img/036ee89f7737232d3aff028225e8dc68.jpg' };
+return {
+cats: cats, show: show, count: count, catBanner: bn[0], catBannerAlt: bn[1],
+catBannerSq: (sq[cat] || sq.todas),
+catValue: cat,
+pickSelect: function (e) { self.setState({ cat: e && e.target ? e.target.value : 'todas' }); },
+filtrar: function () { try { var el = document.getElementById('listado'); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } catch (_) {} }
+};
+}
+}
+</script>
+<script src="js/morphdom.min.js"></script>
+<script src="js/dc-runtime-lite.js"></script>
+</body>
+</html>
