@@ -298,12 +298,14 @@ main{padding:clamp(24px,4vw,56px) clamp(16px,4vw,64px) 80px;min-width:0}
   .nav .btn{flex:1;padding:0 12px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.ag-link{display:inline-flex;align-items:center;gap:8px;font:600 14px/20px "Open Sans","Segoe UI",Roboto,Arial,sans-serif;letter-spacing:0;color:#6B4F65;text-decoration:none;padding-block:4px;border-bottom:2px solid transparent;white-space:nowrap}.ag-link .ag-logo{height:20px;width:auto;color:#421035;flex:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}.ag-link:hover{color:#8E2C67;border-bottom-color:#8E2C67}.ag-link:hover .ag-logo{transform:rotate(-6deg) scale(1.06)}.ag-link:focus-visible{outline:2px solid #7587D9;outline-offset:3px;border-radius:4px}.ag-link.on-dark{color:#E3D6E5}.ag-link.on-dark .ag-logo{color:#B890C2}.ag-link.on-dark:hover{color:#E89BC6;border-bottom-color:#E89BC6}@media (prefers-reduced-motion:reduce){.ag-link .ag-logo{transition:none}}.ag-link .ag-chev{width:16px;height:16px;flex:none;margin-right:-2px}.ag-back{flex:none}.ag-sep{flex:none;width:1px;height:28px;background:var(--linea)}@media (max-width:620px){.ag-back span{display:none}.ag-back{order:-1}.ag-sep{display:none}}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="top-in">
+    <a class="ag-link ag-back" href="/#elearning-iaas" aria-label="Volver al portafolio de Alejandra Gallardo"><svg class="ag-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><svg class="ag-logo" viewBox="39 61 400 258" aria-hidden="true"><path d="M400.1 126.5 A109.0 109.0 0 1 0 439.0 210 L405.0 210 A75.0 75.0 0 1 1 378.2 152.5 Z" fill="currentColor"/><path d="M364.6 176 H417.0 A22 22 0 0 1 439.0 198 V211.5 H335.0 Z" fill="currentColor"/><path d="M221.0 140 H245.0 V210 H221.0 Z" fill="currentColor"/><path d="M131.6 212 L204.0 212 L175.6 246 L103.2 246 Z" fill="currentColor"/><path d="M59.0 299.0 L241.0 81 L241.0 170" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="40"/></svg><span>Volver al portafolio</span></a><span class="ag-sep" aria-hidden="true"></span>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side" aria-label="Ver lecciones">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       <span class="t">Lecciones</span>
